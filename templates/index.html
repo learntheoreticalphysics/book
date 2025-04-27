@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="homepage">
+<header>
+  <h1>
+    A Learner’s Guide to Advanced Theoretical Physics
+  </h1>
+  <p>
+    By Jacky Song and Alex Weiss
+  </p>
+</header>
+
+<main class="homepage">
+<section class="preface">
+<p>
+Welcome! This is the home of a set of free, open-source online books, made for all readers interested in advanced theoretical physics. In these books, we delve into advanced quantum mechanics and relativity, and don't shy away from the details; we cover the Standard Model, Special Relativity and General Relativity, and the most exciting developments in making a unified theory that bridges General Relativity and the Standard Model. Additionally, we will also spend some time looking into non-relativistic quantum field theories, which are very similar to relativistic quantum field theories that form the basis of the Standard Model. This guide is written to be accessible enough to be readable by anyone who is curious and wants a challenge.
+</p>
+<p>
+But, the skeptical reader may ask, why care about theoretical physics? The answer is that basic science, such as research into theoretical physics, is <em>crucial</em> to furthering our understanding of science, because it is the bedrock on which all other physics is built upon. The current "Big 2" theories of theoretical physics, General Relativity (GR) and the Standard Model, are both hugely-successful theories, but as of the present moment, attempts to unify the two theories have failed. Thus, working on the problems within each of the theories, as well as their (hopeful) unification, is also (well, subjectively) an interesting intellectual challenge.
+</p>
+<p>
+We attempt to keep the mathematical prerequisites for this book to the minimum: only some multivariable calculus and some knowledge of vectors and matrices. If these topics are unfamiliar, we highly recommend reading <a href="https://tutorial.math.lamar.edu/">the free online lecture notes</a> by Professor Paul Dawkins at Lamar University. We will explain any other mathematics as necessary while we progress through the book.
+</p>
+<p>
+Our greatest satisfaction is to make the concepts of theoretical physics as clear and accessible as we can. We hope you enjoy this book as much as we have enjoyed writing it.
+</p>
+</section>
+
+<section class="book-cards">
+    <h2>Our books</h2>
+    {% for page in section.pages %}
+   <article>
+     <h3>{{ page.title }}</h3>
+     <p class="summary">{{ page.extra.description | safe }}</p>
+     <a href="{{ page.permalink | safe }}">Read more...</a>
+   </article>
+ {% endfor %}
+</section>
+</main>
+{% endblock content %}

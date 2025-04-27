@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <article class="post">
+        <h1>{{ page.title }}</h2>
+        {% if not page.extra.nonarticle %}
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        {% endif %}
+        
+        <!-- table of contents -->
+        <details class="toc" id="toc" open>
+        <summary>Table of contents</summary>
+        <p class="toc-info">Note: it is highly recommended to navigate by clicking links in the table of contents! It means you can use the back button in your browser to go back to any section you were reading, so you can jump back and forth between sections!</p>
+        <div>
+            <ul>
+            {% for h2 in page.toc %}
+                <li>
+                    <a href="{{ h2.permalink | safe }}">{{ h2.title }}</a>
+                    {% if h2.children %}
+                        <ul>
+                            {% for h3 in h2.children %}
+                                <li>
+                                    <a href="{{ h3.permalink | safe }}">{{ h3.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        </details>
+
+        <!-- page content -->
+        {{ page.content | safe }}
+
+        <!-- jump to TOC button -->
+        <a id="jump-toc-btn" href="#toc">Show table of contents</a>
+        <a href="/" class="return-link">Back to home</a>
+    </article>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="{{ get_url(path='katex/katex.min.js', trailing_slash=false) | safe }}"></script>
+    <script defer src="{{ get_url(path='katex/contrib/auto-render.min.js', trailing_slash=false) | safe }}"></script>
+    <script defer src="{{ get_url(path='katex/contrib/mhchem.min.js', trailing_slash=false) | safe }}"></script>
+    <script defer src="{{ get_url(path='katex/contrib/copy-tex.min.js', trailing_slash=false) | safe }}"></script>
+    <script defer>
+    var toc = document.getElementById("toc");
+    var tocPos = toc.offsetTop + toc.offsetHeight;
+    var tocBtn = document.getElementById("jump-toc-btn");
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+    function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+        document.addEventListener("DOMContentLoaded", function() {
+            var article = document.querySelector(".post");
+            if (article) {
+                renderMath(article);
+            }
+        })
+
+        window.onscroll = function(){
+            showTocBtnOnScroll();
+        };
+    </script>
+
+{% endblock content %}

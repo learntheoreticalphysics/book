@@ -1,0 +1,446 @@
+@import "screens";
+
+/* Fonts */
+$font-serif: "Libertine", serif;
+$font-sans: "Inter", "Open Sans", -apple-system, "Segoe UI", Roboto, Helvetica, sans-serif;
+$font-monospace: "Fira Code", "Source Code Pro", "IBX Plex Mono", "Consolas", "Menlo", "Courier", monospace;
+
+/* Colors */
+
+$bg-color-1: #FFFFFF; // Background
+$tx-color-1: rgba(0, 0, 0, 0.8); // Primary
+$tx-color-2: #065C84; // Link
+$tx-color-3: rgba(0, 0, 0, 0.3); // Secondary
+$tx-color-5: rgba(0, 0, 0, 0.6); // Tertiary
+$primary-btn-bg: #2587b5; // for primary buttons
+$border: rgb(229,231,235);
+// from tailwind's box-shadow shadow-sm class
+// see https://tailwindcss.com/docs/box-shadow
+$block-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+$block-bg: #F7F7F7; // for inline code blocks
+// Code color schemes are
+// based on the syntax highlight theme
+
+/* General style resets */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+	font-family: $font-sans;
+	font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+@mixin center-x {
+  margin: 0 auto;
+}
+
+/* Styles */
+
+body {
+  max-width: 73ch;
+  width: 65%;
+  @include lg { width: 80%; }
+  @include sm { width: 100%; }
+	padding: 2rem;
+	background: $bg-color-1;
+	color: $tx-color-1;
+	@include center-x;
+}
+
+code {
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.8rem;
+}
+
+a {
+  color: $tx-color-2;
+}
+
+/*
+main {
+  max-width: 73ch;
+  width: 65%;
+  @include lg { width: 80%; }
+  @include sm { width: 100%; }
+	padding: 2rem;
+	background: $bg-color-1;
+	color: $tx-color-1;
+	@include center-x;
+} */
+
+// landing page
+/* 
+.homepage {
+  background-image: url("physics-background.jpg");
+  background-color: rgba(0, 0, 0, 0.2);
+  background-blend-mode:darken;
+} */
+header {
+  display: flex;
+  flex-direction: column;
+  margin: 5rem auto 3rem auto;
+  row-gap: 1rem;
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: $tx-color-5;
+  }
+}
+
+.preface {
+    p {
+      font-size: 1.1rem;
+      @include sm { font-size: 0.9rem; }
+      line-height: 1.5;
+      margin-bottom: 2rem;
+      max-width: 80ch;
+    }
+}
+
+// For book descriptions on the main page
+.book-cards {
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  article {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    padding: 1.2rem 2rem;
+    background: lighten(gray, 48%);
+    font-size: 0.95rem;
+    box-shadow: $block-shadow;
+    border: 1px solid $tx-color-3;
+
+    h3 {
+      font-size: 1.125rem;
+    }
+
+    p {
+      font-size: 1rem;
+      @include sm { font-size: 0.9rem; }
+      line-height: 1.5;
+    }
+  }
+
+  .summary {
+    max-width: 80%;
+  }
+}
+
+// For the jump to TOC button
+#jump-toc-btn {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  padding: 0.5rem;
+  box-shadow: $block-shadow;
+  background-color: $primary-btn-bg;
+  color: white;
+  text-decoration: none;
+  font-size: 0.85rem;
+  border-radius: 0.3rem;
+}
+
+// For full page articles
+.post {
+  // width: 70%;
+  // @include lg { width: 90%; }
+  // @include sm { width: 100%; }
+  display: block;
+  margin: 3rem auto;
+
+  // Credits to new.css
+  address,
+  area,
+  aside,
+  audio,
+  blockquote,
+  datalist,
+  details,
+  dl,
+  fieldset,
+  figure,
+  form,
+  input,
+  iframe,
+  img,
+  meter,
+  nav,
+  ol,
+  optgroup,
+  option,
+  output,
+  p,
+  pre,
+  progress,
+  ruby,
+  section,
+  table,
+  textarea,
+  ul,
+  video {
+  	margin-bottom: 1.5rem;
+  }
+
+  #print-notice {
+    font-size: smaller;
+    width: 90%;
+  }
+
+  // We just don't want the extra
+  // bottom spacing for lists
+  // within lists
+  li ul, li ol {
+  	margin-bottom: 0;
+  }
+
+  .toc {
+    margin: 2rem 0;
+    @include md { margin: 0; }
+    background: lighten(gray, 48%);
+    border-radius: 0.25rem;
+    font-size: 0.95rem;
+    padding: 1.5rem 1rem;
+    box-shadow: $block-shadow;
+
+    .toc-info {
+      margin-top: 1rem;
+      margin-left: 1.5rem;
+      font-size: smaller;
+    }
+
+    div {
+      margin: 0.5rem 0 0 1rem;
+
+      // TOC entries
+      li {
+        font-size: 0.95rem;
+      }
+    }
+
+    summary {
+      list-style-position: outside;
+      margin-left: 1.5rem;
+      @include sm { margin-left: 0.6rem; }
+      line-height: 1.5;
+      font-weight: bold;
+    }
+  }
+
+  img {
+    display: block;
+    max-width: 60%;
+    height: auto !important;
+    @include lg { max-width: 70%; }
+    @include sm { max-width: 75%; }
+    @include xsm { max-width: 80%; }
+    margin: 1.5rem auto;
+  }
+
+  .mathcell {
+  	// scroll long equations
+  	overflow: auto;
+  }
+
+  h1, h2, h3, h4, h5 {
+      margin: 1.5rem 0;
+      line-height: 1.2;
+  }
+
+  h1 {
+  	font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+  }
+
+  h5 {
+    font-size: 1.12rem;
+  }
+
+  p, li {
+    font-size: 1.06rem;
+    line-height: 1.65;
+    color: rgba(0, 0, 0, 0.8);
+    @include md { font-size: 1rem; }
+    @include sm { font-size: 0.95rem; }
+  }
+
+  li {
+      margin-left: 1.2rem;
+      margin-top: 0.3rem;
+      margin-bottom: 0.3rem;
+  }
+
+  p code {
+    border-radius: 0.25rem;
+    box-shadow: $block-shadow;
+    background-color: $block-bg;
+  }
+
+  // code blocks
+  pre {
+    padding: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: $block-shadow;
+  }
+
+  pre code {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    line-height: 1.5;
+    font-size: 0.85rem;
+  }
+
+  .return-link {
+    margin-top: 1.2rem;
+  }
+
+  blockquote {
+	padding: 1.5rem 2rem 1.5rem 2rem;
+	border: 2px solid rgba(0,0,0,.5);
+
+  	p {
+	    margin-bottom: 0;
+	    font-style: italic;
+      font-size: 0.95rem;
+  	}
+  }
+
+  table {
+		border-collapse: collapse;
+	}
+
+	table caption {
+		font-weight: bold;
+		margin-bottom: 0.5rem;
+	}
+
+	td, th {
+		text-align: left;
+		padding: 0.5rem;
+
+		code {
+			color: magenta;
+			background: none;
+		}
+
+    img {
+      height: 6rem;
+      width: auto;
+      margin: auto;
+    }
+	}
+
+	tr {
+		border-bottom: 1px solid $border;
+	}
+
+  .footnote-definition {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@media print {
+  body {
+    width: 85ch;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .post {
+    margin: 1rem auto;
+  }
+
+  #print-notice {
+    display: none;
+  }
+
+  #jump-toc-btn {
+    display: none !important;
+  }
+
+  .toc {
+    display: none;
+  }
+
+  h1, h2, h3, h4, h5 {
+    margin: 1.5rem 0;
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: 1.5rem !important;
+  }
+
+  h2 {
+    font-size: 1.3rem !important;
+  }
+
+  h3 {
+    font-size: 1.1rem !important;
+  }
+
+  h4 {
+    font-size: 0.95rem !important;
+  }
+
+  h5 {
+    font-size: 0.85rem !important;
+  }
+
+  p, li {
+    font-size: 0.8rem !important;
+    line-height: 1.65;
+  }
+
+  td, th {
+    font-size: 0.7rem !important;
+  }
+
+  li {
+      margin-left: 1.2rem;
+      margin-top: 0.3rem;
+      margin-bottom: 0.3rem;
+  }
+
+  pre code {
+    line-height: 1.5;
+    font-size: 0.85rem;
+  }
+
+  .return-link {
+    display: none;
+  }
+}
