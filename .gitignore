@@ -1,0 +1,7 @@
+public/
+.DS_Store
+unpublished/
+log.txt
+*.swp
+*~
+bin/
