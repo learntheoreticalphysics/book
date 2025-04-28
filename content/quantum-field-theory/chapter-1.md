@@ -21,6 +21,126 @@ These are not meaningless predictions either; our understanding of the emission 
 
 We'll be working with natural units where $c = \hbar = 1$ simply out of convenience. Also, (almost) everything will be in tensors. We will be working in the formalism of Lagrangian and Hamiltonian field theory, as is standard in theoretical physics. Don't worry if some of these topics are unfamiliar; we will review all of these topics before we begin, and consult the other free books on this site for more information.
 
+## An overview of classical field theory
+
+Before we get started with the complex quantum
+field theories of the Standard Model, we must look at their shared
+fundamental structure in *classical field theory*. A classical field
+theory describes a *field*, which can be thought of as a physical
+quantity that fills all of space and allows interactions between
+particles to propagate between each other, leading to what we perceive
+as "force".
+
+The nebulous idea of a field can be more easily quantified by
+considering the following example: you stand in a room that has varying
+temperature. The temperature changes depending on where you are in the
+room (a physicist would call that *position dependence*), and the
+temperature also changes over time (in the language of physics, *time
+dependence*). Thus, if we let $\vec x = \langle x, y, z\rangle$ denote
+the position in the room and $t$ denote the time, we can write the
+temperature field, represented as $\phi$, with:
+
+{% math() %}\phi(\vec x, t){% end %}
+
+Our modern formulation of classical field theory is that of the
+**Lagrangian and Hamiltonian formulation** of classical fields. Such a
+formulation begins by describing a field in terms of a specific function
+of the field, called a **Lagrangian** , and written as
+$\mathscr{L}(\phi, \vec x, t)$, where, again, $\phi$ is a function of
+$\vec x$ and $t$, that is, position and time. (Technically speaking, the
+more accurate term for fields is to use the term *Lagrangian density*,
+but we will use an abuse of terminology and simply call the Lagrangian
+density \"the Lagrangian\".)
+
+The precise form of the Lagrangian depends highly on which exact field
+we are studying. But if we want our theories to \"make sense\" in the
+physical world, it must satisfy the following constraints:
+
+1.  Any derivatives of the field that appear in the Lagrangian can be at
+    most *first derivatives*. That is, we can have
+    $\dfrac{\partial \phi}{\partial x}$ or $(\nabla \phi)^2$ as terms in
+    the Lagrangian, but **not** $\nabla^2 \phi$ as that would be
+    second-order. This is because we do not observe physical fields
+    satisfying partial differential equations (PDEs) that include
+    anything above a second-order derivative, and the process we will
+    soon see to determine the PDEs of the fields always raises the order
+    of the derivatives by one.
+
+2.  It must be a function of *individual positions* in space. Thus, the
+    Lagrangian cannot have a term that depends on two positions
+    $\vec x_1, \vec x_2$. This ensures that the field does not violate
+    *locality* (the fact that information propagates at a finite speed
+    and, therefore, information transfer cannot be instantaneous).
+
+3.  It must be scalar-valued and have units of *energy*, and we will see
+    why soon.
+
+There are further restrictions on the specific form of the Lagrangian of
+a field based on the specific **symmetries** that we want the Lagrangian
+(and thus our theory) to obey. For instance, if we want our theory to
+have *translational symmetry* (symmetric in position), then the
+Lagrangian **cannot** contain any terms that would lead to
+$\mathscr{L}(\phi(\vec x + \vec \epsilon), \vec x + \vec \epsilon, t) \neq \mathscr{L}(\phi(\vec x, \vec t))$,
+where $\vec \epsilon$ is some shift in position. We may impose further
+restrictions by requiring, for instance, that the Lagrangian respects
+**rotational symmetry** or symmetry upon \"flipping\" the field (which
+is the transformation $\phi(\vec x, t) \to \phi(-\vec x, t)$). These
+symmetries are desirable because a famous theorem known as **Noether's
+theorem** says that certain symmetries lead to *conservation laws*, such
+as the conservation of energy, momentum, and charge, which are
+fundamental laws of nature. We will also encounter a specific type of
+symmetry later on called **Lorentz symmetry** that imposes even stricter
+conditions on the form the Lagrangian can take. In practice, the
+combination of symmetries may often be so restrictive that there are
+only a few possibilities for a field's Lagrangian that can satisfy all
+the symmetries. But there is no absolute rule for finding the right
+Lagrangian; even though we can often narrow down the Lagrangian into a
+much simpler form, the specific Lagrangian that \"wins out\" in the end
+is the one that leads to a theory that makes successful predictions,
+verified by experiments. Physics, is ultimately an *empirical science*,
+and the source of truth within theoretical physics, just like all other
+branches of physics, is *consistency with observation*.
+
+### The Principle of Stationary Action
+
+Upon defining a Lagrangian, we can then write out a quantity known as
+the **action**. The action $S$ is defined as:
+
+{% math() %}S = \int \limits_\text{space+time} \mathscr{L}(\phi(\vec x, t), \vec x, t)\, d^4 x{% end %}
+
+Where $d^4 x = dx\, dy\, dz\, dt$, and the integral is conducted over
+all space and all times. Why define this quantity? Because it turns out
+that the correct partial differential equation to describe the field
+$\phi(\vec x, t)$ is the one that makes the action *stationary*.
+Stationary is a concept that comes from calculus; for the action, it
+means that rate of change of the action with respect to change in $\phi$
+must be zero, which we write as:
+
+{% math() %}\delta S = 0{% end %}
+
+This requirement for the action being stationary is (unsurprisingly)
+called the **Principle of Stationary Action**. It is also sometimes
+called the Principle of *Least* Action, although the action may not
+always be a minimum, so that alternate term can be misleading. It turns
+out (we will not show here as it is a rather involved derivation) that
+this means that the Lagrangian must satisfy the following partial
+differential equation:
+
+{% math() %}\frac{\partial \mathscr{L}}{\partial \phi} - \partial_\mu \left(\frac{\partial \mathscr{L}}{\partial (\partial_\mu \phi)}\right) = 0{% end %}
+
+This partial differential equation is called the **Euler-Lagrange
+Equation** for fields and always gives the correct PDE for the field. We
+refer to this PDE as the **equation of motion** of the field, as it
+describes how the field evolves through time and changes in space.
+Solving the PDE (with suitable boundary conditions) allows us to find
+the field as a function of position and time.
+
+Rather incredibly, the basic mathematics and structure of classical
+theories of fields carry over even to domains where classical mechanics
+no longer holds - including the relativistic and quantum domains. This
+is why it remains an important area of study over 200 years since its
+inception.
+
 ## An overview of tensors
 
 Tensors are some of the most elegant ways to write the laws of physics, used extensively in relativistic mechanics and relativistic quantum theory. However, they can be quite complicated to read and understand, so we will go over them here.
