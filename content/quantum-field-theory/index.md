@@ -11,7 +11,7 @@ notoc = true
 
 Welcome! This is a self-learning guide for all readers that want to learn about quantum field theory. You don't have to be an expert to read this guide! It is made for anyone who is curious and wants a challenge.
 
-Quantum field theory (QFT) is the our most accurate description of the universe. The **Standard Model**, a comprehensive quantum field theory, is the backbone of modern physics, and has been tested to extreme precision. Despite this, quantum field theory has a reputation for not being very accessible, in part due to its scary-long Lagrangians and incredibly formidable integrals. So this is an informal self-learning guide to QFT for anyone who is, as Einstein said, passionately curious. 
+Quantum field theory (QFT) is our most accurate description of the universe. The **Standard Model**, a comprehensive quantum field theory, is the backbone of modern physics, and has been tested to extreme precision. Despite this, quantum field theory has a reputation for not being very accessible, in part due to its scary-long Lagrangians and incredibly formidable integrals. So this is an informal self-learning guide to QFT for anyone who is, as Einstein said, passionately curious. 
 
 ## Preface
 
