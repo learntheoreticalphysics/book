@@ -217,7 +217,7 @@ header {
   }
 
   .toc {
-    margin: 2rem 0;
+    margin: 2rem 0 !important;
     @include md { margin: 0; }
     background: lighten(gray, 48%);
     border-radius: 0.25rem;
