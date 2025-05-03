@@ -101,7 +101,7 @@ Let us now take the partial derivatives of the Lagrangian, which we perform step
 {% math() %}
 \begin{align*}
 \mathscr{L} &= -\dfrac{1}{2} \partial^\sigma A^\lambda [\partial_\sigma A_\lambda - \partial_\lambda A_\sigma] + A_\mu J^\mu \\
-&= -\dfrac{1}{2} (\partial^\sigma A^\lambda)(\partial_\sigma A_\lambda) + \dfrac{1}{2} (\partial^\sigma A^\lambda)(\partial_\lambda A_\sigma) - A_\mu J^\mu \\
+&= -\dfrac{1}{2} (\partial^\sigma A^\lambda)(\partial_\sigma A_\lambda) + \dfrac{1}{2} (\partial^\sigma A^\lambda)(\partial_\lambda A_\sigma) + A_\mu J^\mu \\
 % derivative of Lagrangian with respect to field
 \dfrac{\partial \mathscr{L}}{\partial A_\mu} &= J^\mu \\
 % derivative of Lagrangian with respect to partial derivative of field
