@@ -8,7 +8,7 @@ date = 2025-04-27
 As far as we know, all matter in the universe is quantum in nature. Quantum mechanics governs the behavior of all matter, and at an introductory and intermediate level, the dynamics of quantum systems is typically solved with the Schrödinger equation:
 
 {% math() %}
-i\hbar \dfrac{\partial}{\partial t} \Psi(\mathbf{r}, t) = \left(-\dfrac{\hbar^2}{2m} \nabla^2 + V(\mathbf{r})\right) \Psi(x, t)
+i\hbar \dfrac{\partial}{\partial t} \Psi(\mathbf{r}, t) = \left(-\dfrac{\hbar^2}{2m} \nabla^2 + V(\mathbf{r})\right) \Psi(\mathbf{r}, t)
 {% end %}
 
 However, relativistic quantum field theory is a far more accurate theory of quantum mechanics than the Schrödinger equation. In fact, while we may use approximations like (semi-)classical theory and nonrelativistic or single-particle quantum mechanics, quantum field theory, and specifically the Standard Model, offers the best and most accurate results. 
@@ -167,7 +167,7 @@ And this is its equivalent in spherical coordinates:
 With a change of coordinates, equations that looked elegant and easy to work with become clunky and untractable. What if there were a way to formulate physics in a way that doesn't depend on coordinates, and where we could use whichever coordinates we wished? This is where tensors come in. The tensor formulation of the same equation is given by:
 
 {% math() %}
-\delta^{ij} \partial_j \partial_i f = 0
+\dfrac{1}{\sqrt{g}} \partial_i(\sqrt{g} g^{ij} \partial_j) f = 0, \quad g=\det(g_{ij})
 {% end %}
 
 How amazingly simple and graceful! _This_ is why we use tensors.
@@ -212,49 +212,364 @@ In a similar fashion, the dot product formula expressed using tensors can be wri
 S = A^i B_i
 {% end %}
 
-And the matrix multiplication formula becomes:
+### Upper and lower indices
+
+To be able to discuss tensors further, however, we must introduce two concepts: that of a **co-vector**, and of the **metric**. A co-vector is like a row vector in Cartesian coordinates. Remember that a row vector and a column vector create a scalar through their dot product:
 
 {% math() %}
-C_{ij} = A_{ik} B^k {}_j
+\begin{bmatrix} a_1 & b_1 & c_1 \end{bmatrix}
+\begin{bmatrix} a_2 \\ b_2 \\ c_2 \end{bmatrix} 
+= a_1 a_2 + b_1 b_2 + c_1 c_2
 {% end %}
 
-To be able to discuss tensors further, however, we must introduce two concepts: that of a co-vector, and of the metric: 
+A **co-vector** is the generalization of the idea of a row vector. We denote co-vectors with a subscript, such as $\vec V^T = V_i$ ($T$ here means "transpose" since a row vector is the transpose of a column vector). By contrast, we denote **vectors** with a superscript, such as $\vec W = W^j$.
 
-{% math() %}V_j e^j{% end %}
+For instance, consider the position vector $\vec x = x^i$, where the index $i$ indexes over the 3 coordinates of the position $(x^1, x^2, x^3) = (x, y, z)$. Because the position vector is a vector, and vectors are tensors, the position vector is _also_ a tensor.
 
-Euclidean metric/kronecker delta: 
-
-{% math() %}\delta_{ij}{% end %}
-
-Dot product (euclidean, for all non-euclidean spaces replace $\delta_{ij}$ with the metric tensor):
+Now, the index of a tensor represents its _components_. This is important because two tensors with the same index have _different_ components. For instance, we may have two tensors $\vec x = x^i$ and $\vec x' = x^j$, where the prime mark ($'$) indicates different coordinates. That is:
 
 {% math() %}
-S = A^i e_i B^j e_j = \delta_{ij} A^i B^j = A^i B_i
+x^i = \begin{bmatrix} x \\ y \\ z \end{bmatrix}, \quad
+x^j = \begin{bmatrix} x' \\ y' \\ z' \end{bmatrix}
 {% end %}
 
-(where for the last term we used the kronecker delta to lower an index, that is $\delta_{ij} B^j = B_i$)
+This is important in tensor calculus, as it allows us to write tensors that have different components without needing to write a bunch of primed marks.
 
-Cross product:
+Just as we can for any vector, we can write the position _co-vector_ $\vec x^T$ in tensor notation as $x_i$, and $\vec x^T$ as $x_j$. Therefore, we have:
 
 {% math() %}
-C^k = A_i B_j - A_j B_i
+x_i = \begin{bmatrix} x & y & z \end{bmatrix}, \quad
+x_j = \begin{bmatrix} x' & y' & z' \end{bmatrix}
 {% end %}
 
-Gradient:
+This gives us the ability to write out the dot product formula (which we just saw earlier) in tensor notation as:
 
 {% math() %}
-\nabla F = \partial_\mu F
+\sum_i x_i x^i = x^2 + y^2 + z^2 = R^2
 {% end %}
 
-Curl:
+Where here, $R^2$ is the **squared magnitude** of the position vector, and is thus a **scalar**. Note that the expression $x_i x^j$ is _not_ a valid expression for the dot product, because it would evaluate to:
 
 {% math() %}
-\nabla \times F = \partial_\nu V_\mu - \partial_\mu V_\nu
+\sum_i x_i x^i = xx' + y y' + zz' \neq x_i x^i
 {% end %}
 
-Relabelling ($j \to i$):
+So it is important that we specify a tensor's index carefully so that **tensors with different components have different indices**, even if they are the same type of tensor. As we saw, a position vector $\vec x = x^i$ and a position vector with different components $\vec x' = x^j$ are both position vectors, but since they have **different components**, they must use **different tensor indices**.
+
+### Free indices, dummy indices, and the Einstein summation convention
+
+After working with tensors for a while, it often becomes increasingly annoying to write out summation signs. For instance, recall our expression for the dot product:
+
 {% math() %}
-\delta^i_j T^j = T^i
+\mathbf{A} \cdot \mathbf{B} = \sum_i A_i B^i
 {% end %}
 
-Where we use the fact that $\delta^i_j = \delta^{ik} \delta_{kj}$.
+While this may not look so bad, consider taking the product of like-index components of two matrices. Then we would have:
+
+{% math() %}
+AB = \sum_i \sum_j A_{ij} B^{ij}
+{% end %}
+
+But there are even higher-dimensional tensors, which means that we may encounter expressions in the form:
+
+{% math() %}
+\sum_i \sum_j \sum_k A_{ijk} B^{ijk}
+{% end %}
+
+At this point, writing any more summation signs becomes a hassle. So instead, we often _drop_ the summation signs, with the understanding that the summation signs are there, just not explicitly written-out. For instance, the dot product formula would just read $A_i B^i$, where we implicitly sum over $i$. This is called the **Einstein summation convention**.
+
+The _Einstein summation convention_ says that whenever an index appears once as a lower index and once as an upper index in a particular tensor expression, then the index is **summed over**. When this happens, we say that the twice-appearing index is a **dummy index** (also called a **summation index**), and we can choose to _freely change_ the index's letter to any other letter. For instance, since the dot product in tensor notation has $i$ appearing twice - once as an upper index, and once as a lower index - we can change the index letter $i$ to any other letter, so the following are **all equivalent**:
+
+{% math() %}
+x_i x^i = x_k x^k = x_r x^r = x_\delta x^\delta
+{% end %}
+
+A difference, however, is if we had an expression in the form $x_i x^j$. Since these are **not** a set of indentical upper and lower indices, they are **not implicitly summed over**. Thus, we say that they are **free indices**.
+
+The key part of tensor algebra is that we must _keep track of our indices_ such that all our equations have *balanced indices*. This means that the **total number of free indices** on both sides of an equation must be the **same**. Consider, for instance, the following expression:
+
+{% math() %}
+R_{ij} = C_i B_j
+{% end %}
+
+Is this expression valid? Let's check the number of free indices. On the left, both $i, j$ are free indices, since neither appears twice (in an upper and lower index) in the expression. On the right, we also have two free indices, and they are the _same_ free indices. So indeed, this tensor expression is valid. Note that if we changed this expression to:
+
+{% math() %}
+R^i{}_j = C_i B^i
+{% end %}
+
+Then this expression would no longer be correct! On the left, we have the same two _free_ indices $i, j$, but on the right, the index $i$ appears both as a lower and an upper index, so it is a _dummy index_, not a free index.
+
+Let's examine a third case:
+
+{% math() %}
+V_{ij} = q_i q^j e^k e_k
+{% end %}
+
+Would _this_ expression be valid? If we check the left and right-hand sides, we find that both sides have two free indices - since $k$ appears as an upper and lower index in $e^k e_k$, it is a dummy index and doesn't count. But we now have a new problem: the index $j$ is a lower index on the left, and an _upper index_ on the right! So this expression is _invalid_. But we could correct it by rewriting the expression with $j$ as a _lower index_:
+
+{% math() %}
+V_{ij} = q_i q_j e^k e_k
+{% end %}
+
+Note that because $k$ is a dummy index, by the Einstein summation convention, we could change $k$ to any letter we want. Thus, it would be equally valid to write:
+
+{% math() %}
+V_{ij} = q_i q_j e^\beta e_\beta
+{% end %}
+
+As a summary, tensors have two types of indices: **free indices** and **dummy (summation) indices**. Free indices _must_ be balanced on the left- and right-hand sides of an equation, but dummy indices can be changed at will. This delicate balancing act - of making sure that all tensor equations have the same number of free indices - is the basis of tensor algebra, and as we'll see, tensor calculus. It makes sure that all our operations are mathematically valid, and lets us just concentrate on the physics without ever needing to think about the complex linear algebra that underlies all our operations.
+
+### Relabeling indices with the Kronecker delta
+
+Previously, we've learned that indices are _fundamental_ to tensors, and they are what distinguish tensors with different components. For instance, $x^i \neq x^j$, even though they are both position vectors, and the difference in index tells us that they have _different components_. Furthermore, since $i$ appears only one time in $x^i$, it is a **free index** - the same is true for $j$ in $x^j$. Thus, the tensor equation $x^i = x^j$ would automatically be invalid, since we'd have different free indices on the left-hand side and right-hand side.
+
+However, it is sometimes convenient to _change_ an index. Suppose that we wanted to turn $x^i$ _into_ $x^j$. Think about it for a moment - how would we do that, using standard vectors and matrices? Well, a matrix maps one vector to another, so we would want some sort of "conversion matrix", which (for reasons we'll see soon) we'll call $\delta_{ij}$:
+
+{% math() %}
+x^i = \delta_{ij} x^j
+{% end %}
+
+Ah, but now our indices are unbalanced - both sides have $i$ as their free index ($j$ is a dummy index), but $i$ is a _lower index_ on the right and an _upper index_ on the left of the equation. So let's fix that by turning $i$ into an upper index on the right-hand side, too:
+
+{% math() %}
+x^i = \delta^i {}_j x^j
+{% end %}
+
+And _there_, we've got it! This particular matrix $\delta^i{}_j$ is called the **Kronecker delta**, and it is also a tensor. It is defined as:
+
+{% math() %}
+\delta_{ij} = \delta^{ij} = \delta^i{}_j = \delta_i{}^j = \begin{cases}
+1, & i = j \\
+0, & i \neq j
+\end{cases}
+{% end %}
+
+Which also means that we can represent it as a sort of identity matrix:
+
+{% math() %}
+\delta_{ij} = \begin{pmatrix}
+1 & 0 & 0 & \dots & 0 \\
+0 & 1 & 0 & \dots & 0 \\
+0 & 0 & 1 & \dots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & \dots & 1
+\end{pmatrix}
+{% end %}
+
+> **Note:** Our preferred notation is to write the Kronecker delta with its upper and lower indices as $\delta^i{}_j$. But it is also common to just write $\delta^i_j$. **Both forms are equivalent**, it is only a difference of convention.
+
+The Kronecker delta's power to allow us to relabel indices is incredibly powerful. It means that we can turn a tensor with one set of indices, such as $A_{sl}$, into a tensor $A_{jk}$ with a completely different set of indices:
+
+{% math() %}
+A_{jk} = \delta^s{}_j \delta^l{}_k A_{sl}
+{% end %}
+
+This expression, however, might be rather hard to read. A visual way of understaning it is to remember that we need to _balance_ our  indices. When we apply the Kronecker delta, identical upper and the lower indices "cancel" out, so we can cross them out, like this:
+
+{% math() %}
+A_{jk} = \delta^{\cancel{s}}{}_j \delta^{\cancel{l}}{}_k A_{\cancel{s}\cancel{l}}
+{% end %}
+
+Note how by "crossing out" the repeated $s$ and $l$ indices that both occur as an upper and lower index, we just get the indices $j, k$ left on the right-hand side, which then balances the left-hand side!
+
+This is a powerful trick that we can use, for instance, to generalize the dot product by relabeling indices:
+
+{% math() %}
+A^i B_j = A^i \delta^j{}_i B_j = A^i \delta^{\cancel{j}}{}_i B_{\cancel{j}} = A^i B_i
+{% end %}
+
+Here, by using the Kronecker delta, we could effectively "cross out" the index $j$, giving us just $A^i B_i$ left, which is just the dot product!
+
+### Raising and lowering indices
+
+We saw how useful the Kronecker delta can be, when we wanted to relabel a tensor's index. But the Kronecker delta has a limitation: while it can _relabel_ an index - for instance, changing $x^i$ to $x^j$ - it _can't_ convert an upper index to a lower index.
+
+To actually convert between lower and upper indices, we need to use the **metric tensor**. The metric tensor $g_{ij}$ is perhaps the _most_ important tensor. It allows taking a tensor with a lower index, such as $x_j$, and converting it to a tensor with an upper index, like $x^i$:
+
+{% math() %}
+x^i = g^{ij} x_j
+{% end %}
+
+This is called **lowering an index**. Likewise, the metric tensor also allows us to take a tensor with an upper index and converting it to a tensor with a lower index:
+
+{% math() %}
+x_i = g_{ij} x^j
+{% end %}
+
+This is called **raising an index**. Furthermore, if we combine the Kronecker delta and the metric tensor, we can convert a tensor to its upper-index or lower-index equivalent with the _same_ index:
+
+{% math() %}
+\begin{align*}
+x_i = \delta^j{}_i g_{ij} x^i = \delta^j{}_i x_j \\
+x^i = \delta^i{}_j g^{ij} x_i =  \delta^i{}_j x^j
+\end{align*}
+{% end %}
+
+Aside from just being useful, the metric tensor also has a very important place in physics. We will shortly discuss what the metric tensor $g_{ij}$ _physically represents_, but first, we need to cover a little bit more tensor algebra.
+
+### Tensor contraction
+
+We saw previously that by the Einstein summation convention, identical upper and lower indices are summed over:
+
+{% math() %}
+A_i B^i = A_1 B^1 + A_2 B^2 + A_3 B^3 + \dots + A_n B^n
+{% end %}
+
+> **Note:** Remember that $A^1$ represents the _first component_ of the vector $A_i$, and $A^2$ represents its _second component_. For instance, if we were working with Cartesian coordinates, $A^1 = A^x$ and $A^2 = A^y$. The indices $1, 2, 3,\dots$ are _tensor indices_, **not exponents**.
+
+But we can also do this for single tensors. For instance, suppose we have a tensor $T^i{}_j$. If we make the two indices identical, we would have $T^i{}_i$, which again is implicitly summed over $i$:
+
+{% math() %}
+T^i{}_i = T^1{}_1 + T^2{}_2 + \dots + T^n{}_n
+{% end %}
+
+This is called a **tensor contraction** (also called the **trace**), and it's significant because it turns the tensor into a _scalar_. For instance, if our tensor $T_{ij}$ (we write it in the lower index for convenience) is given by:
+
+{% math() %}
+T_{ij} = \begin{pmatrix}
+T_{11} & T_{12} & T_{13} \\
+T_{21} & T_{22} & T_{23} \\
+T_{31} & T_{32} & T_{33}
+\end{pmatrix}
+{% end %}
+
+Then the tensor contraction $T^i{}_i$ becomes:
+
+{% math() %}
+T^i{}_i = T^1{}_1 + T^2{}_2 + T^3{}_3
+{% end %}
+
+Which is just the sum of the diagonals of $T_{ij}$ (with one raised index). We can also do this with tensors of three indices like $R^i{}_{jk}$, in which we have:
+
+{% math() %}
+R^i{}_{ik} = R^1{}_{1k} + R^2{}_{2k} + R^3{}_{3k} + \dots + R^n{}_{nk}
+{% end %}
+
+The importance of the tensor contraction is that it takes a higher-dimensional tensor and returns a lower-dimensional tensor - often, returning a scalar. It is in many ways the _generalization_ of the dot product (which takes two vectors and outputs a scalar) but for tensors of arbitrary dimensions. Being able to form a scalar from tensors is physically important because _scalars are invariant_ - scalars are just numbers, and a number is a number is a number, no matter the coordinates we use. This makes it very important for **relativistic theories** - we're getting a bit ahead of ourselves here, but we'll get there soon!
+
+### Practicing contractions
+
+Tensor contraction can be a bit unfamiliar, so let's do a practice problem: let's evaluate the expression {% inlmath() %}\delta^\mu {}_\mu \delta^\nu {}_\nu{% end %}, where $\mu, \nu = 0, 1, 2, 3$.
+
+> **Note:** Don't be scared by the weird choice of letters $\mu, \nu$ for indices! We can just as well use $i, j$, because dummy indices can use any letter we want.
+
+To solve, we expand the tensors with the implicit summations written out explicitly, This gives us:
+
+{% math() %}
+\begin{align*}
+\delta^\mu {}_\mu \delta^\nu {}_\nu &= \underbrace{\sum_{\mu = 0}^3 \sum_{\nu = 0}^3 \delta^\mu {}_\mu \delta^\nu {}_\nu}_\text{write sums explicitly} \\
+&= \underbrace{\delta^0{}_0 \delta^0{}_0 + \delta^1{}_1 \delta^1{}_1 + \delta^2{}_2 \delta^2{}_2 + \delta^3{}_3 \delta^3{}_3}_\text{only nonzero terms in the sum are left} \\
+&= 1 + 1 + 1 + 1 \\
+&= 4
+\end{align*}
+{% end %}
+
+**Why is this correct?** This is due to the fact that _by definition_ $\delta^i{}_i \delta^j{}_j$ is _only nonzero_ if $i = j$. If we have $i = j$ then $\delta^i{}_i \delta^j{}_j = \delta^i{}_i \delta^i{}_i = 1$, but if we have $i \neq j$ we have $\delta_i^i \delta_j^j = 0$. Thus the summation (which would've usually been over 16 terms!) collapses only to four terms!
+
+### Tensor calculus
+
+Just as we could do algebra with tensors, we can also do calculus with tensors. For instance, we could take the derivative of the position vector $x^i$ to get the velocity vector $v^i$:
+
+{% math() %}
+v^i = \dfrac{dx^i}{dt}
+{% end %}
+
+We can also take _partial derivatives_. Suppose we had a scalar function $\phi(x^i) = \phi(x, y, z)$. Then, the partial derivative with respect to the potential can be written as:        
+
+{% math() %}
+\dfrac{\partial \phi}{\partial x^i} = \nabla \phi
+{% end %}
+
+In tensor notation, it is common to use the shorthand $\partial_i = \dfrac{\partial}{\partial x^i}$, meaning the above can also be written as:
+
+{% math() %}
+\partial_i \phi = \nabla \phi
+{% end %}
+
+Remember that just like $\nabla \phi$ is a vector, $\partial_i \phi$ is also a vector! This means that $\partial_1 \phi = \partial_x \phi = \frac{\partial \phi}{\partial x}$, $\partial_2 \phi = \partial_y \phi = \frac{\partial \phi}{\partial y}$, and so on. The power of tensor calculus really starts, however, when we start differentiating _tensors_ other than scalars. For instance, we can write the **divergence** as:
+
+{% math() %}
+\partial_i F^i = \nabla \cdot \vec F
+{% end %}
+
+You may notice that since $i$ as both an upper and lower index, it is a dummy index: so this is a _tensor contraction_, which creates a scalar! Indeed, if we expand it, we have:
+
+{% math() %}
+\partial_i F^i = \partial_x F^x + \partial_y F^y + \partial_z F^z
+{% end %}
+
+Which is just the standard vector calculus formula for the divergence. Additionally, just like any other tensor, we can raise and lower the index of the partial derivative $\partial_i$ using the metric. Thus, we have:
+
+{% math() %}
+\partial^i = g^{ij} \partial_i
+{% end %}
+
+Treating the partial derivative as a tensor may be a bit uncomfortable, but it is mathematically made possible by the formalism of tensor calculus. It allows us to take otherwise very complicated derivatives, such as derivatives of a matrix:
+
+{% math() %}
+\partial_i F^{ij} = J^j
+{% end %}
+
+To summarize, tensor calculus allows us to take derivatives of a variety of mathematical objects that go beyond just vectors and scalars. Crucially, it allows us to take complicated deriatives of tensors in ways that cannot be done with just vector calculus.
+
+### Relativity and spacetime
+
+We've covered a lot about tensors, but let's now return to a topic we discussed earlier: the **metric tensor**.
+
+To begin, we have to discuss first about the _geometric_ origins of tensors. Tensors are not just arbitrary combinations of indices; they represent something with a particular set of _components_. These components are dependent upon the underlying space. For instance, a vector $V^i$ represents a directional quantity, with three components $V^x, V^y$ in 2D Cartesian space. But that same vector could have _different_ components if we use another coordinate system. For instance, if we switch to polar coordinates, the vector's components would switch to $V^r, V^\theta$.
+
+The **metric tensor** $g_{ij}$ lets us characterize a geometric space by defining what a _distance_ represents. You might think - why do we need to formalize what a distance means? Isn't that _obvious_? But in fact, the notion of a distance is not a simple as it may seem. For instance, in Euclidean 3D space, the infinitesimal distance between two points is given by:
+
+{% math() %}
+ds^2 = dx^2 + dy^2 + dz^2
+{% end %}
+
+But at the dawn of the 20th century, the very famous Albert Einstein discovered that our Universe was not three-dimensional, as it had been throught; rather, it was four-dimensional, containing one dimension of time and three of space - what we call **spacetime**. So in fact, the _correct_ expression for the infinitesimal distance between two points is given by:
+
+{% math() %}
+ds^2 = dt^2 - dx^2 - dy^2 - dz^2
+{% end %}
+
+Where here, remember that we use units where $c$, the speed of light, is equal to one. Except this isn't completely correct either: Einstein found that this was a _special case_ of a more general tensor expression for the distance between two points:
+
+{% math() %}
+ds^2 = g_{\mu \nu} dx^\mu dx^\nu
+{% end %}
+
+Where $g_{\mu \nu}$ is the four-dimensional **metric tensor**. Why is this significant? Because it means that distance is dependent on the _geometry_ of spacetime, and that implies that time and space are interdependent, and that spacetime can be **curved**! In  fact, the metric tensor is the foundation of Einstein's theories of **special and general relativity**.
+
+> **Note on notation:** It is customary to use latin indices like $i, j, k, \dots$ when we are only talking about three-dimensional tensors, such as position $x^i$. However, when we are talking about _four-dimensional_ tensors in spacetime, such as the metric tensor, we use greek indices like $\mu, \nu, \gamma$.
+
+In most of quantum field theory, we work in **Minkowski spacetime**, the "special case" of the four-dimensional spacetime that we discussed earlier. The correct expression for the infinitesimal distance in Minkowski space, as we saw, is given by:
+
+{% math() %}
+ds^2 = dt^2 - dx^2 - dy^2 - dz^2
+{% end %}
+
+Note that we can also write this expression in matrix-vector form, as:
+
+{% math() %}
+ds^2 = 
+\begin{bmatrix} dt \\ dx \\ dy \\ dz \end{bmatrix}^T
+\underbrace{\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & -1 & 0 & 0 \\
+0 & 0 & -1 & 0 \\
+0 & 0 & 0 & -1 \\
+\end{pmatrix}}_{\eta_{\mu \nu}}
+\begin{bmatrix} dt \\ dx \\ dy \\ dz \end{bmatrix}
+{% end %}
+
+By comparison with $ds^2 = g_{\mu \nu} dx^\mu dx^\nu$, we find that the matrix in the middle of the above expression is the **metric tensor for Minkowski spacetime**. We usually call this tensor the _Minkowski metric_, and denote it as $\eta_{\mu \nu}$:
+
+{% math() %}
+\eta_{\mu \nu} = \begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & -1 & 0 & 0 \\
+0 & 0 & -1 & 0 \\
+0 & 0 & 0 & -1 \\
+\end{pmatrix}
+{% end %}
+
+Quantum field theory is (mostly) based off Minkowski spacetime, so the Minkowski metric will be the metric tensor we use for raising and lowering indices. We'll wait to look into _general relativity_ with its much more complicated curved spacetimes, but we'll get to that in time.
