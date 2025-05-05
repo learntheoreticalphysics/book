@@ -161,7 +161,7 @@ Thus, substituting our results into the Euler-Lagrange equation for $A_\mu$, we 
 \end{gather*}
 {% end %}
 
-After a rather horrendous amount of math, we have therefore derived the essential equation of classical electrodynamics - **Maxwell's equations**, given by $\partial_\beta F^{\beta \mu} = J^\mu$. Note that if we so wished, we could also express Maxwell's equations purely in terms of $A^\mu$ as follows:
+After a rather horrendous amount of math, we have therefore derived the essential equation of classical electrodynamics - **Maxwell's equations**, given by $\partial_\beta F^{\beta \mu} = J^\mu$ (although it is usually written with the different tensor indices $\partial_\mu F^{\mu \nu} = J^\mu$ instead, though that's just a matter of notational preference). Note that if we so wished, we could also express Maxwell's equations purely in terms of $A^\mu$ as follows:
 
 {% math() %}
 \begin{align*}

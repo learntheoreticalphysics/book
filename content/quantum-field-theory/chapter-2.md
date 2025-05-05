@@ -37,9 +37,10 @@ To go from the quantum harmonic oscillator to quantum field theory, we need to m
 
 In quantum field theory, there are a billion different conventions for almost *anything*. This leads to some pretty bizarre results:
 
-- Momentum ($p$) becomes the same thing as the wavevector ($k$), because in natural units where $\hbar = 1$ (like we're using), $p = \hbar k$ becomes $p = k$
-- For photons, angular frequency $\omega$ and energy $E$ become equivalent, because in natural units where $c = 1$ (like we're using), $E = \hbar \omega$ becomes $E = \omega$
+- Momentum ($p$) becomes the same thing as the wavevector ($k$), because in natural units where $\hbar = 1$ (which we're using), $p = \hbar k$ becomes $p = k$
+- For photons, angular frequency $\omega$ and energy $E$ become equivalent, because in natural units where $c = 1$ (which we're using), $E = \hbar \omega$ becomes $E = \omega$
 - Einstein's relativistic energy-momentum relation of $E^2 = (pc)^2 + (mc^2)^2$ becomes simply $E^2 = p^2 + m^2$, so we get $E = \sqrt{p^2 + m^2}$. You may also see this denoted as $E_p = \sqrt{p^2 + m^2}$, such as in Peskin and Schroeder's _An Introduction To Quantum Field Theory_. **This is the notation we'll use**.
+	- Additionally (for photons/massless particles only), $E_p = p$, because (again) in natural units where $c = 1$ (which we're using), $E_p = pc$ becomes $E_p = p$
 
 This means that every text often has its own notational system, especially if a certain text doesn't use natural units. Here, we will **always use natural units** unless otherwise denoted.
 
