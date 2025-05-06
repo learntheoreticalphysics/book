@@ -187,3 +187,213 @@ Now, it turns out that a brilliant physicist named [Ludvig Lorenz](https://en.wi
 {% end %}
 
 This equation, $\partial_\beta \partial^\beta A^\mu = J^\mu$, is the **alternate form of Maxwell's equations**. Using the d'Alembertian operator $\square = \partial_\beta \partial^\beta$ we can write this even more simply as $\square A^\mu = J^\mu$. Now _that_ is an elegant equation!
+
+## Canonical quantization of the EM field
+
+To quantized the electromagnetic field, we start with Maxwell's equations, $\square A^\nu = \partial_\mu \partial^\mu A^\nu = J^\nu$, just as we started with the Klein-Gordon equation, the equation of motion for the free scalar field. It's much easier to start with Maxwell's equations in _free space_, $\square A^\nu = 0$ (since there are no sources, $J^\nu = 0$). We will go into the case where $J^\nu \neq 0$ later when we explore the full theory of quantum electrodynamics, but we'll start by solving for the _free electromagnetic field_, which we'll then quantize.
+
+Luckily for us, notice how Maxwell's equations in free space look very, very similar to the equation of motion for the free scalar field, which took the form $\partial_\mu \partial^\mu \phi + m^2 \phi = 0$. Indeed, if we set $m = 0$, then the Klein-Gordon equation reduces to $\partial_\mu \partial^\mu \phi = 0$, which looks near-identical to Maxwell's equations, with exception of being scalar-valued rather than vector-valued.
+
+> **Why not the Faraday tensor form of Maxwell's equations?** The reason we use the version of Maxwell's equations for the $A^\nu$ field instead of the Faraday tensor $F^{\mu \nu}$ is that because of the laws of special relativity, the electric and magnetic field components of $F^{\mu \nu}$ switch upon a transformation of coordinates. Thus, the field tensor isn't a fundamental quantity, so it makes sense to quantized the much-more fundamental $A^\nu$ field.
+
+This illuminates our way of solving Maxwell's equations. Let us first start by assuming that a solution must be in the form:
+
+{% math() %}
+A^\nu = \epsilon^\nu \phi
+{% end %}
+
+Where $\epsilon^\nu$ is a constant vector (called the **polarization**), and $\phi$ is a scalar-valued function. If we substitute this into Maxwell's equations, we find that it indeed satisfies Maxwell's equations in free space, and furthermore, that $\phi$ satisfies the Klein-Gordon equation:
+
+{% math() %}
+\begin{align*}
+\partial_\mu \partial^\mu A^\nu &= \partial_\mu \partial^\mu (\epsilon^\nu \phi) \\
+&= \epsilon^\nu\partial_\mu \partial^\mu \phi \\
+&= 0 \text{ if }\partial_\mu \partial^\mu \phi = 0
+\end{align*}
+{% end %}
+
+This gives us a shortcut solution, since we already know the general solution to the Klein-Gordon equation, which we wrote as a Fourier expansion:
+
+{% math() %}
+\phi(x^\mu) = \int \dfrac{d^3 p}{(2\pi)^32E_p} \left[a(p) e^{i\mathbf{p} \cdot \mathbf{x}} + a^*(p) e^{-i\mathbf{p} \cdot \mathbf{x}}\right] 
+{% end %}
+
+Thus, our solution to Maxwell's equation becomes:
+
+{% math() %}
+A^\nu = \epsilon^\nu \phi =\int \dfrac{d^3 p}{(2\pi)^32E_p}\left[\epsilon^\nu a(p) e^{i\mathbf{p} \cdot \mathbf{x}} + \epsilon^\nu a^*(p) e^{-i\mathbf{p} \cdot \mathbf{x}}\right]
+{% end %}
+
+Out of notational preference, we'll switch to the lower-index version of the field $A_\mu = \eta_{\mu \nu} A^\nu$, and write $a(p)$ as $a_p$ as well as $a^*(p)$ as $a^*_p$. The solution largely remains the same, with the only difference being that the polarization vector $\eta_{\mu \nu} \epsilon^\nu = \epsilon_\mu$ must also shift to a lower index, thus giving us:
+
+{% math() %}
+A_\mu =\int \dfrac{d^3 p}{(2\pi)^32E_p}\left[\epsilon_\mu a_p e^{i\mathbf{p} \cdot \mathbf{x}} + \epsilon_\mu a^*_p e^{-i\mathbf{p} \cdot \mathbf{x}}\right]
+{% end %}
+
+Let's take a short moment to discuss the polarization vector $\epsilon_\mu$. Physically-speaking, the polarization vector represents the _orientation_ of the field vectors. It turns out that there are two possible orientations for the $A_\mu$ field, and thus two polarization vectors, which are, respectively:
+
+{% math() %}
+\begin{align*}
+\epsilon_\mu^{(1)} = \begin{pmatrix} 0 \\ 1 \\ 0 \\ 0 \end{pmatrix}, \quad
+\epsilon_\mu^{(2)} = \begin{pmatrix} 0 \\ 0 \\ 1 \\ 0 \end{pmatrix}
+\end{align*}
+{% end %}
+
+> **Why only two polarizations?** We skip over this topic here so that we can focus on our main goal of quantizing the $A_\mu$ field, but [this Physics StackExchange answer](https://physics.stackexchange.com/questions/395284/why-does-each-mode-of-the-electromagnetic-field-have-two-degrees-of-freedom) offers an explanation for why.
+
+Given the two polarizations, the most general solution to Maxwell's equations should be a superposition of both polarizations - so we write the solution as a sum of the two polarizations:
+
+{% math() %}
+A_\mu = \int\dfrac{d^3 p}{(2\pi)^3} \sum_{r = 1}^2\dfrac{1}{2E_p} \left(\epsilon^{(r)}_\mu a_p e^{i\mathbf{p} \cdot \mathbf{x}} + \epsilon_\mu^{(r)} a^*_p e^{-i\mathbf{p} \cdot \mathbf{x}}\right)
+{% end %}
+
+Given how similar the free electromagnetic field is to the free scalar field, we can essentially use the exact same procedure for quantization: $a_p$ and $a_p^*$ become the annihilation and creation operators $\hat a_p, \hat a_p^\dagger$ respectively. The only difference is due to polarization, which was absent for the free scalar field. Thus, we use the notations $\hat a_p^r$ and $\hat a_p^{r\dagger}$ to recognize that states of the electromagnetic field could have either one of the two polarizations. Thus, we have:
+
+{% math() %}
+\hat A_\mu = \int\dfrac{d^3 p}{(2\pi)^3} \sum_{r = 1}^2\dfrac{1}{2E_p} \left(\epsilon^{(r)}_\mu \hat a^r_p e^{i\mathbf{p} \cdot \mathbf{x}} + \epsilon_\mu^{(r)} \hat a^{r\dagger}_p e^{-i\mathbf{p} \cdot \mathbf{x}}\right)
+{% end %}
+
+The creation and annihilation operators for the two polarizations create or annihilate a particle in that particular polarization state, as follows:
+
+{% math() %}
+\begin{align*}
+\hat a^{(1)}_p |0\rangle = 0,\quad  & \hat a^{(2)}_p|0\rangle = 0 \\
+\hat a^{(1)\dagger}_p|0\rangle = |1^{(1)}\rangle, \quad &\hat a^{(2)\dagger}_p|0\rangle = |1^{(2)}\rangle
+\end{align*}
+{% end %}
+
+Here, $|1^{(1)}\rangle$ is the first excited state in the $\epsilon_\mu^{(1)}$ polarization, while $|1^{(2)}\rangle$ is the first excited state in the $\epsilon_\mu^{(2)}$ polarization. Let us emphasize: these are _indices_, **not exponents**! This is why we write the numbers $(1), (2)$ in parentheses to avoid confusion with the similar notation of raising something to the power of one or two.
+
+So we're done! We now have the quantized electromagnetic field $\hat A_\mu$, which is an operator, just like any other quantum field. And just as we saw that the field operator for a free scalar field $\hat \phi$ acting on the vacuum state $|0\rangle$ can be interpreted as creating a particle, $\hat A_\mu|0\rangle$ also has the interpretation of creating a particle. In particular, this particle is the familiar **photon**, which forms electromagnetic radiation that we perceive as **light**!
+
+> **Note:** Since the photon is massless but has momentum, we have $E_p = p$ for the $\hat A_\mu$ field, instead of $E_p = \sqrt{p^2 + m^2}$ for the free scalar field. Here, be aware that $p = |\mathbf{p}|$, that is, the _magnitude_ of the momentum of the photon.
+
+## Vacuum energy and the Casimir effect
+
+Unlike classical fields, quantum fields have nonzero expectation values even when there is nothing "in" them. This is known as the **vacuum expectation value** (VEV), and it means that quantum fields have a nonzero energy even in their vacuum state.
+
+To show this, let's again consider the free electromagnetic field $A_\mu$ (the field in the absence of sources, as it would be in vacuum). The field operator $\hat A_\mu$ would be given by:
+
+{% math() %}
+\hat A_\mu = \int\dfrac{d^3 p}{(2\pi)^3} \sum_{r = 1}^2\dfrac{1}{2E_p} \left(\epsilon^{(r)}_\mu \hat a^r_p e^{i\mathbf{p} \cdot \mathbf{x}} + \epsilon_\mu^{(r)} \hat a^{r\dagger}_p e^{-i\mathbf{p} \cdot \mathbf{x}}\right)
+{% end %}
+
+Let us recall that previously, for the free scalar field, we derived the Hamiltonian density operator to be:
+
+{% math() %}
+\hat{\mathcal{H}} = \dfrac{1}{2} \int \dfrac{d^3p\,E_p\,}{(2\pi)^3}(\hat a^\dagger_p \hat a_p + \hat a_p \hat a^\dagger_p)
+{% end %}
+
+The free electromagnetic field is _extremely similar_ - we need only replace $\hat a_p, \hat a_p^\dagger$ with $\hat a_p^r, \hat a^{r\dagger}_p$ to incorporate the polarizations of the field, and sum over the two possible polarizations.
+
+{% math() %}
+\hat{\mathcal{H}} = \dfrac{1}{2} \int \sum_{r = 1}^2 \dfrac{d^3p\,E_p\,}{(2\pi)^3}(\hat a^{r\dagger}_p \hat a_p^r + \hat a_p^r \hat a^{r\dagger}_p)
+{% end %}
+
+The **vacuum energy density** for the $A^\mu$ field is the expectation value of the Hamiltonian density for the vacuum state:
+
+{% math() %}
+\mathcal{E} = \langle 0 |\hat{\mathcal{H}}|0\rangle
+{% end %}
+
+Where we use the notation $\mathcal{E}$ to remind us that this is an energy _density_; the total energy is $\mathcal{E}$ integrated over all space. Let us now compute this vacuum energy density. A first simplification we can use is to ignore the polarization, since we know that the vacuum energy density ultimately evaluates to a scalar. Then, the sum of the two terms just reduces to:
+
+{% math() %}
+\begin{align*}
+\hat{\mathcal{H}} = \dfrac{1}{2} \int 2\dfrac{d^3p\,E_p\,}{(2\pi)^3}(\hat a^{\dagger}_p \hat a_p + \hat a_p \hat a^{\dagger}_p)
+\end{align*}
+{% end %}
+
+So we have:
+
+{% math() %}
+\begin{align*}
+\langle 0|\hat{\mathcal{H}}|0\rangle &= \langle 0| \int \dfrac{d^3p\,E_p\,}{(2\pi)^3}\underbrace{(\hat a^{\dagger}_p \hat a_p + \hat a_p \hat a^{\dagger}_p) |0\rangle}_\text{distribute this} \\
+% first step
+&= \langle 0| \int \dfrac{d^3p\,E_p\,}{(2\pi)^3}(\underbrace{\hat a^{\dagger}_p \hat a_p|0\rangle}_{\hat a^{\dagger}_p \hat a_p|0\rangle = 0} + \underbrace{\hat a_p \hat a^{\dagger}_p|0\rangle}_{\hat a_p \hat a^{\dagger}_p|0\rangle = |0\rangle}) \\
+&= \langle 0 | \int \dfrac{d^3p\,E_p\,}{(2\pi)^3} |0\rangle \\
+&= \int \dfrac{d^3p\,E_p\,}{(2\pi)^3} \cancel{\langle 0|0\rangle}^1 \\
+\end{align*}
+{% end %}
+
+In the Casimir effect, we consider grounded conducting plates of equal side lengths $L$. The plates are separated by a small distance $d$, where $L \gg d$ (this notation means "$L$ is much greater than $d$"). We show this in the diagram below:
+
+{{ diagram(
+src="../Casimir-effect.excalidraw.svg"
+desc="A diagram of the Casimir effect"
+) }}
+
+Since the plates are _grounded conducting plates_, the electromagnetic 4-potential (classically) vanishes on both plates. Thus we have certain **boundary conditions** for $A^\mu(\mathbf{x}, t) = A^\mu(x, y, z, t)$, which are given by:
+
+{% math() %}
+\begin{align*}
+A^\mu(x, y, 0, t) = A^\mu(x, y, d, t) = 0
+\end{align*}
+{% end %}
+
+Where here, since nothing is changing in time, we just set $t = 0$. The basic solutions for Maxwell's equations $\partial_\nu \partial^\nu A^\mu = 0$ are just **plane waves** given by $A^\mu = e^{i(p_\nu x^\nu)} = e^{i\mathbf{p} \cdot \mathbf{x}}$ (again, since we set $t = 0$ we have $p_\nu x^\nu = \mathbf{p} \cdot \mathbf{x}$).
+
+> **Note:** We derive this form of Maxwell's equations from the general form $\partial_\nu \partial^\nu A^\mu = J^\mu$, then setting $J^\mu = 0$ since we have no sources.
+
+However, to satisfy the boundary conditions, our solution is restricted to a certain form. This form is given by:
+
+{% math() %}
+\begin{gather*}
+A^\mu(\mathbf{x}, t) = \exp \left(i(p_x x + p_y y + p_z z)\right), \\
+p_x = \dfrac{n_x \pi x}{L}, \quad p_y = \dfrac{n_y \pi y}{L}, \quad p_z = \dfrac{n_z \pi z}{d}
+\end{gather*}
+{% end %}
+
+So if we substitute the energy-momentum relation for photons $E_p = |\mathbf{p}|$ (again, this comes from $E_p = pc$ which reduces to $E_p = p$ in natural units), we have:
+
+{% math() %}
+E_p = \sqrt{p_x^2 + p_y^2 + p_z^2}
+{% end %}
+
+Thus, using the result we derived before for $\mathcal{E}$, the vacuum energy density of the $A^\mu$ field would be given by:
+
+{% math() %}
+\begin{align*}
+\mathcal{E} &= \langle 0|\hat{\mathcal{H}}|0\rangle \\
+&=\int \dfrac{d^3p\,E_p\,}{(2\pi)^3} \\
+&=\int \dfrac{d^3p}{(2\pi)^3}\sqrt{p_x^2 + p_y^2 + p_z^2} \\
+\end{align*}
+{% end %}
+
+Except this is not _quite_ true. Since our allowable values of $p_x, p_y, p_z$ are restricted by our boundary conditions, we don't have a continuous sum anymore, so our integral technically needs to be replaced by a continuous sum. This means our previous expression becomes:
+
+{% math() %}
+\int \dfrac{d^3p}{(2\pi)^3}\sqrt{p_x^2 + p_y^2 + p_z^2} \Rightarrow \dfrac{1}{(2\pi)^3}\sum_{n_x=1}^\infty \sum_{n_y=1}^\infty \sum_{n_z=1}^\infty\sqrt{p_x^2 + p_y^2 + p_z^2}
+{% end %}
+
+In our case though, since $L \gg d$, we can _roughly say_ that $p_x$ and $p_y$ are *essentially* continuous. Let's break down this argument, since it may not be particularly obvious. $L \gg d$ essentially means that the area of the plates is much greater than the distance separating them. Thus, we get an effectively continuous distribution of momentum over them, so we can integrate over $p_x, p_y$, though we have to sum over $p_z$. Thus, we are left with:
+
+{% math() %}
+\langle 0 |\hat H|0\rangle= \int \dfrac{dp_x\, dp_y}{(2\pi)^2} \sum_{n = 1}^\infty\sqrt{p_x^2 + p_y^2 + \left(\dfrac{n\pi}{d}\right)^2}
+{% end %}
+
+Where we get rid of $dp_z/(2\pi)$ because we have converted it to a sum over the discrete values of $p_z$, but where we keep $dp_x, dp_y$ as continuous. This integral is not easy at all to evaluate, and the formal solution would require using contour integration in the complex plane. However, that is a math problem, not a physics problem, so we will focus on the physics and just give the solution:
+
+{% math() %}
+\mathcal{E} = \langle 0 |\hat H|0\rangle = -\dfrac{\pi^2}{720d^3}
+{% end %}
+
+Remember that this is the vacuum energy _density_; to get the vacuum energy $E_V$ we must integrate over the entire area $A = L^2$ of the plate, so we have:
+
+{% math() %}
+E_V = \int \left(-\dfrac{\pi^2}{720d^3}\right)\,dA = -\dfrac{\pi^2A}{720d^3}
+{% end %}
+
+The lower vacuum energy density in the region between the plates compared to that outside the region creates an _energy difference_, which leads to something akin to a force. The force is just the partial derivative of the energy with respect to distance, that is, $F = -\dfrac{\partial E_V}{\partial d}$, so we have:
+
+{% math() %}
+F = -\dfrac{\partial E_V}{\partial d} = -\dfrac{\pi^2 A}{240 d^4}
+{% end %}
+
+This is our result, though we should be careful to note that it is in *natural units*. If we restore the factors of $\hbar$ and $c$, we find that our result becomes:
+
+{% math() %}
+F = -\dfrac{\hbar c\pi^2 A}{240 d^4}
+{% end %}
+
+This attractive "force" (we know it's attractive because of the minus sign) is also called the **Casimir force**, although strictly speaking, it is not really a force, but rather a result of a difference in potential energy. The Casimir force is typically extremely weak. If we have two plates with $L = \pu{10 cm^2}$ separated by a distance of $\pu{3 \mu m}$, then the magnitude of the Casimir force pushing the plates together is roughly $\pu{1.606E-5 N}$, thus why it requires extremely sensitive equipment to detect. However, since it scales by $d^{-4}$, the Casimir force grows substantially as the plates are pushed ever closer together - when the plates at a smaller separation of $\pu{0.1 \mu m}$, its magnitude increases to $\pu{13 N}$, and if the plates are pushed even closer to just $\pu{0.01 \mu m} = \pu{10 nm}$, its magnitude increases to over $\pu{130 kN}$! However, it is experimentally difficult to place two conducting plates that close together, and in any case the theory may break down in such conditions, so this is purely theoretical (for now).
