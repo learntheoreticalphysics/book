@@ -205,10 +205,185 @@ So the expectation value of the field for the single-particle state is just $e^{
 
 This means that, unlike non-relativistic quantum mechanics, where the particle (such as the electron) is the fundamental entity, in quantum field theory, the *field* is the fundamental entity, out of which particles arise and disappear - which is why quantum field theory is the basic theoretical framework for **particle physics**. Indeed, the free scalar field theory is a theory that can describe particles called [pions](https://en.wikipedia.org/wiki/Pion) (also called pi mesons), although not much else. We'll soon see more "interesting" (but also more complicated) theories that describe particles that are much more well-known, like photons, electrons, and quarks.
 
-## Our next steps
+## The field Hamiltonian
 
-Relativistic QFT is most often used in the calculation of **scattering cross-sections** that describes what happens when elementary particles interact. To understand how this procedure works, let us consider a QFT with Hamiltonian $\hat H$. This Hamiltonian can be divided into two parts: the free Hamiltonian $\hat H_0$, and the _interaction_ Hamiltonian $\hat H_i$. Thus we have:
+Just like single-particle nonrelativistic quantum mechanics, quantum fields have an associated Hamiltonian. We can arrive at this quantum field Hamiltonian by starting with the classical field Hamiltonian (density). In classical field theory, the Hamiltonian density is defined as follows:
 
 {% math() %}
-\hat H = \hat H_0 + \hat H_i
+\mathcal{H} = \Pi\,\partial_0\phi - \mathscr{L}
 {% end %}
+
+Where $\Pi$ (uppercase $\pi$) here is called the **canonical momentum density**, and is defined by:
+
+{% math() %}
+\Pi = \dfrac{\partial \mathscr{L}}{\partial (\partial_0 \phi)}
+{% end %}
+
+Note that $\partial_0 \phi$ is the **time derivative** of the field, since $\partial_0 = \partial_t$ in 4-dimensional spacetime. Recall that our Lagrangian for the free scalar field is given by:
+
+{% math() %}
+\mathscr{L} = \dfrac{1}{2}\partial_\mu \phi \partial^\mu \phi - \dfrac{1}{2}\dfrac{1}{2} m^2 \phi^2
+{% end %}
+
+Note that here, we have a summation over $\mu$, since $\mu$ is a dummy index. This means that we can expand it out as follows:
+
+{% math() %}
+\begin{align*}
+\partial_\mu \phi \partial^\mu \phi &= 
+\partial_0 \phi \partial^0 \phi
++ \underbrace{\partial_1 \phi \partial^1 \phi
++ \partial_2 \phi \partial^2 \phi
++ \partial_3 \phi \partial^3 \phi}_{\partial_i \phi \partial^i \phi} \\
+&= \partial_0 \phi \partial^0 \phi + \partial_i \phi \partial^i \phi, \quad i = 1, 2, 3
+\end{align*}
+{% end %}
+
+Notice what we did above: we expanded $\partial_\mu \phi \partial^\mu \phi$ according to the Einstein summation convention, which allowed us to split it into two portions: the spatial part $\partial_i \phi \partial^i \phi$, and the temporal part $\partial_0 \phi \partial^0 \phi$. This allows us to rewrite our Lagrangian as follows:
+
+{% math() %}
+\mathscr{L} = \dfrac{1}{2}\partial_0 \phi \partial^0 \phi - \dfrac{1}{2}\partial_i \phi \partial^i \phi - \dfrac{1}{2} m^2 \phi^2
+{% end %}
+
+> **Note:** The separation of the time and spatial parts of $\partial_\mu \phi \partial^\mu \phi$ gives us a way to write out the Lagrangian in the more familiar notation of vector calculus. In vector calculus notation this Lagrangian can equivalently be written $\mathscr{L} = \dfrac{1}{2} \left(\dfrac{\partial^2 \phi}{\partial t^2}\right)\phi^2 - \dfrac{1}{2}(\nabla \phi)^2 - \dfrac{1}{2} m^2 \phi^2$ (the minus sign is due to the Minkowski metric needed to lower $\partial^i$ to $\partial_i$ for the spatial components, since $\eta_{11}, \eta_{22}, \eta_{33} = -1$).
+
+Now, we can find the canonical momentum. But before we do so, we need to first lower our indices, since we are differentiating with respect to the lower index, and we emphasize, we cannot _always_ assume that $\partial(\partial_0 \phi) = \partial(\partial^0 \phi)$ (though it will turn out that it is true in this case). Here, we use the Minkowski metric to lower indices (as usual), giving us $\partial^0 = \eta^{00}\partial_0$. Luckily for us, $\eta^{00} = \eta_{00} = 1$, so we (luckily!) have $\partial_0 = \partial^0$. Thus the first term in the Lagrangian becomes:
+
+{% math() %}
+\mathscr{L} = \dfrac{1}{2}(\partial_0 \phi)^2 - \dfrac{1}{2}\partial_i \phi \partial^i \phi - \dfrac{1}{2} m^2 \phi^2
+{% end %}
+
+Which we can differentiate to get $\Pi$:
+
+{% math() %}
+\begin{align*}
+\Pi &= \dfrac{\partial \mathscr{L}}{\partial (\partial_0 \phi)} \\
+&= \dfrac{\partial}{\partial (\partial_0 \phi)}\bigg[\dfrac{1}{2}(\partial_0 \phi)^2 - \cancel{\dfrac{1}{2}\partial_i \phi \partial^i \phi} - \cancel{\dfrac{1}{2} m^2 \phi^2}\bigg] \\
+&= \dfrac{\partial}{\partial (\partial_0 \phi)}\bigg[\dfrac{1}{2}(\partial_0 \phi)^2 \bigg] \\
+&= \partial_0 \phi
+\end{align*}
+{% end %}
+
+> **Note:** Here, $\dfrac{\partial}{\partial(\partial_0 \phi)}(\partial_i \phi \partial^i \phi) = 0$ because the spatial ($\partial_i \phi \partial^i \phi$) and temporal ($\partial_0 \phi \partial^0 \phi$) components of $\partial_\mu \phi \partial^\mu \phi$ are **independent**.
+
+Thus using the previous expression $\mathcal{H} = \Pi\,\partial_0\phi - \mathscr{L}$ that we found, and substituting our Lagrangian and canonical momentum that we just found, the Hamiltonian becomes:
+
+{% math() %}
+\begin{align*}
+\mathcal{H} &= \Pi\,\partial_0\phi - \mathscr{L} \\
+&= (\partial_0 \phi)(\partial_0 \phi) - \bigg[\dfrac{1}{2}(\partial_0 \phi)^2 - \dfrac{1}{2}\partial_i \phi \partial^i \phi - \dfrac{1}{2} m^2 \phi^2\bigg] \\
+&= \dfrac{1}{2}(\partial_0 \phi)^2 + \dfrac{1}{2}\partial_i \phi \partial^i \phi - \dfrac{1}{2} m^2 \phi^2 \\
+&= \dfrac{1}{2}\Pi^2 + \dfrac{1}{2}\partial_i \phi \partial^i \phi - \dfrac{1}{2} m^2 \phi^2
+\end{align*}
+{% end %}
+
+To obtain the quantum Hamiltonian density, we need only find the quantum canonical momentum $\hat \Pi$, and substitute $\hat \phi$ and $\hat \Pi$ into our expression for the classical Hamiltonian density. From $\Pi = \partial_0 \phi$, it follows that $\hat \Pi = \partial_0 \hat \phi$. Recall that $\hat \phi$ is given by:
+
+{% math() %}
+\hat \phi = \int \dfrac{d^3 p}{(2\pi)^3 2E_p} \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} + \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg]
+{% end %}
+
+Thus we have:
+
+{% math() %}
+\begin{align*}
+\hat \Pi &= \partial_0 \hat \phi \\
+&= \int \dfrac{d^3 p}{(2\pi)^32E_p} \bigg[\hat a_p \underbrace{\partial_0 e^{i\mathbf{p} \cdot \mathbf{x}}}_{ip_0e^{i\mathbf{p} \cdot \mathbf{x}}} + \hat a_p^\dagger\underbrace{\partial_0  e^{-i\mathbf{p} \cdot \mathbf{x}}}_{-ip_0e^{i\mathbf{p} \cdot \mathbf{x}}}\bigg] \\
+&= \int \dfrac{d^3 p}{(2\pi)^32E_p} \underbrace{(ip_0)}_{p_0=E_p} \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} - \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg] \\
+&= \int \dfrac{d^3 p}{(2\pi)^32E_p} (iE_p) \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} - \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg]
+\end{align*}
+{% end %}
+
+Note that the reason $\partial_0 e^{i\mathbf{p} \cdot \mathbf{x}} = ip_0 e^{i\mathbf{p} \cdot \mathbf{x}}$ is that the momentum $\mathbf{p} = p^\mu = \langle p^0, p^1, p^2, p^3\rangle$ is a four-component vector, so when we differentiate it, we get $ip_0$ as a constant factor. The four components of $p^\mu$ are $p^\mu = \langle E_p, p_x, p_y, p_z$, which turned $ip_0$ to $iE_p$. Substituting our results for $\hat \phi$ and $\hat \Pi$ into our definition of $\hat{\mathcal{H}}$, where we substitute $\phi$ for $\hat \phi$ and $\Pi$ for $\hat \Pi$, we have:
+
+{% math() %}
+\begin{align*}
+\hat{\mathcal{H}} &= \dfrac{1}{2}\hat\Pi^2 + \dfrac{1}{2} \underbrace{\partial_i \hat \phi \partial^i \hat \phi}_{-(\partial_i\hat \phi)^2} - \dfrac{1}{2} m^2 \hat \phi^2 \\
+&= \dfrac{1}{2} \int \dfrac{d^3 p}{(2\pi)^32E_p} (iE_p) \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} - \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg]\int \dfrac{d^3 p}{(2\pi)^32E_p} (iE_p) \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} - \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg] \\ 
+% step 2
+&\qquad - \dfrac{1}{2}\left(\partial_i \int \dfrac{d^3 p}{(2\pi)^3 2E_p} \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} + \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg]\right)^2 \\
+&\qquad - \dfrac{1}{2}m^2 \int \dfrac{d^3 p}{(2\pi)^3 2E_p} \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} + \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg] \int \dfrac{d^3 p}{(2\pi)^3 2E_p} \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} + \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg] \\
+% step 3
+&= \dfrac{1}{2} \int \dfrac{d^6 p}{[(2\pi)^32E_p]^2} (iE_p) \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} - \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg]  \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} - \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg] \\ 
+&\qquad - \dfrac{1}{2}\left(\partial_i \int \dfrac{d^3 p}{(2\pi)^3 2E_p} \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} + \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg]\right)^2 \\
+&\qquad - \dfrac{1}{2}m^2 \int \dfrac{d^6 p}{[(2\pi)^3 2E_p]^2} \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} + \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg]\bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} + \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg] \\
+% last step
+&= \dfrac{1}{2} \int \dfrac{d^3p\,E_p}{(2\pi)^3}(\hat a^\dagger_p \hat a_p + \hat a_p \hat a^\dagger_p)
+\end{align*}
+{% end %}
+
+Let's walk through our steps. First, we substituted our respective expressions for $\hat \Pi$ and $\hat \phi$. We note that $\partial_i \hat \phi \partial^i \hat \phi = -(\partial_i \hat \phi)^2$, since $\partial^i = \eta^{ii} \partial_i$ and $\eta^{ii}$ (the spatial components of the Minkowski metric, that is, $\eta_{11}$, $\eta_{22}$, and $\eta_{33}$) are all equal to $-1$. Thus we have $\partial_i \hat \phi \partial^i \hat \phi = - \partial_i \hat \phi \partial_i \hat \phi = -(\partial_i \hat \phi)^2$. After that we have a lot of cancellations (we don't show the full calculations here for brevity), and since $e^{i\mathbf{p}\cdot \mathbf{x}}e^{-i\mathbf{p}\cdot \mathbf{x}} = 1$, everything simplifies down nicely and we have no complex exponentials in our fully-simplified answer. We have now obtained the _quantum_ Hamiltonian density:
+
+{% math() %}
+\hat{\mathcal{H}} = \dfrac{1}{2} \int \dfrac{d^3p\,E_p}{(2\pi)^3}(\hat a^\dagger_p \hat a_p + \hat a_p \hat a^\dagger_p)
+{% end %}
+
+Here, we are very careful to use the notation $\hat{\mathcal{H}}$ instead of $\hat H$, since we are talking about the Hamiltonian _density_. The actual Hamiltonian operator would be the integral of the Hamiltonian over all space, that is:
+
+{% math() %}
+\hat H = \int d^3 x\,\hat{\mathcal{H}} = \dfrac{1}{2} \int \dfrac{d^3x\,d^3p E_p}{(2\pi)^3}(\hat a^\dagger_p \hat a_p + \hat a_p \hat a^\dagger_p)
+{% end %}
+
+Note that this may look more familiar if we restore our conventional units by putting back the factors of $\hbar$, which means that $E_p = \hbar \omega_p$ and $p = \hbar k$ (so $dp = \hbar\, dk$). This gives us:
+
+{% math() %}
+\hat H = \int d^3 x \left[\dfrac{1}{2} \hbar \int d^3p \dfrac{\omega_p}{(2\pi)^3}(\hat a^\dagger_p \hat a_p + \hat a_p \hat a^\dagger_p)\right]
+{% end %}
+
+If we then go from the continuous momentum distribution to a single momentum, we would have:
+
+{% math() %}
+\hat H = \int d^3 x \int \dfrac{1}{2} \hbar \omega_p (\hat a^\dagger_p \hat a_p + \hat a_p \hat a^\dagger_p)
+{% end %}
+
+And finally, if we take the discrete limit of a quantum field, where instead of a continuous oscillating system across all space, we have a finite number of oscillators at specific locations, we obtain:
+
+{% math() %}
+\hat H = \sum_n\dfrac{1}{2} \hbar \omega_p (\hat a^\dagger_p \hat a_p + \hat a_p \hat a^\dagger_p)
+{% end %}
+
+Which is just a system of a quantum harmonic oscillators! Indeed, a quantum field behaves much like a system of infinite harmonic oscillators, with one oscillator at every point in space.
+
+The physical interpretation of the Hamiltonian (density) is much the same as it is in the quantum harmonic oscillator: given a state $|n\rangle$, the Hamiltonian (density) acting on the state, that is, $\hat H|n\rangle$, gives the energy of the state. If we act the Hamiltonian density on the vacuum state $|0\rangle$, we have:
+
+{% math() %}
+\begin{align*}
+\hat{\mathcal{H}}|0\rangle &= \dfrac{1}{2} \int \dfrac{d^3p\,E_p}{(2\pi)^3}(\hat a^\dagger_p \hat a_p + \hat a_p \hat a^\dagger_p)|0\rangle \\
+&= \dfrac{1}{2} \int \dfrac{d^3p\,E_p}{(2\pi)^3}(\hat a^\dagger_p \hat a_p + \hat a_p \hat a^\dagger_p)|0\rangle \\
+&= \dfrac{1}{2} \int \dfrac{d^3p\,E_p}{(2\pi)^3}(\cancel{\hat a^\dagger_p \hat a_p|0\rangle}^0 + \hat a_p \hat a^\dagger_p|0\rangle) \\
+&= \dfrac{1}{2} \int \dfrac{d^3p\,E_p}{(2\pi)^3}\hat a_p \hat a^\dagger_p|0\rangle
+\end{align*}
+{% end %}
+
+Thus to find the _vacuum expectation energy_, we need only find $\langle 0 |\hat{\mathcal{H}}|0\rangle$, which gives us:
+
+{% math() %}
+\begin{align*}
+\langle 0|\hat{\mathcal{H}}|0\rangle 
+&= \langle 0|\int \dfrac{1}{2} \dfrac{d^3p\,E_p}{(2\pi)^3}\hat a_p \hat a^\dagger_p|0\rangle \\
+&= \langle 0|\int \dfrac{1}{2} \dfrac{d^3p\,E_p}{(2\pi)^3}\hat a_p|1\rangle \\
+&= \langle 0|\int \dfrac{1}{2} \dfrac{d^3p\,E_p}{(2\pi)^3}|0\rangle \\
+&= \int \dfrac{1}{2} \dfrac{d^3p\,E_p}{(2\pi)^3}\langle 0|0\rangle \\
+&= \dfrac{1}{2}\int \dfrac{dp^3}{(2\pi)^3}\sqrt{p^2 + m^2} \\
+&= \infty
+\end{align*}
+{% end %}
+
+This integral diverges rapidly to infinity, giving us an infinite energy, so clearly there must be something wrong! In the physics literature, there are several different _interpretations_:
+
+1. An infinite ground-state energy doesn't really matter, since we can only measure energy _differences_ in energy, not absolute values of energy, so we might as well _define_ the ground-state energy to be zero
+2. Our theory is not well-defined for all energies; it only holds up to a finite energy scale, and since $E_p = \sqrt{p^2 + m^2}$, there is an upper bound of the momenta we integrate over, rather than integrating over an infinite range of possible momenta.
+
+The first answer is the more common one that most texts give, but it isn't _entirely correct_. This is because _gravity_ is affected by _any form_ of energy density, and in theory, this includes the vacuum energy of quantum fields. The second answer is the more physically-accurate one - even our best quantum field theories fail at extremely high energies, and finding a way to make them work at those energies is an active field of research. But for functional purposes, it suffices to simply ignore the second term of the Hamiltonian (density):
+
+{% math() %}
+\begin{align*}
+\hat{\mathcal{H}} &= \dfrac{1}{2} \int \dfrac{d^3p\,E_p}{(2\pi)^3}(\hat a^\dagger_p \hat a_p + \cancel{\hat a_p \hat a^\dagger_p}) \\
+&= \dfrac{1}{2} \int \dfrac{d^3p\,E_p}{(2\pi)^3} \hat a^\dagger_p \hat a_p
+\end{align*}
+{% end %}
+
+This means that $\langle 0|\hat{\mathcal{H}}|0\rangle = 0$ (the ground-state energy of the vacuum state $|0\rangle$) is **zero**, so that now we are able to perform calculations without getting non-sensical answers of infinite energies.
+
+## Our next steps
+
+Throughout this chapter, we've developed the quantum field theory of a _free_ scalar field. Free fields are, unfortunately, not very physically-realistic, since no particle-particles interactions occur in free fields. Quantum field theories that describe the _actual world_ are interacting field theories, where particles can scatter off each other, transferring energy and momentum in the process. We'll soon see that this gives rise to the _forces_ of nature, and see how this results in the production of _new particles_. Additionally, we'll discover powerful tools (and pretty diagrams!) to calculate these subatomic processes.
