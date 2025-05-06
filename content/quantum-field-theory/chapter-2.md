@@ -51,7 +51,7 @@ The "simplest" quantum field theory is the theory of a free scalar field. We sho
 Since the free scalar field theory is after all a _field theory_, we start with its field Lagrangian. In this case, the field Lagrangian of a free scalar field is given by:
 
 {% math() %}
-\mathscr{L} = \partial_\mu \phi \partial^\mu \phi - m^2 \phi^2
+\mathscr{L} = \dfrac{1}{2} \partial_\mu \phi \partial^\mu \phi - \dfrac{1}{2} m^2 \phi^2
 {% end %}
 
 Using the Euler-Lagrange equations, we can find the equations of motion of the field $\phi$. For the free scalar field, the Euler-Lagrange equations take the form:
@@ -63,7 +63,7 @@ Using the Euler-Lagrange equations, we can find the equations of motion of the f
 Let's now compute the partial derivatives. Let's start with the derivative with respect to $\phi$, which is relatively simple to find:
 
 {% math() %}
-\dfrac{\partial \mathscr{L}}{\partial \phi} = -2m^2 \phi
+\dfrac{\partial \mathscr{L}}{\partial \phi} = -m^2 \phi
 {% end %}
 
 The derivative with respect to $\partial_\beta \phi$ is not as easy to find, so we'll show the steps below:
@@ -71,14 +71,14 @@ The derivative with respect to $\partial_\beta \phi$ is not as easy to find, so 
 {% math() %}
 \begin{align*}
 \dfrac{\partial \mathscr{L}}{\partial(\partial_\beta \phi)}
-&= \dfrac{\partial}{\partial(\partial_\beta \phi)} \bigg(\partial_\mu \phi \partial^\mu \phi - m^2 \phi^2\bigg) \\
-&= \dfrac{\partial}{\partial(\partial_\beta \phi)} \bigg(\partial_\mu \phi \partial^\mu \phi\bigg) - \cancel{\dfrac{\partial}{\partial(\partial_\beta \phi)}\bigg(m^2 \phi^2\bigg)}^0 \\
-&= \dfrac{\partial}{\partial(\partial_\beta \phi)} \underbrace{\bigg(\partial_\beta \phi \partial^\beta \phi\bigg)}_\text{relabel dummy indices} \\
-&= \dfrac{\partial}{\partial(\partial_\beta \phi)} 
+&= \dfrac{1}{2}\dfrac{\partial}{\partial(\partial_\beta \phi)} \bigg(\partial_\mu \phi \partial^\mu \phi - m^2 \phi^2\bigg) \\
+&= \dfrac{1}{2}\dfrac{\partial}{\partial(\partial_\beta \phi)} \bigg(\partial_\mu \phi \partial^\mu \phi\bigg) - \cancel{\dfrac{\partial}{\partial(\partial_\beta \phi)}\bigg(m^2 \phi^2\bigg)}^0 \\
+&= \dfrac{1}{2}\dfrac{\partial}{\partial(\partial_\beta \phi)} \underbrace{\bigg(\partial_\beta \phi \partial^\beta \phi\bigg)}_\text{relabel dummy indices} \\
+&= \dfrac{1}{2}\dfrac{\partial}{\partial(\partial_\beta \phi)} 
 \bigg(\partial_\beta \phi\, \underbrace{\eta^{\alpha \beta}\partial_\alpha \phi}_\text{lower indices}\bigg) \\
-&= \dfrac{\partial}{\partial(\partial_\beta \phi)} 
+&= \dfrac{1}{2}\dfrac{\partial}{\partial(\partial_\beta \phi)} 
 \bigg(\partial_\beta \phi\, \eta^{\alpha \beta} \underbrace{\delta^\beta{}_\alpha \partial_\beta}_\text{relabel}  \phi\bigg) \\
-&= \eta^{\alpha \beta} \delta^\beta{}_\alpha\dfrac{\partial}{\partial(\partial_\beta \phi)} 
+&= \dfrac{1}{2}\eta^{\alpha \beta} \delta^\beta{}_\alpha\dfrac{\partial}{\partial(\partial_\beta \phi)} 
 \bigg(\partial_\beta \phi\, \partial_\beta \phi\bigg)
 \end{align*}
 {% end %}
@@ -89,11 +89,12 @@ Finally, we needed to get the $\partial^\beta \phi$ term as a lower index. To do
 
 {% math() %}
 \begin{align*}
-\dfrac{\partial \mathscr{L}}{\partial (\partial_\beta \phi)} &= \eta^{\alpha \beta} \delta^\beta{}_\alpha\dfrac{\partial}{\partial(\partial_\beta \phi)} 
+\dfrac{\partial \mathscr{L}}{\partial (\partial_\beta \phi)} 
+&= \dfrac{1}{2}\eta^{\alpha \beta} \delta^\beta{}_\alpha\dfrac{\partial}{\partial(\partial_\beta \phi)} 
 \bigg(\partial_\beta \phi\, \partial_\beta \phi\bigg) \\
-&= \eta^{\alpha \beta} \delta^\beta{}_\alpha (2\partial_\beta \phi) \\
-&= \underbrace{2\eta^{\alpha \beta}\delta^\beta_\alpha \partial_\beta \phi}_\text{now contract indices} \\
-&= 2 \partial^\beta \phi
+&= \dfrac{1}{2}\eta^{\alpha \beta} \delta^\beta{}_\alpha (2\partial_\beta \phi) \\
+&= \dfrac{1}{2}\underbrace{2\eta^{\alpha \beta}\delta^\beta_\alpha \partial_\beta \phi}_\text{now contract indices} \\
+&= \partial^\beta \phi
 \end{align*}
 {% end %}
 
@@ -101,7 +102,7 @@ Here, we took the derivative in the standard way (it is just taking the derivati
 
 {% math() %}
 \begin{gather*}
--2m^2 \phi - \partial_\beta(2\partial^\beta \phi) = 0 \\
+-m^2 \phi - \partial_\beta(\partial^\beta \phi) = 0 \\
 \Rightarrow \partial_\beta \partial^\beta \phi + m^2 \phi = 0
 \end{gather*}
 {% end %}
@@ -204,7 +205,7 @@ So the expectation value of the field for the single-particle state is just $e^{
 
 This means that, unlike non-relativistic quantum mechanics, where the particle (such as the electron) is the fundamental entity, in quantum field theory, the *field* is the fundamental entity, out of which particles arise and disappear - which is why quantum field theory is the basic theoretical framework for **particle physics**. Indeed, the free scalar field theory is a theory that can describe particles called [pions](https://en.wikipedia.org/wiki/Pion) (also called pi mesons), although not much else. We'll soon see more "interesting" (but also more complicated) theories that describe particles that are much more well-known, like photons, electrons, and quarks.
 
-### Scattering and propagators
+## Our next steps
 
 Relativistic QFT is most often used in the calculation of **scattering cross-sections** that describes what happens when elementary particles interact. To understand how this procedure works, let us consider a QFT with Hamiltonian $\hat H$. This Hamiltonian can be divided into two parts: the free Hamiltonian $\hat H_0$, and the _interaction_ Hamiltonian $\hat H_i$. Thus we have:
 
