@@ -181,13 +181,13 @@ Where $\delta^3$ is the three-dimensional Dirac delta function, which obeys $\di
 
 > **Why this particular orthogonality relation?** The answer is that however we choose to define orthogonality between two states, any scaling constants are **a matter of personal preference**. Here, we just chose the constant factor $(2\pi)^3$ because it is convenient for our later calculations, but it doesn't really matter. After all, we cannot measure quantum states (directly) anyways, so it really **does not matter** how we define them. As long as our definitions are **consistent** and our states are **normalized** (such that you can never have a probability greater than one!), we may choose whatever normalization constants we want.
 
-To calculate the expectation value of the single-particle state $\langle 0 |\hat \phi| p\rangle$, we just "flip" our previous result for $\hat |0\rangle$ around to get:
+To calculate the expectation value of the single-particle state $\langle 0 |\hat \phi| p\rangle$, we just "flip" our previous result for $\hat \phi |0\rangle$ around to get:
 
 {% math() %}
 \langle 0| \hat \phi = \langle 1|\int d^3 p\dfrac{e^{-i\mathbf{p} \cdot \mathbf{x}}}{(2\pi)^32E_p}
 {% end %}
 
-Then, substituting in $|p\rangle = 2E_p\, \hat a_p^\dagger |0\rangle = 2E_p\,|1\rangle$, we have:
+Then, substituting in {% inlmath() %}|p\rangle = 2E_p\, \hat a_p^\dagger |0\rangle = 2E_p\,|1\rangle{% end %}, we have:
 
 {% math() %}
 \begin{align*}
