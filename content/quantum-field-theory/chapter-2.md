@@ -114,7 +114,7 @@ This is our **equation of motion** for our free scalar field, and it is called t
 
 ## Canonical quantization
 
-Now is the time to take our _classical_ field $\phi$ and turn it into a quantum field. To start, we first need to solve the Klein-Gordon equation with a [Fourier decomposition](https://ese-msc.github.io/preinduction/edsml/primer/notebooks/c_mathematics/differential_equations/11_pde_fourier.html), which gives the general solution:
+Now is the time to take our _classical_ field $\phi$ and turn it into a quantum field, a process called **canonical quantization**. To start, we first need to solve the Klein-Gordon equation with a [Fourier decomposition](https://ese-msc.github.io/preinduction/edsml/primer/notebooks/c_mathematics/differential_equations/11_pde_fourier.html), which gives the general solution:
 
 {% math() %}
 \phi(x^\mu) = \int \dfrac{d^3 p}{(2\pi)^32E_p} \left[a(p) e^{i\mathbf{p} \cdot \mathbf{x}} + a^*(p) e^{-i\mathbf{p} \cdot \mathbf{x}}\right] 
