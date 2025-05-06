@@ -372,6 +372,13 @@ header {
     display: flex;
     flex-direction: row;
   }
+
+  .diagram {
+    display: block;
+    max-width: 80%;
+    min-height: 15rem;
+    margin: 1.5rem auto;
+  }
 }
 
 @media print {
