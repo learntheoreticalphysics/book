@@ -224,7 +224,7 @@ Thus, our solution to Maxwell's equation becomes:
 A^\nu = \epsilon^\nu \phi =\int \dfrac{d^3 p}{(2\pi)^32E_p}\left[\epsilon^\nu a(p) e^{i\mathbf{p} \cdot \mathbf{x}} + \epsilon^\nu a^*(p) e^{-i\mathbf{p} \cdot \mathbf{x}}\right]
 {% end %}
 
-Out of notational preference, we'll switch to the lower-index version of the field $A_\mu = \eta_{\mu \nu} A^\nu$, and write $a(p)$ as $a_p$ as well as $a^*(p)$ as $a^*_p$. The solution largely remains the same, with the only difference being that the polarization vector $\eta_{\mu \nu} \epsilon^\nu = \epsilon_\mu$ must also shift to a lower index, thus giving us:
+Out of notational preference, we'll switch to the lower-index version of the field $A_\mu = \eta_{\mu \nu} A^\nu$, and write $a(p)$ as $a_p$ as well as {% inlmath() %}a^*(p){% end %} as {% inlmath() %}a^*_p{% end %}. The solution largely remains the same, with the only difference being that the polarization vector {% inlmath() %}\eta_{\mu \nu} \epsilon^\nu = \epsilon_\mu{% end %} must also shift to a lower index, thus giving us:
 
 {% math() %}
 A_\mu =\int \dfrac{d^3 p}{(2\pi)^32E_p}\left[\epsilon_\mu a_p e^{i\mathbf{p} \cdot \mathbf{x}} + \epsilon_\mu a^*_p e^{-i\mathbf{p} \cdot \mathbf{x}}\right]
