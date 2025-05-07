@@ -108,7 +108,7 @@ the **action**. The action $S$ is defined as:
 
 {% math() %}S = \int \limits_\text{space+time} \mathscr{L}(\phi(\vec x, t), \vec x, t)\, d^4 x{% end %}
 
-Where $d^4 x = dx\, dy\, dz\, dt$, and the integral is conducted over
+Where {% inlmath() %}d^4 x = dx\, dy\, dz\, dt{% end %}, and the integral is conducted over
 all space and all times. Why define this quantity? Because it turns out
 that the correct partial differential equation to describe the field
 $\phi(\vec x, t)$ is the one that makes the action *stationary*.
@@ -123,12 +123,14 @@ called the **Principle of Stationary Action**. It is also sometimes
 called the Principle of *Least* Action, although the action may not
 always be a minimum, so that alternate term can be misleading. It turns
 out (we will not show here as it is a rather involved derivation) that
-this means that the Lagrangian must satisfy the following partial
+this means that the Lagrangian must satisfy the following tensor partial
 differential equation:
 
 {% math() %}\frac{\partial \mathscr{L}}{\partial \phi} - \partial_\mu \left(\frac{\partial \mathscr{L}}{\partial (\partial_\mu \phi)}\right) = 0{% end %}
 
-This partial differential equation is called the **Euler-Lagrange
+> **Note:** It's okay to not understand what this equation means yet. We'll cover tensors in more detail shortly.
+
+This partial differential equation (PDE) is called the **Euler-Lagrange
 Equation** for fields and always gives the correct PDE for the field. We
 refer to this PDE as the **equation of motion** of the field, as it
 describes how the field evolves through time and changes in space.
@@ -517,34 +519,52 @@ To summarize, tensor calculus allows us to take derivatives of a variety of math
 
 We've covered a lot about tensors, but let's now return to a topic we discussed earlier: the **metric tensor**.
 
-To begin, we have to discuss first about the _geometric_ origins of tensors. Tensors are not just arbitrary combinations of indices; they represent something with a particular set of _components_. These components are dependent upon the underlying space. For instance, a vector $V^i$ represents a directional quantity, with three components $V^x, V^y$ in 2D Cartesian space. But that same vector could have _different_ components if we use another coordinate system. For instance, if we switch to polar coordinates, the vector's components would switch to $V^r, V^\theta$.
+To begin, we have to discuss first the _geometric_ origins of tensors. Tensors are not just arbitrary combinations of indices; they represent something with a particular set of _components_. These components are dependent upon the underlying space. For instance, a 2D vector $V^i$ represents a directional quantity, with two components $V^x, V^y$ in 2D Cartesian space. But that same vector could have _different_ components if we use another coordinate system. Taking our example, if we switch to polar coordinates, the vector's components would switch to $V^r, V^\theta$. Thus, while tensors themselves are coordinate-independent - after all, the Universe doesn't care whether you use Cartesian or polar coordinates - the _components_ of tensors are definitely dependent on the coordinate system we use, and the underlying geometry of space.
 
-The **metric tensor** $g_{ij}$ lets us characterize a geometric space by defining what a _distance_ represents. You might think - why do we need to formalize what a distance means? Isn't that _obvious_? But in fact, the notion of a distance is not a simple as it may seem. For instance, in Euclidean 3D space, the infinitesimal distance between two points is given by:
+The **metric tensor** $g_{ij}$ lets us characterize a system of coordinates in a geometric space by defining what a _distance_ represents. You might think - why do we need to formalize what a distance means? Isn't that _obvious_? But in fact, the notion of a distance is not a simple as it may seem. For instance, in Euclidean 3D space, the infinitesimal distance between two points is given by:
 
 {% math() %}
 ds^2 = dx^2 + dy^2 + dz^2
 {% end %}
 
-But at the dawn of the 20th century, the very famous Albert Einstein discovered that our Universe was not three-dimensional, as it had been throught; rather, it was four-dimensional, containing one dimension of time and three of space - what we call **spacetime**. So in fact, the _correct_ expression for the infinitesimal distance between two points is given by:
+"I knew that!", you might say, "that's just Pythagoras's theorem written with infinitesimals $dx, dy, dz$ rather than $x, y, z$!" And indeed you would be correct. For hundreds of years, we have no reason to think that the Universe was anything other than 3D space with Euclidean geometry.
+
+But at the dawn of the 20th century, the very famous Albert Einstein discovered that our Universe was not three-dimensional, as had been throught; rather, it was four-dimensional, containing one dimension of time and three of space - what we call **spacetime**. So in fact, the _correct_ expression for the infinitesimal distance between two points is given by Pythagoras' formula:
 
 {% math() %}
-ds^2 = dt^2 - dx^2 - dy^2 - dz^2
+ds^2 = dt^2 - (dx^2 + dy^2 + dz^2)
 {% end %}
 
-Where here, remember that we use units where $c$, the speed of light, is equal to one. Except this isn't completely correct either: Einstein found that this was a _special case_ of a more general tensor expression for the distance between two points:
+(For those readers already familiar with the Minkowski metric, be aware that we use units where $c$, the speed of light, is equal to one). Except this distance formula isn't completely correct either: Einstein found that this was a _special case_ of a more general tensor expression for the distance between two points in spacetime:
 
 {% math() %}
-ds^2 = g_{\mu \nu} dx^\mu dx^\nu
+\begin{align*}
+ds^2 &= g_{\mu \nu} dx^\mu dx^\nu \\
+&= g_{00} dt^2 + g_{01} dt\,dx + g_{02} dt\,dy + \dots \\
+&\qquad + g_{10} dx dt + g_{11} dx^2 + g_{12} dx\, dy + \dots \\
+&\qquad + g_{30} dz\,dt + g_{31} dz\,dx + g_{32} dz\,dy + g_{33}\,dz^2
+\end{align*}
 {% end %}
 
-Where $g_{\mu \nu}$ is the four-dimensional **metric tensor**. Why is this significant? Because it means that distance is dependent on the _geometry_ of spacetime, and that implies that time and space are interdependent, and that spacetime can be **curved**! In  fact, the metric tensor is the foundation of Einstein's theories of **special and general relativity**.
+Where $g_{\mu \nu}$ is the four-dimensional **metric tensor**, given by: 
+
+{% math() %}
+g_{\mu \nu} = \begin{pmatrix}
+g_{00} & g_{01} & g_{02} & g_{03} \\
+g_{10} & g_{11} & g_{12} & g_{13} \\
+g_{20} & g_{21} & g_{22} & g_{23} \\
+g_{30} & g_{31} & g_{32} & g_{33}
+\end{pmatrix}
+{% end %}
+
+Why is this significant? Because it means that distance is dependent on the _geometry_ of spacetime, and that implies that time and space are interdependent, and that spacetime can be **curved**! In  fact, the metric tensor is the foundation of Einstein's theories of **special and general relativity**.
 
 > **Note on notation:** It is customary to use latin indices like $i, j, k, \dots$ when we are only talking about three-dimensional tensors, such as position $x^i$. However, when we are talking about _four-dimensional_ tensors in spacetime, such as the metric tensor, we use greek indices like $\mu, \nu, \gamma$.
 
-In most of quantum field theory, we work in **Minkowski spacetime**, the "special case" of the four-dimensional spacetime that we discussed earlier. The correct expression for the infinitesimal distance in Minkowski space, as we saw, is given by:
+In most of quantum field theory, we work in **Minkowski spacetime**, the _special case_ of the four-dimensional spacetime that we discussed earlier. The correct expression for the infinitesimal distance in Minkowski space, as we saw, is given by:
 
 {% math() %}
-ds^2 = dt^2 - dx^2 - dy^2 - dz^2
+ds^2 = dt^2 - (dx^2 + dy^2 + dz^2)
 {% end %}
 
 Note that we can also write this expression in matrix-vector form, as:
