@@ -1,12 +1,12 @@
 +++
-title = "General relativity (under construction)"
+title = "Special and General Relativity (under construction)"
 date = 2025-05-07
 
 [extra]
-description = "A book on gravity and the beautiful theory of General Relativity, explained as simply as possible."
+description = "A book on spacetime, gravity, and the beautiful theories of Special Relativity and General Relativity."
 notoc = true
 +++
 
 ## Introduction
 
-General Relativity is doubtlessly one of the most beautiful theories of physics ever devised. It is, sadly, also quite complicated. We hope this attempt to explain it, going step-by-step through all the little details, will hopefully clear up some of the confusion for first-time learners, while still doing the subject justice.
+The two theories of relativity - Special Relativity and General Relativity - are doubtlessly some of the most beautiful theories of physics ever devised. They are, sadly, also quite complicated. We hope this attempt to explain them, going step-by-step through all the little details, will hopefully clear up some of the confusion for first-time learners, while still doing the subject justice.
