@@ -101,16 +101,6 @@ header {
   }
 }
 
-.preface {
-    p {
-      font-size: 1.1rem;
-      @include sm { font-size: 0.9rem; }
-      line-height: 1.5;
-      margin-bottom: 2rem;
-      max-width: 80ch;
-    }
-}
-
 // For book descriptions on the main page
 .book-cards {
 
@@ -136,12 +126,25 @@ header {
   }
 }
 
+.preface, .related {
+  p {
+    font-size: 1.1rem;
+    @include sm { font-size: 0.9rem; }
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    max-width: 80ch;
+  }
+}
 
-.related, .book-cards{
+.preface, .related, .book-cards {
   h2 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
   }
+}
+
+.book-cards{
+  
   p {
     font-size: 1rem;
     @include sm { font-size: 0.9rem; }
