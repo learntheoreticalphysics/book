@@ -113,12 +113,12 @@ header {
 
 // For book descriptions on the main page
 .book-cards {
-  margin-bottom: 2rem;
 
   article {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    margin-bottom: 1.5rem;
     border-radius: 0.5rem;
     padding: 1.2rem 2rem;
     background: lighten(gray, 48%);
