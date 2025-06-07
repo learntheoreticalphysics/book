@@ -143,8 +143,14 @@ html {
     }
 
     li {
+      margin-top: 0.4rem;
       font-size: 0.95rem;
       margin-bottom: 0.2rem;
+    }
+
+    li .indent {
+      margin-top: 0.2rem;
+      margin-left: 1.2rem;
     }
 
     a {

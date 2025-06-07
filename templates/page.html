@@ -44,7 +44,7 @@
                 {% if h2.children %}
                     <ul>
                         {% for h3 in h2.children %}
-                            <li>
+                            <li class="indent">
                                 <a href="{{ h3.permalink | safe }}">{{ h3.title }}</a>
                             </li>
                         {% endfor %}
