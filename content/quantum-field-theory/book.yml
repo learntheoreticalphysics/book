@@ -1,0 +1,14 @@
+# the name of the book
+name: "Quantum Field Theory"
+# the name where all the markdown files of the
+# book are contained.
+root: "quantum-field-theory"
+# Names of the chapters and their markdown files.
+# Paths are relative to the root folder
+pages:
+  - file: chapter-1.md
+    title: Getting started with quantum field theory
+  - file: chapter-2.md
+    title: Quantization of a free scalar field
+  - file: chapter-3.md
+    title: Quantization of the electromagnetic field

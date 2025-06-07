@@ -42,17 +42,119 @@ html {
   margin: 0 auto;
 }
 
+// https://stackoverflow.com/questions/43186015/css-hide-scroll-bar-but-have-element-scrollable
+.disable-scrollbars {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+
+  &::-webkit-scrollbar {
+    background: transparent; /* Chrome/Safari/Webkit */
+    width: 0px;
+  }
+}
+
 /* Styles */
 
-body {
+.homepage {
   max-width: 73ch;
   width: 65%;
   @include lg { width: 80%; }
   @include sm { width: 100%; }
-	padding: 2rem;
-	background: $bg-color-1;
-	color: $tx-color-1;
-	@include center-x;
+  padding: 2rem;
+  background: $bg-color-1;
+  color: $tx-color-1;
+  @include center-x;
+}
+
+.chapter {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  
+  nav {
+    // `flex` here controls sizing
+    // of the nav sidebar
+    flex: 0 1 18rem;
+    padding: 5rem 2rem 1.5rem 2rem;
+    overflow-y: auto;
+    // nav is also a flex container
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    border: 1px solid $border;
+    @include lg { flex: 0 1 15rem; }
+    // temporary until we add accordion
+    // menu for smaller screens
+    @include md { display: none; }
+
+    h1 {
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    h1 a {
+      margin-left: initial;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      font-size: 0.95rem;
+      text-decoration: none;
+      margin-bottom: 0.5rem;
+      margin-left: 0.5rem;
+
+      &:hover {
+	text-decoration: underline;
+      }
+    }
+
+    .nav-bottom-link {
+      margin-top: auto;
+    }
+  }
+      
+  .article-container, .page-navigation {
+    overflow-y: auto;
+    overflow-wrap: break-word;
+    scrollbar-gutter: stable;
+  }
+
+  .page-navigation {
+    flex: 0 1 25rem;
+    padding: 5rem 2rem;
+    font-size: 0.95rem;
+    // Temporary until we
+    // add the accordion
+    // for smaller screens
+    @include lg { display: none; }
+
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    li {
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    a {
+      text-decoration: none;
+
+      &:hover {
+	text-decoration: underline;
+      }
+    }
+  }
 }
 
 code {
@@ -166,13 +268,28 @@ header {
   border-radius: 0.3rem;
 }
 
-// For full page articles
-.post {
+.article-container {
   // width: 70%;
   // @include lg { width: 90%; }
   // @include sm { width: 100%; }
   display: block;
-  margin: 3rem auto;
+  margin: 3rem 1rem 0 1rem;
+  flex: 1 1 65%;
+  // @include lg { width: 80%; }
+  // @include sm { width: 100%; }
+  padding: 2rem;
+  background: $bg-color-1;
+  color: $tx-color-1;
+  @include center-x;
+}
+
+// For the actual text content of
+// the chapters
+.post {
+  // max width is based off standard
+  // typography guidelines
+  max-width: 73ch;
+  padding-left: 1.5rem;
 
   // Credits to new.css
   address,
@@ -219,38 +336,6 @@ header {
   	margin-bottom: 0;
   }
 
-  .toc {
-    margin: 2rem 0 !important;
-    @include md { margin: 0; }
-    background: lighten(gray, 48%);
-    border-radius: 0.25rem;
-    font-size: 0.95rem;
-    padding: 1.5rem 1rem;
-    box-shadow: $block-shadow;
-
-    .toc-info {
-      margin-top: 1rem;
-      margin-left: 1.5rem;
-      font-size: smaller;
-    }
-
-    div {
-      margin: 0.5rem 0 0 1rem;
-
-      // TOC entries
-      li {
-        font-size: 0.95rem;
-      }
-    }
-
-    summary {
-      list-style-position: outside;
-      margin-left: 1.5rem;
-      @include sm { margin-left: 0.6rem; }
-      line-height: 1.5;
-      font-weight: bold;
-    }
-  }
 
   img {
     display: block;
@@ -389,8 +474,12 @@ header {
     width: 85ch;
   }
 
-  nav {
-    display: none;
+  nav, .page-navigation {
+    display: none !important;
+  }
+
+  .chapter {
+    height: 100%;
   }
 
   .post {
