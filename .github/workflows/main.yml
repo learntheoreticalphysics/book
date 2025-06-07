@@ -1,3 +1,7 @@
+permissions:
+  contents: write
+  pages: write
+
 on: push
 name: Build and deploy GH Pages
 jobs:
