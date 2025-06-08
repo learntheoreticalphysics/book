@@ -1,0 +1,10 @@
+# the name of the book
+name: "Special & General Relativity"
+# the name where all the markdown files of the
+# book are contained.
+root: "relativity"
+# Names of the chapters and their markdown files.
+# Paths are relative to the root folder
+# pages:
+#   - file: chapter-1.md
+#     title: To be added in soon
