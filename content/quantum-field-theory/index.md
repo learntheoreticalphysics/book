@@ -25,8 +25,4 @@ These are not meaningless predictions either; our understanding of the emission 
 
 Quantum field theory is a very rewarding, if difficult, theory to learn. But given its place as the best theory of matter physics ever devised - learning it is worth it.
 
-## Table of contents
-
-- [Chapter 1: Getting started with quantum field theory](@/quantum-field-theory/chapter-1.md)
-- [Chapter 2: Quantization of a free scalar field](@/quantum-field-theory/chapter-2.md)
-- [Chapter 3: Quantization of the electromagnetic field](@/quantum-field-theory/chapter-3.md)
+<p style="font-size: smaller;"><strong>Reading tip:</strong> jump to (and between) the chapters by clicking the links on the left sidebar!</p>
