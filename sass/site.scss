@@ -94,19 +94,20 @@ html {
     }
 
     h1 a {
+      font-size: 0.95rem;
       margin-left: initial;
     }
 
     h2 {
-      font-size: 1.2rem;
+      font-size: 1.35rem;
       margin-bottom: 1rem;
     }
 
     a {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       text-decoration: none;
       margin-bottom: 0.5rem;
-      margin-left: 0.5rem;
+      margin-left: 0.7rem;
 
       &:hover {
 	text-decoration: underline;
@@ -125,9 +126,9 @@ html {
   }
 
   .page-navigation {
-    flex: 0 1 25rem;
+    flex: 0 1 20rem;
     padding: 5rem 2rem;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     // Temporary until we
     // add the accordion
     // for smaller screens
@@ -313,7 +314,6 @@ header {
   iframe,
   img,
   meter,
-  nav,
   ol,
   optgroup,
   option,
