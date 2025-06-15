@@ -127,7 +127,7 @@ html {
 
   .page-navigation {
     flex: 0 1 20rem;
-    padding: 5rem 2rem;
+    padding: 5rem 3rem 2rem 1rem;
     font-size: 0.9rem;
     // Temporary until we
     // add the accordion
@@ -280,11 +280,14 @@ header {
   // @include lg { width: 90%; }
   // @include sm { width: 100%; }
   display: block;
-  margin: 3rem 1rem 0 1rem;
-  flex: 1 1 65%;
+  margin: 3rem 1rem 0 2rem;
+  @include xl { flex: 1 1 75%; }
+  flex: 1 1 80%;
+  @include lg { flex: 1 1 85%; }
   // @include lg { width: 80%; }
   // @include sm { width: 100%; }
-  padding: 2rem;
+  padding: 2rem 1rem;
+  @include md { padding: 1rem; }
   background: $bg-color-1;
   color: $tx-color-1;
   @include center-x;
@@ -296,6 +299,7 @@ header {
   // max width is based off standard
   // typography guidelines
   max-width: 73ch;
+  @include xl { max-width: 83ch; }
   padding-left: 1.5rem;
 
   // Credits to new.css
@@ -365,18 +369,22 @@ header {
 
   h1 {
   	font-size: 2rem;
+    @include md { font-size: 1.7rem; }
   }
 
   h2 {
     font-size: 1.6rem;
+    @include md { font-size: 1.35rem; }
   }
 
   h3 {
     font-size: 1.3rem;
+    @include md { font-size: 1.2rem; }
   }
 
   h4 {
     font-size: 1.2rem;
+    @include md { font-size: 1.15rem; }
   }
 
   h5 {
@@ -384,11 +392,12 @@ header {
   }
 
   p, li {
-    font-size: 1.06rem;
+    font-size: 1rem;
     line-height: 1.65;
     color: rgba(0, 0, 0, 0.8);
-    @include md { font-size: 1rem; }
-    @include sm { font-size: 0.95rem; }
+    @include xl { font-size: 1.05rem; }
+    @include lg { font-size: 0.95rem; }
+    @include sm { font-size: 0.9rem; }
   }
 
   li {
