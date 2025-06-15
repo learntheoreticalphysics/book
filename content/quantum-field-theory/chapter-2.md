@@ -178,7 +178,7 @@ If our physical interpretation is correct, then the single-particle state $|p\ra
 \langle p |p'\rangle = 2E_p (2\pi)^3 \delta^3(p-p')
 {% end %}
 
-Where $\delta^3$ is the three-dimensional Dirac delta function, which obeys $\displaystyle \int d^3 p\, \delta^3(p) = 1$, a fact that will be _extremely helpful_ later.
+Where $\delta^3$ is the three-dimensional Dirac delta function, which obeys $\displaystyle \int d^3 p \delta^3(p) = 1$, a fact that will be _extremely helpful_ later.
 
 > **Why this particular orthogonality relation?** The answer is that however we choose to define orthogonality between two states, any scaling constants are **a matter of personal preference**. Here, we just chose the constant factor $(2\pi)^3$ because it is convenient for our later calculations, but it doesn't really matter. After all, we cannot measure quantum states (directly) anyways, so it really **does not matter** how we define them. As long as our definitions are **consistent** and our states are **normalized** (such that you can never have a probability greater than one!), we may choose whatever normalization constants we want.
 
