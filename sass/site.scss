@@ -273,14 +273,14 @@ header {
   }
 }
 
-.book-cards{
-  
+.book-cards {
   p {
     font-size: 1rem;
     @include sm { font-size: 0.9rem; }
     line-height: 1.5;
   }
 }
+
 
 // For the jump to TOC button
 #jump-toc-btn {
@@ -503,6 +503,30 @@ header {
     min-height: 15rem;
     margin: 1.5rem auto;
   }
+}
+
+.page-switch-buttons {
+    .page-up, .page-down {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	border: 1px solid $border;
+	border-radius: 0.3rem;
+	padding: 1rem 2rem;
+	margin-bottom: 0.5rem;
+
+	strong {
+	    color: $tx-color-5;
+	}
+
+	strong, a {
+	    margin: auto 0;
+	}
+
+	&:hover {
+	  border: 1px solid $primary-btn-bg;
+	}
+    }
 }
 
 @media print {
