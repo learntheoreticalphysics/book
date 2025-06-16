@@ -24,5 +24,3 @@ That is to say, any quantum system may be solved for by the Schrödinger equatio
 These are not meaningless predictions either; our understanding of the emission and absorption of light, subatomic magnetism, and even our standard of time in the [definition of a second](https://en.wikipedia.org/wiki/Second) are based on these predictions. In turn, numerous scientific experiments, material science, laser technology, and electronics depend on applying these predictions, without which they would likely not progress to how they are today.
 
 Quantum field theory is a very rewarding, if difficult, theory to learn. But given its place as the best theory of matter physics ever devised - learning it is worth it.
-
-<p style="font-size: smaller;"><strong>Reading tip:</strong> jump to (and between) the chapters by clicking the links on the left sidebar!</p>

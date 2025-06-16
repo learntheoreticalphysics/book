@@ -506,7 +506,7 @@ header {
 }
 
 .page-switch-buttons {
-    .page-up, .page-down {
+    .page-up, .page-down, .page-start {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -514,6 +514,9 @@ header {
 	border-radius: 0.3rem;
 	padding: 1rem 2rem;
 	margin-bottom: 0.5rem;
+    }
+
+    .page-up, .page-down {
 
 	strong {
 	    color: $tx-color-5;
@@ -525,6 +528,22 @@ header {
 
 	&:hover {
 	  border: 1px solid $primary-btn-bg;
+	}
+    }
+
+    .page-start {
+	border: 1px solid $primary-btn-bg;
+	text-decoration: none;
+
+	p {
+	  color: $tx-color-2;
+	  margin: auto 0;
+	  font-size: 1.1rem;
+	  font-weight: 600;
+	}
+
+	&:hover {
+	  background: lighten($tx-color-2, 70%);
 	}
     }
 }

@@ -33,35 +33,47 @@
         {{ page.content | safe }}
         <div class="page-switch-buttons">
         {% if book.pages %}
-        {% for page in book.pages %}
-            {% set currentPage = page.file %}
             {% set pageName = page_path | last %}
-            {% if currentPage == pageName %}
-                <!-- previous page button -->
-                {% set prevIdx = loop.index - 2 %}
-                {% if prevIdx >= 0 %}
-                {% set prevPage = book.pages[prevIdx] %}
-                    <div class="page-down">
-                <a href="/{{ book.root }}/{{ prevPage.file | replace(from='.md', to='') }}">
-                    Previous: Chapter {{ prevIdx + 1 }}
+            <!-- If it's the preface just add a
+                "begin" button -->
+            {% if pageName == "index.md" %}
+            <!--
+                <div class="page-start">
+                    <a href="/{{ book.root }}/{{ book.pages.0.file | replace(from=".md", to="") }}">Start reading &rarr;</a> -->
+                <a class="page-start" href="/{{ book.root }}/{{ book.pages.0.file | replace(from=".md", to="") }}">
+                    <p>Start reading &rarr;</p>
                 </a>
-                        <strong>{{ prevPage.title }}</strong>
-                    </div>
-                </a>
-                {% endif %}
-                <!-- next page button -->
-                {% set nextIdx = loop.index %}
-                {% if nextIdx < book.pages | length %}
-                {% set nextPage = book.pages[nextIdx] %}
-                <div class="page-up">
-                    <a href="/{{ book.root }}/{{ nextPage.file | replace(from='.md', to='') }}">
-                        Next: Chapter {{ nextIdx + 1 }}
-                    </a>
-                    <strong>{{ nextPage.title }}</strong>
-                </div>
-                {% endif %}
+            {% else %}
+            <!-- Otherwise add prev/next buttons -->
+                {% for page in book.pages %}
+                    {% set currentPage = page.file %}
+                    {% if currentPage == pageName %}
+                        <!-- previous page button -->
+                        {% set prevIdx = loop.index - 2 %}
+                        {% if prevIdx >= 0 %}
+                        {% set prevPage = book.pages[prevIdx] %}
+                            <div class="page-down">
+                        <a href="/{{ book.root }}/{{ prevPage.file | replace(from='.md', to='') }}">
+                            Previous: Chapter {{ prevIdx + 1 }}
+                        </a>
+                                <strong>{{ prevPage.title }}</strong>
+                            </div>
+                        </a>
+                        {% endif %}
+                        <!-- next page button -->
+                        {% set nextIdx = loop.index %}
+                        {% if nextIdx < book.pages | length %}
+                        {% set nextPage = book.pages[nextIdx] %}
+                        <div class="page-up">
+                            <a href="/{{ book.root }}/{{ nextPage.file | replace(from='.md', to='') }}">
+                                Next: Chapter {{ nextIdx + 1 }}
+                            </a>
+                            <strong>{{ nextPage.title }}</strong>
+                        </div>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
             {% endif %}
-        {% endfor %}
         {% endif %}
         </div>
     </article>
