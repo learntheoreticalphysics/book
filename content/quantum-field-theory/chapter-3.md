@@ -5,21 +5,31 @@ date = 2025-04-28
 
 The theory of classical electromagnetism is one of the most beautiful theories in physics, and also the jumping-off point to one of the earliest (and most successful) quantum field theories. It made the startling - but correct - prediction that all types of light were in fact _electromagnetic waves_ travelling at a fixed, universal speed $c$. We'll take our first steps into a "real" quantum field theory - the theory of **quantum electrodynamics** - from here.
 
+## What is electromagnetism?
+
+Before we get to quantum electrodynamics, we need to first examine the classical theory it was built upon. Classical electromagnetism tells us that even empty space is not _truly_ empty; rather, it is filled with electromagnetic fields. All electric charges (from the smallest electron to the largest stars) interact by these fields: charges create variations in the electromagnetic field, which in turn exerts a force on other charges - both those close by and those far away. In this way, the electromagnetic field is responsible for all electrical _and_ magnetic phenomena (hence why it is called the _electromagnetic field_).
+
+For primarily historical reasons, it is customary to divide the electromagnetic field into two separate parts - the electrical part, which we call the _electric field_ and represent as $\mathbf{E}$ (or $E^i$ in tensor notation), as well as the magnetic part, which we call the _magnetic field_ and represent as $\mathbf{B}$ (or $B^i$ in tensor notation). In reality, electric and magnetic fields are parts of one thing, but this distinction has stuck around and is standard convention.
+
+A surprising prediction of electromagnetism is that many things that don't immediately appear to be related to electricity or magnetism in nature are actually fundamental electromagnetic phenomena. The most famous example? Electromagnetic theory predicts that **light is an electromagnetic wave**. While this might be hard to believe - what does light have in common with electricity? - you probably are surrounded by invisible electromagnetic waves right this moment! Radio waves that carry television signals, microwaves used to transmit Wi-Fi, visible light that we use to see, infrared light from the Sun that keeps us warm, X-rays used for medical imaging: these are _all_ electromagnetic waves.
+
+Quantum electrodynamics, the quantum field theory we'll be examining, extends our knowledge of classical electrodynamics to the quantum world. We'll soon learn that in quantum field theory, the electromagnetic field comes in distinct energy states - a **vacuum state** (lowest-energy state) that we write as $|0\rangle$ using Dirac notation, a first excited state $|1\rangle$, and so on. We'll also find out that the first excited state $|1\rangle$ corresponds to _particles_ that we call **photons**. There's a lot to learn - so let's get started!
+
 ## The Maxwell Lagrangian
 
-Before we get to quantum electrodynamics, we need to first examine the classical theory it was built upon. The action for _classical_ electrodynamics is given by:
+Both classical and quantum electrodynamics are field theories, which means that they are associated with a **Lagrangian** (and thus, an action, which is just the spacetime integral of a Lagrangian). _Technically-speaking_, what we commonly-call the Lagrangian should be more properly called the _Lagrangian density_ (the Lagrangian is its integral over all space) but we'll use the common (though incorrect) practice of just calling it "the Lagrangian". The action for the electromagnetic field (in our convention where $\hbar = c = 1$) is given by:
 
 {% math() %}
 S = \int d^4 x \left[-\dfrac{1}{4} F_{\mu \nu} F^{\mu \nu} + A_\mu J^\mu\right]
 {% end %}
 
-Where our Lagrangian (Lagrangian density, technically) is called the **Maxwell Lagrangian**, and is given by:
+Where our Lagrangian is called the **Maxwell Lagrangian**, and is given by:
 
 {% math() %}
 \mathscr{L} = -\dfrac{1}{4} F_{\mu \nu} F^{\mu \nu} + A_\mu J^\mu
 {% end %}
 
-Here, $F_{\mu \nu}$ is the **Faraday tensor**, whose components are the electric and magnetic fields, as given by:
+Here, $F_{\mu \nu}$ is the **Faraday field tensor**, whose components are the electric and magnetic fields, as given by:
 
 {% math() %}
 F_{\mu \nu }=\partial_\mu A_\nu -\partial_\nu A_\mu =
@@ -31,7 +41,13 @@ F_{\mu \nu }=\partial_\mu A_\nu -\partial_\nu A_\mu =
 \end{bmatrix}
 {% end %}
 
-Meanwhile, $A_\mu$ is called the **electromagnetic four-potential**, which are (unsurprisingly) the potential associated with the electromagnetic field. Let's now derive the field equations for $A_\mu$, from which we can find the field equations for $F_{\mu \nu}$. For this, we use the Euler-Lagrange equations for $A_\mu$:
+The Faraday tensor can also be related to the **electromagnetic force** $f^\nu$ (also called the _Lorentz force_ by $f^\nu = F^{\mu \nu} \dot x_\nu$), which naturally encodes the idea that _fields exert forces on particles_. Meanwhile, $A_\mu$ is called the **electromagnetic four-potential** (or simply the _four-potential_ for short), which encodes the energy and momentum present in the electromagnetic field. 
+
+In quantum field theory, the electromagnetic four-potential is actually much _more_ useful than the field tensor $F^{\mu \nu}$, so much so that when quantum field theorists refer to the "electromagnetic field", they typically are talking about the electromagnetic four-potential $A_\mu$ rather than the field tensor. Why? The reason is because in nature, particles want to attain their lowest possible potential energy to gain stability. You see this all the time - for instance, radioactive atoms like uranium decay into more stable atoms, releasing energy in the process, and gaining a more stable configuration as a result. Transfering energy - like by forcibly fusing heavy atoms together - has the opposite result, making them _more unstable_ and highly energetic (and dangerous!) as a result. 
+
+The potential energy stored in fields (like the electromagnetic field) can give potential energy to particles. This means that every field (electromagnetic, gravitational, etc.) can effectively be thought of as having a certain amount of potential energy at every point, which becomes transferred to a particle placed at that location. We call that potential energy gained per particle a **potential field**, and in the case of electromagnetism, it is the _electromagnetic four-potential_ $A_\mu$. Since it's very hard to measure the forces on individual particles but comparatively easier to measure their energies and momenta, it is natural to think about the four-potential first and the field tensor second.
+
+which are (unsurprisingly) the potential associated with the electromagnetic field. Let's now derive the field equations for $A_\mu$, from which we can find the field equations for $F_{\mu \nu}$. For this, we use the Euler-Lagrange equations for $A_\mu$:
 
 {% math() %}
 \dfrac{\partial \mathscr{L}}{\partial A_\mu} - \partial_\beta\left(\dfrac{\partial \mathscr{L}}{\partial(\partial_\beta A_\mu)}\right) = 0
@@ -39,56 +55,52 @@ Meanwhile, $A_\mu$ is called the **electromagnetic four-potential**, which are (
 
 > **Note:** In the Euler-Lagrange field equations, $A_\mu$ and $\partial_\beta$ must be **different indices** because the field is a _function_ of position, that is, $A_\mu = A_\mu(x^\beta)$. Thus, the field must be denoted with a different index compared to the position $x^\beta$ (after all, the $A_x$ component of the field is not just a function of $x$, nor is $A_y$ just a function of $y$!) 
 
-But as soon as we start, uh-oh, we have a problem! The Lagrangian is written in terms of _both_ $F_{\mu \nu}$ and $A_\mu$, but we want to find the field equations for $A_\mu$ specifically. Therefore, we want to first expand the Lagrangian to be explicitly written in terms of $A_\mu$:
+But as soon as we start, uh-oh, we have a problem! The Lagrangian is written in terms of _both_ $F_{\mu \nu}$ and $A_\mu$, but we want to find the field equations for $A_\mu$ specifically. Therefore, we want to first expand the Lagrangian to be explicitly written in terms of $A_\mu$. This involves a bit of an extensive calculation, so let's do this step-by-step.
+
+First, let's find $F^{\mu \nu}$, the upper-index version of $F_{\mu \nu}$. Remember that we can use the metric tensor $\eta_{\mu \nu}$ to raise and lower tensors: here, $F^{\alpha \beta} = \eta^{\alpha \mu}\eta^{\beta \nu} F_{\mu \nu}$ (again, we need to balance the upper and lower repeated indices so there's an equal number of either). Substituting in the definition of the Faraday tensor $F_{\mu \nu} = \partial_\mu A_\nu -\partial_\nu A_\mu$ gets us:
 
 {% math() %}
 \begin{align*}
-% step 1
-\mathscr{L} &= -\dfrac{1}{4} F_{\mu \nu} F^{\mu \nu} + A_\mu J^\mu \\
-&= -\dfrac{1}{4} F_{\mu \nu} \, \underbrace{\eta^{\mu \alpha} \eta^{\nu \beta} F_{\alpha \beta}}_\text{lower indices} + A_\mu J^\mu \\
-% step 2
-&= -\dfrac{1}{4} \eta^{\mu \alpha} \eta^{\nu \beta}[F_{\mu \nu}F_{\alpha \beta}] + A_\mu J^\mu \\
-% step 3
-&= -\dfrac{1}{4} \eta^{\mu \alpha} \eta^{\nu \beta}\underbrace{(\partial_\mu A_\nu -\partial_\nu A_\mu)(\partial_\alpha A_\beta -\partial_\beta A_\alpha)}_\text{expand Faraday tensor} + A_\mu J^\mu \\
-% step 4
-&= -\dfrac{1}{4} \eta^{\mu \alpha} \eta^{\nu \beta}[(\partial_\mu A_\nu)(\partial_\alpha A_\beta) - (\partial_\mu A_\nu)(\partial_\beta A_\alpha) \\
-&\qquad \quad - (\partial_\nu A_\mu)(\partial_\alpha A_\beta)+ (\partial_\nu A_\mu)(\partial_\beta A_\alpha)] + A_\mu J^\mu \\
+F^{\alpha \beta} &= \eta^{\alpha \mu} \eta^{\beta \nu} F_{\mu \nu} \\
+&= \eta^{\alpha \mu} \eta^{\beta \nu} (\partial_\mu A_\nu -\partial_\nu A_\mu) \\
+&= \underbrace{\eta^{\alpha \mu} \eta^{\beta \nu}\partial_\mu A_\nu - \eta^{\alpha \mu} \eta^{\beta \nu} \partial_\nu A_\mu}_\text{we distribute here} \\
+&= (\eta^{\alpha \mu}\partial_\mu )(\eta^{\beta \nu} A_\nu) - (\eta^{\beta \nu} \partial_\nu)(\eta^{\alpha \mu} A_\mu) \\
+&= \partial^\alpha A^\beta - \partial^\beta A^\alpha
 \end{align*}
 {% end %}
 
-> **Tip:** Remember that we can raise and lower indices using the Minkowski metric for example $\eta^{\alpha \mu} A_\mu = A^\alpha$ and the Kronecker delta to relabel indices (but _not_ raise or lower indices), for example $\delta_\nu^\mu A^\nu = A^\mu$.
+> **Tip:** Remember that we can raise and lower indices using the Minkowski metric, for instance, $\eta^{\alpha \mu} A_\mu = A^\alpha$. Meanwhile, we can use the Kronecker delta to relabel indices (but _not_ raise or lower indices), for example $\delta^\mu{}_\nu A^\nu = A^\mu$.
 
-Let's recap what we did in the above calculation. First, since $F^{\mu \nu}$ is a contravariant tensor (meaning it has upper indices), we needed to rewrite it in lower indices. It's important to remember that $F_{\mu \nu} \neq F^{\mu \nu}$! So instead, we used the metric tensor (Minkowski metric) to lower indices - since $F^{\mu \nu} = \eta^{\mu \alpha} \eta^{\nu \beta} F_{\alpha \beta}$. Since the Minkowski metric is unrelated to $F_{\mu \nu}$ we can then factor it out, giving us an expression _completely in terms of_ $A_\mu$ with lower indices (different lower indices but all lower indices, at least). This then allows us to distribute, and if we do so, we get:
+Let's recap our steps. First, we distributed out the terms; then, we grouped terms with like indices, where we could move the metric _inside_ terms because we know the Minkowski metric has constant coefficients. This allowed us to raise indices with the metric - for instance, $\eta^{\alpha \mu} \partial_\mu = \partial^\alpha$ and $\eta^{\beta \nu} A_\nu = A^\beta$. This gave us the result $F^{\alpha \beta} = \partial^\alpha A^\beta - \partial^\beta A^\alpha$. Since we have no terms involving $\mu$ or $\nu$ indices in $F^{\alpha \beta}$, the last step is to do an index replacement of $\alpha \to \mu, \beta \to \nu$ (remember, tensor indices are merely _labels_ and we can change those symbols as we wish). This gives us:
+
+{% math() %}
+F^{\mu \nu} = \partial^\mu A^\nu - \partial^\nu A^\mu
+{% end %}
+
+Plugging this (and the definition of $F_{\mu \nu}$) into the Maxwell Lagrangian gives us a lots of terms, but ones that end up simplifying nicely:
 
 {% math() %}
 \begin{align*}
-% step 5
-\mathscr{L} &= -\dfrac{1}{4}[\eta^{\mu \alpha} \eta^{\nu \beta}(\partial_\mu A_\nu)(\partial_\alpha A_\beta) - \eta^{\mu \alpha} \eta^{\nu \beta}(\partial_\mu A_\nu)(\partial_\beta A_\alpha) \\
-&\qquad \quad - \eta^{\mu \alpha} \eta^{\nu \beta}(\partial_\nu A_\mu)(\partial_\alpha A_\beta)+ \eta^{\mu \alpha} \eta^{\nu \beta}(\partial_\nu A_\mu)(\partial_\beta A_\alpha)] + A_\mu J^\mu \\
-% step 6
-&= -\dfrac{1}{4}[\underbrace{\delta^\mu_\mu \delta_\nu^\nu\,(\partial^\alpha A^\beta)(\partial_\alpha A_\beta)}_\text{tensor contraction}- \delta^\mu_\mu \delta_\nu^\nu(\partial^\alpha A^\beta)(\partial_\beta A_\alpha) \\
-&\qquad \quad - \delta^\mu_\mu \delta_\nu^\nu(\partial^\beta A^\alpha)(\partial_\alpha A_\beta) + \delta^\mu_\mu \delta_\nu^\nu(\partial^\beta A^\alpha)(\partial_\beta A_\alpha)] + A_\mu J^\mu \\
-% step 7
-&= -\dfrac{1}{4}\delta^\mu_\mu \delta^\nu_\nu[\underbrace{(\partial^\alpha A^\beta)(\partial_\alpha A_\beta)}_{\alpha, \beta \text{ are dummy indices}} + (\partial^\beta A^\alpha)(\partial_\beta A_\alpha) \\
-&\qquad\quad - (\partial^\alpha A^\beta)(\partial_\beta A_\alpha) -(\partial^\beta A^\alpha)(\partial_\alpha A_\beta)] -A_\mu J^\mu \\
-% step 8
-&= -\dfrac{1}{4}\delta^\mu_\mu \delta^\nu_\nu[(\partial^\sigma A^\lambda)(\partial_\sigma A_\lambda) + (\partial^\sigma A^\lambda)(\partial_\sigma A_\lambda) \\
-% step 9
-&\qquad \quad - (\partial^\sigma A^\lambda)(\partial_\lambda A_\sigma) - (\partial^\sigma A^\lambda)(\partial_\lambda A_\sigma)] + A_\mu J^\mu \\
-% step 10
-&= -\dfrac{1}{4} \delta^\mu_\mu \delta^\nu_\nu [2(\partial^\sigma A^\lambda)(\partial_\sigma A_\lambda) - 2(\partial^\sigma A^\lambda)(\partial_\lambda A_\sigma)] + A_\mu J^\mu \\
-% step 11
-&= -\dfrac{1}{2} \underbrace{\delta^\mu_\mu \delta^\nu_\nu\, \partial^\sigma A^\lambda}_{\partial^\sigma A^\lambda}
-[\partial_\sigma A_\lambda - \partial_\lambda A_\sigma] + A_\mu J^\mu \\
-&= -\dfrac{1}{2} \partial^\sigma A^\lambda [\partial_\sigma A_\lambda - \partial_\lambda A_\sigma] + A_\mu J^\mu
+\mathscr{L} &= -\dfrac{1}{4} F_{\mu \nu}F^{\mu \nu} + A_\mu J^\mu \\
+&= -\dfrac{1}{4}(\partial_\mu A_\nu -\partial_\nu A_\mu)(\partial^\mu A^\nu - \partial^\nu A^\mu) + A_\mu J^\mu \\
+&= -\dfrac{1}{4}(\partial_\mu A_\nu \partial^\mu A^\nu - \partial_\mu A_\nu \partial^\nu A^\mu \\
+&\qquad \qquad- \partial_\nu A_\mu \partial^\mu A^\nu + \partial_\nu A_\mu \partial^\nu A^\mu) + A_\mu J^\mu
 \end{align*}
 {% end %}
 
-In the second part of our calculation, we distributed the Minkowski metric $\eta^{\mu \alpha} \eta^{\nu \beta}$, which we had previously factored out, across every term. This gives us a bunch of Kronecker deltas, but we now have everything in terms of the same indices.
+While this may look complicated, notice that $\mu$ and $\nu$ are repeated as upper and lower indices in all the terms (except $A_\mu J^\mu$ but let's ignore that for now). This means $\mu$ and $\nu$ are **dummy indices** (summation indices) and we are free to change the indices to whatever we want! In the first and second terms ($\partial_\mu A_\nu \partial^\mu A^\nu$ and $\partial_\mu A_\nu \partial^\nu A^\mu$), let's make the index replacements $\mu \to \sigma$ and $\nu \to \lambda$. This turns them respectively into $\partial_\sigma A_\lambda \partial^\sigma A^\lambda$ and $\partial_\sigma A_\lambda \partial^\lambda A^\sigma$. Meanwhile, in the third and fourth terms ($\partial_\nu A_\mu \partial^\mu A^\nu$ and $\partial_\nu A_\mu \partial^\nu A^\mu$) let's make the index replacements $\mu \to \lambda$ and $\nu \to \sigma$ (which, again, we are free to do because of the Einstein summation convention). This turns them respectively into $\partial_\sigma A_\lambda \partial^\lambda A^\sigma$ and $\partial_\sigma A_\lambda \partial^\sigma A^\lambda$. Then the Lagrangian becomes:
 
-> **Note:** We could have avoided all the difficult tensor manipulations _if_ we knew beforehand the precise expression for $F^{\mu \nu}$. But since we _didn't_ know this beforehand, we had to use the Minkowski metric to lower the indices to find $F^{\mu \nu}$ in terms of $F_{\mu \nu}$.
+{% math() %}
+\begin{align*}
+\mathscr{L} &= -\dfrac{1}{4}(\partial_\sigma A_\lambda \partial^\sigma A^\lambda - \partial_\sigma A_\lambda \partial^\lambda A^\sigma \\
+&\qquad \qquad- \partial_\sigma A_\lambda \partial^\lambda A^\sigma + \partial_\sigma A_\lambda \partial^\sigma A^\lambda) + A_\mu J^\mu \\
+&= -\dfrac{1}{4}(2\partial_\sigma A_\lambda \partial^\sigma A^\lambda - \underbrace{2\partial_\sigma A_\lambda \partial^\lambda A^\sigma}_{\text{swap indices } \lambda \leftrightarrow \sigma}) + A_\mu J^\mu \\
+&= -\dfrac{1}{2} (\partial_\sigma A_\lambda \partial^\sigma A^\lambda - \partial_\lambda A_\sigma \partial^\sigma A^\lambda) + A_\mu J^\mu \\
+&= -\dfrac{1}{2} \partial^\sigma A^\lambda[\partial_\sigma A_\lambda - \partial_\lambda A_\sigma] + A_\mu J^\mu
+\end{align*}
+{% end %}
 
-Finally, using the fact that since repeated upper and lower indices are dummy indices (which we can rename to whatever indices we want), we can relabel them as anything we want. This means that for the first term $(\partial^\alpha A^\beta)(\partial_\alpha A_\beta)$, we can relabel with $\alpha \to \sigma, \beta \to \lambda$, giving us $(\partial^\sigma A^\lambda)(\partial_\sigma A_\lambda)$ as the relabelled (but completely equivalent) expression. Meanwhile, for the second term$(\partial^\beta A^\alpha)(\partial_\beta A_\alpha)$ we can relabel with $\alpha \to \lambda, \beta \to \sigma$ (again, the indices we choose to relabel with _do not matter_), which gives us the relabelled expression $(\partial^\sigma A^\lambda)(\partial_\sigma A_\lambda)$. This allows us to collect like terms together, much simplifying the expression for the Lagrangian. We also did the same for $A_\mu J^\mu$ - since we have repeated upper and lower indices, we may freely choose $\mu \to \sigma$ (although again we could've picked _any_ other index; indeed, we could've chosen $\mu \to \lambda$ if we so wanted). In the last step, we made the simplification $\delta^\mu_\mu \delta^\nu_\nu\, \partial^\sigma A^\lambda = \partial^\sigma A^\lambda$: since $\delta^\mu_\mu = \delta^\nu_\nu = I^4$ (the 4D identity matrix), the tensor product of the Kronecker delta with $\partial^\sigma A^\lambda$ just returns $\partial^\sigma A^\lambda$ itself.
+Again, let's recap: after subsituting in our relabelled expressions, we find that - ta-da! - the first four terms collapse to just two. What's more, we can factor out a common factor $\partial^\sigma A^\lambda$ to simplify further. We do need to make one slight change by relabelling the $2\partial_\sigma A_\lambda \partial^\lambda A^\sigma$ term to $2\partial_\lambda A_\sigma \partial^\sigma A^\lambda$. If this is hard to understand, you can achieve an equivalent result in two steps. First, relabel $\sigma, \lambda$ to another set of dummy indices first (for instance, $\sigma \to \alpha, \lambda \to \beta$). Then, we get $2\partial_\sigma A_\lambda \partial^\lambda A^\sigma \to 2\partial_\alpha A_\beta \partial^\beta A^\alpha$. We can then perform another completely-valid replacement of $\alpha \to \lambda, \beta \to \sigma$ (since both are dummy indices). Then, we get $2\partial_\alpha A_\beta \partial^\beta A^\alpha \to 2\partial_\lambda A_\sigma \partial^\sigma A^\lambda$, which is our result from before.
 
 Phew, that was a lot! Now, we can _finally_ find the equations of motion. Remember the Euler-Lagrange equation for $A_\mu$ is given by:
 
@@ -96,12 +108,19 @@ Phew, that was a lot! Now, we can _finally_ find the equations of motion. Rememb
 \dfrac{\partial \mathscr{L}}{\partial A_\mu} - \partial_\beta\left(\dfrac{\partial \mathscr{L}}{\partial(\partial_\beta A_\mu)}\right) = 0
 {% end %}
 
-Let us now take the partial derivatives of the Lagrangian, which we perform step-by-step below:
+Let us now take the partial derivatives of the Lagrangian, which we perform step-by-step below. It's helpful to actually first expand the Lagrangian:
 
 {% math() %}
 \begin{align*}
 \mathscr{L} &= -\dfrac{1}{2} \partial^\sigma A^\lambda [\partial_\sigma A_\lambda - \partial_\lambda A_\sigma] + A_\mu J^\mu \\
 &= -\dfrac{1}{2} (\partial^\sigma A^\lambda)(\partial_\sigma A_\lambda) + \dfrac{1}{2} (\partial^\sigma A^\lambda)(\partial_\lambda A_\sigma) + A_\mu J^\mu \\
+\end{align*}
+{% end %}
+
+Now we can differentiate, as follows:
+
+{% math() %}
+\begin{align*}
 % derivative of Lagrangian with respect to field
 \dfrac{\partial \mathscr{L}}{\partial A_\mu} &= J^\mu \\
 % derivative of Lagrangian with respect to partial derivative of field
