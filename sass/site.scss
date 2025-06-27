@@ -507,19 +507,19 @@ header {
 
 .page-switch-buttons {
     .page-up, .page-down, .page-start {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	border: 1px solid $border;
-	border-radius: 0.3rem;
-	padding: 1rem 2rem;
-	margin-bottom: 0.5rem;
+  	  display: flex;
+  	  flex-direction: column;
+  	  align-items: flex-start;
+  	  border: 1px solid $border;
+  	  border-radius: 0.3rem;
+  	  padding: 1rem 2rem;
+  	  margin-bottom: 0.5rem;
     }
 
     .page-up, .page-down {
 
 	strong {
-	    color: $tx-color-5;
+	    color: $tx-color-1;
 	}
 
 	strong, a {
@@ -528,6 +528,10 @@ header {
 
 	&:hover {
 	  border: 1px solid $primary-btn-bg;
+
+    strong {
+      color: $tx-color-2;
+    }
 	}
     }
 
