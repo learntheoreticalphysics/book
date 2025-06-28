@@ -118,19 +118,19 @@ This is our **equation of motion** for our free scalar field, and it is called t
 Now is the time to take our _classical_ field $\phi$ and turn it into a quantum field, a process called **canonical quantization**. To start, we first need to solve the Klein-Gordon equation with a [Fourier decomposition](https://ese-msc.github.io/preinduction/edsml/primer/notebooks/c_mathematics/differential_equations/11_pde_fourier.html), which gives the general solution:
 
 {% math() %}
-\phi(x^\mu) = \int \dfrac{d^3 p}{(2\pi)^32E_p} \left[a(p) e^{i\mathbf{p} \cdot \mathbf{x}} + a^*(p) e^{-i\mathbf{p} \cdot \mathbf{x}}\right] 
+\phi(x^\mu) = \int \dfrac{d^3 p}{(2\pi)^32E_p} \left[a(p) e^{ip_\mu x^\mu} + a^*(p) e^{-ip_\mu x^\mu}\right] 
 {% end %}
 
 Where $E_p = \sqrt{p^2 + m^2}$ comes from the energy-momentum relation, as we discussed earlier. We may promote this to a field if we make the identifications of $a \to \hat a$, $a^* \to a^\dagger$, which are the _creation and annihilation operators_ which generalize the raising and lowering operators we previously saw. Thus, our _quantum_ field $\hat \phi$ is now an operator:
 
 {% math() %}
-\hat \phi(x^\mu) = \int \dfrac{d^3 p}{(2\pi)^32E_p} \left[\hat a(p) e^{i\mathbf{p} \cdot \mathbf{x}} + \hat a^\dagger(p) e^{-i\mathbf{p} \cdot \mathbf{x}}\right] 
+\hat \phi(x^\mu) = \int \dfrac{d^3 p}{(2\pi)^32E_p} \left[\hat a(p) e^{ip_\mu x^\mu} + \hat a^\dagger(p) e^{-ip_\mu x^\mu}\right] 
 {% end %}
 
 For mathematical convenience we write $\hat a(p)$ as $\hat a_p$ and $\hat a^\dagger(p)$ as $\hat a^\dagger_p$, and we write $\hat \phi(x^\mu)$ as just $\hat \phi$. Thus our field operator becomes:
 
 {% math() %}
-\hat \phi = \int \dfrac{d^3 p}{(2\pi)^3 2E_p} \left[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} + \hat a^\dagger_p e^{-i\mathbf{p} \cdot \mathbf{x}}\right] 
+\hat \phi = \int \dfrac{d^3 p}{(2\pi)^3 2E_p} \left[\hat a_p e^{ip_\mu x^\mu} + \hat a^\dagger_p e^{-ip_\mu x^\mu}\right] 
 {% end %}
 
 Where we _define_ our raising and lowering operators such that:
@@ -152,13 +152,13 @@ The raising operator $\hat a_p$ raises the field to a higher-energy state, where
 
 {% math() %}
 \begin{align*}
-\hat \phi|0\rangle &= \int \dfrac{d^3 p}{(2\pi)^32E_p} \left[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} + \hat a^\dagger_p e^{-i\mathbf{p} \cdot \mathbf{x}}\right] |0\rangle \\
+\hat \phi|0\rangle &= \int \dfrac{d^3 p}{(2\pi)^32E_p} \left[\hat a_p e^{ip_\mu x^\mu} + \hat a^\dagger_p e^{-ip_\mu x^\mu}\right] |0\rangle \\
 % step 1
-&= \int \dfrac{d^3 p}{(2\pi)^32E_p} \bigg[\underbrace{\hat a_p|0\rangle}_\text{distribute} e^{i\mathbf{p} \cdot \mathbf{x}} + \underbrace{\hat a^\dagger_p|0\rangle}_\text{distribute} e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg] \\
+&= \int \dfrac{d^3 p}{(2\pi)^32E_p} \bigg[\underbrace{\hat a_p|0\rangle}_\text{distribute} e^{ip_\mu x^\mu} + \underbrace{\hat a^\dagger_p|0\rangle}_\text{distribute} e^{-ip_\mu x^\mu}\bigg] \\
 % step 2
-&= \int \dfrac{d^3 p}{(2\pi)^32E_p} \bigg[\underbrace{\cancel{\hat a_p|0}\rangle^0}_{\text{since } \hat a_p|0\rangle = 0 } e^{i\mathbf{p} \cdot \mathbf{x}} + \underbrace{|1\rangle e^{-i\mathbf{p} \cdot \mathbf{x}}}_{\text{since } \hat a_p^\dagger|0\rangle = |1\rangle}\bigg] \\
-&= \int \dfrac{d^3 p}{(2\pi)^32E_p}|1\rangle \, e^{-i\mathbf{p} \cdot \mathbf{x}} \\
-&= \int d^3 p\dfrac{e^{-i\mathbf{p} \cdot \mathbf{x}}}{(2\pi)^32E_p}|1\rangle
+&= \int \dfrac{d^3 p}{(2\pi)^32E_p} \bigg[\underbrace{\cancel{\hat a_p|0}\rangle^0}_{\text{since } \hat a_p|0\rangle = 0 } e^{ip_\mu x^\mu} + \underbrace{|1\rangle e^{-ip_\mu x^\mu}}_{\text{since } \hat a_p^\dagger|0\rangle = |1\rangle}\bigg] \\
+&= \int \dfrac{d^3 p}{(2\pi)^32E_p}|1\rangle \, e^{-ip_\mu x^\mu} \\
+&= \int d^3 p\dfrac{e^{-ip_\mu x^\mu}}{(2\pi)^32E_p}|1\rangle
 \end{align*}
 {% end %}
 
@@ -185,25 +185,25 @@ Where $\delta^3$ is the three-dimensional Dirac delta function, which obeys $\di
 To calculate the expectation value of the single-particle state $\langle 0 |\hat \phi| p\rangle$, we just "flip" our previous result for $\hat \phi |0\rangle$ around to get:
 
 {% math() %}
-\langle 0| \hat \phi = \langle 1|\int d^3 p\dfrac{e^{-i\mathbf{p} \cdot \mathbf{x}}}{(2\pi)^32E_p}
+\langle 0| \hat \phi = \langle 1|\int d^3 p\dfrac{e^{-ip_\mu x^\mu}}{(2\pi)^32E_p}
 {% end %}
 
 Then, substituting in {% inlmath() %}|p\rangle = 2E_p\, \hat a_p^\dagger |0\rangle = 2E_p\,|1\rangle{% end %}, we have:
 
 {% math() %}
 \begin{align*}
-\langle 0 |\hat \phi |p\rangle &= \langle 1|\int d^3 p\dfrac{e^{-i\mathbf{p} \cdot \mathbf{x}}}{(2\pi)^32E_p}|p\rangle \\
-&= \langle 1|\int d^3 p\dfrac{e^{-i\mathbf{p} \cdot \mathbf{x}}}{(2\pi)^32E_p} \underbrace{2E_p\,|1\rangle}_{|p\rangle = 2E_p\,|1\rangle} \\
-&= \int d^3 p \dfrac{e^{-i\mathbf{p} \cdot \mathbf{x}}}{(2\pi)^3} \underbrace{\langle 1|1\rangle}_\text{orthogonal} \\
-&= \int d^3 p \dfrac{e^{-i\mathbf{p} \cdot \mathbf{x}}}{(2\pi)^3}(2\pi)^3 \delta^3(p - p') \\
-&= \int d^3 p \underbrace{\left[e^{-i\mathbf{p} \cdot \mathbf{x}}\delta^3(p - p')\right]}_\text{Dirac delta integrates to 1} \\
-&= e^{-i\mathbf{p} \cdot \mathbf{x}}
+\langle 0 |\hat \phi |p\rangle &= \langle 1|\int d^3 p\dfrac{e^{-ip_\mu x^\mu}}{(2\pi)^32E_p}|p\rangle \\
+&= \langle 1|\int d^3 p\dfrac{e^{-ip_\mu x^\mu}}{(2\pi)^32E_p} \underbrace{2E_p\,|1\rangle}_{|p\rangle = 2E_p\,|1\rangle} \\
+&= \int d^3 p \dfrac{e^{-ip_\mu x^\mu}}{(2\pi)^3} \underbrace{\langle 1|1\rangle}_\text{orthogonal} \\
+&= \int d^3 p \dfrac{e^{-ip_\mu x^\mu}}{(2\pi)^3}(2\pi)^3 \delta^3(p - p') \\
+&= \int d^3 p \underbrace{\left[e^{-ip_\mu x^\mu}\delta^3(p - p')\right]}_\text{Dirac delta integrates to 1} \\
+&= e^{-ip_\mu x^\mu}
 \end{align*}
 {% end %}
 
-So the expectation value of the field for the single-particle state is just $e^{-i\mathbf{p} \cdot \mathbf{x}}$, _exactly_ the same as the wavefunction of a single particle with momentum $\mathbf{p}$. Physically-speaking, we have thus shown that our quantum field $\hat \phi$ can _create_ particles, and this is why we often call $\hat a^\dagger_p$ the **creation operator**. Our field $\hat \phi$ can also _annihilate_ particles, and this is why we often call $\hat a_p$ the **annihilation operator**.
+So the expectation value of the field for the single-particle state is just $e^{-ip_\mu x^\mu}$, which describes a plane wave of a free particle with momentum $\small \mathbf{p}$! Note that since these plane wave solutions have exactly-known momentum, the Heisenberg uncertainty principle tells us that their position cannot be determined. We come to the conclusion that such a particle could be anywhere!
 
-This means that, unlike non-relativistic quantum mechanics, where the particle (such as the electron) is the fundamental entity, in quantum field theory, the *field* is the fundamental entity, out of which particles arise and disappear - which is why quantum field theory is the basic theoretical framework for **particle physics**. Indeed, the free scalar field theory is a theory that can describe particles called [pions](https://en.wikipedia.org/wiki/Pion) (also called pi mesons), although not much else. We'll soon see more "interesting" (but also more complicated) theories that describe particles that are much more well-known, like photons, electrons, and quarks.
+Physically-speaking, we have thus shown that our quantum field $\hat \phi$ can _create_ particles, and this is why we often call $\hat a^\dagger_p$ the **creation operator**. Our field $\hat \phi$ can also _annihilate_ particles, and this is why we often call $\hat a_p$ the **annihilation operator**. This means that, unlike non-relativistic quantum mechanics, where the particle (such as the electron) is the fundamental entity, in quantum field theory, the *field* is the fundamental entity, out of which particles arise and disappear - which is why quantum field theory is the basic theoretical framework for **particle physics**. Indeed, the free scalar field theory is a theory that can describe particles called [pions](https://en.wikipedia.org/wiki/Pion) (also called pi mesons), although not much else. We'll soon see more "interesting" (but also more complicated) theories that describe particles that are much more well-known, like photons, electrons, and quarks.
 
 ## The field Hamiltonian
 
@@ -279,7 +279,7 @@ Thus using the previous expression $\mathcal{H} = \Pi\,\partial_0\phi - \mathscr
 To obtain the quantum Hamiltonian density, we need only find the quantum canonical momentum $\hat \Pi$, and substitute $\hat \phi$ and $\hat \Pi$ into our expression for the classical Hamiltonian density. From $\Pi = \partial_0 \phi$, it follows that $\hat \Pi = \partial_0 \hat \phi$. Recall that $\hat \phi$ is given by:
 
 {% math() %}
-\hat \phi = \int \dfrac{d^3 p}{(2\pi)^3 2E_p} \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} + \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg]
+\hat \phi = \int \dfrac{d^3 p}{(2\pi)^3 2E_p} \bigg[\hat a_p e^{ip_\mu x^\mu} + \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg]
 {% end %}
 
 Thus we have:
@@ -287,25 +287,25 @@ Thus we have:
 {% math() %}
 \begin{align*}
 \hat \Pi &= \partial_0 \hat \phi \\
-&= \int \dfrac{d^3 p}{(2\pi)^32E_p} \bigg[\hat a_p \underbrace{\partial_0 e^{i\mathbf{p} \cdot \mathbf{x}}}_{ip_0e^{i\mathbf{p} \cdot \mathbf{x}}} + \hat a_p^\dagger\underbrace{\partial_0  e^{-i\mathbf{p} \cdot \mathbf{x}}}_{-ip_0e^{i\mathbf{p} \cdot \mathbf{x}}}\bigg] \\
-&= \int \dfrac{d^3 p}{(2\pi)^32E_p} \underbrace{(ip_0)}_{p_0=E_p} \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} - \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg] \\
-&= \int \dfrac{d^3 p}{(2\pi)^32E_p} (iE_p) \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} - \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg]
+&= \int \dfrac{d^3 p}{(2\pi)^32E_p} \bigg[\hat a_p \underbrace{\partial_0 e^{ip_\mu x^\mu}}_{ip_0e^{ip_\mu x^\mu}} + \hat a_p^\dagger\underbrace{\partial_0  e^{-ip_\mu x^\mu}}_{-ip_0e^{ip_\mu x^\mu}}\bigg] \\
+&= \int \dfrac{d^3 p}{(2\pi)^32E_p} \underbrace{(ip_0)}_{p_0=E_p} \bigg[\hat a_p e^{ip_\mu x^\mu} - \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg] \\
+&= \int \dfrac{d^3 p}{(2\pi)^32E_p} (iE_p) \bigg[\hat a_p e^{ip_\mu x^\mu} - \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg]
 \end{align*}
 {% end %}
 
-Note that the reason $\partial_0 e^{i\mathbf{p} \cdot \mathbf{x}} = ip_0 e^{i\mathbf{p} \cdot \mathbf{x}}$ is that the momentum $\mathbf{p} = p^\mu = \langle p^0, p^1, p^2, p^3\rangle$ is a four-component vector, so when we differentiate it, we get $ip_0$ as a constant factor. The four components of $p^\mu$ are $p^\mu = \langle E_p, p_x, p_y, p_z$, which turned $ip_0$ to $iE_p$. Substituting our results for $\hat \phi$ and $\hat \Pi$ into our definition of $\hat{\mathcal{H}}$, where we substitute $\phi$ for $\hat \phi$ and $\Pi$ for $\hat \Pi$, we have:
+Note that the reason $\partial_0 e^{ip_\mu x^\mu} = ip_0 e^{ip_\mu x^\mu}$ is that the momentum $\mathbf{p} = p^\mu = \langle p^0, p^1, p^2, p^3\rangle$ is a four-component vector, so when we differentiate it, we get $ip_0$ as a constant factor. The four components of $p^\mu$ are $p^\mu = \langle E_p, p_x, p_y, p_z$, which turned $ip_0$ to $iE_p$. Substituting our results for $\hat \phi$ and $\hat \Pi$ into our definition of $\hat{\mathcal{H}}$, where we substitute $\phi$ for $\hat \phi$ and $\Pi$ for $\hat \Pi$, we have:
 
 {% math() %}
 \begin{align*}
 \hat{\mathcal{H}} &= \dfrac{1}{2}\hat\Pi^2 + \dfrac{1}{2} \underbrace{\partial_i \hat \phi \partial^i \hat \phi}_{-(\partial_i\hat \phi)^2} - \dfrac{1}{2} m^2 \hat \phi^2 \\
-&= \dfrac{1}{2} \int \dfrac{d^3 p}{(2\pi)^32E_p} (iE_p) \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} - \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg]\int \dfrac{d^3 p}{(2\pi)^32E_p} (iE_p) \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} - \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg] \\ 
+&= \dfrac{1}{2} \int \dfrac{d^3 p}{(2\pi)^32E_p} (iE_p) \bigg[\hat a_p e^{ip_\mu x^\mu} - \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg]\int \dfrac{d^3 p}{(2\pi)^32E_p} (iE_p) \bigg[\hat a_p e^{ip_\mu x^\mu} - \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg] \\ 
 % step 2
-&\qquad - \dfrac{1}{2}\left(\partial_i \int \dfrac{d^3 p}{(2\pi)^3 2E_p} \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} + \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg]\right)^2 \\
-&\qquad - \dfrac{1}{2}m^2 \int \dfrac{d^3 p}{(2\pi)^3 2E_p} \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} + \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg] \int \dfrac{d^3 p}{(2\pi)^3 2E_p} \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} + \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg] \\
+&\qquad - \dfrac{1}{2}\left(\partial_i \int \dfrac{d^3 p}{(2\pi)^3 2E_p} \bigg[\hat a_p e^{ip_\mu x^\mu} + \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg]\right)^2 \\
+&\qquad - \dfrac{1}{2}m^2 \int \dfrac{d^3 p}{(2\pi)^3 2E_p} \bigg[\hat a_p e^{ip_\mu x^\mu} + \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg] \int \dfrac{d^3 p}{(2\pi)^3 2E_p} \bigg[\hat a_p e^{ip_\mu x^\mu} + \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg] \\
 % step 3
-&= \dfrac{1}{2} \int \dfrac{d^6 p}{[(2\pi)^32E_p]^2} (iE_p) \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} - \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg]  \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} - \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg] \\ 
-&\qquad - \dfrac{1}{2}\left(\partial_i \int \dfrac{d^3 p}{(2\pi)^3 2E_p} \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} + \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg]\right)^2 \\
-&\qquad - \dfrac{1}{2}m^2 \int \dfrac{d^6 p}{[(2\pi)^3 2E_p]^2} \bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} + \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg]\bigg[\hat a_p e^{i\mathbf{p} \cdot \mathbf{x}} + \hat a_p^\dagger e^{-i\mathbf{p} \cdot \mathbf{x}}\bigg] \\
+&= \dfrac{1}{2} \int \dfrac{d^6 p}{[(2\pi)^32E_p]^2} (iE_p) \bigg[\hat a_p e^{ip_\mu x^\mu} - \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg]  \bigg[\hat a_p e^{ip_\mu x^\mu} - \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg] \\ 
+&\qquad - \dfrac{1}{2}\left(\partial_i \int \dfrac{d^3 p}{(2\pi)^3 2E_p} \bigg[\hat a_p e^{ip_\mu x^\mu} + \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg]\right)^2 \\
+&\qquad - \dfrac{1}{2}m^2 \int \dfrac{d^6 p}{[(2\pi)^3 2E_p]^2} \bigg[\hat a_p e^{ip_\mu x^\mu} + \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg]\bigg[\hat a_p e^{ip_\mu x^\mu} + \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg] \\
 % last step
 &= \dfrac{1}{2} \int \dfrac{d^3p\,E_p}{(2\pi)^3}(\hat a^\dagger_p \hat a_p + \hat a_p \hat a^\dagger_p)
 \end{align*}

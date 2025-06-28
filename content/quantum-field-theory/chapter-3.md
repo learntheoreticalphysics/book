@@ -142,12 +142,14 @@ The partial derivative with respect to $\partial_\beta A_\mu$ is by far the more
 
 > **Tip**: This is a great example of how to properly take derivatives with respect to a tensor with upper and lower indices. For some tensor $K^{\mu \nu}$, it's important to remember that $\partial_\mu K^{\mu \nu} \neq \partial^\mu K_{\mu \nu} \neq \partial_\mu K_{\mu \nu}$. Rather, we must **lower the indices first** with $K^{\mu \nu} = \eta^{\mu \alpha} \eta^{\nu \beta} K_{\alpha \beta}$ and **then** take the derivatives with respect to the lower index. We do the same for some tensor with lower indices, except we would need to **raise the indices** first. Furthermore, we have to be careful of products, in which case we need to use the **product rule** for differentiation.
 
-We now have two terms to differentiate, $(\partial^\sigma A^\lambda)(\partial_\sigma A_\lambda)$ and $(\partial^\sigma A^\lambda)(\partial_\lambda A_\sigma)$. We'll differentiate them one by one. Starting with the first term, we have:
+We now have two terms to differentiate, $(\partial^\sigma A^\lambda)(\partial_\sigma A_\lambda)$ and $(\partial^\sigma A^\lambda)(\partial_\lambda A_\sigma)$. We'll differentiate them one by one. Starting with the first term and using the product rule for derivatives, we have:
 
 {% math() %}
 \begin{align*}
-\dfrac{\partial}{\partial(\partial_\beta A_\mu)}(\partial^\sigma A^\lambda)(\partial_\sigma A_\lambda) &= \underbrace{(\partial_\sigma A_\lambda)\dfrac{\partial}{\partial(\partial_\beta A_\mu)}(\partial^\sigma A^\lambda) + (\partial^\sigma A^\lambda)\dfrac{\partial}{\partial(\partial_\beta A_\mu)}(\partial_\sigma A_\lambda)}_\text{expanded using the product rule} \\
-&= (\partial_\sigma A_\lambda)\dfrac{\partial}{\partial(\partial_\beta A_\mu)}\underbrace{(\eta^{\mu \sigma} \eta^{\beta \lambda}\partial_\mu A_\beta)}_\text{lower indices} + (\partial^\sigma A^\lambda)\dfrac{\partial}{\partial(\partial_\beta A_\mu)}\underbrace{(\delta^\mu{}_\sigma \delta^\beta{}_\lambda \partial_\mu A_\beta)}_\text{relabel indices} \\
+\dfrac{\partial}{\partial(\partial_\beta A_\mu)}(\partial^\sigma A^\lambda)(\partial_\sigma A_\lambda) &= (\partial_\sigma A_\lambda)\dfrac{\partial}{\partial(\partial_\beta A_\mu)}(\partial^\sigma A^\lambda) \\
+&\qquad \qquad+ (\partial^\sigma A^\lambda)\dfrac{\partial}{\partial(\partial_\beta A_\mu)}(\partial_\sigma A_\lambda) \\
+&= (\partial_\sigma A_\lambda)\dfrac{\partial}{\partial(\partial_\beta A_\mu)}\underbrace{(\eta^{\mu \sigma} \eta^{\beta \lambda}\partial_\mu A_\beta)}_\text{lower indices} \\
+&\qquad \qquad+ (\partial^\sigma A^\lambda)\dfrac{\partial}{\partial(\partial_\beta A_\mu)}\underbrace{(\delta^\mu{}_\sigma \delta^\beta{}_\lambda \partial_\mu A_\beta)}_\text{relabel indices} \\
 &=\underbrace{(\partial_\sigma A_\lambda)\eta^{\mu \sigma} \eta^{\beta \lambda} + (\partial^\sigma A^\lambda)\delta^\mu{}_\sigma \delta^\beta{}_\lambda}_\text{distribute after differentiating} \\
 &=\partial^\mu A^\beta + \partial^\mu A^\beta  \\
 &= 2\partial^\mu A^\beta
@@ -227,26 +229,26 @@ Where $\epsilon^\nu$ is a constant vector (called the **polarization**), and $\p
 \begin{align*}
 \partial_\mu \partial^\mu A^\nu &= \partial_\mu \partial^\mu (\epsilon^\nu \phi) \\
 &= \epsilon^\nu\partial_\mu \partial^\mu \phi \\
-&= 0 \text{ if }\partial_\mu \partial^\mu \phi = 0
+&= 0 \rightarrow \partial_\mu \partial^\mu \phi = 0
 \end{align*}
 {% end %}
 
 This gives us a shortcut solution, since we already know the general solution to the Klein-Gordon equation, which we wrote as a Fourier expansion:
 
 {% math() %}
-\phi(x^\mu) = \int \dfrac{d^3 p}{(2\pi)^32E_p} \left[a(p) e^{i\mathbf{p} \cdot \mathbf{x}} + a^*(p) e^{-i\mathbf{p} \cdot \mathbf{x}}\right] 
+\phi(x^\mu) = \int \dfrac{d^3 p}{(2\pi)^32E_p} \left[a(p) e^{ip_\mu x^\mu} + a^*(p) e^{-ip_\mu x^\mu}\right] 
 {% end %}
 
 Thus, our solution to Maxwell's equation becomes:
 
 {% math() %}
-A^\nu = \epsilon^\nu \phi =\int \dfrac{d^3 p}{(2\pi)^32E_p}\left[\epsilon^\nu a(p) e^{i\mathbf{p} \cdot \mathbf{x}} + \epsilon^\nu a^*(p) e^{-i\mathbf{p} \cdot \mathbf{x}}\right]
+A^\nu = \epsilon^\nu \phi =\int \dfrac{d^3 p}{(2\pi)^32E_p}\left[\epsilon^\nu a(p) e^{ip_\mu x^\mu} + \epsilon^\nu a^*(p) e^{-ip_\mu x^\mu}\right]
 {% end %}
 
 Out of notational preference, we'll switch to the lower-index version of the field $A_\mu = \eta_{\mu \nu} A^\nu$, and write $a(p)$ as $a_p$ as well as {% inlmath() %}a^*(p){% end %} as {% inlmath() %}a^*_p{% end %}. The solution largely remains the same, with the only difference being that the polarization vector {% inlmath() %}\eta_{\mu \nu} \epsilon^\nu = \epsilon_\mu{% end %} must also shift to a lower index, thus giving us:
 
 {% math() %}
-A_\mu =\int \dfrac{d^3 p}{(2\pi)^32E_p}\left[\epsilon_\mu a_p e^{i\mathbf{p} \cdot \mathbf{x}} + \epsilon_\mu a^*_p e^{-i\mathbf{p} \cdot \mathbf{x}}\right]
+A_\mu =\int \dfrac{d^3 p}{(2\pi)^32E_p}\left[\epsilon_\mu a_p e^{ip_\mu x^\mu} + \epsilon_\mu a^*_p e^{-ip_\mu x^\mu}\right]
 {% end %}
 
 Let's take a short moment to discuss the polarization vector $\epsilon_\mu$. Physically-speaking, the polarization vector represents the _orientation_ of the field vectors. It turns out that there are two possible orientations for the $A_\mu$ field, and thus two polarization vectors, which are, respectively:
@@ -263,13 +265,13 @@ Let's take a short moment to discuss the polarization vector $\epsilon_\mu$. Phy
 Given the two polarizations, the most general solution to Maxwell's equations should be a superposition of both polarizations - so we write the solution as a sum of the two polarizations:
 
 {% math() %}
-A_\mu = \int\dfrac{d^3 p}{(2\pi)^3} \sum_{r = 1}^2\dfrac{1}{2E_p} \left(\epsilon^{(r)}_\mu a_p e^{i\mathbf{p} \cdot \mathbf{x}} + \epsilon_\mu^{(r)} a^*_p e^{-i\mathbf{p} \cdot \mathbf{x}}\right)
+A_\mu = \int\dfrac{d^3 p}{(2\pi)^3} \sum_{r = 1}^2\dfrac{1}{2E_p} \left(\epsilon^{(r)}_\mu a_p e^{ip_\mu x^\mu} + \epsilon_\mu^{(r)} a^*_p e^{-ip_\mu x^\mu}\right)
 {% end %}
 
 Given how similar the free electromagnetic field is to the free scalar field, we can essentially use the exact same procedure for quantization: $a_p$ and $a_p^*$ become the annihilation and creation operators $\hat a_p, \hat a_p^\dagger$ respectively. The only difference is due to polarization, which was absent for the free scalar field. Thus, we use the notations $\hat a_p^r$ and $\hat a_p^{r\dagger}$ to recognize that states of the electromagnetic field could have either one of the two polarizations. Thus, we have:
 
 {% math() %}
-\hat A_\mu = \int\dfrac{d^3 p}{(2\pi)^3} \sum_{r = 1}^2\dfrac{1}{2E_p} \left(\epsilon^{(r)}_\mu \hat a^r_p e^{i\mathbf{p} \cdot \mathbf{x}} + \epsilon_\mu^{(r)} \hat a^{r\dagger}_p e^{-i\mathbf{p} \cdot \mathbf{x}}\right)
+\hat A_\mu = \int\dfrac{d^3 p}{(2\pi)^3} \sum_{r = 1}^2\dfrac{1}{2E_p} \left(\epsilon^{(r)}_\mu \hat a^r_p e^{ip_\mu x^\mu} + \epsilon_\mu^{(r)} \hat a^{r\dagger}_p e^{-ip_\mu x^\mu}\right)
 {% end %}
 
 The creation and annihilation operators for the two polarizations create or annihilate a particle in that particular polarization state, as follows:
@@ -294,7 +296,7 @@ Unlike classical fields, quantum fields have nonzero expectation values even whe
 To show this, let's again consider the free electromagnetic field $A_\mu$ (the field in the absence of sources, as it would be in vacuum). The field operator $\hat A_\mu$ would be given by:
 
 {% math() %}
-\hat A_\mu = \int\dfrac{d^3 p}{(2\pi)^3} \sum_{r = 1}^2\dfrac{1}{2E_p} \left(\epsilon^{(r)}_\mu \hat a^r_p e^{i\mathbf{p} \cdot \mathbf{x}} + \epsilon_\mu^{(r)} \hat a^{r\dagger}_p e^{-i\mathbf{p} \cdot \mathbf{x}}\right)
+\hat A_\mu = \int\dfrac{d^3 p}{(2\pi)^3} \sum_{r = 1}^2\dfrac{1}{2E_p} \left(\epsilon^{(r)}_\mu \hat a^r_p e^{ip_\mu x^\mu} + \epsilon_\mu^{(r)} \hat a^{r\dagger}_p e^{-ip_\mu x^\mu}\right)
 {% end %}
 
 Let us recall that previously, for the free scalar field, we derived the Hamiltonian density operator to be:
@@ -350,7 +352,7 @@ A^\mu(x, y, 0, t) = A^\mu(x, y, d, t) = 0
 \end{align*}
 {% end %}
 
-Where here, since nothing is changing in time, we just set $t = 0$. The basic solutions for Maxwell's equations $\partial_\nu \partial^\nu A^\mu = 0$ are just **plane waves** given by $A^\mu = e^{i(p_\nu x^\nu)} = e^{i\mathbf{p} \cdot \mathbf{x}}$ (again, since we set $t = 0$ we have $p_\nu x^\nu = \mathbf{p} \cdot \mathbf{x}$).
+Where here, since nothing is changing in time, we just set $t = 0$. The basic solutions for Maxwell's equations $\partial_\nu \partial^\nu A^\mu = 0$ are just **plane waves** given by $A^\mu = e^{i(p_\nu x^\nu)} = e^{ip_\mu x^\mu}$ (again, since we set $t = 0$ we have $p_\nu x^\nu = p_\mu x^\mu$).
 
 > **Note:** We derive this form of Maxwell's equations from the general form $\partial_\nu \partial^\nu A^\mu = J^\mu$, then setting $J^\mu = 0$ since we have no sources.
 
