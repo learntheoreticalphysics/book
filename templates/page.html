@@ -8,6 +8,7 @@
         <!-- We get the parent folder of the book chapters -->
         {% set page_path = page.relative_path | split(pat="/") %}
         {% set book_yml_path = "content/" ~ page_path[0] ~ "/book.yml" %}
+        {% set pageName = page_path | last %}
         {% set book = load_data(path=book_yml_path) %}
         <h1>
             <a href="/{{ book.root }}">{{ book.name }}</a>
@@ -15,7 +16,6 @@
         <h2>Table of contents</h2>
         {% if book.pages %}
         {% for page in book.pages %}
-            {% set pageName = page_path | last %}
             {% if page.file == pageName %}
                 <!-- highlight the chapter we're currently on -->
                 <a class="current-page" href="/{{ book.root }}/{{ page.file | replace(from=".md", to="") }}">{{ loop.index }}. {{ page.title }}</a>
@@ -37,6 +37,9 @@
         {% else %}
             <h1>{{ page.title }}</h2>
         {% endif %}
+        {% if not page.extra.nonarticle and pageName != "index.md" %}
+        <p style="font-size: small;">Reading time: around {{ page.reading_time }} minutes</p>
+        {% endif %}
         <!--
         {% if not page.extra.nonarticle %}
         <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
@@ -47,7 +50,6 @@
         {{ page.content | safe }}
         <div class="page-switch-buttons">
         {% if book.pages %}
-            {% set pageName = page_path | last %}
             <!-- If it's the preface just add a
                 "begin" button -->
             {% if pageName == "index.md" %}
