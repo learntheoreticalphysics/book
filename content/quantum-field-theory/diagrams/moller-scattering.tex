@@ -1,0 +1,22 @@
+% this is a Feynman diagram for Møller scattering
+\documentclass{article}
+\usepackage{feynmp-auto}
+\begin{document}
+\begin{fmffile}{diagram}
+\begin{fmfgraph*}(200,150)
+    \fmfleft{i1,i2}
+    \fmfright{f1,f2}
+    \fmf{fermion}{i1,v1}
+    \fmf{fermion}{i2,v1}
+    \fmf{photon}{v1,v2}
+    \fmf{fermion}{v2,f1}
+    \fmf{fermion}{v2,f2}
+    % labels
+    \fmflabel{$e^-,\,p_1$}{i1}
+    \fmflabel{$e^-,\,p_2$}{i2}
+    \fmflabel{$e^-,\,p_3$}{f1}
+    \fmflabel{$e^-,\,p_4$}{f2}
+    \fmflabel{$\gamma$}{v1}
+\end{fmfgraph*}
+\end{fmffile}
+\end{document}

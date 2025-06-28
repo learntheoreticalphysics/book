@@ -30,10 +30,18 @@
 
     <div class="article-container disable-scrollbars">
     <article class="post">
-        <h1>{{ page.title }}</h2>
+        {% if page.extra.cover_img %}
+            <h1>{{ page.title }}</h2>
+            <img src="{{ page.path ~ page.extra.cover_img.src }}" width="350" alt="{{ page.extra.cover_img.alt }} " />
+            <p style="font-size: small; text-align: center">{{ page.extra.cover_img.desc }}</p>
+        {% else %}
+            <h1>{{ page.title }}</h2>
+        {% endif %}
+        <!--
         {% if not page.extra.nonarticle %}
         <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
         {% endif %}
+        -->
         
         <!-- page content -->
         {{ page.content | safe }}

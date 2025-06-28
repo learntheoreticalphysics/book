@@ -5,6 +5,11 @@ date = 2025-04-27
 [extra]
 description = "A book on quantum field theory, the Standard Model of particle physics, and more!"
 notoc = true
+
+[extra.cover_img]
+src = "diagrams/moller-scattering.svg"
+alt = "A Feynman diagram in particle physics, showing two particles colliding to form two new particles"
+desc = "A particle scattering process common in quantum field theory."
 +++
 
 ## Introduction
