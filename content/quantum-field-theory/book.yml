@@ -12,3 +12,5 @@ pages:
     title: Quantization of a free scalar field
   - file: chapter-3.md
     title: Quantization of the electromagnetic field
+  - file: chapter-4.md
+    title: Non-trivial scalar field theories
