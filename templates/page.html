@@ -15,7 +15,13 @@
         <h2>Table of contents</h2>
         {% if book.pages %}
         {% for page in book.pages %}
-        <a href="/{{ book.root }}/{{ page.file | replace(from=".md", to="") }}">{{ loop.index }}. {{ page.title }}</a>
+            {% set pageName = page_path | last %}
+            {% if page.file == pageName %}
+                <!-- highlight the chapter we're currently on -->
+                <a class="current-page" href="/{{ book.root }}/{{ page.file | replace(from=".md", to="") }}">{{ loop.index }}. {{ page.title }}</a>
+            {% else %}
+                <a href="/{{ book.root }}/{{ page.file | replace(from=".md", to="") }}">{{ loop.index }}. {{ page.title }}</a>
+            {% endif%}
         {% endfor %}
         {% endif %}
 
