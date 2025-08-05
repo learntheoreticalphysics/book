@@ -166,13 +166,14 @@ html {
     }
 
     ul {
+      margin-top: 0.6rem;
       list-style-type: none;
     }
 
     li {
-      margin-top: 0.4rem;
+      margin-top: 0.6rem;
       font-size: 0.95rem;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.6rem;
     }
 
     li .indent {
@@ -523,37 +524,38 @@ header {
 
     .page-up, .page-down {
 
-	strong {
-	    color: $tx-color-1;
-	}
+    	strong {
+    	    color: $tx-color-1;
+          padding: 0.4rem 0;
+    	}
 
-	strong, a {
-	    margin: auto 0;
-	}
+    	strong, a {
+    	    margin: auto 0;
+    	}
 
-	&:hover {
-	  border: 1px solid $primary-btn-bg;
+    	&:hover {
+    	  border: 1px solid $primary-btn-bg;
 
-    strong {
-      color: $tx-color-2;
-    }
-	}
+        strong {
+          color: $tx-color-2;
+        }
+    	}
     }
 
     .page-start {
-	border: 1px solid $primary-btn-bg;
-	text-decoration: none;
+    	border: 1px solid $primary-btn-bg;
+    	text-decoration: none;
 
-	p {
-	  color: $tx-color-2;
-	  margin: auto 0;
-	  font-size: 1.1rem;
-	  font-weight: 600;
-	}
+    	p {
+    	  color: $tx-color-2;
+    	  margin: auto 0;
+    	  font-size: 1.1rem;
+    	  font-weight: 600;
+    	}
 
-	&:hover {
-	  background: lighten($tx-color-2, 70%);
-	}
+    	&:hover {
+    	  background: lighten($tx-color-2, 70%);
+    	}
     }
 }
 
