@@ -384,6 +384,34 @@ The first answer is the more common one that most texts give, but it isn't _enti
 
 This means that $\langle 0|\hat{\mathcal{H}}|0\rangle = 0$ (the ground-state energy of the vacuum state $|0\rangle$) is **zero**, so that now we are able to perform calculations without getting non-sensical answers of infinite energies.
 
+## The vacuum energy, again
+
+Let's take another look at the vacuum energy (ground-state energy) of a free scalar field. Recall how we stated that this ground-state energy is formally infinite, but this is because we assumed that our quantum field theory would be a valid theory up to infinitely-high energies: this is absolutely not the case! To represent this, we choose a "cutoff" energy, which can be expressed as an energy of $E = \Lambda$, where $\Lambda$ has the same units as the wavenumber $k$ (since $E = p$ and $p = k$ in natural units). We assume that our theory holds up to this energy. By making this modification, the ground-state energy $E_0$ in natural units is no longer infinite, but rather a finite value. We can compute this value by doing the integral for $E_0 = \langle 0|\hat{\mathcal{H}}|0\rangle$ explicitly:
+
+{% math() %}
+\begin{align*}
+E_0 &= \int_0^\Lambda \dfrac{d^3 k}{(2\pi)^3} \dfrac{1}{2}\omega \\
+&= \dfrac{1}{2}\int_0^\Lambda \dfrac{d^3 k}{(2\pi)^3} \sqrt{p^2 + m^2} \\
+&= \dfrac{1}{2}\int_0^\Lambda \dfrac{d^3 k}{(2\pi)^3} \sqrt{k^2 + m^2}
+\end{align*}
+{% end %}
+
+The exact analytical solution of the integral is given by:
+
+{% math() %}
+E_0 = \dfrac{\Lambda^2 m}{32\pi^3}\left(\Lambda \sqrt{m^2 + \left(\dfrac{\Lambda}{m}\right)^2} + m\, \text{arcsinh}\left(\dfrac{\Lambda}{m}\right)\right)
+{% end %}
+
+However, if we consider that the mass-energy of the particle $m$ is close to the cutoff $\Lambda$, which is the domain up to which most quantum field theories are well-defined and well-tested, we can make the approximation that $\Lambda \approx m$. Since $\text{arcsinh}(1) \approx 1$ and using the binomial approximation $\sqrt{1 + \alpha} \approx 1 + \frac{\alpha}{2}$, we have:
+
+{% math() %}
+E_0 \approx\dfrac{m^3}{32 \pi^3}\left(m\left(1+ \dfrac{m^2}{2}\right) +m\right)
+{% end %}
+
+> **Note for the advanced reader:** The approximation $\Lambda \approx m$ comes from setting the cutoff energy $\Lambda = \dfrac{2\pi}{\lambda}$ equal to the Compton wavelength $\lambda = 2\pi \hbar/mc$ (which is $\lambda = 2\pi/m$ in natural units). This is because energies around the Compton wavelength are the standard domain of quantum field theories, so it is well-suited to be a cutoff. We thus have $\Lambda = \dfrac{2\pi}{(2\pi/m)} = m$.
+
+This result for the vacuum energy is no longer divergent, but rather has a well-defined value that is dependent on the mass of the particle modelled by the field. In the following chapters, we'll learn what particle this is, and actually _calculate_ this mass!
+
 ## Our next steps
 
 Throughout this chapter, we've developed the quantum field theory of a _free_ scalar field. Free fields are, unfortunately, not very physically-realistic, since no particle-particles interactions occur in free fields. Quantum field theories that describe the _actual world_ are interacting field theories, where particles can scatter off each other, transferring energy and momentum in the process. We'll soon see that this gives rise to the _forces_ of nature, and see how this results in the production of _new particles_. Additionally, we'll discover powerful tools (and pretty diagrams!) to calculate these subatomic processes.
