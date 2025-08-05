@@ -27,7 +27,63 @@ These are not meaningless predictions either; our understanding of the emission 
 
 ### Things to know
 
-We'll be working with natural units where $c = \hbar = 1$ simply out of convenience. Also, (almost) everything will be in tensors. We will be working in the formalism of Lagrangian and Hamiltonian field theory, as is standard in theoretical physics. Don't worry if some of these topics are unfamiliar; we will review all of these topics before we begin, and consult the other free books on this site for more information.
+We'll be working with natural units where we set two natural constants (the speed of light $c$ and the reduced Planck constant $\hbar$) to have a value of 1: this simplifies a lot of equations and makes the mathematics a lot easier. For instance, as we'll see, Einstein's energy-momentum relation, which is normally given by:
+
+{% math() %}
+E^2 = p^2 + (mc^2)^2
+{% end %}
+
+becomes the much simpler and prettier-looking expression:
+
+{% math() %}
+E^2 = p^2 + m^2
+{% end %}
+
+> **Note:** You can think of this as _redefining_ time and length to use the same unit, as well as redefining momentum, energy, and mass to use the same unit. As we'll soon see, at a fundamental level, time and length _are_ actually the same thing (likewise, mass and energy are the same thing), although we assign different names and units to them. By removing this artificial restriction, we end up with *natural units*, since these are the units that are only based off _physical quantities_ in the Universe.
+
+However, since we have now made both $c$ and $\hbar$ hidden, we have to adjust _all_ of the rest of our units as a result. This means that after we finish our calculations, we must convert back to the SI unit system (which is standard in the rest of physics) by multiplying by appropriate factors of $\hbar$ and $c$. This is a bit of a convoluted process, so it is helpful to refer to tables that give the appropriate multiplicative factors, such as [this PDF of tables](https://www.seas.upenn.edu/%7Eamyers/NaturalUnits.pdf) (which is where the below table comes from). The idea is that if you have an expression in **natural units** that has units of **energy** ($E$), the appropriate conversions are as follows:
+
+| If our expression should have SI units of... | Convert with... |
+|--------------|-------------|
+| Length ($L$) | $L = \hbar c/E$ |
+| Area ($A$) | $A = (\hbar c/E)^2$ |
+| Mass ($m$) | $m = E/c^2$ |
+| Time ($t$) | $t = \hbar/E$ |
+| Energy ($E$) | $E = E$ |
+| Momentum ($p$) | $p = E/c$ |
+| Acceleration ($a$) | $a = Ec/\hbar$ |
+| Frequency ($\omega$) | $\omega = E/\hbar$ |
+
+What if our expression (let's call it $Q$) doesn't have units of energy in natural units? Well, we can *convert* an expression in natural units to units of energy by multiplying by the following factors:
+
+| Expression ($Q$) has natural units of... | Convert to units of energy with a factor of... |
+|--------------|-------------|
+| Mass | $E = Qc^2$ |
+| Energy | $E = Q$ |
+| Momentum | $E = Qc$ |
+| Length | $E = \hbar c/Q$ |
+| Time | $E = \hbar/Q$ |
+
+> **Note:** Dimensionless expressions in natural units can be converted to SI by multiplying by $c$ (for velocity) or $\hbar$ (for action/angular momentum).
+
+Afterwards, we can just use the first table to convert dimensions of energy into our desired SI unit. We can then compose other units by multiplying these together - for instance, velocity is simply length over time, so we divide the corresponding conversion factors of length by time. This may all sound super confusing, so let's practice with an example. Consider the formula for the **Compton wavelength** $\lambda_c$, which is very important in quantum field theory. In standard SI units, it takes the form:
+
+{% math() %}
+\lambda_c = \dfrac{2\pi \hbar}{mc}
+{% end %}
+
+In natural units, where we set $\hbar = c = 1$, it instead takes the form:
+
+{% math() %}
+\lambda_c = \dfrac{2\pi}{m}
+{% end %}
+
+This equation has dimensions of _inverse mass_ in natural units. To convert back to SI units, we use a two-step process.
+
+- First, we convert our expression in natural units to equivalent units of energy by replacing $m$ with $mc^2$ (according to $E = Qc^2$ in the second table). Thus, our expression becomes $\lambda_c = \dfrac{2\pi}{mc^2}$ and has dimensions of inverse energy.
+- Then, we convert energy to wavelength (which has units of length) by multiplying by $\hbar c$ (according to $L = \hbar c/E$ in the second table, which we can rearrange to $L = \hbar c E^{-1}$). This gives us $\lambda_c = \dfrac{2\pi}{mc^2} \hbar c = \dfrac{2\pi \hbar}{mc}$, which is indeed our expected result in SI units.
+
+> **Note for the advanced reader:** Also, instead of standard vectors, almost everything will use _tensors_. We will be working in the formalism of Lagrangian and Hamiltonian field theory, as is standard in theoretical physics. Don't worry if some of these topics are unfamiliar; we will review all of these topics before we begin, and consult the other free books on this site for more information.
 
 ## An overview of classical field theory
 
@@ -565,9 +621,13 @@ g_{30} & g_{31} & g_{32} & g_{33}
 \end{pmatrix}
 {% end %}
 
-Why is this significant? Because it means that distance is dependent on the _geometry_ of spacetime, and that implies that time and space are interdependent, and that spacetime can be **curved**! In  fact, the metric tensor is the foundation of Einstein's theories of **special and general relativity**.
+Why is this significant? Because it means that distance is dependent on the _geometry_ of spacetime, and that implies that time and space are interdependent, and that spacetime can be **curved**! In fact, the metric tensor is the foundation of Einstein's theories of **special and general relativity**.
 
 > **Note on notation:** It is customary to use latin indices like $i, j, k, \dots$ when we are only talking about three-dimensional tensors, such as position $x^i$. However, when we are talking about _four-dimensional_ tensors in spacetime, such as the metric tensor, we use greek indices like $\mu, \nu, \gamma$.
+
+## Special relativity
+
+With our newfound knowledge of tensors and spacetime, we're ready to tackle the **special theory of relativity** in full. We've discussed earlier that special relativity postulates that our Universe is four-dimensional, and its geometric structure is a four-dimensional geometry called **spacetime**. 
 
 In most of quantum field theory, we work in **Minkowski spacetime**, the _special case_ of the four-dimensional spacetime that we discussed earlier. The correct expression for the infinitesimal distance in Minkowski space, as we saw, is given by:
 
@@ -589,7 +649,7 @@ ds^2 =
 \begin{bmatrix} dt \\ dx \\ dy \\ dz \end{bmatrix}
 {% end %}
 
-By comparison with $ds^2 = g_{\mu \nu} dx^\mu dx^\nu$, we find that the matrix in the middle of the above expression is the **metric tensor for Minkowski spacetime**. We usually call this tensor the _Minkowski metric_, and denote it as $\eta_{\mu \nu}$:
+By comparison with $ds^2 = g_{\mu \nu} dx^\mu dx^\nu$, we find that the matrix in the middle of the above expression is the **metric tensor** for Minkowski spacetime, which characterizes the geometry of spacetime in special relativity. We usually call this tensor the _Minkowski metric_, and denote it as $\eta_{\mu \nu}$:
 
 {% math() %}
 \eta_{\mu \nu} = \begin{pmatrix}
@@ -600,4 +660,36 @@ By comparison with $ds^2 = g_{\mu \nu} dx^\mu dx^\nu$, we find that the matrix i
 \end{pmatrix}
 {% end %}
 
-Quantum field theory is (mostly) based off Minkowski spacetime, so the Minkowski metric will be the metric tensor we use for raising and lowering indices. We'll wait to look into _general relativity_ with its much more complicated curved spacetimes, but we'll get to that in time.
+> **Note:** Quantum field theory is (mostly) based off Minkowski spacetime, so the Minkowski metric will be the metric tensor we use for raising and lowering indices. We'll wait to look into _general relativity_ with its much more complicated curved spacetimes, but we'll get to that in time.
+
+While the Minkowski metric may _look_ deceptively simple and appear to be a simple four-dimensional extension of the Euclidean metric with a few sign changes, it is actually _radically different_, and the signs make all the difference.
+
+### The Fourier transform
+
+In physics, it is very useful to decompose a complicated function as a sum of sines and cosines - which, remember, can be written as complex exponentials. Sines and cosines are well-studied functions with very nice properties, which cannot be said of all functions (especially the Dirac delta "function")! The Fourier transform gives us a way to convert between these two representations. The basic idea is this: by _adding_ lots of little sinusoidal waves that have slightly different spatial periods (wavelengths) and different amplitudes, we can approximate the shape of some complicated function $f(x)$. Each of these waves has amplitude (magnitude)
+
+Since a sum over continous functions is just an integral, we can write this as:
+
+{% math() %}
+f(x) = \int_{-\infty}^\infty \dfrac{dk}{2\pi} \tilde f(k) e^{-ikx} dk
+{% end %}
+
+Where the function $\tilde f(k)$ gives the _amplitude_ of each one of those infinitely-many little sinusoidal waves of wavenumber $k = 2\pi/\lambda$. But how do we get the function $\tilde f(k)$ that gives the amplitudes? The answer is the **Fourier transform**:
+
+{% math() %}
+\tilde f(k) = \int_{-\infty}^\infty dk f(x) e^{ikx}
+{% end %}
+
+It is a common (but confusing) convention in quantum physics to use the same symbol for a function and its Fourier transform in physics, as well as omitting the bounds of integration. So, in the standard quantum physics notation, the Fourier transform can also be written as:
+
+{% math() %}
+f(k) = \int \dfrac{dk}{2\pi} f(x) e^{-ikx}
+{% end %}
+
+We can also define the Fourier transform in more than one dimension. Of particular interest to us is the _three-dimensional_ Fourier transform, given by:
+
+{% math() %}
+f(k) = \int \dfrac{d^3k}{(2\pi)^3} f(x) e^{-ikx}
+{% end %}
+
+Among the _many_ uses of Fourier transforms are that they can be used to solve a variety of partial differential equations (PDEs), and in particular, a certain class of PDEs known as **wave equations** that pop up everywhere in quantum mechanics and quantum fiedl theory. We will soon see this in the next chapter!

@@ -411,7 +411,7 @@ The lower vacuum energy density in the region between the plates compared to tha
 F = -\dfrac{\partial E_V}{\partial d} = -\dfrac{\pi^2 A}{240 d^4}
 {% end %}
 
-This is our result, though we should be careful to note that it is in *natural units*. If we restore the factors of $\hbar$ and $c$, we find that our result becomes:
+This is our result, though we should be careful to note that it is in *natural units* and has units of inverse area (inverse length squared). To convert to SI units of force, we need to multiply by $\hbar c$. So our result with restored units becomes:
 
 {% math() %}
 F = -\dfrac{\hbar c\pi^2 A}{240 d^4}
