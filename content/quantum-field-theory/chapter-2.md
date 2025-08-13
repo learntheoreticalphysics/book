@@ -107,27 +107,59 @@ Here, we took the derivative in the standard way (it is just taking the derivati
 \end{gather*}
 {% end %}
 
-This is our **equation of motion** for our free scalar field, and it is called the **Klein-Gordon equation**, although it is usually written with the dummy index $\mu$ instead of $\beta$, in which it takes the form:
+This is our **equation of motion** for our free scalar field, and it is called the **Klein-Gordon equation**, although it is usually written with the dummy index $\mu$ instead of $\beta$ and with a more condensed form:
 
 {% math() %}
-\partial_\mu \partial^\mu \phi + m^2 \phi = 0
+(\partial_\mu \partial^\mu + m^2) \phi = 0
 {% end %}
 
 ## Canonical quantization
 
-Now is the time to take our _classical_ field $\phi$ and turn it into a quantum field, a process called **canonical quantization**. To start, we first need to solve the Klein-Gordon equation with a [Fourier decomposition](https://ese-msc.github.io/preinduction/edsml/primer/notebooks/c_mathematics/differential_equations/11_pde_fourier.html), which gives the general solution:
+Now is the time to take our _classical_ field $\phi$ and turn it into a quantum field, a process called **canonical quantization**. A quantum field is in many ways similar to a classical field: it is dependent on space and time, and it follows an equation of motion that governs its behavior. However, it is also very _different_ from a classical field in important ways, and the reason why comes from the postulates of **quantum physics**. Quantum physics tells us several very important things:
+
+1. All quantum systems can only take particular _states_ associated with some **fixed energy** (and therefore momentum)
+2. The energy and momentum of quantum systems is often **uncertain**
+
+To obey these two conditions, quantum fields must mathematically satisfy two properties (among others):
+
+1. Instead of being _functions_ of space and time, they are _operators_
+2. They must obey **commutation relations** similar to the [Heisenberg uncertainty principle](https://en.wikipedia.org/wiki/Uncertainty_principle)
+
+The process of quantization, essentially, is the process of finding the _operator-valued_ quantum field $\hat \phi$ that is the solution to the analogous equation of motion for a classical field. For instance, let's go back to our example of a free scalar field, which obeys the Klein-Gordon equation we just derived:
 
 {% math() %}
-\phi(x^\mu) = \int \dfrac{d^3 p}{(2\pi)^32E_p} \left[a(p) e^{ip_\mu x^\mu} + a^*(p) e^{-ip_\mu x^\mu}\right] 
+(\partial_\mu \partial^\mu + m^2) \phi = 0
 {% end %}
 
-Where $E_p = \sqrt{p^2 + m^2}$ comes from the energy-momentum relation, as we discussed earlier. We may promote this to a field if we make the identifications of $a \to \hat a$, $a^* \to a^\dagger$, which are the _creation and annihilation operators_ which generalize the raising and lowering operators we previously saw. Thus, our _quantum_ field $\hat \phi$ is now an operator:
+Thus, the corresponding _quantum field_ $\hat \phi$ must obey the analogous equation of motion, with the exception that the classical field $\phi(x^\nu)$ is now replaced by the operator $\hat \phi(x^\nu)$:
 
 {% math() %}
-\hat \phi(x^\mu) = \int \dfrac{d^3 p}{(2\pi)^32E_p} \left[\hat a(p) e^{ip_\mu x^\mu} + \hat a^\dagger(p) e^{-ip_\mu x^\mu}\right] 
+(\partial_\mu \partial^\mu + m^2) \hat \phi = 0
 {% end %}
 
-For mathematical convenience we write $\hat a(p)$ as $\hat a_p$ and $\hat a^\dagger(p)$ as $\hat a^\dagger_p$, and we write $\hat \phi(x^\mu)$ as just $\hat \phi$. Thus our field operator becomes:
+However, the Klein-Gordon equation has many different solutions, just like any other partial differential equation, and this is true for its operator-valued form as well. Which one should we use to find the form of the operator $\hat \phi$? Luckily for us, the Klein-Gordon equation happens to be a _linear_ partial differential equation. This means that the sum of two solutions $\phi_1(x^\mu) + \phi_2(x^\mu)$ is _also_ a solution to the Klein-Gordon equation. This is known as the **superposition principle**. This means that we can construct any arbitrary solution by simply adding up infinite numbers of any one solution of the Klein-Gordon equation, allowing us to write a **general solution** to the Klein-Gordon equation. For instance, we could consider the solution given by:
+
+{% math() %}
+\phi(x^\nu) = ae^{ip_\mu x^\mu}, \quad a = \text{const.}
+{% end %}
+
+Which is known as a **plane wave**, and represents a state with definite energy-momentum $p_\mu = (E, \mathbf{p})$. Using the superposition principle, summing up an infinite number of plane waves gives the general solution:
+
+{% math() %}
+\phi(x^\nu) = \int \dfrac{d^3 p}{(2\pi)^32E_p} \left[a(p) e^{ip_\mu x^\mu} + a^*(p) e^{-ip_\mu x^\mu}\right] 
+{% end %}
+
+Where $E_p = \sqrt{p^2 + m^2}$ comes from the energy-momentum relation, as we discussed earlier; dividing by $(2\pi)^3 2E_p$ simplifies our calculations later. This trick of writing out a general solution is exactly the [Fourier decomposition](https://ese-msc.github.io/preinduction/edsml/primer/notebooks/c_mathematics/differential_equations/11_pde_fourier.html) we discussed in the first chapter!
+
+> **Note for the advanced reader:** Technically-speaking, this general solution is only valid assuming that the field is well-behaved and vanishes at infinity, but we can assume that for the purposes of our discussion.
+
+Now that we have a solution to the classical equation of motion, we may promote it to an operator if we make the identifications of $a \to \hat a$, $a^* \to a^\dagger$, which are the _creation and annihilation operators_ which generalize the raising and lowering operators we previously saw. Thus, our _quantum_ field $\hat \phi$ is now an operator, just as we wanted!
+
+{% math() %}
+\hat \phi(x^\nu) = \int \dfrac{d^3 p}{(2\pi)^32E_p} \left[\hat a(p) e^{ip_\mu x^\mu} + \hat a^\dagger(p) e^{-ip_\mu x^\mu}\right] 
+{% end %}
+
+For mathematical convenience we write $\hat a(p)$ as $\hat a_p$ and $\hat a^\dagger(p)$ as $\hat a^\dagger_p$, and we write $\hat \phi(x^\nu)$ as just $\hat \phi$. Thus our field operator becomes:
 
 {% math() %}
 \hat \phi = \int \dfrac{d^3 p}{(2\pi)^3 2E_p} \left[\hat a_p e^{ip_\mu x^\mu} + \hat a^\dagger_p e^{-ip_\mu x^\mu}\right] 
@@ -178,7 +210,13 @@ If our physical interpretation is correct, then the single-particle state $|p\ra
 \langle p |p'\rangle = 2E_p (2\pi)^3 \delta^3(p-p')
 {% end %}
 
-Where $\delta^3$ is the three-dimensional Dirac delta function, which obeys $\displaystyle \int d^3 p \delta^3(p) = 1$, a fact that will be _extremely helpful_ later.
+Where $\delta^3$ is the three-dimensional Dirac delta function, which obeys $\displaystyle \int d^3 p \delta^3(p) = 1$, a fact that will be _extremely helpful_ later. Note that it is also common in the literature to write this relation as:
+
+{% math() %}
+\langle p |q\rangle = 2E_p (2\pi)^3 \delta^3(p-q)
+{% end %}
+
+Where $p, q$ denote two different momenta ($q$ is unrelated to the symbol for charge in electromagnetism). This will be the notation we will be using, going forwards.
 
 > **Why this particular orthogonality relation?** The answer is that however we choose to define orthogonality between two states, any scaling constants are **a matter of personal preference**. Here, we just chose the constant factor $(2\pi)^3$ because it is convenient for our later calculations, but it doesn't really matter. After all, we cannot measure quantum states (directly) anyways, so it really **does not matter** how we define them. As long as our definitions are **consistent** and our states are **normalized** (such that you can never have a probability greater than one!), we may choose whatever normalization constants we want.
 
