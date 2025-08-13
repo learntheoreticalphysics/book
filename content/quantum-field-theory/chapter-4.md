@@ -203,6 +203,33 @@ If we clean things up a little bit and relabel $\beta \to \mu$ (as is common con
 
 This is the **nonlinear Klein-Gordon equation**, and is the equation of motion for a quartic interacting scalar field. As a sidenote, it is closely related to the **Higgs field** in the Standard Model, which also involves a (modified) quartic interaction term and is also a (complex-valued) scalar field. In fact, studying the quartic theory will help us later on, when we examine the Higgs field and the Higgs mechanism in the Standard Model.
 
+### The field Hamiltonian of interacting scalar fields
+
+The simplest types of interacting scalar fields, including $\phi^4$ theory, have relatively simple field Hamiltonians (at least, by the standards of quantum field theory). This is because their Lagrangians can be written in the general form:
+
+{% math() %}
+\mathscr{L} = \dfrac{1}{a} \partial_\mu \phi \partial^\mu \phi - \dfrac{1}{b} m^2 \phi^2 + \mathscr{L}_\text{int}(\phi), \quad a, b = \text{const.}
+{% end %}
+
+Where $\mathscr{L}_\text{int}(\phi)$ describes the _interacting part_ of the field Lagrangian and thus only depends on the field $\phi$ itself, not its derivatives. This means that when we write the Hamiltonian in the form $\hat H = \hat H_0 + \hat H_I$, where $\hat H_I$ denotes the interaction part of the Hamiltonian, there is a relatively simple expression for $\hat H_I$; it is given by:
+
+{% math() %}
+\hat H_I = -\int d^3x\, \mathscr{L}_\text{int}(\phi)
+{% end %}
+
+Thus, for $\phi^4$ theory, we have:
+
+{% math() %}
+\mathscr{L}_\text{int}(\phi) = -\dfrac{\lambda}{4!} \phi^4 \Rightarrow \hat H_I = \int d^3x\, \dfrac{\lambda}{4!} \phi^4
+{% end %}
+
+Thus, the interaction Hamiltonian density $\mathcal{H}_I$ associated with the interaction Hamiltonian $\hat H_I$ is simply:
+
+{% math() %}
+\hat{\mathcal{H}}_I = \dfrac{\lambda}{4!} \phi^4
+{% end %}
+
+
 ## Scattering processes
 
 A common question we often ask in quantum field theory is this: given a known interacting field (or several) prepared in some initial state, how do the field(s) interact? We can also frame it in more common terminology as this: if we have some collection of particles (which, again, are excited states of quantum fields), what happens when they encounter other particles? In the case of $\phi^4$ theory, which describes _pions_, such interactions might include any of the following processes, which are called **scattering processes**:
@@ -255,10 +282,10 @@ Where $|f\rangle = |\Psi(t)\rangle$ is the final state of the particle (at time 
 \end{align*}
 {% end %}
 
-In quantum field theory, the Dyson series is known as the **S-matrix** (short for _scattering matrix_). The basic concept of the Dyson series remains the same, although the notation is a bit different: we use $\hat S$ instead of $\hat U$, and the probability amplitude is usually denoted $\mathcal{M}$ instead of $A$. Using this new notation, the probability amplitude ($\mathcal{M}$) of a transition occuring from state $|i\rangle$ to state $|f\rangle$ takes the form:
+In quantum field theory, the Dyson series is known as the **S-matrix** (short for _scattering matrix_). The basic concept of the Dyson series remains the same, although the notation is a bit different: we use $\hat S$ instead of $\hat U$, and the probability amplitude is usually denoted $\mathcal{A}$ instead of $A$. Using this new notation, the probability amplitude ($\mathcal{A}$) of a transition occuring from state $|i\rangle$ to state $|f\rangle$ takes the form:
 
 {% math() %}
-\mathcal{M} = \langle f |\hat S |i\rangle
+\mathcal{A} = \langle f |\hat S |i\rangle
 {% end %}
 
 Where the S-matrix (the QFT version of the Dyson series) takes the form:
@@ -271,41 +298,41 @@ Where the S-matrix (the QFT version of the Dyson series) takes the form:
 \end{align*}
 {% end %}
 
-Here, $\mathcal{T}\{\dots \}$ is the **time-ordering operator** that "sorts" operators in order, which ensures that we don't break causality by having scattering events that go backwards in time. Note that the S-matrix can also be written in term-by-term form, as follows:
+Here, $\mathcal{T}\{\dots \}$ is the **time-ordering operator** that "sorts" operators in order, which ensures that we don't break causality by having scattering events that go backwards in time. The probability amplitude $\mathcal{A}$ can then be explicitly written as an infinite series:
 
 {% math() %}
 \begin{align*}
-\hat S &= S_{(0)} + S_{(1)} + S_{(2)} + S_{(3)} + \dots + S_{(\infty)}, \\
-&\qquad S_{(n)} = \frac{(-i)^{n}}{n!}\int d^4x_{1} \cdots \int d^4x_{n} \mathcal{T} \bigg\{ \mathcal{H}(x_{1})\cdots \mathcal {H}(x_{n}) \bigg \}
+\mathcal{A} &= \mathcal{A}_{(0)} + \mathcal{A}_{(1)} + \mathcal{A}_{(2)} + \mathcal{A}_{(3)} + \dots + \mathcal{A}_{(\infty)}, \\
+&\qquad \mathcal{A}_{(n)} = \left\langle i\left|\frac{(-i)^{n}}{n!}\int d^4x_{1} \cdots \int d^4x_{n} \mathcal{T} \bigg\{ \mathcal{H}(x_{1})\cdots \mathcal {H}(x_{n}) \bigg \}\right| f\right\rangle
 \end{align*}
 {% end %}
 
-The S-matrix is significant because it is the main way we calculate **probability amplitudes** in quantum field theories. This means that calculating scattering processes in quantum field theory is therefore equivalent to computing the S-matrix associated with different quantum fields.
+The S-matrix is significant because it is the main way we calculate **probability amplitudes** in quantum field theories. This means that calculating scattering processes in quantum field theory is therefore equivalent to obtaining the S-matrix associated with different quantum fields, and then using its series expansion to calculate the probability amplitudes for the processes we're interested in.
 
 > **Why is the S-matrix called a matrix?** This is to do with the fact that formally, the S-matrix is indeed a type of matrix, since it maps an initial state-vector $|i\rangle$ to a final state $\langle f|$, exactly as a matrix would map a vector to another vector. The fact that it is typically expressed as a product of integrals simply stems from the fact that the Hamiltonian in quantum field theories is the Hamiltonian density integrated over all space, so the S-matrix is filled with integrals.
 
-### From the S-matrix to correlation functions
+### Computing the S-matrix
 
-The S-matrix is conceptually powerful, but it is an _infinite_ series and usually cannot be summed explicitly. So, to make it actually _computable_, we usually take only the first few terms of the S-matrix. The zeroeth-order term $S_{(0)} = 1$ describes a non-interacting free field, so the dominant contribution to most QFT interactions are found in the first-order and second-order terms, which are respectively:
+The S-matrix is conceptually powerful, but it is an _infinite_ series and usually cannot be summed explicitly. So, to make it actually _computable_, we usually take only the first few terms of the S-matrix into account when computing the probability amplitude $\mathcal{A}$. The zeroeth-order term $\mathcal{A}_{(0)} = \langle f|i\rangle$ describes a non-interacting free field, so the dominant contribution to most QFT interactions are found in the first-order and second-order terms, which are respectively:
 
 {% math() %}
 \begin{align*}
-S_{(1)} &= (-i)\left\langle f\left|\int d^4x_{1} \,\mathcal{T}\left\{{\mathcal {H}}(x_{1})\right\}\right|i\right\rangle \\
-S_{(2)} &= \dfrac{1}{2}\left\langle f\left|\int d^4x_{1}\,d^4x_2\,\mathcal{T}\left\{ \mathcal{H}(x_1)\mathcal{H}(x_2)\right\}\right|i\right\rangle
+\mathcal{A}_{(1)} &= (-i)\left\langle f\left|\int d^4x_{1} \,\mathcal{T}\left\{{\mathcal {H}}(x_{1})\right\}\right|i\right\rangle \\
+\mathcal{A}_{(2)} &= \dfrac{1}{2}\left\langle f\left|\int d^4x_{1}\,d^4x_2\,\mathcal{T}\left\{ \mathcal{H}(x_1)\mathcal{H}(x_2)\right\}\right|i\right\rangle
 \end{align*}
 {% end %}
 
 > **Note:** Here, be careful of the notation we use: $i$ in $(-i)$ is the imaginary unit, but $|i\rangle$ is the initial state.
 
-This means that the total probability amplitude $\mathcal{M}$, to second-order, becomes:
+This means that the total probability amplitude $\mathcal{A}$, to second-order, becomes:
 
 {% math() %}
 \begin{align*}
-\mathcal{M} &\approx \langle f|i\rangle + \langle f|S_{(1)}|i\rangle + \langle f|S_{(2)}|i\rangle
+\mathcal{A} &\approx \langle f|i\rangle + \langle f|\mathcal{A}_{(1)}|i\rangle + \langle f|\mathcal{A}_{(2)}|i\rangle
 \end{align*}
 {% end %}
 
-Let's demonstrate by using the case of the scalar $\phi^4$ field theory. The interaction Hamiltonian density for $\phi^4$ theory is:
+Let's demonstrate by using the case of the scalar $\phi^4$ field theory. Recall that the interaction Hamiltonian density for $\phi^4$ theory is:
 
 {% math() %}
 \mathcal{H}_I = \dfrac{\lambda}{4!} \hat \phi^4 
@@ -316,10 +343,10 @@ So, if we substitute our interaction Hamiltonian, the first- and second-order te
 {% math() %}
 \begin{align*}
 % first order
-S_{(1)} &= \dfrac{-i\lambda}{4!}\int d^4x \langle f|\,\mathcal{T}\{\hat \phi^4\}|i\rangle \\
+\mathcal{A}_{(1)} &= \dfrac{-i\lambda}{4!}\int d^4x \langle f|\,\mathcal{T}\{\hat \phi^4\}|i\rangle \\
 &= \dfrac{-i\lambda}{4!}\int d^4x \langle f|\,\mathcal{T}\bigg\{\hat \phi(x^\mu) \hat \phi(x^\mu) \hat \phi(x^\mu) \hat \phi(x^\mu)\bigg\}|i\rangle \\
 % second order
-S_{(2)} &= \dfrac{1}{2}\left\langle f\left|\int d^4x_{1}\,d^4x_2\,\mathcal{T}\big\{ \mathcal{H}(x_1)\mathcal{H}(x_2)\big\}\right|i\right\rangle \\
+\mathcal{A}_{(2)} &= \dfrac{1}{2}\left\langle f\left|\int d^4x_{1}\,d^4x_2\,\mathcal{T}\big\{ \mathcal{H}(x_1)\mathcal{H}(x_2)\big\}\right|i\right\rangle \\
 &= \dfrac{\lambda}{12} \int d^4 x_1\, d^4 x_2 \langle f | \bigg\{\hat \phi(x_1^\mu) \hat \phi(x_1^\mu) \hat \phi(x_1^\mu) \hat \phi(x_1^\mu) \\
 &\qquad \qquad \times \hat \phi(x_2^\nu) \hat \phi(x_2^\nu) \hat \phi(x_2^\nu) \hat \phi(x_2^\nu) \bigg\}|i\rangle
 \end{align*}
@@ -329,8 +356,8 @@ It is common for physicists to be sloppy with their notation and ignore writing 
 
 {% math() %}
 \begin{align*}
-S_{(1)} &= \dfrac{-i\lambda}{4!} \int d^4 x \langle f| \mathcal{T}\{\hat \phi(x) \hat \phi(x) \hat \phi(x) \hat \phi(x)\}|i\rangle \\
-S_{(2)} &= \dfrac{\lambda}{12} \int d^4x\, d^4 y\, \langle f| \mathcal{T}\bigg\{\hat \phi(x) \hat \phi(x) \hat \phi(x) \hat \phi(x) \\
+\mathcal{A}_{(1)} &= \dfrac{-i\lambda}{4!} \int d^4 x \langle f| \mathcal{T}\{\hat \phi(x) \hat \phi(x) \hat \phi(x) \hat \phi(x)\}|i\rangle \\
+\mathcal{A}_{(2)} &= \dfrac{\lambda}{12} \int d^4x\, d^4 y\, \langle f| \mathcal{T}\bigg\{\hat \phi(x) \hat \phi(x) \hat \phi(x) \hat \phi(x) \\
 &\qquad \qquad \times \hat \phi(y) \hat \phi(y) \hat \phi(y) \hat \phi(y)\bigg\} |i\rangle
 \end{align*}
 {% end %}
@@ -345,9 +372,87 @@ To understand the concept of a cross-section, imagine an archer shooting arrows 
 
 The archer may also want to be more specific, and examine their hit-rate at different shooting angles. If the target is not a perfectly-symmetric shape, the archer may find that shooting at different angles to the target leads to a different hit-rate. Thus, the target size *appears* to change as a function of angle, and the target size per unit angle is what we would call the **differential cross-section**, denoted $\frac{d\sigma}{d\Omega}$. Of course, all this happens without the blindfolded archer being _actually aware_ of how the target looks like or what the target's shape is. The archer can only shoot lots of arrows in many different directions and ask the sports announcer where their arrows ended up, so as to reconstruct a mental image of their target.
 
-If all of this is too much imagination, blame us physicists! However, the point this analogy was trying to get across is that the _physical_ idea of a cross-section is the _effective area_ of a hypothetical object scattering the incident particles. That is, in any particular scattering process described in quantum field theory, where particles interact with each other, the cross-section is the size of an imaginary object that would scatter the particles in the same way as the actual quantum process. Cross-sections are often extremely tiny, and are usually measured in units of $\pu{fm^2}$ ($\pu{1 fm} = \pu{10^{-15}m}$) or barns ($\pu{b}$), where $\pu{1b} = \pu{100 fm^2}$. Borrowing our previous example of the photoelectric effect, we can replicate the 1-million-to-1 chance of a photon managing to eject an electron with classical particles scattering off an _imaginary_ sphere whose cross-sectional area is roughly $\pu{0.38 nm^2}$[^2]. Such a tiny sphere would barely be much of a collision target, so most of the incident particles wouldn't even collide with it, leaving only a few particles (1 in a million) to actually scatter off the sphere, which reproduces the transition rates we observe in the photoelectric effect. Using the same analogy, the *differential* cross-section would be the cross-sectional area of a tiny angular slice of that same hypothetical scattering object - which is hugely important for particle processes whose cross-section is dependent on angle. With powerful particle detectors all over the world specifically dedicated to measuring cross-sections, and equally impressive mathematical tools (as well as decades of theoretical research) into cross-sections, it is no wonder that so much of quantum field theory is _all about_ cross-sections.
+If all of this is too much imagination, blame us physicists! However, the point this analogy was trying to get across is that the _physical_ idea of a cross-section is the _effective area_ of a hypothetical object scattering the incident particles. That is, in any particular scattering process described in quantum field theory, where particles interact with each other, the cross-section is the size of an imaginary object that would scatter the particles in the same way as the actual quantum process. Cross-sections are often extremely tiny, and are usually measured in units of $\pu{fm^2}$ ($\pu{1 fm} = \pu{10^{-15}m}$) or barns ($\pu{b}$), where $\pu{1b} = \pu{100 fm^2}$ (just to be clear, _barns_, despite their name, are not used to measure the enclosures of livestock; rather, they are a unit predominantly used in particle physics). Borrowing our previous example of the photoelectric effect, we can replicate the 1-million-to-1 chance of a photon managing to eject an electron with classical particles scattering off an _imaginary_ sphere whose cross-sectional area is roughly $\pu{0.38 nm^2}$[^2]. Such a tiny sphere would barely be much of a collision target, so most of the incident particles wouldn't even collide with it, leaving only a few particles (1 in a million) to actually scatter off the sphere, which reproduces the transition rates we observe in the photoelectric effect. Using the same analogy, the *differential* cross-section would be the cross-sectional area of a tiny angular slice of that same hypothetical scattering object - which is hugely important for particle processes whose cross-section is dependent on angle. With powerful particle detectors all over the world specifically dedicated to measuring cross-sections, and equally impressive mathematical tools (as well as decades of theoretical research) into cross-sections, it is no wonder that so much of quantum field theory is _all about_ cross-sections.
 
 > **Note:** [This article from CERN](https://cms.cern/news/what-do-we-mean-cross-section-particle-physics) and [this Physics Stack Exchange answer](https://physics.stackexchange.com/a/777460/497517) are also good resources for gaining more intuition on cross-sections.
 
+### Scattering cross-sections
+
+While we will wait until the next chapter to actually _compute_ cross-sections, now is a good time to understand how cross-sections can be found from the S-matrix. Recall that the probability amplitude is given by:
+
+{% math() %}
+\begin{align*}
+\mathcal{A} &= \langle f|\hat S|i\rangle \\ &= \langle f|i\rangle 
+-i \left\langle f\left|\int d^4x \,\mathcal{T}\left\{{\mathcal {H}}(x)\right\} \right|i\right \rangle \\
+&\qquad\qquad+ \dfrac{(-i)^2}{2!} \left\langle f\left| \int d^4x\,d^4y\,\mathcal{T}\left\{ \mathcal{H}(x)\mathcal{H}(y)\right\}\right|i\right \rangle + \dots 
+\end{align*}
+{% end %}
+
+The probability amplitude is essential in quantum field theory, but it itself is not a physically-measurable quantity: it is usually complex-valued and often contains delta functions that become infinite when their argument is zero. Instead, we define an **invariant amplitude** $\mathcal{M}$, which is related to the probability amplitude $\mathcal{A}$ by:
+
+{% math() %}
+\begin{align*}
+\mathcal{A} &= \langle f|i\rangle + i\mathcal{M}(2\pi)^4\delta^4\left(\sum_j p_j - \sum_j q_j\right) \\
+&= \langle f|i\rangle + i\mathcal{M}(2\pi)^4\delta^4(p_1 +p_2 + \dots + p_n- q_1 - q_2 - \dots -q_n)
+\end{align*}
+{% end %}
+
+Where $p_1, p_2, \dots$ are the momenta of each of the **incident** particles, and $q_1, q_2, \dots$ are the momenta of each of the **outgoing** particles. The above equation may also be written in a more elegant manner if we define $P = \sum_j p_j$ as the **total momentum** of all incident particles, and $Q = \sum_j q_j$ as the **total momentum** of all outgoing (scattered) particles. This greatly simplifies the formula to:
+
+{% math() %}
+\mathcal{A} = \langle f|i\rangle = i\mathcal{M}(2\pi)^4 \delta^4(P - Q)
+{% end %}
+
+> **Note for the advanced reader:** The invariant amplitude $\mathcal{M}$ is chosen so that it reproduces the transition matrix element $M_{if}$, which appears in [Fermi's Golden Rule](https://hyperphysics.phy-astr.gsu.edu/hbase/quantum/fermi.html) from **non-relativistic quantum mechanics**.
+
+Unlike the probability amplitude $\mathcal{A}$, the invariant amplitude $\mathcal{M}$ does _not_ include any delta functions and therefore avoids the issue of singularities associated with delta functions. This means that quantities depending on $|\mathcal{M}|^2$, which is real-valued, _can_ actually be measured. For instance, the differential cross-section of any two-particle scattering process is given by:
+
+{% math() %}
+\dfrac{d\sigma}{d\Omega} = \dfrac{1}{64\pi E_\mathrm{cm}^2} \dfrac{|\mathbf{p}_f|}{|\mathbf{p}_i|} |\mathcal{M}|^2
+{% end %}
+
+Where $E_\mathrm{cm}$ is the total energy in the center-of-momentum frame, and $\mathbf{p}_i, \mathbf{p}_f$ are the initial and final (3-)momenta of the particles (again in the center-of-momentum frame).
+
+> **Note:** This expression is in natural units: to convert to SI units simply multiply the differential cross-section formula given above by a factor of $\hbar^2 c^2$.
+
+In the case that the two particles have identical masses, the differential cross-section simplifies to:
+
+{% math() %}
+\dfrac{d\sigma}{d\Omega} = \dfrac{1}{64\pi E_\mathrm{cm}^2}  |\mathcal{M}|^2
+{% end %}
+
+To find the _total cross-section_ $\sigma$, we integrate the differential cross-section across all angles $\phi$ and $\theta$, which gives us:
+
+{% math() %}
+\sigma = \int_0^{2\pi} d\phi \int_0^\pi d\theta\sin \theta \left(\dfrac{d\sigma}{d\Omega}\right)
+{% end %}
+
+In an actual experimental setting, cross-sections are not measured directly - after all, they are an abstract quantity in the first place! Instead, a particle beam is fired at some target with a known particle density; some particles in the original beam will not interact with the target's particles at all, whereas others do interact and are scattered. By counting the number of scattered particles versus the number of particles in the original beam, we can deduce the approximate probability that an incident particle will end up getting scattered. For instance, let $n_i$ be the number of incident particles, and $n_s$ be the number of particles scattered. Then, the probability $\mathscr{p}$ that an incident particle gets scattered would be given by:
+
+{% math() %}
+\mathscr{p} = \dfrac{n_s}{n_i}
+{% end %}
+
+Now, let $N$ be the number of particles per unit area of the target. The cross-section $\sigma$ can then be found by the formula:
+
+{% math() %}
+\sigma = \dfrac{\mathscr{p}}{N} = \dfrac{n_s}{n_i N}
+{% end %}
+
+For instance, let us consider an imaginary particle collider (similar to the [Large Hadron Collider](https://en.wikipedia.org/wiki/Large_Hadron_Collider)) that produces two particle beams, each with $N = \pu{5E17 m^{-2}}$ particles per unit area, and aims them at each other[^3]. The cross-sectional area of the beam is about $\pu{3 mm^2}$, meaning that the number of incident particles on the target is $\pu{3mm^2} \times \pu{5E30 m^{-2}}$, which evaluates to $1.5\times 10^{12}$ incident particles. Now, assume that the detector measured $850$ scattered particles. The cross-section of the process is then given by:
+
+{% math() %}
+\sigma = \dfrac{850}{1.5\times 10^{12}} \dfrac{1}{\pu{5E17 m^{-2}}} \approx \pu{1.1E-21 mm^2} = \pu{11.3b}
+{% end %}
+
+As another example, in the case of **Thomson scattering**, where an incident photon scatters off a non-relativistic electron, the cross-section is given by:
+
+{% math() %}
+\sigma = \dfrac{8\pi}{3} \left(\dfrac{\alpha \lambda_c}{2\pi}\right)^2
+{% end %}
+
+Where $\alpha \approx 1/137$ is the fine-structure constant, and $\lambda_c$ is the Compton wavelength of the electron (which we saw at the start of the book). This leads to a numerical value of about $\pu{0.65 b}$, which has been [closely-measured experimentally](https://physics.nist.gov/cgi-bin/cuu/Value?sigmae) and has shown excellent agreement with theory.
+
 [^1]: <p style="font-size: small">This assumes 10 nm X-rays incident on sodium atoms. The numerical value was computed via the formula $\sigma = \frac{16\pi\sqrt{2}}{3}\alpha^8 Z^5 a_0^2 (m_e c^2/E_\gamma)^{7/2}$, taken from <a href="https://bohr.physics.berkeley.edu/classes/221/9697/photelec.pdf">the Physics 221 Lecture Notes</a> from the University of Berkeley.</p>
 [^2]: <p style="font-size: small">This figure is from <a href="https://physics.stackexchange.com/questions/193622/quantum-efficiency-of-photoelectric-effect">this Physics SE answer</a> on the photoelectric effect.</p>
+[^3]: <p style="font-size: small">These figures are fictitious but partially based on <a href="https://lhc-machine-outreach.web.cern.ch/beam.htm">this source from CERN</a> that provides specifications of the Large Hadron Collider's particle beams.</p>
