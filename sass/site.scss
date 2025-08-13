@@ -265,8 +265,9 @@ header {
 .preface, .related {
   p {
     font-size: 1.1rem;
-    @include sm { font-size: 0.9rem; }
+    @include sm { font-size: 1.05rem; }
     line-height: 1.5;
+    @include sm { line-height: 1.75; }
     margin-bottom: 2rem;
     max-width: 80ch;
   }
