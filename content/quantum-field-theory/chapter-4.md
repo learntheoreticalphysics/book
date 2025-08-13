@@ -255,20 +255,38 @@ Where $|f\rangle = |\Psi(t)\rangle$ is the final state of the particle (at time 
 \end{align*}
 {% end %}
 
-In quantum field theory, the Dyson series is known as the **S-matrix** (short for _scattering matrix_), and the probability amplitude is usually denoted $\mathcal{M}$ instead of $A$. The Dyson series still gives the probability amplitude $\mathcal{M}$ of a transition occuring from state $|i\rangle$ to state $|f\rangle$, but it takes the new form:
+In quantum field theory, the Dyson series is known as the **S-matrix** (short for _scattering matrix_). The basic concept of the Dyson series remains the same, although the notation is a bit different: we use $\hat S$ instead of $\hat U$, and the probability amplitude is usually denoted $\mathcal{M}$ instead of $A$. Using this new notation, the probability amplitude ($\mathcal{M}$) of a transition occuring from state $|i\rangle$ to state $|f\rangle$ takes the form:
 
 {% math() %}
-\mathcal{M} = \langle f |\hat U |i\rangle 
- =\left\langle f\left|\sum _{n=0}^{\infty }{\frac {(-i)^{n}}{n!}}\int d^4x_{1} \cdots \int d^4x_{n} \mathcal{T} \bigg\{ \mathcal{H}(x_{1})\cdots \mathcal {H}(x_{n}) \bigg \} \right|i\right\rangle
+\mathcal{M} = \langle f |\hat S |i\rangle
 {% end %}
 
-Where $\mathcal{T}\{\dots \}$ is the **time-ordering operator** that "sorts" operators in order, which ensures that we don't break causality by having scattering events that go backwards in time. Coming up with the rules to describe scattering processes in quantum field theory is therefore equivalent to computing the S-matrix for a theory.
+Where the S-matrix (the QFT version of the Dyson series) takes the form:
+
+{% math() %}
+\begin{align*}
+\hat S &= \sum_{n=0}^\infty \frac{(-i)^{n}}{n!}\int d^4x_{1} \cdots \int d^4x_{n} \mathcal{T} \bigg\{ \mathcal{H}(x_{1})\cdots \mathcal {H}(x_{n}) \bigg \} \\
+&= 1 -i \int d^4x_{1} \,\mathcal{T}\left\{{\mathcal {H}}(x_{1})\right\} \\
+&\qquad+ \dfrac{(-i)^2}{2!} \int d^4x_{1}\,d^4x_2\,\mathcal{T}\left\{ \mathcal{H}(x_1)\mathcal{H}(x_2)\right\} + \dots
+\end{align*}
+{% end %}
+
+Here, $\mathcal{T}\{\dots \}$ is the **time-ordering operator** that "sorts" operators in order, which ensures that we don't break causality by having scattering events that go backwards in time. Note that the S-matrix can also be written in term-by-term form, as follows:
+
+{% math() %}
+\begin{align*}
+\hat S &= S_{(0)} + S_{(1)} + S_{(2)} + S_{(3)} + \dots + S_{(\infty)}, \\
+&\qquad S_{(n)} = \frac{(-i)^{n}}{n!}\int d^4x_{1} \cdots \int d^4x_{n} \mathcal{T} \bigg\{ \mathcal{H}(x_{1})\cdots \mathcal {H}(x_{n}) \bigg \}
+\end{align*}
+{% end %}
+
+The S-matrix is significant because it is the main way we calculate **probability amplitudes** in quantum field theories. This means that calculating scattering processes in quantum field theory is therefore equivalent to computing the S-matrix associated with different quantum fields.
 
 > **Why is the S-matrix called a matrix?** This is to do with the fact that formally, the S-matrix is indeed a type of matrix, since it maps an initial state-vector $|i\rangle$ to a final state $\langle f|$, exactly as a matrix would map a vector to another vector. The fact that it is typically expressed as a product of integrals simply stems from the fact that the Hamiltonian in quantum field theories is the Hamiltonian density integrated over all space, so the S-matrix is filled with integrals.
 
 ### From the S-matrix to correlation functions
 
-The S-matrix is conceptually powerful, but to make it actually _computable_, we usually take only the first few terms of the S-matrix. The zeroeth-order term $S_{(0)} = \langle f | i\rangle$ is often zero (except when $|f\rangle = |i\rangle$, in which case it takes the form $\langle 0| 0\rangle = 1$), so the dominant contribution to most processes are found in the first-order and second-order terms, which are respectively:
+The S-matrix is conceptually powerful, but it is an _infinite_ series and usually cannot be summed explicitly. So, to make it actually _computable_, we usually take only the first few terms of the S-matrix. The zeroeth-order term $S_{(0)} = 1$ describes a non-interacting free field, so the dominant contribution to most QFT interactions are found in the first-order and second-order terms, which are respectively:
 
 {% math() %}
 \begin{align*}
@@ -282,7 +300,9 @@ S_{(2)} &= \dfrac{1}{2}\left\langle f\left|\int d^4x_{1}\,d^4x_2\,\mathcal{T}\le
 This means that the total probability amplitude $\mathcal{M}$, to second-order, becomes:
 
 {% math() %}
-\mathcal{M} \approx S_{(0)} + S_{(1)} + S_{(2)}
+\begin{align*}
+\mathcal{M} &\approx \langle f|i\rangle + \langle f|S_{(1)}|i\rangle + \langle f|S_{(2)}|i\rangle
+\end{align*}
 {% end %}
 
 Let's demonstrate by using the case of the scalar $\phi^4$ field theory. The interaction Hamiltonian density for $\phi^4$ theory is:
@@ -319,14 +339,15 @@ We immediately see that we have terms in the form $\langle f | \hat \phi(x) \hat
 
 ## Cross sections and transition rates
 
-When discussing quantum field theory, it is impossible to avoid the topic of **scattering cross-sections**, usually just called "cross-sections". Cross-sections are a way of describing the probability of particle-particle interactions within quantum field theory. Why is this important? Because we know that quantum physics is inherently _statistical_, in that among very few things we can theoretically predict are the _probabilities_ of a particular interaction occuring. In general, these probabilities are extremely small. For instance, in the famous [photoelectric effect](https://en.wikipedia.org/wiki/Photoelectric_effect), photons fired at a metal target have a small chance of colliding with one of the valence electrons in the target's atoms, but the probability of this occuring is around  $10^{-6}$ to $10^{-5}$, meaning that on average, for close to every _million_ photons, only one interacts with an atom and causes the release of an electron (this figure is from [this Physics SE answer](https://physics.stackexchange.com/questions/193622/quantum-efficiency-of-photoelectric-effect)). What is important, however, is that these probabilities can be _precisely_ measured with modern equipment, and they provide important tests of quantum field theory.
+When discussing quantum field theory, it is impossible to avoid the topic of **scattering cross-sections**, usually just called "cross-sections". Cross-sections are a way of describing the probability of particle-particle interactions within quantum field theory. Why is this important? Because we know that quantum physics is inherently _statistical_, in that among very few things we can theoretically predict are the _probabilities_ of a particular interaction occuring. In general, these probabilities are extremely small. For instance, in the famous [photoelectric effect](https://en.wikipedia.org/wiki/Photoelectric_effect), photons fired at a metal target have a small chance of colliding with one of the valence electrons in the target's atoms, but the probability of this occuring is around  $10^{-6}$ to $10^{-5}$, meaning that on average, for close to every _million_ photons, only _one_ interacts with an atom and causes the release of an electron![^1] What is important, however, is that these probabilities can be _precisely_ measured with modern equipment, and they provide important tests of quantum field theory.
 
 To understand the concept of a cross-section, imagine an archer shooting arrows at a target while blindfolded. The archer cannot see their target while blindfolded, so the archer shoots an enormous number of arrows in the hopes that at least some of their arrows will manage to hit the target. But - alas! - the archer is then told (by some overenthusiastic sports announcer) that the arrows they shot have _bounced off_ the target, so they don't actually know how many arrows hit before bouncing off! However, by asking the sports announcer about the places the arrows landed, the archer can roughly estimate the size of the target, and therefore approximately how many arrows hit on-target. That estimated target size is what we would call the **cross-section** $\sigma$, and the archer's estimate of the percentage of the arrows that hit on-target across the total time they were shooting is what we would call the **transition rate** (the probability of a transition, or in this case a successful hit, per unit time). 
 
 The archer may also want to be more specific, and examine their hit-rate at different shooting angles. If the target is not a perfectly-symmetric shape, the archer may find that shooting at different angles to the target leads to a different hit-rate. Thus, the target size *appears* to change as a function of angle, and the target size per unit angle is what we would call the **differential cross-section**, denoted $\frac{d\sigma}{d\Omega}$. Of course, all this happens without the blindfolded archer being _actually aware_ of how the target looks like or what the target's shape is. The archer can only shoot lots of arrows in many different directions and ask the sports announcer where their arrows ended up, so as to reconstruct a mental image of their target.
 
-If all of this is too much imagination, blame us physicists! However, the point this analogy was trying to get across is that the _physical_ idea of a cross-section is the _effective area_ of a hypothetical object scattering the incident particles. That is, in any particular scattering process described in quantum field theory, where particles interact with each other, the cross-section is the size of an imaginary object that would scatter the particles in the same way as the actual quantum process. Cross-sections are often extremely tiny, and are usually measured in units of $\pu{fm^2}$ ($\pu{1 fm} = \pu{10^{-15}m}$) or barns ($\pu{b}$), where $\pu{1b} = \pu{100 fm^2}$. Borrowing our previous example of the photoelectric effect, we can replicate the 1-million-to-1 chance of a photon managing to eject an electron with classical particles scattering off an _imaginary_ sphere whose cross-sectional area is roughly $\pu{0.38 nm^2}$[^1]. Such a tiny sphere would barely be much of a collision target, so most of the incident particles wouldn't even collide with it, leaving only a few particles (1 in a million) to actually scatter off the sphere, which reproduces the transition rates we observe in the photoelectric effect. Using the same analogy, the *differential* cross-section would be the cross-sectional area of a tiny angular slice of that same hypothetical scattering object - which is hugely important for particle processes whose cross-section is dependent on angle. With powerful particle detectors all over the world specifically dedicated to measuring cross-sections, and equally impressive mathematical tools (as well as decades of theoretical research) into cross-sections, it is no wonder that so much of quantum field theory is _all about_ cross-sections.
+If all of this is too much imagination, blame us physicists! However, the point this analogy was trying to get across is that the _physical_ idea of a cross-section is the _effective area_ of a hypothetical object scattering the incident particles. That is, in any particular scattering process described in quantum field theory, where particles interact with each other, the cross-section is the size of an imaginary object that would scatter the particles in the same way as the actual quantum process. Cross-sections are often extremely tiny, and are usually measured in units of $\pu{fm^2}$ ($\pu{1 fm} = \pu{10^{-15}m}$) or barns ($\pu{b}$), where $\pu{1b} = \pu{100 fm^2}$. Borrowing our previous example of the photoelectric effect, we can replicate the 1-million-to-1 chance of a photon managing to eject an electron with classical particles scattering off an _imaginary_ sphere whose cross-sectional area is roughly $\pu{0.38 nm^2}$[^2]. Such a tiny sphere would barely be much of a collision target, so most of the incident particles wouldn't even collide with it, leaving only a few particles (1 in a million) to actually scatter off the sphere, which reproduces the transition rates we observe in the photoelectric effect. Using the same analogy, the *differential* cross-section would be the cross-sectional area of a tiny angular slice of that same hypothetical scattering object - which is hugely important for particle processes whose cross-section is dependent on angle. With powerful particle detectors all over the world specifically dedicated to measuring cross-sections, and equally impressive mathematical tools (as well as decades of theoretical research) into cross-sections, it is no wonder that so much of quantum field theory is _all about_ cross-sections.
 
 > **Note:** [This article from CERN](https://cms.cern/news/what-do-we-mean-cross-section-particle-physics) and [this Physics Stack Exchange answer](https://physics.stackexchange.com/a/777460/497517) are also good resources for gaining more intuition on cross-sections.
 
 [^1]: <p style="font-size: small">This assumes 10 nm X-rays incident on sodium atoms. The numerical value was computed via the formula $\sigma = \frac{16\pi\sqrt{2}}{3}\alpha^8 Z^5 a_0^2 (m_e c^2/E_\gamma)^{7/2}$, taken from <a href="https://bohr.physics.berkeley.edu/classes/221/9697/photelec.pdf">the Physics 221 Lecture Notes</a> from the University of Berkeley.</p>
+[^2]: <p style="font-size: small">This figure is from <a href="https://physics.stackexchange.com/questions/193622/quantum-efficiency-of-photoelectric-effect">this Physics SE answer</a> on the photoelectric effect.</p>

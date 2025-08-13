@@ -236,19 +236,19 @@ Where $\epsilon^\nu$ is a constant vector (called the **polarization**), and $\p
 This gives us a shortcut solution, since we already know the general solution to the Klein-Gordon equation, which we wrote as a Fourier expansion:
 
 {% math() %}
-\phi(x^\mu) = \int \dfrac{d^3 p}{(2\pi)^32E_p} \left[a(p) e^{ip_\mu x^\mu} + a^*(p) e^{-ip_\mu x^\mu}\right] 
+\phi(x^\mu) = \int \dfrac{d^3 p}{(2\pi)^3 \sqrt{2E_p}} \left[a(p) e^{ip_\mu x^\mu} + a^*(p) e^{-ip_\mu x^\mu}\right] 
 {% end %}
 
 Thus, our solution to Maxwell's equation becomes:
 
 {% math() %}
-A^\nu = \epsilon^\nu \phi =\int \dfrac{d^3 p}{(2\pi)^32E_p}\left[\epsilon^\nu a(p) e^{ip_\mu x^\mu} + \epsilon^\nu a^*(p) e^{-ip_\mu x^\mu}\right]
+A^\nu = \epsilon^\nu \phi =\int \dfrac{d^3 p}{(2\pi)^3 \sqrt{2E_p}}\left[\epsilon^\nu a(p) e^{ip_\mu x^\mu} + \epsilon^\nu a^*(p) e^{-ip_\mu x^\mu}\right]
 {% end %}
 
 Out of notational preference, we'll switch to the lower-index version of the field $A_\mu = \eta_{\mu \nu} A^\nu$, and write $a(p)$ as $a_p$ as well as {% inlmath() %}a^*(p){% end %} as {% inlmath() %}a^*_p{% end %}. The solution largely remains the same, with the only difference being that the polarization vector {% inlmath() %}\eta_{\mu \nu} \epsilon^\nu = \epsilon_\mu{% end %} must also shift to a lower index, thus giving us:
 
 {% math() %}
-A_\mu =\int \dfrac{d^3 p}{(2\pi)^32E_p}\left[\epsilon_\mu a_p e^{ip_\mu x^\mu} + \epsilon_\mu a^*_p e^{-ip_\mu x^\mu}\right]
+A_\mu =\int \dfrac{d^3 p}{(2\pi)^3 \sqrt{2E_p}}\left[\epsilon_\mu a_p e^{ip_\mu x^\mu} + \epsilon_\mu a^*_p e^{-ip_\mu x^\mu}\right]
 {% end %}
 
 Let's take a short moment to discuss the polarization vector $\epsilon_\mu$. Physically-speaking, the polarization vector represents the _orientation_ of the field vectors. It turns out that there are two possible orientations for the $A_\mu$ field, and thus two polarization vectors, which are, respectively:
@@ -265,13 +265,13 @@ Let's take a short moment to discuss the polarization vector $\epsilon_\mu$. Phy
 Given the two polarizations, the most general solution to Maxwell's equations should be a superposition of both polarizations - so we write the solution as a sum of the two polarizations:
 
 {% math() %}
-A_\mu = \int\dfrac{d^3 p}{(2\pi)^3} \sum_{r = 1}^2\dfrac{1}{2E_p} \left(\epsilon^{(r)}_\mu a_p e^{ip_\mu x^\mu} + \epsilon_\mu^{(r)} a^*_p e^{-ip_\mu x^\mu}\right)
+A_\mu = \int\dfrac{d^3 p}{(2\pi)^3} \sum_{r = 1}^2\dfrac{1}{\sqrt{2E_p}} \left(\epsilon^{(r)}_\mu a_p e^{ip_\mu x^\mu} + \epsilon_\mu^{(r)} a^*_p e^{-ip_\mu x^\mu}\right)
 {% end %}
 
 Given how similar the free electromagnetic field is to the free scalar field, we can essentially use the exact same procedure for quantization: $a_p$ and $a_p^*$ become the annihilation and creation operators $\hat a_p, \hat a_p^\dagger$ respectively. The only difference is due to polarization, which was absent for the free scalar field. Thus, we use the notations $\hat a_p^r$ and $\hat a_p^{r\dagger}$ to recognize that states of the electromagnetic field could have either one of the two polarizations. Thus, we have:
 
 {% math() %}
-\hat A_\mu = \int\dfrac{d^3 p}{(2\pi)^3} \sum_{r = 1}^2\dfrac{1}{2E_p} \left(\epsilon^{(r)}_\mu \hat a^r_p e^{ip_\mu x^\mu} + \epsilon_\mu^{(r)} \hat a^{r\dagger}_p e^{-ip_\mu x^\mu}\right)
+\hat A_\mu = \int\dfrac{d^3 p}{(2\pi)^3} \sum_{r = 1}^2\dfrac{1}{\sqrt{2E_p}} \left(\epsilon^{(r)}_\mu \hat a^r_p e^{ip_\mu x^\mu} + \epsilon_\mu^{(r)} \hat a^{r\dagger}_p e^{-ip_\mu x^\mu}\right)
 {% end %}
 
 The creation and annihilation operators for the two polarizations create or annihilate a particle in that particular polarization state, as follows:
@@ -296,7 +296,7 @@ Unlike classical fields, quantum fields have nonzero expectation values even whe
 To show this, let's again consider the free electromagnetic field $A_\mu$ (the field in the absence of sources, as it would be in vacuum). The field operator $\hat A_\mu$ would be given by:
 
 {% math() %}
-\hat A_\mu = \int\dfrac{d^3 p}{(2\pi)^3} \sum_{r = 1}^2\dfrac{1}{2E_p} \left(\epsilon^{(r)}_\mu \hat a^r_p e^{ip_\mu x^\mu} + \epsilon_\mu^{(r)} \hat a^{r\dagger}_p e^{-ip_\mu x^\mu}\right)
+\hat A_\mu = \int\dfrac{d^3 p}{(2\pi)^3} \sum_{r = 1}^2\dfrac{1}{\sqrt{2E_p}} \left(\epsilon^{(r)}_\mu \hat a^r_p e^{ip_\mu x^\mu} + \epsilon_\mu^{(r)} \hat a^{r\dagger}_p e^{-ip_\mu x^\mu}\right)
 {% end %}
 
 Let us recall that previously, for the free scalar field, we derived the Hamiltonian density operator to be:
