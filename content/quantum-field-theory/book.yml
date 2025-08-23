@@ -14,3 +14,7 @@ pages:
     title: Quantization of the electromagnetic field
   - file: chapter-4.md
     title: Non-trivial scalar field theories
+  - file: chapter-5.md
+    title: Introduction to Feynman diagrams
+  - file: chapter-6.md
+    title: The Yukawa theory of nuclear interactions
