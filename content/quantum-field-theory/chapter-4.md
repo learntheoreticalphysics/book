@@ -298,7 +298,16 @@ Where the S-matrix (the QFT version of the Dyson series) takes the form:
 \end{align*}
 {% end %}
 
-Here, $\mathcal{T}\{\dots \}$ is the **time-ordering operator** that "sorts" operators in order, which ensures that we don't break causality by having scattering events that go backwards in time. The probability amplitude $\mathcal{A}$ can then be explicitly written as an infinite series:
+Here, $\mathcal{T}\{\dots \}$ is the **time-ordering operator**, which sorts operators in order. This is very important to ensure that we don't break causality by having scattering events that go backwards in time! It is defined by:
+
+{% math() %}
+\langle 0|\mathcal{T} \big\{ \hat \phi(x_2) \hat \phi(x_1) \big\} |0\rangle = \begin{cases}
+\langle 0|\hat \phi(x_2) \hat \phi(x_1)|0\rangle, & t_2 > t_1, \\
+\langle 0|\hat \phi(x_1) \hat \phi(x_2)|0\rangle, & t_1 > t_2
+\end{cases}
+{% end %}
+
+This definition may _look_ complicated, but it actually captures a much simpler idea: if a particle is created at point $x_1$ in spacetime and propagates to position $x_2$, we can't find it at $x_2$ before it is created, or otherwise we'd have particles travelling backwards in time! Without the time-ordering operator, physics would break down, so the time-ordering operator is **absolutely essential**; we will therefore discuss it at length later. With these definitions, the probability amplitude $\mathcal{A}$ can then be explicitly written as an infinite series:
 
 {% math() %}
 \begin{align*}
@@ -328,7 +337,8 @@ This means that the total probability amplitude $\mathcal{A}$, to second-order, 
 
 {% math() %}
 \begin{align*}
-\mathcal{A} &\approx \langle f|i\rangle + \langle f|\mathcal{A}_{(1)}|i\rangle + \langle f|\mathcal{A}_{(2)}|i\rangle
+\mathcal{A} &= \mathcal{A}_0 + \mathcal{A}_1 + \mathcal{A}_{(2)} \\
+&= \langle f|i\rangle + \mathcal{A}_1 + \mathcal{A}_{(2)}
 \end{align*}
 {% end %}
 
@@ -338,7 +348,7 @@ Let's demonstrate by using the case of the scalar $\phi^4$ field theory. Recall 
 \mathcal{H}_I = \dfrac{\lambda}{4!} \hat \phi^4 
 {% end %}
 
-So, if we substitute our interaction Hamiltonian, the first- and second-order terms in the S-matrix are, respectively:
+So, if we substitute our interaction Hamiltonian, the first- and second-order terms in the probability amplitude are, respectively:
 
 {% math() %}
 \begin{align*}
@@ -400,7 +410,7 @@ The probability amplitude is essential in quantum field theory, but it itself is
 Where $p_1, p_2, \dots$ are the momenta of each of the **incident** particles, and $q_1, q_2, \dots$ are the momenta of each of the **outgoing** particles. The above equation may also be written in a more elegant manner if we define $P = \sum_j p_j$ as the **total momentum** of all incident particles, and $Q = \sum_j q_j$ as the **total momentum** of all outgoing (scattered) particles. This greatly simplifies the formula to:
 
 {% math() %}
-\mathcal{A} = \langle f|i\rangle = i\mathcal{M}(2\pi)^4 \delta^4(P - Q)
+\mathcal{A} = \langle f|i\rangle + i\mathcal{M}(2\pi)^4 \delta^4(P - Q)
 {% end %}
 
 > **Note for the advanced reader:** The invariant amplitude $\mathcal{M}$ is chosen so that it reproduces the transition matrix element $M_{if}$, which appears in [Fermi's Golden Rule](https://hyperphysics.phy-astr.gsu.edu/hbase/quantum/fermi.html) from **non-relativistic quantum mechanics**.
@@ -408,17 +418,17 @@ Where $p_1, p_2, \dots$ are the momenta of each of the **incident** particles, a
 Unlike the probability amplitude $\mathcal{A}$, the invariant amplitude $\mathcal{M}$ does _not_ include any delta functions and therefore avoids the issue of singularities associated with delta functions. This means that quantities depending on $|\mathcal{M}|^2$, which is real-valued, _can_ actually be measured. For instance, the differential cross-section of any two-particle scattering process is given by:
 
 {% math() %}
-\dfrac{d\sigma}{d\Omega} = \dfrac{1}{64\pi E_\mathrm{cm}^2} \dfrac{|\mathbf{p}_f|}{|\mathbf{p}_i|} |\mathcal{M}|^2
+\dfrac{d\sigma}{d\Omega} = \dfrac{1}{64\pi^2 E_\mathrm{cm}^2} \dfrac{|\mathbf{p}_f|}{|\mathbf{p}_i|} |\mathcal{M}|^2
 {% end %}
 
 Where $E_\mathrm{cm}$ is the total energy in the center-of-momentum frame, and $\mathbf{p}_i, \mathbf{p}_f$ are the initial and final (3-)momenta of the particles (again in the center-of-momentum frame).
 
 > **Note:** This expression is in natural units: to convert to SI units simply multiply the differential cross-section formula given above by a factor of $\hbar^2 c^2$.
 
-In the case that the two particles have identical masses, the differential cross-section simplifies to:
+In the case that the two particles have identical masses (which is always true for massless particles like photons), the differential cross-section simplifies to:
 
 {% math() %}
-\dfrac{d\sigma}{d\Omega} = \dfrac{1}{64\pi E_\mathrm{cm}^2}  |\mathcal{M}|^2
+\dfrac{d\sigma}{d\Omega} = \dfrac{1}{64\pi^2 E_\mathrm{cm}^2}  |\mathcal{M}|^2
 {% end %}
 
 To find the _total cross-section_ $\sigma$, we integrate the differential cross-section across all angles $\phi$ and $\theta$, which gives us:

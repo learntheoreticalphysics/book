@@ -254,11 +254,11 @@ Thus, recalling that $(e^{-i\theta})^* = e^{i\theta}$ and $|n\rangle^\dagger = \
 \langle 0|\hat \phi = (\hat \phi|0\rangle)^\dagger = \int d^3 p\dfrac{e^{ip_\mu x^\mu}}{(2\pi)^3 2E_p}\langle p|
 {% end %}
 
-Together with our normalization condition $\langle p |q\rangle = 2E_p (2\pi)^3 \delta^3(p-q)$, we can then straightforwardly calculate $\langle 0|\hat \phi|p\rangle$:
+Together with our normalization condition $\langle p |q\rangle = 2E_p (2\pi)^3 \delta^3(p-q)$, we can then straightforwardly calculate $\langle 0|\hat \phi|q\rangle$:
 
 {% math() %}
 \begin{align*}
-\langle 0 |\hat \phi |p\rangle &= \left(\int d^3 p\dfrac{e^{ip_\mu x^\mu}}{(2\pi)^3 2E_p}\langle p|\right)|q\rangle \\
+\langle 0 |\hat \phi |q\rangle &= \left(\int d^3 p\dfrac{e^{ip_\mu x^\mu}}{(2\pi)^3 2E_p}\langle p|\right)|q\rangle \\
 &= \int d^3 p\dfrac{e^{ip_\mu x^\mu}}{(2\pi)^3 2E_p}\langle p|q\rangle \\
 &= \int d^3 p\dfrac{e^{ip_\mu x^\mu}}{\cancel{(2\pi)^3 2E_p}} \cancel{2E_p (2\pi)^3} \delta^3(p-q) \\
 &= \int d^3 p\, e^{ip_\mu x^\mu} \delta^3(p-q) \\
