@@ -1,1 +1,3 @@
-<img class="diagram" src={{ src }} {% if desc %}alt="{{desc}}"{% endif %} />
+<!-- note: partially based on
+ https://gitlab.com/crepererum/blog/-/blob/master/templates/shortcodes/image.html?ref_type=heads -->
+<img class="diagram" src="{{ page.path ~ src }}" {% if desc %} alt="{{desc}}"{% endif %} />
