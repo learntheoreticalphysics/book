@@ -100,12 +100,12 @@
         <ul>
         {% for h2 in page.toc %}
             <li>
-                <a href="{{ h2.permalink | safe }}">{{ h2.title }}</a>
+                <a class="pagelink" href="{{ h2.permalink | safe }}">{{ h2.title }}</a>
                 {% if h2.children %}
                     <ul>
                         {% for h3 in h2.children %}
                             <li class="indent">
-                                <a href="{{ h3.permalink | safe }}">{{ h3.title }}</a>
+                                <a class="pagelink" href="{{ h3.permalink | safe }}">{{ h3.title }}</a>
                             </li>
                         {% endfor %}
                     </ul>
@@ -132,6 +132,10 @@
               {left: '$$', right: '$$', display: true},
               {left: '$', right: '$', display: false},
           ],
+          // custom macros for KaTeX-MathJax consistency
+          macros: {
+            "\\overbracket": "\\overgroup"
+          },
           // • rendering keys, e.g.:
           throwOnError : false
         });
