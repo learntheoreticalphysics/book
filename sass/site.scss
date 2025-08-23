@@ -560,6 +560,12 @@ header {
     }
 }
 
+// styling for footnotes
+.footnote-definition p {
+  font-size: small;
+  margin-left: 0.3em;
+}
+
 @media print {
   body {
     width: 85ch;
