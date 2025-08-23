@@ -1,0 +1,25 @@
+% Feynman diagram for one-loop
+% correction to two-pion scattering
+\documentclass{article}
+\usepackage{feynmp-auto}
+\begin{document}
+\begin{fmffile}{diagram}
+\begin{fmfgraph*}(250,150)
+    \fmfleft{i1,i2}
+    \fmfright{f1,f2}
+    \fmf{fermion}{i1,m1}
+    \fmf{fermion}{i2,m1}
+    \fmf{plain,left}{m1,m2,m1}
+    \fmf{fermion}{m2,f1}
+    \fmf{fermion}{m2,f2}
+    \fmfdot{m1,m2}
+    % labels
+    \fmflabel{$p_1$}{i1}
+    \fmflabel{$p_2$}{i2}
+    \fmflabel{$q_1$}{f1}
+    \fmflabel{$q_2$}{f2}
+    \fmflabel{$k$}{m1}
+    \fmflabel{$l = p_1 + p_2 - k$}{m2}
+\end{fmfgraph*}
+\end{fmffile}
+\end{document}
