@@ -216,7 +216,11 @@ It also allows us to figure out that when normal-ordered, the field products sat
 To derive the Feynman rules for Yukawa theory, we use the same procedure as $\phi^4$ theory: we expand the S-matrix $\hat S$ as a series, giving us a probability amplitude:
 
 {% math() %}
-\mathcal{A} = \langle f |\hat S|i\rangle = \left \langle i\left| \bigg\{1 - i \int d^4 x \mathcal{T}\{\mathcal{H}(x)\} + \dfrac{(-i)^2}{2} \int d^4 x\, d^4y \mathcal{T}\{\mathcal{H}(x) \mathcal{H}(y)\} + \dots\bigg\}\right|f\right\rangle
+\begin{align*}
+\mathcal{A} &= \langle f |\hat S|i\rangle \\
+&= \bigg \langle i\bigg| \bigg\{1 - i \int d^4 x \mathcal{T}\{\mathcal{H}(x)\} \\
+&\qquad \qquad + \dfrac{(-i)^2}{2} \int d^4 x\, d^4y \mathcal{T}\{\mathcal{H}(x) \mathcal{H}(y)\} + \dots\bigg\}\bigg|f\bigg\rangle
+\end{align*}
 {% end %}
 
 The _interaction part_ of the field Hamiltonian is the part that interests us. We recall that (as long as the interaction Lagrangian contains no derivatives of fields) we have {% inlmath() %}\mathcal{H}_\text{int} = -\mathscr{L}_\text{int}{% end %}. Thus we have:
@@ -259,15 +263,19 @@ We can try arranging these in a variety of different ways, but remember that $\h
 Again, these results proceed from the fact that Wick's theorem lets us expand out a time-ordered product of field operators in terms of normal-ordered products and contractions, and normal-ordered products allow us to literally "read off" the number of particles created and annihilated. So we have Wick's theorem to thank for these simplifications! What's more, if we expand our our normal-ordered terms, we find that:
 
 {% math() %}
-\langle q_1, q_2, \dots q_n|: \hat \psi^\dagger(x) \hat \psi(x) \hat \psi^\dagger(y) \hat \psi(y) :|p_1, p_2, \dots p_n\rangle \to \int d^4 x\,e^{i(p_1 + p_2 + \dots)x}e^{-i(q_1 + q_2 + \dots)x}
+\begin{align*}
+\langle q_1, q_2, \dots q_n|: \hat \psi^\dagger(x) \hat \psi(x) \hat \psi^\dagger(y) \hat \psi(y) :|p_1, p_2, \dots p_n\rangle \\
+\qquad \qquad \to \int d^4 x\,e^{i(p_1 + p_2 + \dots)x}e^{-i(q_1 + q_2 + \dots)x}
+\end{align*}
 {% end %}
 
 We can infer this by noting that since the normal-ordered product $: \hat \psi^\dagger(x) \hat \psi(x) \hat \psi^\dagger(y) \hat \psi(y) :$ creates two particles (which we can represent by $e^{i(p_1 + p_2)x}$, since particles in QFT are represented by plane waves) and then annihilates two particles (which we can represent by $e^{-i(q_1 + q_2)x}$), the result is just a product of these plane waves for ingoing and outgoing particles. We have seen integrals of this form before - they just evaluate to Dirac deltas of the form:
 
 {% math() %}
 \begin{align*}
-\langle q_1, q_2, \dots q_n|: \hat \psi^\dagger(x) \hat \psi(x) &\hat \psi^\dagger(y) \hat \psi(y) :|p_1, p_2, \dots p_n\rangle \\
-&\to (2\pi)^4 \delta^4(p_1 + p_2 + \dots + p_n- q_1 - q_2 - \dots - q_n)
+\langle q_1, q_2, \dots q_n|: &\hat \psi^\dagger(x) \hat \psi(x) \hat \psi^\dagger(y) \hat \psi(y) :|p_1, p_2, \dots p_n\rangle \\
+&\to (2\pi)^4 \delta^4(p_1 + p_2 + \dots + p_n \\
+&\qquad \qquad \qquad \quad - q_1 - q_2 - \dots - q_n)
 \end{align*}
 {% end %}
 
@@ -310,7 +318,7 @@ The momentum-space Feynman rules are remarkably similar to $\phi^4$ theory, thou
 
 Armed with the Feynman rules for Yukawa theory, we can now consider one of the most classical Feynman diagrams in quantum field theory: the diagram describing the interaction between two nucleons. We will consider the second-order process where two nucleons of momenta $p_1, p_2$ interact by the emission and absorption (often called an _exchange_) of a virtual pion. In this scenario, a nucleon with momentum $p_1$ emits a virtual pion with momentum $k$, and then scatters off with momentum $q_1$. Another nucleon with momentum $p_2$ then _absorbs_ the virtual pion and scatters off with momentum $q_1$. This process can be represented by the following Feynman diagram:
 
-{{ diagram(src="../diagrams/yukawa-nuclear-potential.svg" desc="") }}
+{{ diagram(src="../diagrams/yukawa-nuclear-potential.svg" desc="Feynman diagram describing two-nucleon interaction by the exchange of a virtual pion") }}
 
 > **Note:** Be aware that this diagram, unlike the previous diagrams we've seen, reads from bottom to up. The incident particles $\psi(p_1), \psi(p_2)$ are at the **bottom** of the diagram, and the time axis is upwards, not rightwards! It is **very important** to follow the directions of the arrows to make sure you've read the diagram correctly.
 

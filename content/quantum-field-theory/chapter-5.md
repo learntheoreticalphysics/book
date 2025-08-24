@@ -7,7 +7,7 @@ date = 2025-08-24
 
 As we promised, in this chapter, we will now discuss how to actually _compute_ cross-sections and transition rates. For this, we'll need to learn another tool in the quantum field theorist's toolbox: **Feynman diagrams**. If you are math-queasy, you might find them a welcome sigh of relief from the relentless math of quantum field theory - drawing Feynman diagrams involves no math at all, just pretty pictures! For instance, you've already seen this Feynman diagram (describing a process called _Møller scattering_, we'll get to it later) at the start of this book:
 
-{{ diagram(src="../diagrams/moller-scattering.svg" desc="") }}
+{{ diagram(src="../diagrams/moller-scattering.svg" desc="A Feynman diagram describing Møller scattering (two-electron scattering)") }}
 
 Feynman diagrams are not just pretty pictures though: they are pictorial representations of terms in the S-matrix that allow us to calculate transition rates and scattering cross-sections. This makes doing scattering calculations much more straightforward: instead of needing to manually do loads of math, we can just draw a Feynman diagram according to the interaction process, translate it to the appropriate terms in the S-matrix, and we get our cross-sections!
 
@@ -209,7 +209,7 @@ Our zeroeth-order scattering amplitude therefore reduces to:
 
 This is a rather boring result, since the scattering amplitude $\mathcal{A} = 0$ unless if $p = q$. This shouldn't be too unexpected though: it physically represents a particle that simply appears and disappears without interacting with anything. However, it does reveal an important aspect of Feynman rules: they must satisfy **conservation of momentum**. If the particle started off with momentum $p$ and did not interact with anything before it was annihilated with momentum $q$, the only possibility is that the particle's initial momentum $p$ is equal to its final momentum $q$. Otherwise, we would violate conservation of momentum! A way to visually represent our conclusions from analyzing the zeroeth-order term is to denote a particle with an arrow and label with its momentum. This is our first Feynman diagram:
 
-{{ diagram(src="../diagrams/free-particle.svg" desc="") }}
+{{ diagram(src="../diagrams/free-particle.svg" desc="Feynman diagram of a free particle not interacting with anything") }}
 
 
 The much more interesting part of the scattering amplitude is in the _first-order_ term $\mathcal{A}_{(1)}$. As a reminder, it is given by:
@@ -234,7 +234,7 @@ Notice how, unlike the zeroeth-order term, it also contains the $-i\lambda$ and 
 
 Regardless of whether they exist in physical reality or not, we will use the idea of virtual particles because that leads to the correct results in calculations, and leave the question of interpretation open for you to decide. With the idea of virtual particles, we understand the first-order term as arising from self-energy effects (the emission and re-absorption of a virtual particle by a real particle). We can then draw a diagram like this:
 
-{{ diagram(src="../diagrams/quartic-one-loop.svg" desc="") }}
+{{ diagram(src="../diagrams/quartic-one-loop.svg" desc="One-loop Feynman diagram describing a real particle emitting and then re-absorbing a virtual particle") }}
 
 This tells us that an incident particle starts off with momentum $p$, then emits a virtual particle at some spacetime position $x$, which we represent with a dot on the diagram. This dot is more formally called a **vertex**; the loop attached to the vertex represents the emitted and re-absorbed virtual particle. Afterwards, the particle is annihilated with momentum $q$. Notice how our pictorial representation is able to tell us the same information as the long integral for $\mathcal{A}_{(1)}$! We are now able to state the **Feynman rules** we have discovered as a result of our Feynman-inspired reasoning:
 
@@ -296,7 +296,7 @@ The first process is the case of two-particle scattering. Imagine two incident s
 
 The first step, of course, is to draw a corresponding Feynman diagram. Since we have two incident particles, we will need two external lines that come _into_ the diagram; and since we also have two outgoing particles, we will need two external lines that come _out of_ the diagram. Whenever two (or more) lines meet, we need to put a vertex. Since we have no virtual particles, we don't need to add any internal lines. Thus, our Feynman diagram would look like this:
 
-{{ diagram(src="../diagrams/two-pion-vertex.svg" desc="") }}
+{{ diagram(src="../diagrams/two-pion-vertex.svg" desc="Two-pion scattering Feynman diagram, describing the simplest two-pion scattering process") }}
 
 Now, we'll use our momentum-space Feynman rules. Each incoming particle and each outgoing particle contributes a multiplicative factor of $1$, and the vertex contributes a factor of $-i\lambda$. We don't need to add any Feynman propagators since we have no virtual particles. Lastly, since our particles have incident momenta $p_1, p_2$ and outgoing momenta $q_1, q_2$, we need to add a momentum-conserving delta function of the form $(2\pi)^4 \delta^4 (p_1 + p_2 - q_1 - q_2)$. As we have a single vertex, we identify our Feynman diagram as representing the $\mathcal{A}_{(1)}$ term in the transition (probability) amplitude. Putting it all together, we have:
 
@@ -363,7 +363,7 @@ Still, the Feynman rules got us most of the way there, and gave us the correct d
 
 The second process is a more complicated case. Consider the two-pion scattering process again, except this time their collision forms a virtual particle (virtual pion) which then instantly decays into two real particles. This means that we now need to consider a Feynman diagram with an internal line. And since we now have two vertices, the process is _second-order_, and we will be computing (a major part of) the $\mathcal{A}_{(2)}$ term. To draw the diagram, we proceed as before with two incoming and two outgoing external lines. However, each pair meets at a _different_ vertex, and the two vertices are connected by an **internal line** that represents the virtual particle. Our diagram thus looks like this:
 
-{{ diagram(src="../diagrams/two-pion-tree-level.svg" desc="") }}
+{{ diagram(src="../diagrams/two-pion-tree-level.svg" desc="Two-pion scattering Feynman diagram, describing a scenario where two pions form a virtual particle that decays into two real particles") }}
 
 Luckily, the Feynman rules make writing down the amplitudes relatively straightforward. We have a factor of $-i\lambda$ for each vertex, and a total of two vertices, thus giving a factor of $(-i\lambda)^2$. In addition, we have an internal line, giving us a a factor of $\dfrac{i}{k^2 - m^2 + i\epsilon}$ (from the propagator). Here, $k = p_1 + p_2$, since momentum must be conserved at every vertex. We also have a delta function term $(2\pi)^4 \delta^4 (p_1 + p_2 - q_1 - q_2)$ to ensure conservation of momentum for all real particles. Thus, our total amplitude is given by:
 
@@ -440,7 +440,7 @@ Since we once again have a constant differential cross-section, the total cross-
 
 The last diagram we will consider is substantially harder to calculate than the first two, so we will only evaluate it part-way. Consider the same scattering scenario with two incident pions of momenta $p_1, p_2$, except this time they form a pair of virtual particles when they interact, symbolized by a **loop** on the Feynman diagram. Afterwards, the two virtual particles are annihilated and form two new pions with momenta $q_1, q_2$. This is the first diagram where we have a loop due to the pair of virtual particles that are produced - something that will become absolutely crucial once we get to quantum electrodynamics. The diagram is shown below:
 
-{{ diagram(src="../diagrams/two-pion-loop.svg" desc="") }}
+{{ diagram(src="../diagrams/two-pion-loop.svg" desc="One-loop Feynman diagram describing two pions forming a virtual particle pair that then annihilates and forms two real particles") }}
 
 As with before, we have two vertices, so we need two $(-i\lambda)$ terms. In addition, to ensure momentum conservation for all real particles, we again need the Dirac delta $(2\pi)^4 \delta^4(p_1 + p_2 - q_1 - q_2)$. The more interesting (and difficult) part of this Feynman diagram is the loop in the center, which comes as a result of the virtual particle pair. Momentum is still conserved at each vertex, so the momenta of the two particles must be $k$ and $l = p_1 + p_2 - k$; but it is not conserved _in the loop_ since the virtual particles are so short-lived that they can have arbitrary energy and momentum (from the Heisenberg uncertainty principle). This means that we have to _integrate_ over the loop; since we have one loop, we need one integral over $k$. Lastly, we need the propagators for the two internal lines (representing the virtual particle pair), which are $\dfrac{i}{k^2 - m^2 + i\epsilon}$ and $\dfrac{i}{l^2 - m^2 + i\epsilon}$. Combining everything together gives us the scattering amplitude:
 
