@@ -75,7 +75,15 @@ Recall that previously we saw that $\hat \psi(x) |0\rangle$ could be understood 
 D(\mathbf{x} - \mathbf{x}') = \langle 0|\hat \psi(x, t) \hat \psi^*(x', t')|0\rangle
 {% end %}
 
-We interpret $D(\mathbf{x} - \mathbf{x}')$ as telling us the probability amplitude that a particle originally known to be at position $x'$ at time $t'$ is later found to be at position $x$ at time $t$. Note that this interpretation so far is only correct for **single-particle states**, although it can be generalized.
+We interpret $D(\mathbf{x} - \mathbf{x}')$ as telling us the probability amplitude that a particle originally known to be at position $x'$ at time $t'$ is later found to be at position $x$ at time $t$. However, this may be a bit difficult to see directly. To understand the propagator better, let us temporarily ignore its time-dependence, and write it in terms of a _real scalar field_ like one we have already seen. The real scalar field propagator is thus written:
+
+{% math() %}
+D(x - x') = \langle 0|\hat \phi(x)| \hat \phi(x')|0\rangle
+{% end %}
+
+This gives us more of an understanding of what the propagator actually means. First, $\hat \phi(x')|0\rangle$ tells us that the field operator $\hat \phi$ first _creates_ a particle at location $x'$. Meanwhile, $\langle 0|\hat \phi(x) \sim \hat a^\dagger|0\rangle$ tells us that the field operator $\hat \phi$ _annihilates_ a particle at location $x$. In between when the particle is created (at location $x'$) and annihilated (at location $x$), we _don't_ know where it goes, but we can calculate the **probability** that the particle created at $x'$ becomes annihilated at $x$. That probability (or more precisely, probability _amplitude_) is the propagator!
+
+> **Note:** When we said that the propagator measures the probability of a particle at $x'$ later being "found" at $x$, this was something of a simplification; more precisely, the propagator describes the probability of a particle **created** at $x'$ to be **annihilated** at $x$. This doesn't mean the particle just "disappears" at $x$ with nothing left; rather, its energy and momentum are absorbed back into the field, which can create a new particle in the same place.
 
 Let's now turn back to non-relativistic quantum mechanics, where the unitary time-evolution operator $\hat U$ is responsible for evolving the quantum state from $|\Psi(t')\rangle$ at time $t'$ to $|\Psi(t)\rangle$ at time $t$. That is:
 
