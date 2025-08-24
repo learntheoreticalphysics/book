@@ -100,12 +100,12 @@
         <ul>
         {% for h2 in page.toc %}
             <li>
-                <a class="pagelink" href="{{ h2.permalink | safe }}">{{ h2.title }}</a>
+                <a class="pagelink" href="#{{ h2.id | safe }}">{{ h2.title }}</a>
                 {% if h2.children %}
                     <ul>
                         {% for h3 in h2.children %}
                             <li class="indent">
-                                <a class="pagelink" href="{{ h3.permalink | safe }}">{{ h3.title }}</a>
+                                <a class="pagelink" href="#{{ h3.id | safe }}">{{ h3.title }}</a>
                             </li>
                         {% endfor %}
                     </ul>
