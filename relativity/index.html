@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Special and General Relativity (under construction)</title>
+  <meta name="description" content="A Learner's Guide to Advanced Theoretical Physics">
+
+  <!-- Uncomment once we actually have a favicon
+  
+      <link rel="icon" type="image/svg+xml" href="https://learntheoreticalphysics.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://learntheoreticalphysics.com/favicon.ico">
+  
+  -->
+
+  
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://learntheoreticalphysics.com/katex/katex.min.css">
+
+      <link rel="stylesheet" href="https://learntheoreticalphysics.com/site.css">
+  
+
+</head>
+
+<body>
+  
+<main class="chapter">
+    <!-- book navigation -->
+    <!-- should convert to accordion on mobile and have a expand/shrink icon -->
+    <nav>
+        <!-- We get the parent folder of the book chapters -->
+        
+        
+        
+        
+        <h1>
+            <a href="/relativity">Special &amp; General Relativity</a>
+        </h1>
+        <h2>Table of contents</h2>
+        
+
+        <a class="nav-bottom-link" alt="Link to go back to homepage" href="/">Back to homepage &rarr;</a>
+    </nav>
+
+    <div class="article-container disable-scrollbars">
+    <article class="post">
+        
+            <h1>Special and General Relativity (under construction)</h2>
+        
+        
+        <!--
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        -->
+        
+        <!-- page content -->
+        <h2 id="introduction">Introduction</h2>
+<p>The two theories of relativity - Special Relativity and General Relativity - are doubtlessly some of the most beautiful theories of physics ever devised. They are, sadly, also quite complicated. We hope this attempt to explain them, going step-by-step through all the little details, will hopefully clear up some of the confusion for first-time learners, while still doing the subject justice.</p>
+
+        <div class="page-switch-buttons">
+        
+        </div>
+    </article>
+    </div>
+    <!-- This should be also an accordion for smaller screen sizes -->
+    <div class="page-navigation">
+        <h2>In this chapter</h2>
+        <ul>
+        
+            <li>
+                <a class="pagelink" href="#introduction">Introduction</a>
+                
+            </li>
+        
+        </ul>
+    </div>
+    </section>
+</main>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://learntheoreticalphysics.com/katex/katex.min.js"></script>
+    <script defer src="https://learntheoreticalphysics.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://learntheoreticalphysics.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://learntheoreticalphysics.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // custom macros for KaTeX-MathJax consistency
+          macros: {
+            "\\overbracket": "\\overgroup"
+          },
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+        var article = document.querySelector(".post");
+        if (article) {
+            renderMath(article);
+        }
+    })
+    </script>
+    
+
+
+</body>
+
+</html>

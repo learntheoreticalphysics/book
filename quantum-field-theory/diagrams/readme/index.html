@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Learner&#x27;s Guide to Advanced Theoretical Physics</title>
+  <meta name="description" content="A Learner's Guide to Advanced Theoretical Physics">
+
+  <!-- Uncomment once we actually have a favicon
+  
+      <link rel="icon" type="image/svg+xml" href="https://learntheoreticalphysics.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://learntheoreticalphysics.com/favicon.ico">
+  
+  -->
+
+  
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://learntheoreticalphysics.com/katex/katex.min.css">
+
+      <link rel="stylesheet" href="https://learntheoreticalphysics.com/site.css">
+  
+
+</head>
+
+<body>
+  
+<main class="chapter">
+    <!-- book navigation -->
+    <!-- should convert to accordion on mobile and have a expand/shrink icon -->
+    <nav>
+        <!-- We get the parent folder of the book chapters -->
+        
+        
+        
+        
+        <h1>
+            <a href="/quantum-field-theory">Quantum Field Theory</a>
+        </h1>
+        <h2>Table of contents</h2>
+        
+        
+            
+                <a href="/quantum-field-theory/chapter-1">1. Getting started with quantum field theory</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-2">2. Quantization of a free scalar field</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-3">3. Quantization of the electromagnetic field</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-4">4. Non-trivial scalar field theories</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-5">5. Introduction to Feynman diagrams</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-6">6. The Yukawa theory of nuclear interactions</a>
+            
+        
+        
+
+        <a class="nav-bottom-link" alt="Link to go back to homepage" href="/">Back to homepage &rarr;</a>
+    </nav>
+
+    <div class="article-container disable-scrollbars">
+    <article class="post">
+        
+            <h1></h2>
+        
+        
+        <p style="font-size: small;">Reading time: around 1 minutes</p>
+        
+        <!--
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        -->
+        
+        <!-- page content -->
+        <h1 id="diagrams-for-quantum-field-theory">Diagrams for <em>Quantum Field Theory</em></h1>
+<p>This folder contains the source code for all the Feynman diagrams in the QFT book. The Feynman diagrams are drawn with LaTeX using the <code>feynmp-auto</code> package, and then converted to SVGs for inclusion in the book.</p>
+<h2 id="development">Development</h2>
+<p>To convert the LaTeX output to SVGs, the following semi-automated process is used:</p>
+<ol>
+<li>Using a LaTeX compiler (or <a href="https://overleaf.com">Overleaf</a>) compile the LaTeX sources into a PDF</li>
+<li>Use <a href="https://inkscape.org">Inkscape</a> to convert the PDF to an SVG. This can be done on the command-line with <code>inkscape THE_DIAGRAM.pdf -o THE_SVG.svg</code></li>
+<li>Manually resize the diagram in Inkscape by resizing the document to a width of 400px and height of 300px, and centering-aligning the whole diagram</li>
+</ol>
+
+        <div class="page-switch-buttons">
+        
+            <!-- If it's the preface just add a
+                "begin" button -->
+            
+            <!-- Otherwise add prev/next buttons -->
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+            
+        
+        </div>
+    </article>
+    </div>
+    <!-- This should be also an accordion for smaller screen sizes -->
+    <div class="page-navigation">
+        <h2>In this chapter</h2>
+        <ul>
+        
+            <li>
+                <a class="pagelink" href="#diagrams-for-quantum-field-theory">Diagrams for Quantum Field Theory</a>
+                
+                    <ul>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#development">Development</a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+        </ul>
+    </div>
+    </section>
+</main>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://learntheoreticalphysics.com/katex/katex.min.js"></script>
+    <script defer src="https://learntheoreticalphysics.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://learntheoreticalphysics.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://learntheoreticalphysics.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // custom macros for KaTeX-MathJax consistency
+          macros: {
+            "\\overbracket": "\\overgroup"
+          },
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+        var article = document.querySelector(".post");
+        if (article) {
+            renderMath(article);
+        }
+    })
+    </script>
+    
+    <script defer>
+    var toc = document.getElementById("toc");
+    var tocPos = toc.offsetTop + toc.offsetHeight;
+    var tocBtn = document.getElementById("jump-toc-btn");
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+    function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        window.onscroll = function(){
+            showTocBtnOnScroll();
+        };
+    </script>
+    
+
+
+</body>
+
+</html>

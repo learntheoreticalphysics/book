@@ -1,0 +1,25 @@
+% Tree-level Feynman diagram
+% for two-nucleon scattering
+% in Yukawa theory (t-channel)
+\documentclass{article}
+\usepackage{feynmp-auto}
+\begin{document}
+\begin{fmffile}{diagram}
+\begin{fmfgraph*}(150,150)
+    \fmfbottom{i1,i2}
+    \fmftop{f1,f2}
+    \fmf{fermion}{i1,m1}
+    \fmf{fermion}{i2,m2}
+    \fmf{fermion}{m1,m2}
+    \fmf{fermion}{m1,f1}
+    \fmf{fermion}{m2,f2}
+    \fmfdot{m1,m2}
+    % labels
+    \fmflabel{$\psi(p_1)$}{i1}
+    \fmflabel{$\psi(p_2)$}{i2}
+    \fmflabel{$\psi(q_1)$}{f1}
+    \fmflabel{$\psi(q_2)$}{f2}
+    \fmflabel{$\phi(k)$}{m1}
+\end{fmfgraph*}
+\end{fmffile}
+\end{document}

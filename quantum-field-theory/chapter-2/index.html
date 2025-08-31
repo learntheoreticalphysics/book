@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quantization of a free scalar field</title>
+  <meta name="description" content="A Learner's Guide to Advanced Theoretical Physics">
+
+  <!-- Uncomment once we actually have a favicon
+  
+      <link rel="icon" type="image/svg+xml" href="https://learntheoreticalphysics.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://learntheoreticalphysics.com/favicon.ico">
+  
+  -->
+
+  
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://learntheoreticalphysics.com/katex/katex.min.css">
+
+      <link rel="stylesheet" href="https://learntheoreticalphysics.com/site.css">
+  
+
+</head>
+
+<body>
+  
+<main class="chapter">
+    <!-- book navigation -->
+    <!-- should convert to accordion on mobile and have a expand/shrink icon -->
+    <nav>
+        <!-- We get the parent folder of the book chapters -->
+        
+        
+        
+        
+        <h1>
+            <a href="/quantum-field-theory">Quantum Field Theory</a>
+        </h1>
+        <h2>Table of contents</h2>
+        
+        
+            
+                <a href="/quantum-field-theory/chapter-1">1. Getting started with quantum field theory</a>
+            
+        
+            
+                <!-- highlight the chapter we're currently on -->
+                <a class="current-page" href="/quantum-field-theory/chapter-2">2. Quantization of a free scalar field</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-3">3. Quantization of the electromagnetic field</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-4">4. Non-trivial scalar field theories</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-5">5. Introduction to Feynman diagrams</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-6">6. The Yukawa theory of nuclear interactions</a>
+            
+        
+        
+
+        <a class="nav-bottom-link" alt="Link to go back to homepage" href="/">Back to homepage &rarr;</a>
+    </nav>
+
+    <div class="article-container disable-scrollbars">
+    <article class="post">
+        
+            <h1>Quantization of a free scalar field</h2>
+        
+        
+        <p style="font-size: small;">Reading time: around 33 minutes</p>
+        
+        <!--
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        -->
+        
+        <!-- page content -->
+        <h2 id="quantization-of-a-free-scalar-field">Quantization of a free scalar field</h2>
+<p>The free scalar field - the simplest quantum field theory - is a natural extension of the model of the quantum harmonic oscillator. In the quantum harmonic oscillator, we have a ground state that we denote as $|0\rangle$, and any number of excited states $|1\rangle, |2\rangle, |3\rangle, \dots, |n\rangle$. We also have the following Hamiltonian:</p>
+<p class="mathcell">
+$$
+\hat H = \hbar \omega \left(\hat a^\dagger \hat a + \dfrac{1}{2}\right) = \hbar \omega \left(\hat N + \dfrac{1}{2}\right)
+$$
+</p>
+<p>Where $\hat N = \hat a^\dagger \hat a$ is the <strong>number operator</strong>. The $\hat a^\dagger$ (raising) and $\hat a$ (lowering) operators respectively increase the state to a higher-energy state or lower the state to a lower-energy state. That is:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat a^\dagger |n\rangle = \alpha_+ |n + 1\rangle \\
+\hat a |n\rangle = \alpha_- |n -1\rangle
+\end{align*}
+$$
+</p>
+<p>Where $\alpha_+, \alpha_-$ are the eigenvalues of the raising and lowering operators respectively, for a single oscillator. If we have multiple quantum harmonic oscillators, then we would need to sum over each of the individual oscillators, giving us the Hamiltonian:</p>
+<p class="mathcell">
+$$
+\hat H = \sum_i \hbar \omega_i \left(\hat a^\dagger_i \hat a_i + \dfrac{1}{2}\right)
+$$
+</p>
+<p>To go from the quantum harmonic oscillator to quantum field theory, we need to make &quot;just&quot; a few changes:</p>
+<ul>
+<li>Instead of the position and momentum operators $\hat x, \hat p$, we switch to the <strong>field operator</strong> $\hat \phi$ and <strong>momentum density operator</strong> $\hat \pi$ </li>
+<li>We derive the field operator by solving the Euler-Lagrange equations from a <strong>field Lagrangian</strong> $\mathscr{L}$ and making the suitable identifications of the appropriate raising and lowering operators, which we reinterpret as <em>creation</em> and <em>annihilation</em> operators</li>
+<li>The Hamiltonian must sum over an infinite number of harmonic oscillators, so the sum over oscillators becomes an integral</li>
+<li>The states $|0\rangle, |1\rangle, |2\rangle, \dots |n\rangle$ are now the states of the <em>quantum field</em> $\hat \phi$, where the field has now become an operator with $|0\rangle, |1\rangle, |2\rangle, \dots |n\rangle$ being its eigenstates</li>
+</ul>
+<h3 id="sidenote-on-notation">Sidenote on notation</h3>
+<p>In quantum field theory, there are a billion different conventions for almost <em>anything</em>. This leads to some pretty bizarre results:</p>
+<ul>
+<li>Momentum ($p$) becomes the same thing as the wavevector ($k$), because in natural units where $\hbar = 1$ (which we're using), $p = \hbar k$ becomes $p = k$</li>
+<li>For photons, angular frequency $\omega$ and energy $E$ become equivalent, because in natural units where $c = 1$ (which we're using), $E = \hbar \omega$ becomes $E = \omega$</li>
+<li>Einstein's relativistic energy-momentum relation of $E^2 = (pc)^2 + (mc^2)^2$ becomes simply $E^2 = p^2 + m^2$, so we get $E = \sqrt{p^2 + m^2}$. You may also see this denoted as $E_p = \sqrt{p^2 + m^2}$, such as in Peskin and Schroeder's <em>An Introduction To Quantum Field Theory</em>. <strong>This is the notation we'll use</strong>.
+<ul>
+<li>Additionally (for photons/massless particles only), $E_p = p$, because (again) in natural units where $c = 1$ (which we're using), $E_p = pc$ becomes $E_p = p$</li>
+</ul>
+</li>
+</ul>
+<p>This means that every text often has its own notational system, especially if a certain text doesn't use natural units. Here, we will <strong>always use natural units</strong> unless otherwise denoted.</p>
+<h2 id="equations-of-motion-of-a-free-scalar-field">Equations of motion of a free scalar field</h2>
+<p>The &quot;simplest&quot; quantum field theory is the theory of a free scalar field. We should note that &quot;simple&quot; is a rather relative term; approaching even this relatively simple quantum field theory can be an intimidating task, so it's important that we get the basics down.</p>
+<p>Since the free scalar field theory is after all a <em>field theory</em>, we start with its field Lagrangian. In this case, the field Lagrangian of a free scalar field is given by:</p>
+<p class="mathcell">
+$$
+\mathscr{L} = \dfrac{1}{2} \partial_\mu \phi \partial^\mu \phi - \dfrac{1}{2} m^2 \phi^2
+$$
+</p>
+<p>Using the Euler-Lagrange equations, we can find the equations of motion of the field $\phi$. For the free scalar field, the Euler-Lagrange equations take the form:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \mathscr{L}}{\partial \phi} - \partial_\beta \left(\dfrac{\partial \mathscr{L}}{\partial(\partial_\beta \phi)}\right) = 0
+$$
+</p>
+<p>Let's now compute the partial derivatives. Let's start with the derivative with respect to $\phi$, which is relatively simple to find:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \mathscr{L}}{\partial \phi} = -m^2 \phi
+$$
+</p>
+<p>The derivative with respect to $\partial_\beta \phi$ is not as easy to find, so we'll show the steps below:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathscr{L}}{\partial(\partial_\beta \phi)}
+&amp;= \dfrac{1}{2}\dfrac{\partial}{\partial(\partial_\beta \phi)} \bigg(\partial_\mu \phi \partial^\mu \phi - m^2 \phi^2\bigg) \\
+&amp;= \dfrac{1}{2}\dfrac{\partial}{\partial(\partial_\beta \phi)} \bigg(\partial_\mu \phi \partial^\mu \phi\bigg) - \cancel{\dfrac{\partial}{\partial(\partial_\beta \phi)}\bigg(m^2 \phi^2\bigg)}^0 \\
+&amp;= \dfrac{1}{2}\dfrac{\partial}{\partial(\partial_\beta \phi)} \underbrace{\bigg(\partial_\beta \phi \partial^\beta \phi\bigg)}_\text{relabel dummy indices} \\
+&amp;= \dfrac{1}{2}\dfrac{\partial}{\partial(\partial_\beta \phi)} 
+\bigg(\partial_\beta \phi\, \underbrace{\eta^{\alpha \beta}\partial_\alpha \phi}_\text{lower indices}\bigg) \\
+&amp;= \dfrac{1}{2}\dfrac{\partial}{\partial(\partial_\beta \phi)} 
+\bigg(\partial_\beta \phi\, \eta^{\alpha \beta} \underbrace{\delta^\beta{}_\alpha \partial_\beta}_\text{relabel}  \phi\bigg) \\
+&amp;= \dfrac{1}{2}\eta^{\alpha \beta} \delta^\beta{}_\alpha\dfrac{\partial}{\partial(\partial_\beta \phi)} 
+\bigg(\partial_\beta \phi\, \partial_\beta \phi\bigg)
+\end{align*}
+$$
+</p>
+<p>Let's recap on the steps we've done so far. First, since the $m^2 \phi^2$ term doesn't depend on the derivatives of $\phi$, its partial derivative is zero. This leaves us with just the $\partial_\mu \phi \partial^\mu \phi$ term left. Since $\mu$ is repeated over the upper and lower indices, we know that it is a <strong>dummy index</strong> so we can relabel it whatever we want - here we chose $\mu \to \beta$ because we're differentiating with respect to $\beta$, because again, since it's a dummy index, $\partial_\mu \phi \partial^\mu \phi = \partial_\beta \phi \partial^\beta \phi$.</p>
+<p>Finally, we needed to get the $\partial^\beta \phi$ term as a lower index. To do this, we used the Minkowski metric $\eta^{\alpha \beta}$ to lower the index, and then used the Kronecker delta $\delta^\beta{}_\alpha$ to relabel. The end result we got was $\partial^\beta \phi = \eta^{\alpha \beta} \delta^\beta{}_\alpha \partial_\beta \phi$, from which we could pull out the (constant) factor of $\eta^{\alpha \beta} \delta^\beta{}_\alpha$. This gives us everything inside the derivative <em>purely</em> in terms of $\partial_\beta \phi$, at which point we can <em>finally</em> differentiate:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathscr{L}}{\partial (\partial_\beta \phi)} 
+&amp;= \dfrac{1}{2}\eta^{\alpha \beta} \delta^\beta{}_\alpha\dfrac{\partial}{\partial(\partial_\beta \phi)} 
+\bigg(\partial_\beta \phi\, \partial_\beta \phi\bigg) \\
+&amp;= \dfrac{1}{2}\eta^{\alpha \beta} \delta^\beta{}_\alpha (2\partial_\beta \phi) \\
+&amp;= \dfrac{1}{2}\underbrace{2\eta^{\alpha \beta}\delta^\beta_\alpha \partial_\beta \phi}_\text{now contract indices} \\
+&amp;= \partial^\beta \phi
+\end{align*}
+$$
+</p>
+<p>Here, we took the derivative in the standard way (it is just taking the derivative of $(\partial_\beta \phi \partial_\beta \phi)^2$ which yields $2\partial_\beta \phi$). Then, we contracted the indices with the Minkowski metric and Kronecker delta terms, giving us $\eta^{\alpha \beta}\delta^\beta_\alpha \partial_\beta \phi = \partial^\beta \phi$. So, substituting into the Euler-Lagrange equations, we have:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+-m^2 \phi - \partial_\beta(\partial^\beta \phi) = 0 \\
+\Rightarrow \partial_\beta \partial^\beta \phi + m^2 \phi = 0
+\end{gather*}
+$$
+</p>
+<p>This is our <strong>equation of motion</strong> for our free scalar field, and it is called the <strong>Klein-Gordon equation</strong>, although it is usually written with the dummy index $\mu$ instead of $\beta$ and with a more condensed form:</p>
+<p class="mathcell">
+$$
+(\partial_\mu \partial^\mu + m^2) \phi = 0
+$$
+</p><h2 id="canonical-quantization">Canonical quantization</h2>
+<p>Now is the time to take our <em>classical</em> field $\phi$ and turn it into a quantum field, a process called <strong>canonical quantization</strong>. A quantum field is in many ways similar to a classical field: it is dependent on space and time, and it follows an equation of motion that governs its behavior. However, it is also very <em>different</em> from a classical field in important ways, and the reason why comes from the postulates of <strong>quantum physics</strong>. Quantum physics tells us several very important things:</p>
+<ol>
+<li>All quantum systems can only take particular <em>states</em> associated with some <strong>fixed energy</strong> (and therefore momentum)</li>
+<li>The energy and momentum of quantum systems is often <strong>uncertain</strong></li>
+</ol>
+<p>To obey these two conditions, quantum fields must mathematically satisfy two properties (among others):</p>
+<ol>
+<li>Instead of being <em>functions</em> of space and time, they are <em>operators</em></li>
+<li>They must obey <strong>commutation relations</strong> similar to the <a href="https://en.wikipedia.org/wiki/Uncertainty_principle">Heisenberg uncertainty principle</a></li>
+</ol>
+<p>The process of quantization, essentially, is the process of finding the <em>operator-valued</em> quantum field $\hat \phi$ that is the solution to the analogous equation of motion for a classical field. For instance, let's go back to our example of a free scalar field, which obeys the Klein-Gordon equation we just derived:</p>
+<p class="mathcell">
+$$
+(\partial_\mu \partial^\mu + m^2) \phi = 0
+$$
+</p>
+<p>Thus, the corresponding <em>quantum field</em> $\hat \phi$ must obey the analogous equation of motion, with the exception that the classical field $\phi(x^\nu)$ is now replaced by the operator $\hat \phi(x^\nu)$:</p>
+<p class="mathcell">
+$$
+(\partial_\mu \partial^\mu + m^2) \hat \phi = 0
+$$
+</p>
+<p>However, the Klein-Gordon equation has many different solutions, just like any other partial differential equation, and this is true for its operator-valued form as well. Which one should we use to find the form of the operator $\hat \phi$? Luckily for us, the Klein-Gordon equation happens to be a <em>linear</em> partial differential equation. This means that the sum of two solutions $\phi_1(x^\mu) + \phi_2(x^\mu)$ is <em>also</em> a solution to the Klein-Gordon equation. This is known as the <strong>superposition principle</strong>. This means that we can construct any arbitrary solution by simply adding up infinite numbers of any one solution of the Klein-Gordon equation, allowing us to write a <strong>general solution</strong> to the Klein-Gordon equation. For instance, we could consider the solution given by:</p>
+<p class="mathcell">
+$$
+\phi(x^\nu) = \dfrac{1}{\sqrt{2E_p}}ae^{ip_\mu x^\mu}, \quad a = \text{const.}
+$$
+</p>
+<p>Which is known as a <strong>plane wave</strong>, and represents a state with definite energy-momentum $p_\mu = (E, \mathbf{p})$. Using the superposition principle, summing up an infinite number of plane waves gives the general solution:</p>
+<p class="mathcell">
+$$
+\phi(x^\nu) = \int \dfrac{d^3 p}{(2\pi)^3 \sqrt{2E_p}} \left[a(p) e^{ip_\mu x^\mu} + a^*(p) e^{-ip_\mu x^\mu}\right]
+$$
+</p>
+<p>Where $E_p = \sqrt{p^2 + m^2}$ comes from the energy-momentum relation, as we discussed earlier; dividing by $(2\pi)^3$ simplifies our calculations later. This trick of writing out a general solution is exactly the <a href="https://ese-msc.github.io/preinduction/edsml/primer/notebooks/c_mathematics/differential_equations/11_pde_fourier.html">Fourier decomposition</a> we discussed in the first chapter!</p>
+<blockquote>
+<p><strong>Note for the advanced reader:</strong> Technically-speaking, this general solution is only valid assuming that the field is well-behaved and vanishes at infinity, but we can assume that for the purposes of our discussion.</p>
+</blockquote>
+<p>Now that we have a solution to the classical equation of motion, we may promote it to an operator if we make the identifications of $a \to \hat a$, $a^* \to a^\dagger$, which are the <em>creation and annihilation operators</em> which generalize the raising and lowering operators we previously saw. Thus, our <em>quantum</em> field $\hat \phi$ is now an operator, just as we wanted!</p>
+<p class="mathcell">
+$$
+\hat \phi(x^\nu) = \int \dfrac{d^3 p}{(2\pi)^3 \sqrt{2E_p}} \left[\hat a(p) e^{ip_\mu x^\mu} + \hat a^\dagger(p) e^{-ip_\mu x^\mu}\right]
+$$
+</p>
+<p>For mathematical convenience we write $\hat a(p)$ as $\hat a_p$ and $\hat a^\dagger(p)$ as $\hat a^\dagger_p$, and we write $\hat \phi(x^\nu)$ as just $\hat \phi$. Thus our field operator becomes:</p>
+<p class="mathcell">
+$$
+\hat \phi = \int \dfrac{d^3 p}{(2\pi)^3 \sqrt{2E_p}} \left[\hat a_p e^{ip_\mu x^\mu} + \hat a^\dagger_p e^{-ip_\mu x^\mu}\right]
+$$
+</p>
+<p>Where we <em>define</em> our raising and lowering operators such that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat a_p |n\rangle &amp;= \sqrt{n}\,|n - 1\rangle \\
+\hat a_p^\dagger|n\rangle &amp;= \sqrt{n + 1}\,|n + 1\rangle
+\end{align*}
+$$
+</p>
+<p>Which is just like the quantum harmonic oscillator. We note that for the vacuum state $|0\rangle$, we have:</p>
+<p class="mathcell">
+$$
+\hat a_p|0\rangle = 0, \quad \hat a_p^\dagger|0\rangle = |1\rangle
+$$
+</p>
+<p>The raising operator $\hat a_p$ raises the field to a higher-energy state, whereas the lowering operator $\hat a_p^\dagger$ acting on a state drops the field to a lower-energy state - in the case of the vacuum state, we end up with just zero. Let us now take an example of using the field operator $\hat \phi$. For instance, what happens if we act it on the ground state? Well, if we do the calculation, we find that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat \phi|0\rangle &amp;= \int \dfrac{d^3 p}{(2\pi)^3 \sqrt{2E_p}} \left[\hat a_p e^{ip_\mu x^\mu} + \hat a^\dagger_p e^{-ip_\mu x^\mu}\right] |0\rangle \\
+% step 1
+&amp;= \int \dfrac{d^3 p}{(2\pi)^3 \sqrt{2E_p}} \bigg[\underbrace{\hat a_p|0\rangle}_\text{distribute} e^{ip_\mu x^\mu} + \underbrace{\hat a^\dagger_p|0\rangle}_\text{distribute} e^{-ip_\mu x^\mu}\bigg] \\
+% step 2
+&amp;= \int \dfrac{d^3 p}{(2\pi)^3 \sqrt{2E_p}} \bigg[\underbrace{\cancel{\hat a_p|0}\rangle^0}_{\text{since } \hat a_p|0\rangle = 0 } e^{ip_\mu x^\mu} + \underbrace{|1\rangle e^{-ip_\mu x^\mu}}_{\text{since } \hat a_p^\dagger|0\rangle = |1\rangle}\bigg] \\
+&amp;= \int \dfrac{d^3 p}{(2\pi)^3 \sqrt{2E_p}}|1\rangle \, e^{-ip_\mu x^\mu} \\
+&amp;= \int d^3 p\dfrac{e^{-ip_\mu x^\mu}}{(2\pi)^3 \sqrt{2E_p}}|1\rangle
+\end{align*}
+$$
+</p>
+<p>So we've found that the field operator acting on the vacuum state $|0\rangle$ produces a <strong>superposition</strong> of the <strong>first excited state</strong> $|1\rangle$. The physical interpretation is that the field acting on $|0\rangle$ has <em>created</em> a particle!</p>
+<p>Let's break down what this means. An integral is just an infinite sum, so the integral over $p$ gives a superposition of the first excited state $|1\rangle$. It is a <em>superposition</em> because when the field acts on the vacuum state $|0\rangle$ to produce the first excited state $|1\rangle$ (which we interpret as the field creating a particle), the resultant particle may have a range of different momenta, so we must sum over all possible momenta. This is a profound result: a quantum field can <em>create</em> particles and (we'll soon see) <em>annihilate</em> particles by acting on a state to produce another higher-energy or lower-energy state.</p>
+<p>Let's show our result even more explicitly by finding the <em>expectation value</em> of the field for a single-particle excited state. We <em>define</em> a <strong>single-particle state</strong> with momentum $q$ (and thus energy $E_q = \sqrt{q^2 + m^2}$) as $|q\rangle$ where $|q\rangle$ is given by:</p>
+<p class="mathcell">
+$$
+|q\rangle = \sqrt{2E_q}\, \hat a_q^\dagger |0\rangle = \sqrt{2E_q}\,|1_q\rangle
+$$
+</p>
+<p>Likewise, a single-particle state with momentum $p$ and energy $E_p = \sqrt{p^2 + m^2}$ is denoted $p\rangle$, where $|p\rangle$ is given by:</p>
+<p class="mathcell">
+$$
+|p\rangle = \sqrt{2E_p}\, \hat a_p^\dagger |0\rangle = \sqrt{2E_p}\,|1_p\rangle
+$$
+</p>
+<p>Here, $|1_q\rangle$ and $|1_p\rangle$ respectively denote first-excited states with momenta $q$ and $p$, respectively ($q$ has no relation to the symbol for charge in electromagnetism). Previously, we were sloppy with our notation and simply wrote $|1\rangle$ to denote arbitrary first-excited states and ignored its associated momentum; but now we will be more careful and distinguish between first-excited states with different momenta. With this updated notation, our result of $\hat \phi|0\rangle$ reads:</p>
+<p class="mathcell">
+$$
+\hat \phi|0\rangle = \int d^3 p\dfrac{e^{-ip_\mu x^\mu}}{(2\pi)^3 \sqrt{2E_p}}|1_p\rangle
+$$
+</p>
+<p>If our physical interpretation is correct, then the single-particle state $|q\rangle$ represents a particle created by the field - and we'll show that this is true. Before we begin though, we also need to <em>define</em> our states to satisfy the following orthogonality relation:</p>
+<p class="mathcell">
+$$
+\langle p |q\rangle = 2E_p (2\pi)^3 \delta^3(p-q)
+$$
+</p>
+<p>Where $\delta^3$ is the three-dimensional Dirac delta function, which has a very important property:</p>
+<p class="mathcell">
+$$
+\int f(p) \delta^3 (p - q) d^3p = \int f(p) \delta^3 (q - p) d^3p = f(q)
+$$
+</p>
+<blockquote>
+<p><strong>Why this particular orthogonality relation?</strong> The answer is that however we choose to define orthogonality between two states, any scaling constants are <strong>a matter of personal preference</strong>. Here, we just chose the constant factor $(2\pi)^3$ because it is convenient for our later calculations, but it doesn't really matter. After all, we cannot measure quantum states (directly) anyways, so it really <strong>does not matter</strong> how we define them. As long as our definitions are <strong>consistent</strong> and our states are <strong>normalized</strong> (such that you can never have a probability greater than one!), we may choose whatever normalization constants we want.</p>
+</blockquote>
+<p>To calculate the expectation value of the single-particle state $\langle 0 |\hat \phi| q\rangle$, note that we can write $|1_p\rangle = \dfrac{1}{\sqrt{2E_p}} |p\rangle$, since we <em>defined</em> our single-particle states $|p\rangle$ according to $|p\rangle = \sqrt{2E_p} |1_p\rangle$. This means that our previous result for $\hat \phi |0\rangle$ can be rearranged in terms of $|p\rangle$, as follows:</p>
+<p class="mathcell">
+$$
+\hat \phi|0\rangle = \int d^3 p\dfrac{e^{-ip_\mu x^\mu}}{(2\pi)^3 \sqrt{2E_p}}|1_p\rangle = \int d^3 p\dfrac{e^{-ip_\mu x^\mu}}{(2\pi)^3 2E_p}|p\rangle
+$$
+</p>
+<p>Now, we make use of the fact that all quantum fields obey:</p>
+<p class="mathcell">
+$$
+(\hat \phi|n\rangle)^\dagger = \langle n|\hat \phi^\dagger
+$$
+</p>
+<p>For our free scalar field operator $\hat \phi$, we have $\hat \phi = \hat \phi^\dagger$, so the above simplifies to:</p>
+<p class="mathcell">
+$$
+\langle n|\hat \phi = (\hat \phi|n\rangle)^\dagger
+$$
+</p>
+<p>Thus, recalling that $(e^{-i\theta})^* = e^{i\theta}$ and $|n\rangle^\dagger = \langle n|$, we have:</p>
+<p class="mathcell">
+$$
+\langle 0|\hat \phi = (\hat \phi|0\rangle)^\dagger = \int d^3 p\dfrac{e^{ip_\mu x^\mu}}{(2\pi)^3 2E_p}\langle p|
+$$
+</p>
+<p>Together with our normalization condition $\langle p |q\rangle = 2E_p (2\pi)^3 \delta^3(p-q)$, we can then straightforwardly calculate $\langle 0|\hat \phi|q\rangle$:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\langle 0 |\hat \phi |q\rangle &amp;= \left(\int d^3 p\dfrac{e^{ip_\mu x^\mu}}{(2\pi)^3 2E_p}\langle p|\right)|q\rangle \\
+&amp;= \int d^3 p\dfrac{e^{ip_\mu x^\mu}}{(2\pi)^3 2E_p}\langle p|q\rangle \\
+&amp;= \int d^3 p\dfrac{e^{ip_\mu x^\mu}}{\cancel{(2\pi)^3 2E_p}} \cancel{2E_p (2\pi)^3} \delta^3(p-q) \\
+&amp;= \int d^3 p\, e^{ip_\mu x^\mu} \delta^3(p-q) \\
+&amp;= e^{iq_\mu x^\mu}
+\end{align*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> In the last line, we used the Dirac delta identity $\displaystyle \int f(p) \delta^3 (p - q) d^3p = f(q)$ that we mentioned earlier.</p>
+</blockquote>
+<p>So the expectation value of the field for the single-particle state is just $e^{iq_\mu x^\mu}$, which describes a plane wave of a free particle with momentum $\small \mathbf{q}$ and energy $E_p$! Note that since these plane wave solutions have exactly-known momentum, the Heisenberg uncertainty principle tells us that their position cannot be determined. We come to the conclusion that such a particle could be anywhere!</p>
+<p>Physically-speaking, we have thus shown that our quantum field $\hat \phi$ can <em>create</em> particles, and this is why we often call $\hat a^\dagger_p$ and $\hat a^\dagger_q$ <strong>creation operators</strong>. Our field $\hat \phi$ can also <em>annihilate</em> particles, and this is why we often call $\hat a_p$ and $\hat a_q$ <strong>annihilation operators</strong>. This means that, unlike non-relativistic quantum mechanics, where the particle (such as the electron) is the fundamental entity, in quantum field theory, the <em>field</em> is the fundamental entity, out of which particles arise and disappear - which is why quantum field theory is the basic theoretical framework for <strong>particle physics</strong>. Indeed, the free scalar field theory is a theory that can describe particles called <a href="https://en.wikipedia.org/wiki/Pion">pions</a> (also called pi mesons), although not much else. We'll soon see more &quot;interesting&quot; (but also more complicated) theories that describe particles that are much more well-known, like photons, electrons, and quarks.</p>
+<h2 id="the-field-hamiltonian">The field Hamiltonian</h2>
+<p>Just like single-particle nonrelativistic quantum mechanics, quantum fields have an associated Hamiltonian. We can arrive at this quantum field Hamiltonian by starting with the classical field Hamiltonian (density). In classical field theory, the Hamiltonian density is defined as follows:</p>
+<p class="mathcell">
+$$
+\mathcal{H} = \Pi\,\partial_0\phi - \mathscr{L}
+$$
+</p>
+<p>Where $\Pi$ (uppercase $\pi$) here is called the <strong>canonical momentum density</strong>, and is defined by:</p>
+<p class="mathcell">
+$$
+\Pi = \dfrac{\partial \mathscr{L}}{\partial (\partial_0 \phi)}
+$$
+</p>
+<p>Note that $\partial_0 \phi$ is the <strong>time derivative</strong> of the field, since $\partial_0 = \partial_t$ in 4-dimensional spacetime. Recall that our Lagrangian for the free scalar field is given by:</p>
+<p class="mathcell">
+$$
+\mathscr{L} = \dfrac{1}{2}\partial_\mu \phi \partial^\mu \phi - \dfrac{1}{2}\dfrac{1}{2} m^2 \phi^2
+$$
+</p>
+<p>Note that here, we have a summation over $\mu$, since $\mu$ is a dummy index. This means that we can expand it out as follows:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\partial_\mu \phi \partial^\mu \phi &amp;= 
+\partial_0 \phi \partial^0 \phi
++ \underbrace{\partial_1 \phi \partial^1 \phi
++ \partial_2 \phi \partial^2 \phi
++ \partial_3 \phi \partial^3 \phi}_{\partial_i \phi \partial^i \phi} \\
+&amp;= \partial_0 \phi \partial^0 \phi + \partial_i \phi \partial^i \phi, \quad i = 1, 2, 3
+\end{align*}
+$$
+</p>
+<p>Notice what we did above: we expanded $\partial_\mu \phi \partial^\mu \phi$ according to the Einstein summation convention, which allowed us to split it into two portions: the spatial part $\partial_i \phi \partial^i \phi$, and the temporal part $\partial_0 \phi \partial^0 \phi$. This allows us to rewrite our Lagrangian as follows:</p>
+<p class="mathcell">
+$$
+\mathscr{L} = \dfrac{1}{2}\partial_0 \phi \partial^0 \phi - \dfrac{1}{2}\partial_i \phi \partial^i \phi - \dfrac{1}{2} m^2 \phi^2
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> The separation of the time and spatial parts of $\partial_\mu \phi \partial^\mu \phi$ gives us a way to write out the Lagrangian in the more familiar notation of vector calculus. In vector calculus notation this Lagrangian can equivalently be written $\mathscr{L} = \dfrac{1}{2} \left(\dfrac{\partial^2 \phi}{\partial t^2}\right)\phi^2 - \dfrac{1}{2}(\nabla \phi)^2 - \dfrac{1}{2} m^2 \phi^2$ (the minus sign is due to the Minkowski metric needed to lower $\partial^i$ to $\partial_i$ for the spatial components, since $\eta_{11}, \eta_{22}, \eta_{33} = -1$).</p>
+</blockquote>
+<p>Now, we can find the canonical momentum. But before we do so, we need to first lower our indices, since we are differentiating with respect to the lower index, and we emphasize, we cannot <em>always</em> assume that $\partial(\partial_0 \phi) = \partial(\partial^0 \phi)$ (though it will turn out that it is true in this case). Here, we use the Minkowski metric to lower indices (as usual), giving us $\partial^0 = \eta^{00}\partial_0$. Luckily for us, $\eta^{00} = \eta_{00} = 1$, so we (luckily!) have $\partial_0 = \partial^0$. Thus the first term in the Lagrangian becomes:</p>
+<p class="mathcell">
+$$
+\mathscr{L} = \dfrac{1}{2}(\partial_0 \phi)^2 - \dfrac{1}{2}\partial_i \phi \partial^i \phi - \dfrac{1}{2} m^2 \phi^2
+$$
+</p>
+<p>Which we can differentiate to get $\Pi$:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\Pi &amp;= \dfrac{\partial \mathscr{L}}{\partial (\partial_0 \phi)} \\
+&amp;= \dfrac{\partial}{\partial (\partial_0 \phi)}\bigg[\dfrac{1}{2}(\partial_0 \phi)^2 - \cancel{\dfrac{1}{2}\partial_i \phi \partial^i \phi} - \cancel{\dfrac{1}{2} m^2 \phi^2}\bigg] \\
+&amp;= \dfrac{\partial}{\partial (\partial_0 \phi)}\bigg[\dfrac{1}{2}(\partial_0 \phi)^2 \bigg] \\
+&amp;= \partial_0 \phi
+\end{align*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> Here, $\dfrac{\partial}{\partial(\partial_0 \phi)}(\partial_i \phi \partial^i \phi) = 0$ because the spatial ($\partial_i \phi \partial^i \phi$) and temporal ($\partial_0 \phi \partial^0 \phi$) components of $\partial_\mu \phi \partial^\mu \phi$ are <strong>independent</strong>.</p>
+</blockquote>
+<p>Thus using the previous expression $\mathcal{H} = \Pi,\partial_0\phi - \mathscr{L}$ that we found, and substituting our Lagrangian and canonical momentum that we just found, the Hamiltonian becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{H} &amp;= \Pi\,\partial_0\phi - \mathscr{L} \\
+&amp;= (\partial_0 \phi)(\partial_0 \phi) - \bigg[\dfrac{1}{2}(\partial_0 \phi)^2 - \dfrac{1}{2}\partial_i \phi \partial^i \phi - \dfrac{1}{2} m^2 \phi^2\bigg] \\
+&amp;= \dfrac{1}{2}(\partial_0 \phi)^2 + \dfrac{1}{2}\partial_i \phi \partial^i \phi - \dfrac{1}{2} m^2 \phi^2 \\
+&amp;= \dfrac{1}{2}\Pi^2 + \dfrac{1}{2}\partial_i \phi \partial^i \phi - \dfrac{1}{2} m^2 \phi^2
+\end{align*}
+$$
+</p>
+<p>To obtain the quantum Hamiltonian density, we need only find the quantum canonical momentum $\hat \Pi$, and substitute $\hat \phi$ and $\hat \Pi$ into our expression for the classical Hamiltonian density. From $\Pi = \partial_0 \phi$, it follows that $\hat \Pi = \partial_0 \hat \phi$. Recall that $\hat \phi$ is given by:</p>
+<p class="mathcell">
+$$
+\hat \phi = \int \dfrac{d^3 p}{(2\pi)^3 \sqrt{2E_p}} \bigg[\hat a_p e^{ip_\mu x^\mu} + \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg]
+$$
+</p>
+<p>Thus we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat \Pi &amp;= \partial_0 \hat \phi \\
+&amp;= \int \dfrac{d^3 p}{(2\pi)^3 \sqrt{2E_p}} \bigg[\hat a_p \underbrace{\partial_0 e^{ip_\mu x^\mu}}_{ip_0e^{ip_\mu x^\mu}} + \hat a_p^\dagger\underbrace{\partial_0  e^{-ip_\mu x^\mu}}_{-ip_0e^{ip_\mu x^\mu}}\bigg] \\
+&amp;= \int \dfrac{d^3 p}{(2\pi)^3 \sqrt{2E_p}} \underbrace{(ip_0)}_{p_0=E_p} \bigg[\hat a_p e^{ip_\mu x^\mu} - \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg] \\
+&amp;= \int \dfrac{d^3 p}{(2\pi)^3 \sqrt{2E_p}} (iE_p) \bigg[\hat a_p e^{ip_\mu x^\mu} - \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg]
+\end{align*}
+$$
+</p>
+<p>Note that the reason $\partial_0 e^{ip_\mu x^\mu} = ip_0 e^{ip_\mu x^\mu}$ is that the momentum $\mathbf{p} = p^\mu = \langle p^0, p^1, p^2, p^3\rangle$ is a four-component vector, so when we differentiate it, we get $ip_0$ as a constant factor. The four components of $p^\mu$ are $p^\mu = \langle E_p, p_x, p_y, p_z$, which turned $ip_0$ to $iE_p$. Substituting our results for $\hat \phi$ and $\hat \Pi$ into our definition of $\hat{\mathcal{H}}$, where we substitute $\phi$ for $\hat \phi$ and $\Pi$ for $\hat \Pi$, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat{\mathcal{H}} &amp;= \dfrac{1}{2}\hat\Pi^2 + \dfrac{1}{2} \underbrace{\partial_i \hat \phi \partial^i \hat \phi}_{-(\partial_i\hat \phi)^2} - \dfrac{1}{2} m^2 \hat \phi^2 \\
+&amp;= \dfrac{1}{2} \int \dfrac{d^3 p}{(2\pi)^3 \sqrt{2E_p}} (iE_p) \bigg[\hat a_p e^{ip_\mu x^\mu} - \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg]\int \dfrac{d^3 p}{(2\pi)^3 \sqrt{2E_p}} (iE_p) \bigg[\hat a_p e^{ip_\mu x^\mu} - \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg] \\ 
+% step 2
+&amp;\qquad - \dfrac{1}{2}\left(\partial_i \int \dfrac{d^3 p}{(2\pi)^3 \sqrt{2E_p}} \bigg[\hat a_p e^{ip_\mu x^\mu} + \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg]\right)^2 \\
+&amp;\qquad - \dfrac{1}{2}m^2 \int \dfrac{d^3 p}{(2\pi)^3 \sqrt{2E_p}} \bigg[\hat a_p e^{ip_\mu x^\mu} + \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg] \int \dfrac{d^3 p}{(2\pi)^3 \sqrt{2E_p}} \bigg[\hat a_p e^{ip_\mu x^\mu} + \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg] \\
+% step 3
+&amp;= \dfrac{1}{2} \int \dfrac{d^6 p}{[(2\pi)^3 \sqrt{2E_p}]^2} (iE_p) \bigg[\hat a_p e^{ip_\mu x^\mu} - \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg]  \bigg[\hat a_p e^{ip_\mu x^\mu} - \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg] \\ 
+&amp;\qquad - \dfrac{1}{2}\left(\partial_i \int \dfrac{d^3 p}{(2\pi)^3 \sqrt{2E_p}} \bigg[\hat a_p e^{ip_\mu x^\mu} + \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg]\right)^2 \\
+&amp;\qquad - \dfrac{1}{2}m^2 \int \dfrac{d^6 p}{[(2\pi)^3 \sqrt{2E_p}]^2} \bigg[\hat a_p e^{ip_\mu x^\mu} + \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg]\bigg[\hat a_p e^{ip_\mu x^\mu} + \hat a_p^\dagger e^{-ip_\mu x^\mu}\bigg] \\
+% last step
+&amp;= \dfrac{1}{2} \int \dfrac{d^3p\,E_p}{(2\pi)^3}(\hat a^\dagger_p \hat a_p + \hat a_p \hat a^\dagger_p)
+\end{align*}
+$$
+</p>
+<p>Let's walk through our steps. First, we substituted our respective expressions for $\hat \Pi$ and $\hat \phi$. We note that $\partial_i \hat \phi \partial^i \hat \phi = -(\partial_i \hat \phi)^2$, since $\partial^i = \eta^{ii} \partial_i$ and $\eta^{ii}$ (the spatial components of the Minkowski metric, that is, $\eta_{11}$, $\eta_{22}$, and $\eta_{33}$) are all equal to $-1$. Thus we have $\partial_i \hat \phi \partial^i \hat \phi = - \partial_i \hat \phi \partial_i \hat \phi = -(\partial_i \hat \phi)^2$. After that we have a lot of cancellations (we don't show the full calculations here for brevity), and since $e^{i\mathbf{p}\cdot \mathbf{x}}e^{-i\mathbf{p}\cdot \mathbf{x}} = 1$, everything simplifies down nicely and we have no complex exponentials in our fully-simplified answer. We have now obtained the <em>quantum</em> Hamiltonian density:</p>
+<p class="mathcell">
+$$
+\hat{\mathcal{H}} = \dfrac{1}{2} \int \dfrac{d^3p\,E_p}{(2\pi)^3}(\hat a^\dagger_p \hat a_p + \hat a_p \hat a^\dagger_p)
+$$
+</p>
+<p>Here, we are very careful to use the notation $\hat{\mathcal{H}}$ instead of $\hat H$, since we are talking about the Hamiltonian <em>density</em>. The actual Hamiltonian operator would be the integral of the Hamiltonian over all space, that is:</p>
+<p class="mathcell">
+$$
+\hat H = \int d^3 x\,\hat{\mathcal{H}} = \dfrac{1}{2} \int \dfrac{d^3x\,d^3p E_p}{(2\pi)^3}(\hat a^\dagger_p \hat a_p + \hat a_p \hat a^\dagger_p)
+$$
+</p>
+<p>Note that this may look more familiar if we restore our conventional units by putting back the factors of $\hbar$, which means that $E_p = \hbar \omega_p$ and $p = \hbar k$ (so $dp = \hbar, dk$). This gives us:</p>
+<p class="mathcell">
+$$
+\hat H = \int d^3 x \left[\dfrac{1}{2} \hbar \int d^3p \dfrac{\omega_p}{(2\pi)^3}(\hat a^\dagger_p \hat a_p + \hat a_p \hat a^\dagger_p)\right]
+$$
+</p>
+<p>If we then go from the continuous momentum distribution to a single momentum, we would have:</p>
+<p class="mathcell">
+$$
+\hat H = \int d^3 x \int \dfrac{1}{2} \hbar \omega_p (\hat a^\dagger_p \hat a_p + \hat a_p \hat a^\dagger_p)
+$$
+</p>
+<p>And finally, if we take the discrete limit of a quantum field, where instead of a continuous oscillating system across all space, we have a finite number of oscillators at specific locations, we obtain:</p>
+<p class="mathcell">
+$$
+\hat H = \sum_n\dfrac{1}{2} \hbar \omega_p (\hat a^\dagger_p \hat a_p + \hat a_p \hat a^\dagger_p)
+$$
+</p>
+<p>Which is just a system of a quantum harmonic oscillators! Indeed, a quantum field behaves much like a system of infinite harmonic oscillators, with one oscillator at every point in space.</p>
+<p>The physical interpretation of the Hamiltonian (density) is much the same as it is in the quantum harmonic oscillator: given a state $|n\rangle$, the Hamiltonian (density) acting on the state, that is, $\hat H|n\rangle$, gives the energy of the state. If we act the Hamiltonian density on the vacuum state $|0\rangle$, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat{\mathcal{H}}|0\rangle &amp;= \dfrac{1}{2} \int \dfrac{d^3p\,E_p}{(2\pi)^3}(\hat a^\dagger_p \hat a_p + \hat a_p \hat a^\dagger_p)|0\rangle \\
+&amp;= \dfrac{1}{2} \int \dfrac{d^3p\,E_p}{(2\pi)^3}(\hat a^\dagger_p \hat a_p + \hat a_p \hat a^\dagger_p)|0\rangle \\
+&amp;= \dfrac{1}{2} \int \dfrac{d^3p\,E_p}{(2\pi)^3}(\cancel{\hat a^\dagger_p \hat a_p|0\rangle}^0 + \hat a_p \hat a^\dagger_p|0\rangle) \\
+&amp;= \dfrac{1}{2} \int \dfrac{d^3p\,E_p}{(2\pi)^3}\hat a_p \hat a^\dagger_p|0\rangle
+\end{align*}
+$$
+</p>
+<p>Thus to find the <em>vacuum expectation energy</em>, we need only find $\langle 0 |\hat{\mathcal{H}}|0\rangle$, which gives us:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\langle 0|\hat{\mathcal{H}}|0\rangle 
+&amp;= \langle 0|\int \dfrac{1}{2} \dfrac{d^3p\,E_p}{(2\pi)^3}\hat a_p \hat a^\dagger_p|0\rangle \\
+&amp;= \langle 0|\int \dfrac{1}{2} \dfrac{d^3p\,E_p}{(2\pi)^3}\hat a_p|1\rangle \\
+&amp;= \langle 0|\int \dfrac{1}{2} \dfrac{d^3p\,E_p}{(2\pi)^3}|0\rangle \\
+&amp;= \int \dfrac{1}{2} \dfrac{d^3p\,E_p}{(2\pi)^3}\langle 0|0\rangle \\
+&amp;= \dfrac{1}{2}\int \dfrac{dp^3}{(2\pi)^3}\sqrt{p^2 + m^2} \\
+&amp;= \infty
+\end{align*}
+$$
+</p>
+<p>This integral diverges rapidly to infinity, giving us an infinite energy, so clearly there must be something wrong! In the physics literature, there are several different <em>interpretations</em>:</p>
+<ol>
+<li>An infinite ground-state energy doesn't really matter, since we can only measure energy <em>differences</em> in energy, not absolute values of energy, so we might as well <em>define</em> the ground-state energy to be zero</li>
+<li>Our theory is not well-defined for all energies; it only holds up to a finite energy scale, and since $E_p = \sqrt{p^2 + m^2}$, there is an upper bound of the momenta we integrate over, rather than integrating over an infinite range of possible momenta.</li>
+</ol>
+<p>The first answer is the more common one that most texts give, but it isn't <em>entirely correct</em>. This is because <em>gravity</em> is affected by <em>any form</em> of energy density, and in theory, this includes the vacuum energy of quantum fields. The second answer is the more physically-accurate one - even our best quantum field theories fail at extremely high energies, and finding a way to make them work at those energies is an active field of research. But for functional purposes, it suffices to simply ignore the second term of the Hamiltonian (density):</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat{\mathcal{H}} &amp;= \dfrac{1}{2} \int \dfrac{d^3p\,E_p}{(2\pi)^3}(\hat a^\dagger_p \hat a_p + \cancel{\hat a_p \hat a^\dagger_p}) \\
+&amp;= \dfrac{1}{2} \int \dfrac{d^3p\,E_p}{(2\pi)^3} \hat a^\dagger_p \hat a_p
+\end{align*}
+$$
+</p>
+<p>This means that $\langle 0|\hat{\mathcal{H}}|0\rangle = 0$ (the ground-state energy of the vacuum state $|0\rangle$) is <strong>zero</strong>, so that now we are able to perform calculations without getting non-sensical answers of infinite energies.</p>
+<h2 id="the-vacuum-energy-again">The vacuum energy, again</h2>
+<p>Let's take another look at the vacuum energy (ground-state energy) of a free scalar field. Recall how we stated that this ground-state energy is formally infinite, but this is because we assumed that our quantum field theory would be a valid theory up to infinitely-high energies: this is absolutely not the case! To represent this, we choose a &quot;cutoff&quot; energy, which can be expressed as an energy of $E = \Lambda$, where $\Lambda$ has the same units as the wavenumber $k$ (since $E = p$ and $p = k$ in natural units). We assume that our theory holds up to this energy. By making this modification, the ground-state energy $E_0$ in natural units is no longer infinite, but rather a finite value. We can compute this value by doing the integral for $E_0 = \langle 0|\hat{\mathcal{H}}|0\rangle$ explicitly:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+E_0 &amp;= \int_0^\Lambda \dfrac{d^3 k}{(2\pi)^3} \dfrac{1}{2}\omega \\
+&amp;= \dfrac{1}{2}\int_0^\Lambda \dfrac{d^3 k}{(2\pi)^3} \sqrt{p^2 + m^2} \\
+&amp;= \dfrac{1}{2}\int_0^\Lambda \dfrac{d^3 k}{(2\pi)^3} \sqrt{k^2 + m^2}
+\end{align*}
+$$
+</p>
+<p>The exact analytical solution of the integral is given by:</p>
+<p class="mathcell">
+$$
+E_0 = \dfrac{\Lambda^2 m}{32\pi^3}\left(\Lambda \sqrt{m^2 + \left(\dfrac{\Lambda}{m}\right)^2} + m\, \text{arcsinh}\left(\dfrac{\Lambda}{m}\right)\right)
+$$
+</p>
+<p>However, if we consider that the mass-energy of the particle $m$ is close to the cutoff $\Lambda$, which is the domain up to which most quantum field theories are well-defined and well-tested, we can make the approximation that $\Lambda \approx m$. Since $\text{arcsinh}(1) \approx 1$ and using the binomial approximation $\sqrt{1 + \alpha} \approx 1 + \frac{\alpha}{2}$, we have:</p>
+<p class="mathcell">
+$$
+E_0 \approx\dfrac{m^3}{32 \pi^3}\left(m\left(1+ \dfrac{m^2}{2}\right) +m\right)
+$$
+</p>
+<blockquote>
+<p><strong>Note for the advanced reader:</strong> The approximation $\Lambda \approx m$ comes from setting the cutoff energy $\Lambda = \dfrac{2\pi}{\lambda}$ equal to the Compton wavelength $\lambda = 2\pi \hbar/mc$ (which is $\lambda = 2\pi/m$ in natural units). This is because energies around the Compton wavelength are the standard domain of quantum field theories, so it is well-suited to be a cutoff. We thus have $\Lambda = \dfrac{2\pi}{(2\pi/m)} = m$.</p>
+</blockquote>
+<p>This result for the vacuum energy is no longer divergent, but rather has a well-defined value that is dependent on the mass of the particle modelled by the field. In the following chapters, we'll learn what particle this is, and actually <em>calculate</em> this mass!</p>
+<h2 id="our-next-steps">Our next steps</h2>
+<p>Throughout this chapter, we've developed the quantum field theory of a <em>free</em> scalar field. Free fields are, unfortunately, not very physically-realistic, since no particle-particles interactions occur in free fields. Quantum field theories that describe the <em>actual world</em> are interacting field theories, where particles can scatter off each other, transferring energy and momentum in the process. We'll soon see that this gives rise to the <em>forces</em> of nature, and see how this results in the production of <em>new particles</em>. Additionally, we'll discover powerful tools (and pretty diagrams!) to calculate these subatomic processes.</p>
+
+        <div class="page-switch-buttons">
+        
+            <!-- If it's the preface just add a
+                "begin" button -->
+            
+            <!-- Otherwise add prev/next buttons -->
+                
+                    
+                    
+                
+                    
+                    
+                        <!-- previous page button -->
+                        
+                        
+                        
+                            <div class="page-down">
+                        <a href="/quantum-field-theory/chapter-1">
+                            Previous: Chapter 1
+                        </a>
+                                <strong>Getting started with quantum field theory</strong>
+                            </div>
+                        </a>
+                        
+                        <!-- next page button -->
+                        
+                        
+                        
+                        <div class="page-up">
+                            <a href="/quantum-field-theory/chapter-3">
+                                Next: Chapter 3
+                            </a>
+                            <strong>Quantization of the electromagnetic field</strong>
+                        </div>
+                        
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+            
+        
+        </div>
+    </article>
+    </div>
+    <!-- This should be also an accordion for smaller screen sizes -->
+    <div class="page-navigation">
+        <h2>In this chapter</h2>
+        <ul>
+        
+            <li>
+                <a class="pagelink" href="#quantization-of-a-free-scalar-field">Quantization of a free scalar field</a>
+                
+                    <ul>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#sidenote-on-notation">Sidenote on notation</a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li>
+                <a class="pagelink" href="#equations-of-motion-of-a-free-scalar-field">Equations of motion of a free scalar field</a>
+                
+            </li>
+        
+            <li>
+                <a class="pagelink" href="#canonical-quantization">Canonical quantization</a>
+                
+            </li>
+        
+            <li>
+                <a class="pagelink" href="#the-field-hamiltonian">The field Hamiltonian</a>
+                
+            </li>
+        
+            <li>
+                <a class="pagelink" href="#the-vacuum-energy-again">The vacuum energy, again</a>
+                
+            </li>
+        
+            <li>
+                <a class="pagelink" href="#our-next-steps">Our next steps</a>
+                
+            </li>
+        
+        </ul>
+    </div>
+    </section>
+</main>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://learntheoreticalphysics.com/katex/katex.min.js"></script>
+    <script defer src="https://learntheoreticalphysics.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://learntheoreticalphysics.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://learntheoreticalphysics.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // custom macros for KaTeX-MathJax consistency
+          macros: {
+            "\\overbracket": "\\overgroup"
+          },
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+        var article = document.querySelector(".post");
+        if (article) {
+            renderMath(article);
+        }
+    })
+    </script>
+    
+    <script defer>
+    var toc = document.getElementById("toc");
+    var tocPos = toc.offsetTop + toc.offsetHeight;
+    var tocBtn = document.getElementById("jump-toc-btn");
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+    function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        window.onscroll = function(){
+            showTocBtnOnScroll();
+        };
+    </script>
+    
+
+
+</body>
+
+</html>

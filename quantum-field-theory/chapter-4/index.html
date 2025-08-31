@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Non-trivial scalar field theories</title>
+  <meta name="description" content="A Learner's Guide to Advanced Theoretical Physics">
+
+  <!-- Uncomment once we actually have a favicon
+  
+      <link rel="icon" type="image/svg+xml" href="https://learntheoreticalphysics.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://learntheoreticalphysics.com/favicon.ico">
+  
+  -->
+
+  
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://learntheoreticalphysics.com/katex/katex.min.css">
+
+      <link rel="stylesheet" href="https://learntheoreticalphysics.com/site.css">
+  
+
+</head>
+
+<body>
+  
+<main class="chapter">
+    <!-- book navigation -->
+    <!-- should convert to accordion on mobile and have a expand/shrink icon -->
+    <nav>
+        <!-- We get the parent folder of the book chapters -->
+        
+        
+        
+        
+        <h1>
+            <a href="/quantum-field-theory">Quantum Field Theory</a>
+        </h1>
+        <h2>Table of contents</h2>
+        
+        
+            
+                <a href="/quantum-field-theory/chapter-1">1. Getting started with quantum field theory</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-2">2. Quantization of a free scalar field</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-3">3. Quantization of the electromagnetic field</a>
+            
+        
+            
+                <!-- highlight the chapter we're currently on -->
+                <a class="current-page" href="/quantum-field-theory/chapter-4">4. Non-trivial scalar field theories</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-5">5. Introduction to Feynman diagrams</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-6">6. The Yukawa theory of nuclear interactions</a>
+            
+        
+        
+
+        <a class="nav-bottom-link" alt="Link to go back to homepage" href="/">Back to homepage &rarr;</a>
+    </nav>
+
+    <div class="article-container disable-scrollbars">
+    <article class="post">
+        
+            <h1>Non-trivial scalar field theories</h2>
+        
+        
+        <p style="font-size: small;">Reading time: around 39 minutes</p>
+        
+        <!--
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        -->
+        
+        <!-- page content -->
+        <p>Previously, we have seen how we could quantize a classical scalar field to obtain the quantum field theory of a free scalar field. But free fields are uninteresting; there are no interactions in a free field theory, so the fields are nothing but probabilities of their different states. In addition, free fields do not model any of the real fields we observe in nature. For anything to <em>happen</em>, so to speak, we must consider <strong>interacting theories</strong>, in which quantum fields interact, either with themselves (we'll soon get to what this means), or with other fields. Building on what we've learned, let's start by examining the theory of <em>interacting</em> scalar fields.</p>
+<h2 id="interacting-scalar-fields-and-nuclear-physics">Interacting scalar fields and nuclear physics</h2>
+<p>Our journey into interacting scalar fields begins with a short dive into history. In the early 20th-century, physicists had just begun to understand the characteristics of the atomic nucleus. Experiments done by James Chadwick in 1932 confirmed the existence of <strong>neutrons</strong>, and it was known that atomic nuclei were formed by a combination of <strong>protons and neutrons</strong>.</p>
+<p>This, however, left a big mystery. Protons are positively-charged particles, while neutrons have no net charge. This means that protons should repel each other by repulsive electromagnetic forces - in fact, very strongly so, at the extremely short distances between protons in the nucleus! So if the electromagnetic force is constantly trying to push protons apart in the nucleus, how could any atomic nucleus be stable?</p>
+<p>The solution came in 1935, when the famed physicist Hideki Yukawa developed a theory for the <strong>strong nuclear force</strong>. Yukawa postulated the existence of a force holding the nucleus together, one that must be far, far stronger than the electromagnetic force - specifically, around 100 times stronger. Owing to the lack of creativity of physicists, we call it the <em>strong force</em> (or more precisely, <em>strong nuclear force</em>) to this day. In Yukawa's model, nucleons (protons and neutrons) interact with each other by exchanging particles called <strong>pions</strong>. Energy and momentum is transferred between the nucleons by the creation of a pion from the energy-momentum of one nucleon, which scatters off the other nucleon, imparting its momentum onwards (in fact, this leads to an <em>attractive force</em> that is modelled by the <a href="https://en.wikipedia.org/wiki/Yukawa_potential">Yukawa potential</a>, which we'll soon derive). Pions are associated with a quantum field of their own (the <em>pion field</em> $\phi$), which shares much of the same form as the real scalar field Lagrangian we first examined, except with an additional <em>interaction term</em> in the Lagrangian that gives rise to its interactions with nucleons. Yukawa's theory - and its subsequent confirmation - was one of the earliest successes of quantum field theory in explaining nuclear interactions.</p>
+<p>In this chapter, we will get to the Yukawa theory later on, but we'll start with two much simpler scalar field theories.</p>
+<h2 id="schrodinger-field-theory">Schrödinger field theory</h2>
+<p>The first scalar field theory we'll examine is the field theory of the Schrödinger field. &quot;Whaaaat...but the Schrödinger equation describes a wavefunction, not a field?!?!&quot; you might say. This indeed <em>was</em> true in single-particle quantum mechanics, but remember, single-particle quantum mechanics is an <strong>approximation</strong> to the more fundamental theory of QFT. Quantum field theory tells us that rather than describing a wavefunction, the Schrödinger equation actually describes a <em>scalar field</em> in space. In fact, we can even write a Lagrangian for the Schrödinger scalar field:</p>
+<p class="mathcell">
+$$
+\mathscr{L} = i\overline \psi\, \partial_0 \psi + \dfrac{1}{2m}\partial_i \overline \psi\, \partial^i \psi - V(x^\mu) \psi \overline \psi
+$$
+</p>
+<p>Where the third term containing $V(x^\mu)$ is the <strong>interaction term</strong>, and $V(x^\mu)$ is the field theory analogue to the classical potential energy term in the Schrödinger equation, and the space and time derivatives are written as $\partial_\mu = (\partial_0, \partial_i) = \left(\frac{\partial}{\partial t}, \nabla\right)$. We should note that the Lagrangian for the Schrödinger field is non-relativistic, but not all quantum field theories have to be relativistic, and we often study non-relativistic quantum field theories as approximations to more complex <em>relativistic</em> quantum field theories (more on that later).</p>
+<p>What does the Schrödinger field physically represent? Well, we know that a field is a continuous quantity that permeates space. Thus, we can <em>physically interpret</em> the Schrödinger field as describing <em>electrons</em> distributed all throughout space; like any other quantum field, the excited states in the Schrödinger field are particles, and those particles (in our case) are electrons. This is similar in nature to the four-current $J^\mu$, which is <em>also</em> a function of space, and which <em>also</em> describes something formed by many (classical) charges. So we can say that the Schrödinger field is, in some ways, an analogue to the four-current at microscopic scales, with the small difference that the Schrödinger field is a scalar field (unlike the four-current, which is a vector, but assume we consider just the magnitude of the four-current). <em>Technically</em>, this interpretation is inaccurate, but for practical purposes, it is a good thinking aid.</p>
+<blockquote>
+<p><strong>Note:</strong> One of the inaccuracies with this interpretation is that the Schrödinger field doesn't include the effects of <strong>spin</strong>, so technically it can only accurately model bosons (spinless particles) and not fermions (particles with spin-1/2, like electrons). However, as an approximation, the Schrödinger field can be used to describe electrons, as long as we are aware of this limitation.</p>
+</blockquote>
+<p>And since any field has an associated equation of motion, so does the Schrödinger field - indeed, its equation of motion is simply the Schrödinger equation! In fact, any calculation in single-particle quantum mechanics can be done in quantum field theory, except with us recognizing that $\psi$, the solution to the Schrödinger equation, is a <em>field</em>, not a wavefunction. This change in interpretation of the Schrödinger equation - from describing a probabilistic wavefunction to a quantum field - is quite drastic and is often a major source of confusion, so we will spend some time discussing the Schrödinger field further before we move on to other scalar field theories.</p>
+<h3 id="the-free-and-interacting-schrodinger-fields">The free and interacting Schrödinger fields</h3>
+<p>The simplest Schrödinger field is one that contains no interactions - what we would call the <em>free particle</em> in single-particle quantum mechanics. The Lagrangian for the free field is given by:</p>
+<p class="mathcell">
+$$
+\mathscr{L} = i\overline \psi\, \partial_0 \psi + \dfrac{1}{2m}\partial_i \overline \psi\, \partial^i \psi
+$$
+</p>
+<p>We can proceed by using the Euler-Lagrange equations, as usual, which results in the following very familiar equation of motion:</p>
+<p class="mathcell">
+$$
+i\partial_0 \psi + \frac{1}{2m}\partial_i\partial^i \psi = 0
+$$
+</p>
+<p>Which we can rewrite in more familiar non-tensor notation ($\partial_0 = \frac{\partial}{\partial t}, \partial_i \partial^i = \nabla^2$) as:</p>
+<p class="mathcell">
+$$
+i \dfrac{\partial}{\partial t} \psi = -\dfrac{1}{2m} \nabla^2 \psi
+$$
+</p>
+<p>Which is simply the Schrödinger equation, with $\hbar = c = 1$, as per our convention! Again, it is important to remember that $\psi$ is <em>not</em> the wavefunction, but a <em>field</em> (which, for our purposes, we interpret as the <em>field of electrons</em>). Again, in this interpretation, the Schrödinger field is the quantum field whose excitations (excited states) are electrons; unlike the (typically) single-body wavefunction, the Schrödinger field describes an arbitrary number of electrons. In its classical limit, the Schrödinger field follows the Schrödinger equation, but again, it describes the effective mean field of <em>all</em> electrons in space. It is also possible to interpret the square of the Schrödinger field $n(\mathbf{x}) = \overline \psi \psi$ as the <em>electron density</em> of electrons in space (this is something also used in condensed matter physics, in a slightly different form to describe <a href="https://en.wikipedia.org/wiki/Bose%E2%80%93Einstein_condensate">effective fields of bosons</a>, but we'll get to that later).</p>
+<h3 id="the-limitations-of-the-schrodinger-field-theory">The limitations of the Schrödinger field theory</h3>
+<p>While a good basic model, the Schrödinger field does have significant limitations. First, the Schrödinger field treats nuclei as classical point particles that are infinitely heavy that generate a potential that interacts with the electrons, but are non-interacting themselves. This is pretty clearly a mathematical idealization that doesn't actually correspond to physical reality. Second, the Schrödinger field doesn't include the effects of <strong>spin</strong>. It is <em>possible</em> to include the effect of spin by using the <a href="https://physics.stackexchange.com/questions/354346/whats-the-lagrangian-for-the-pauli-equation">Pauli Lagrangian</a>, shown below:</p>
+<p class="mathcell">
+$$
+\mathcal{L} = i\hbar\overline\psi\,\partial_0\psi - \overline\psi \cdot \Big(   \frac{1}{2m}(\boldsymbol{\sigma}\cdot(-i\hbar \nabla - q \mathbf{A}))^2 + q V \Big) \psi
+$$
+</p>
+<p>Where $V$ is the electric potential, $\mathbf{A}$ is the magnetic vector potential, and $\mathbf{\sigma} = \langle \sigma_x, \sigma_y, \sigma_z\rangle$ are the <strong>Pauli matrices</strong>, a set of three $(2 \times 2)$ matrices with constant coefficients that are essential to our understanding of spin. Finally, we mentioned that the Schrödinger field is non-relativistic; indeed, it is a non-relativistic <em>approximation</em> of a much more complicated <em>relativistic</em> field, called the <strong>Dirac field</strong>, whose equation of motion is the famous <strong>Dirac equation</strong>. When we reach our chapter on quantum electrodynamics, we will discuss the Dirac field and Dirac equation in full detail, as well as its non-relativistic limit as the Schrödinger field.</p>
+<h3 id="recovering-the-single-particle-wavefunction">Recovering the single-particle wavefunction</h3>
+<p>Before we end, there is one more important topic to consider about the Schrödinger field, and that is the manner in which it reduces to the quantum wavefunction in the limit of few particles. We know that the Schrödinger field is actually the more fundamental entity, and that what we call the quantum &quot;wavefunction&quot; is just an approximation. But let's see how this approximation makes sense.</p>
+<blockquote>
+<p><strong>Note:</strong> For simplicity purposes, instead of working in four-dimensional spacetime, we consider just one dimension of space and one of time. </p>
+</blockquote>
+<p>Recall that previously we saw that $\hat \psi(x) |0\rangle$ could be understood as a single-particle state with the particle at position $x$. Similarly, $\hat \psi^*(x')|0\rangle$ could be understood as a single-particle state with the particle at position $x'$. Then, the <strong>propagator</strong> is given by:</p>
+<p class="mathcell">
+$$
+D(\mathbf{x} - \mathbf{x}&#x27;) = \langle 0|\hat \psi(x, t) \hat \psi^*(x&#x27;, t&#x27;)|0\rangle
+$$
+</p>
+<p>We interpret $D(\mathbf{x} - \mathbf{x}')$ as telling us the probability amplitude that a particle originally known to be at position $x'$ at time $t'$ is later found to be at position $x$ at time $t$. However, this may be a bit difficult to see directly. To understand the propagator better, let us temporarily ignore its time-dependence, and write it in terms of a <em>real scalar field</em> like one we have already seen. The real scalar field propagator is thus written:</p>
+<p class="mathcell">
+$$
+D(x - x&#x27;) = \langle 0|\hat \phi(x)| \hat \phi(x&#x27;)|0\rangle
+$$
+</p>
+<p>This gives us more of an understanding of what the propagator actually means. First, $\hat \phi(x')|0\rangle$ tells us that the field operator $\hat \phi$ first <em>creates</em> a particle at location $x'$. Meanwhile, $\langle 0|\hat \phi(x) \sim \hat a^\dagger|0\rangle$ tells us that the field operator $\hat \phi$ <em>annihilates</em> a particle at location $x$. In between when the particle is created (at location $x'$) and annihilated (at location $x$), we <em>don't</em> know where it goes, but we can calculate the <strong>probability</strong> that the particle created at $x'$ becomes annihilated at $x$. That probability (or more precisely, probability <em>amplitude</em>) is the propagator!</p>
+<blockquote>
+<p><strong>Note:</strong> When we said that the propagator measures the probability of a particle at $x'$ later being &quot;found&quot; at $x$, this was something of a simplification; more precisely, the propagator describes the probability of a particle <strong>created</strong> at $x'$ to be <strong>annihilated</strong> at $x$. This doesn't mean the particle just &quot;disappears&quot; at $x$ with nothing left; rather, its energy and momentum are absorbed back into the field, which can create a new particle in the same place.</p>
+</blockquote>
+<p>Let's now turn back to non-relativistic quantum mechanics, where the unitary time-evolution operator $\hat U$ is responsible for evolving the quantum state from $|\Psi(t')\rangle$ at time $t'$ to $|\Psi(t)\rangle$ at time $t$. That is:</p>
+<p class="mathcell">
+$$
+|\Psi(t)\rangle = \hat U(t, t&#x27;) |\Psi(t&#x27;)\rangle
+$$
+</p>
+<p>In single-particle quantum mechanics (or at least when particle number is fixed/there is no creation or annihilation of particles), one can construct position basis states $|x\rangle$ that describe a particle located at an exactly-known location $x$. In quantum field theory, this is not possible, because special relativity tells us that absolute space does not exist, so position is no longer an operator, and thus its eigenstates $|x\rangle$ do not exist anymore either. But in non-relativistic quantum mechanics, we <em>can</em> have position basis states, and this is what allows us to complete our derivation.</p>
+<p>Suppose the particle's initial state is $|x'\rangle$, meaning it is known to be at location $x'$ at time $t'$. If we evolve the state with the time-evolution operator, then its state at time $t$ becomes $\hat U(t, t') |x'\rangle$. As usual in quantum mechanics, we <em>don't</em> know what exactly this new position is, but we can find the <em>probability amplitude</em> of this new position being some position $x$. This probability amplitude is given by $\langle x |\hat U|x'\rangle$, and is <em>exactly</em> the free-particle propagator:</p>
+<p class="mathcell">
+$$
+D(x - x&#x27;) = \langle x | \hat U|x&#x27;\rangle
+$$
+</p>
+<p>To make the notation slightly more readable, consider a particle at known initial position $x'$ and initial time $t' = t_0$. Then, we may write the particle's initial state as:</p>
+<p class="mathcell">
+$$
+|\Psi_0\rangle = |\Psi(t_0)\rangle
+$$
+</p>
+<p>With this cleaner notation, we find that if we use a clever rewriting trick, by letting $\hat U = \hat U \hat I$ (where $\hat I$ is the identity operator), we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+|\Psi(t)\rangle &amp;= \hat U|\Psi_0\rangle \\
+&amp;= \hat U \hat I |\Psi_0\rangle \\
+&amp;= \hat U \int dx&#x27;\, |x&#x27;\rangle \langle x&#x27; |\Psi_0\rangle \\
+&amp;= \int dx&#x27;\, \hat U |x&#x27;\rangle \langle x&#x27; |\Psi_0\rangle
+\end{align*}
+$$
+</p>
+<p>This is because, for any continuous basis $|s\rangle$, the identity operator is <em>defined</em> to be:</p>
+<p class="mathcell">
+$$
+\hat I = \int ds\,|s\rangle \langle s|
+$$
+</p>
+<p>Then if we multiply both sides by $\langle x|$, we get:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\langle x|\Psi(t)\rangle &amp;= \langle x|\int dx&#x27;\, \hat U |x&#x27;\rangle \langle x&#x27; |\Psi_0\rangle \\
+&amp;= \int dx&#x27;\, \underbrace{\langle x| \hat U |x&#x27;\rangle}_{D(x-x&#x27;)}\ \underbrace{\langle x&#x27; |\Psi_0\rangle}_{\Psi(x&#x27;, t_0)} \\
+&amp;= \int dx&#x27;\, D(x - x&#x27;)\Psi(x&#x27;, t_0)
+\end{align*}
+$$
+</p>
+<p>But we know that $\langle x|\Psi(t)\rangle$ is just the wavefunction $\Psi(x, t)$ in the position basis! So:</p>
+<p class="mathcell">
+$$
+\langle x|\Psi(t)\rangle = \Psi(x, t) =\int dx&#x27;\, D(x - x&#x27;)\Psi(x&#x27;, t_0)
+$$
+</p>
+<p>If we adopt the common notation where $\psi(x) \equiv \Psi(x, t_0)$ is the wavefunction at $t = t_0$, then we may write this even more simply as:</p>
+<p class="mathcell">
+$$
+\Psi(x, t) = \int dx&#x27;\, D(x - x&#x27;)\psi(x&#x27;)
+$$
+</p>
+<p>Let's consider the case where we assume we know that at $t = t_0$, the particle is <em>exactly</em> at a particular location $x'$, and we (as before) want to find its position at some later time $t$. In quantum field theory, this would be highly improbable, since particles are created and destroyed from the vacuum all the time. But in the single-particle limit, we can have perfectly-localized particles, in which case the initial wavefunction would be a delta function, that is, $\psi(x) = \delta(x-x')$. Then, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\Psi(x, t) &amp;= \int dx&#x27;\, D(x - x&#x27;)\psi(x&#x27;) \\
+&amp;= \int dx&#x27; D(x - x&#x27;) \delta (x - x&#x27;) \\
+&amp;= D(x - x&#x27;)
+\end{align*}
+$$
+</p>
+<p>Thus we have recovered the wavefunction from quantum field theory. Let's summarize our process: by making the approximation of low energies, where particles cannot be created or destroyed, the <strong>propagator</strong> $D(x-x')$ in quantum field theory can be interpreted as the probability amplitude for one particle initially known to be at $(x', t_0)$ to be found at $(x, t)$. In single-particle quantum mechanics, where position basis states $|x\rangle$ are well-defined (unlike in QFT), we can then write the propagator as $D(x - x') = \langle x | \hat U|x'\rangle$. With some clever math tricks, we showed that we could write the time-evolution of a quantum state in single-particle quantum mechanics as $|\Psi(t)\rangle = \displaystyle \int dx', \hat U |x'\rangle \langle x' |\Psi_0\rangle$, where we could then take the inner product with a position basis bra $\langle x|$ and rearrange to end up with the wavefunction. </p>
+<p>What the math is saying is that if we <em>assume</em> certain conditions (a single particle that cannot be destroyed and whose position can be definitively measured), then the propagator can be interpreted as <em>evolving</em> a particle starting out in state $\psi(x) = \Psi(x, t_0)$ to end up in state $\Psi(x, t)$. And if we take that idea one step further and only care about where the particle <em>ends up</em> after a certain time $t$, we can choose $\psi(x)$ to be a Delta function (representing a particle at a known position), in which limit the propagator <em>becomes</em> the same thing as the wavefunction!</p>
+<p>The big takeaway is this: the wavefunction $\psi$ in single-particle quantum mechanics is <strong>completely different</strong> from the more fundamental Schrödinger field $\hat \psi$ in quantum field theory, despite using confusingly-similar notation. The wavefunction $\psi$ is the non-relativistic <em>representation</em> of the <em>quantum state</em> of a single particle (or a small number of particles) with a well-defined position. It is only valid when particle numbers are fixed (meaning particles cannot be created or destroyed). But the Schrödinger field $\hat \psi$ represents the fundamental <em>quantum field</em> in which electrons (among other particles) exist, where <em>excitations</em> of the Schrödinger field are interpreted as those particles. However, in the special case of <strong>single-particle states</strong> $\hat \psi|0\rangle$ (or at least when there are a fixed number of particles), one can define a position basis $|x\rangle$ in which the state of the particle(s) can be expressed as a wavefunction $\Psi(x, t) = \langle x|\Psi\rangle$. Moreover, the propagator of the Schrödinger field, which expresses the probability a particle known to be at $(x', t')$ will be found at $(x, t)$, reduces down to the free-particle propagator $D(x - x') = \langle x | \hat U|x'\rangle$, which can be used to find the wavefunction $\Psi(x, t)$ given knowledge of a particle's initial state.</p>
+<h2 id="quartic-field-theory">Quartic field theory</h2>
+<p>The first interacting scalar field theory we'll examine in detail is known as <strong>quartic field theory</strong> or $\phi^4$ theory. It comes with the following Lagrangian:</p>
+<p class="mathcell">
+$$
+\mathscr{L} = \dfrac{1}{2} \partial^\mu \phi \partial_\mu \phi - \dfrac{1}{2} m^2 \phi^2 - \dfrac{\lambda}{4!}\phi^4
+$$
+</p>
+<p>Where $\lambda$ is a constant called the <strong>coupling constant</strong> - we'll go into what this means later. We recognize the first two terms as being identical to the Lagrangian of a free scalar field (which we examined earlier). Like any Lagrangian, we can find the equations of motion for $\phi$ from the Euler-Lagrange equation:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \mathscr{L}}{\partial \phi} - \partial_\beta \left(\dfrac{\partial \mathscr{L}}{\partial(\partial_\beta \phi)}\right) = 0
+$$
+</p>
+<p>A useful trick is to note that the first term is the <em>only</em> term that involves a derivative of $\phi$, so the partial derivative of the Lagrangian with respect to $\partial_\mu \phi$ is <em>the same</em> as that for the free scalar field Lagrangian, which we already calculated. From earlier, we found this to be given by:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \mathscr{L}}{\partial(\partial_\mu \phi)} = \partial^\mu \phi
+$$
+</p>
+<p>Or equivalently, if we switch indices from $\mu \to \beta$:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \mathscr{L}}{\partial(\partial_\beta \phi)} = \partial^\beta \phi
+$$
+</p>
+<p>Meanwhile, the derivative of the Lagrangian with respect to $\phi$ can be readily computed, as follows:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathscr{L}}{\partial \phi} &amp;= \dfrac{\partial}{\partial \phi} \left[- \dfrac{1}{2} m^2 \phi^2 - \dfrac{\lambda}{4!}\phi^4\right] \\
+&amp;= - m^2 \phi - \dfrac{\lambda}{3!} \phi^3
+\end{align*}
+$$
+</p>
+<p>So, substituting both results into the Euler-Lagrange equation, we get:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathscr{L}}{\partial \phi} - \partial_\beta \left(\dfrac{\partial \mathscr{L}}{\partial(\partial_\beta \phi)}\right) &amp;= -m^2 \phi - \dfrac{\lambda}{3!} \phi^3 - \partial_\beta \partial^\beta \phi \\ &amp;= 0
+\end{align*}
+$$
+</p>
+<p>If we clean things up a little bit and relabel $\beta \to \mu$ (as is common convention) we get:</p>
+<p class="mathcell">
+$$
+\partial_\beta \partial^\beta \phi + m^2 \phi = -\dfrac{\lambda}{3!} \phi^3
+$$
+</p>
+<p>This is the <strong>nonlinear Klein-Gordon equation</strong>, and is the equation of motion for a quartic interacting scalar field. As a sidenote, it is closely related to the <strong>Higgs field</strong> in the Standard Model, which also involves a (modified) quartic interaction term and is also a (complex-valued) scalar field. In fact, studying the quartic theory will help us later on, when we examine the Higgs field and the Higgs mechanism in the Standard Model.</p>
+<h3 id="the-field-hamiltonian-of-interacting-scalar-fields">The field Hamiltonian of interacting scalar fields</h3>
+<p>The simplest types of interacting scalar fields, including $\phi^4$ theory, have relatively simple field Hamiltonians (at least, by the standards of quantum field theory). This is because their Lagrangians can be written in the general form:</p>
+<p class="mathcell">
+$$
+\mathscr{L} = \dfrac{1}{a} \partial_\mu \phi \partial^\mu \phi - \dfrac{1}{b} m^2 \phi^2 + \mathscr{L}_\text{int}(\phi), \quad a, b = \text{const.}
+$$
+</p>
+<p>Where $\mathscr{L}_\text{int}(\phi)$ describes the <em>interacting part</em> of the field Lagrangian and thus only depends on the field $\phi$ itself, not its derivatives. This means that when we write the Hamiltonian in the form $\hat H = \hat H_0 + \hat H_I$, where $\hat H_I$ denotes the interaction part of the Hamiltonian, there is a relatively simple expression for $\hat H_I$; it is given by:</p>
+<p class="mathcell">
+$$
+\hat H_I = -\int d^3x\, \mathscr{L}_\text{int}(\phi)
+$$
+</p>
+<p>Thus, for $\phi^4$ theory, we have:</p>
+<p class="mathcell">
+$$
+\mathscr{L}_\text{int}(\phi) = -\dfrac{\lambda}{4!} \phi^4 \Rightarrow \hat H_I = \int d^3x\, \dfrac{\lambda}{4!} \phi^4
+$$
+</p>
+<p>Thus, the interaction Hamiltonian density $\mathcal{H}_I$ associated with the interaction Hamiltonian $\hat H_I$ is simply:</p>
+<p class="mathcell">
+$$
+\hat{\mathcal{H}}_I = \dfrac{\lambda}{4!} \phi^4
+$$
+</p><h2 id="scattering-processes">Scattering processes</h2>
+<p>A common question we often ask in quantum field theory is this: given a known interacting field (or several) prepared in some initial state, how do the field(s) interact? We can also frame it in more common terminology as this: if we have some collection of particles (which, again, are excited states of quantum fields), what happens when they encounter other particles? In the case of $\phi^4$ theory, which describes <em>pions</em>, such interactions might include any of the following processes, which are called <strong>scattering processes</strong>:</p>
+<ul>
+<li>Two pions interacting with each other to produce two new pions</li>
+<li>One pion decays into several pions</li>
+<li>Several pions combine into one new pion</li>
+<li>A virtual pion is created and then instantly annihilated back into the vacuum</li>
+<li>Combinations of the above</li>
+</ul>
+<p>Here, we come to a big problem: since $\phi^4$ theory is nonlinear (as it involves the field raised to the fourth power), it's impossible to do exact calculations with it! However, we do have a way around this. Recall that the Lagrangian of $\phi^4$ theory is identical to that of the free scalar field, with exception of the $-\frac{\lambda}{4!}\phi^4$ term. So we can do <em>approximate</em> calculations by first assuming that the additional term represents a small <em>modification</em> of the free scalar field. Since the free scalar field is a <em>linear</em> theory, we can solve it exactly. We can then add the effects of the $\phi^4$ theory's additional term on top of the known solution to the free scalar field, which gives us a pretty good approximate result!</p>
+<p>To understand how this procedure works, let us consider a quantum system with a Hamiltonian $\hat H$. This Hamiltonian can be divided into two parts: the free Hamiltonian $\hat H_0$, and the <em>interaction</em> Hamiltonian $\hat H_I$. $\hat H_0$ is the Hamiltonian of the theory without any interactions (i.e. the free field theory), and $\hat H_I$ is a small perturbation, that is, a small corrective term that represents the deviation of the interacting field from the free field. We have:</p>
+<p class="mathcell">
+$$
+\hat H = \hat H_0 + \hat H_I
+$$
+</p>
+<p>We can give this a physical interpretation, as follows: before and after an interaction happens, the quantum field(s) evolved as essentially free fields and aren't interacting. Think of two particles that initially start infinitely-far away from each other: they won't be able to have any effect on each other. During an interaction, however, the particles are at (relatively) close range, so the fields have a very brief period in which they interact. Thus, it is physically valid to consider the interaction as a small deviation from otherwise free fields.</p>
+<p>We have thus simplified what would be a complicated problem into a slightly less-complicated problem, since we already know how to solve the theory of a <em>free</em> scalar field. But how does that help us compute cross-sections? Now is a good time to review the basic postulates of quantum mechanics. Recall that the time-evolution of any quantum system is determined by the generalized Schrödinger equation:</p>
+<p class="mathcell">
+$$
+i\dfrac{\partial}{\partial t} |\psi\rangle = \hat H |\psi\rangle
+$$
+</p>
+<p>This holds true whether we're in quantum field theory or in non-relativistic quantum mechanics. Now, if we know the initial state of the system at $t = 0$, the Schrödinger equation can be &quot;solved&quot; with a particular operator called the <strong>time-evolution operator</strong> $\hat U$:</p>
+<p class="mathcell">
+$$
+|\Psi(t)\rangle = \hat U(t, t_0)|\psi\rangle
+$$
+</p>
+<p>Where $|\psi\rangle = |\Psi(0)\rangle$. If we now take the inner product with $\langle \Psi(t)|$ on both sides, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\underbrace{\langle \Psi(t)|\Psi(t)\rangle}_A = \langle\Psi(t)|\hat U|\psi\rangle \\
+A = \langle \Psi(t) |\hat U |\psi\rangle \\
+A = \langle f|\hat U|i\rangle
+\end{align*}
+$$
+</p>
+<p>Where $|f\rangle = |\Psi(t)\rangle$ is the final state of the particle (at time $t$) while $|i\rangle = |\psi\rangle$ is the initial state of the particle (at time $t = 0$). The probability amplitude $A$ of the particle starting from state $|i\rangle$ to end up in state $|f\rangle$ a time $t$ layer is therefore given by $A = \langle f|\hat U|i\rangle$. By definition, $A$ is dimensionless, since it is a probability amplitude - and in general, it is complex-valued. The time-evolution operator can be written out in explicit form as a <strong><a href="https://web2.ph.utexas.edu/~vadim/Classes/2016f/dyson.pdf">Dyson series</a></strong>:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat U(t,t_0) &amp; =1-i\int_{t_0}^tdt_1\hat H_I(t_1)-\int_{t_0}^tdt_2\hat H_I(t_2)\int_{t_0}^{t_2}dt_1\hat H_I(t_1) \\
+ &amp; +i\int_{t_0}^tdt_3\hat H_I(t_3)\int_{t_0}^{t_3}dt_2\hat H_I(t_2)\int_{t_0}^{t_2}dt_1\hat H_I(t_1)+\cdots \\
+ &amp; =1+\sum_{n=1}^\infty(-i)^n\underset{t_0&lt;t_1&lt;\cdots&lt;t_n&lt;t}{\operatorname*{\operatorname*{\int}}}dt_n\cdots dt_1\hat{H}_I(t_n)\cdots\hat{H}_I(t_1).
+\end{align*}
+$$
+</p>
+<p>In quantum field theory, the Dyson series is known as the <strong>S-matrix</strong> (short for <em>scattering matrix</em>). The basic concept of the Dyson series remains the same, although the notation is a bit different: we use $\hat S$ instead of $\hat U$, and the probability amplitude is usually denoted $\mathcal{A}$ instead of $A$. Using this new notation, the probability amplitude ($\mathcal{A}$) of a transition occuring from state $|i\rangle$ to state $|f\rangle$ takes the form:</p>
+<p class="mathcell">
+$$
+\mathcal{A} = \langle f |\hat S |i\rangle
+$$
+</p>
+<p>Where the S-matrix (the QFT version of the Dyson series) takes the form:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat S &amp;= \sum_{n=0}^\infty \frac{(-i)^{n}}{n!}\int d^4x_{1} \cdots \int d^4x_{n} \mathcal{T} \bigg\{ \mathcal{H}(x_{1})\cdots \mathcal {H}(x_{n}) \bigg \} \\
+&amp;= 1 -i \int d^4x_{1} \,\mathcal{T}\left\{{\mathcal {H}}(x_{1})\right\} \\
+&amp;\qquad+ \dfrac{(-i)^2}{2!} \int d^4x_{1}\,d^4x_2\,\mathcal{T}\left\{ \mathcal{H}(x_1)\mathcal{H}(x_2)\right\} + \dots
+\end{align*}
+$$
+</p>
+<p>Here, $\mathcal{T}{\dots }$ is the <strong>time-ordering operator</strong>, which sorts operators in order. This is very important to ensure that we don't break causality by having scattering events that go backwards in time! It is defined by:</p>
+<p class="mathcell">
+$$
+\langle 0|\mathcal{T} \big\{ \hat \phi(x_2) \hat \phi(x_1) \big\} |0\rangle = \begin{cases}
+\langle 0|\hat \phi(x_2) \hat \phi(x_1)|0\rangle, &amp; t_2 &gt; t_1, \\
+\langle 0|\hat \phi(x_1) \hat \phi(x_2)|0\rangle, &amp; t_1 &gt; t_2
+\end{cases}
+$$
+</p>
+<p>This definition may <em>look</em> complicated, but it actually captures a much simpler idea: if a particle is created at point $x_1$ in spacetime and propagates to position $x_2$, we can't find it at $x_2$ before it is created, or otherwise we'd have particles travelling backwards in time! Without the time-ordering operator, physics would break down, so the time-ordering operator is <strong>absolutely essential</strong>; we will therefore discuss it at length later. With these definitions, the probability amplitude $\mathcal{A}$ can then be explicitly written as an infinite series:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{A} &amp;= \mathcal{A}_{(0)} + \mathcal{A}_{(1)} + \mathcal{A}_{(2)} + \mathcal{A}_{(3)} + \dots + \mathcal{A}_{(\infty)}, \\
+&amp;\qquad \mathcal{A}_{(n)} = \left\langle i\left|\frac{(-i)^{n}}{n!}\int d^4x_{1} \cdots \int d^4x_{n} \mathcal{T} \bigg\{ \mathcal{H}(x_{1})\cdots \mathcal {H}(x_{n}) \bigg \}\right| f\right\rangle
+\end{align*}
+$$
+</p>
+<p>The S-matrix is significant because it is the main way we calculate <strong>probability amplitudes</strong> in quantum field theories. This means that calculating scattering processes in quantum field theory is therefore equivalent to obtaining the S-matrix associated with different quantum fields, and then using its series expansion to calculate the probability amplitudes for the processes we're interested in.</p>
+<blockquote>
+<p><strong>Why is the S-matrix called a matrix?</strong> This is to do with the fact that formally, the S-matrix is indeed a type of matrix, since it maps an initial state-vector $|i\rangle$ to a final state $\langle f|$, exactly as a matrix would map a vector to another vector. The fact that it is typically expressed as a product of integrals simply stems from the fact that the Hamiltonian in quantum field theories is the Hamiltonian density integrated over all space, so the S-matrix is filled with integrals.</p>
+</blockquote>
+<h3 id="computing-the-s-matrix">Computing the S-matrix</h3>
+<p>The S-matrix is conceptually powerful, but it is an <em>infinite</em> series and usually cannot be summed explicitly. So, to make it actually <em>computable</em>, we usually take only the first few terms of the S-matrix into account when computing the probability amplitude $\mathcal{A}$. The zeroeth-order term $\mathcal{A}_{(0)} = \langle f|i\rangle$ describes a non-interacting free field, so the dominant contribution to most QFT interactions are found in the first-order and second-order terms, which are respectively:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{A}_{(1)} &amp;= (-i)\left\langle f\left|\int d^4x_{1} \,\mathcal{T}\left\{{\mathcal {H}}(x_{1})\right\}\right|i\right\rangle \\
+\mathcal{A}_{(2)} &amp;= \dfrac{1}{2}\left\langle f\left|\int d^4x_{1}\,d^4x_2\,\mathcal{T}\left\{ \mathcal{H}(x_1)\mathcal{H}(x_2)\right\}\right|i\right\rangle
+\end{align*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> Here, be careful of the notation we use: $i$ in $(-i)$ is the imaginary unit, but $|i\rangle$ is the initial state.</p>
+</blockquote>
+<p>This means that the total probability amplitude $\mathcal{A}$, to second-order, becomes:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{A} &amp;= \mathcal{A}_0 + \mathcal{A}_1 + \mathcal{A}_{(2)} \\
+&amp;= \langle f|i\rangle + \mathcal{A}_1 + \mathcal{A}_{(2)}
+\end{align*}
+$$
+</p>
+<p>Let's demonstrate by using the case of the scalar $\phi^4$ field theory. Recall that the interaction Hamiltonian density for $\phi^4$ theory is:</p>
+<p class="mathcell">
+$$
+\mathcal{H}_I = \dfrac{\lambda}{4!} \hat \phi^4
+$$
+</p>
+<p>So, if we substitute our interaction Hamiltonian, the first- and second-order terms in the probability amplitude are, respectively:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+% first order
+\mathcal{A}_{(1)} &amp;= \dfrac{-i\lambda}{4!}\int d^4x \langle f|\,\mathcal{T}\{\hat \phi^4\}|i\rangle \\
+&amp;= \dfrac{-i\lambda}{4!}\int d^4x \langle f|\,\mathcal{T}\bigg\{\hat \phi(x^\mu) \hat \phi(x^\mu) \hat \phi(x^\mu) \hat \phi(x^\mu)\bigg\}|i\rangle \\
+% second order
+\mathcal{A}_{(2)} &amp;= \dfrac{1}{2}\left\langle f\left|\int d^4x_{1}\,d^4x_2\,\mathcal{T}\big\{ \mathcal{H}(x_1)\mathcal{H}(x_2)\big\}\right|i\right\rangle \\
+&amp;= \dfrac{\lambda}{12} \int d^4 x_1\, d^4 x_2 \langle f | \bigg\{\hat \phi(x_1^\mu) \hat \phi(x_1^\mu) \hat \phi(x_1^\mu) \hat \phi(x_1^\mu) \\
+&amp;\qquad \qquad \times \hat \phi(x_2^\nu) \hat \phi(x_2^\nu) \hat \phi(x_2^\nu) \hat \phi(x_2^\nu) \bigg\}|i\rangle
+\end{align*}
+$$
+</p>
+<p>It is common for physicists to be sloppy with their notation and ignore writing the operator hats and $x_1, x_2, \dots x_n$, so you can often see e.g. $\langle f|\phi(x) \phi(y) |i\rangle$ which actually means $\langle 0 |\hat \phi(x_1^\mu), \hat \phi(x_2^\nu)|0\rangle$. Here, $x, y$ mean <em>two distinct spacetime locations</em>, not the $x$ and $y$ components of a spacetime position! We will not drop the operator hats, but we will adopt the $x, y$ notation simply because it makes these extremely verbose expressions in the S-matrix easier to write. With the new &quot;sloppy&quot; physics notation, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{A}_{(1)} &amp;= \dfrac{-i\lambda}{4!} \int d^4 x \langle f| \mathcal{T}\{\hat \phi(x) \hat \phi(x) \hat \phi(x) \hat \phi(x)\}|i\rangle \\
+\mathcal{A}_{(2)} &amp;= \dfrac{\lambda}{12} \int d^4x\, d^4 y\, \langle f| \mathcal{T}\bigg\{\hat \phi(x) \hat \phi(x) \hat \phi(x) \hat \phi(x) \\
+&amp;\qquad \qquad \times \hat \phi(y) \hat \phi(y) \hat \phi(y) \hat \phi(y)\bigg\} |i\rangle
+\end{align*}
+$$
+</p>
+<p>We immediately see that we have terms in the form $\langle f | \hat \phi(x) \hat \phi(x) \dots \hat \phi(x)|i\rangle$, where we repeatedly apply the field operator on states. These are called <strong>correlation functions</strong>. You will often see texts referrring to the <em>n-point correlation function</em>, which is defined as applying the field operator $n$ times on the initial state, that is, $\langle f | \underbrace{\hat \phi(x) \hat \phi(x) \dots \hat \phi(x)}_{n \text{ times}}|i\rangle$.</p>
+<h2 id="cross-sections-and-transition-rates">Cross sections and transition rates</h2>
+<p>When discussing quantum field theory, it is impossible to avoid the topic of <strong>scattering cross-sections</strong>, usually just called &quot;cross-sections&quot;. Cross-sections are a way of describing the probability of particle-particle interactions within quantum field theory. Why is this important? Because we know that quantum physics is inherently <em>statistical</em>, in that among very few things we can theoretically predict are the <em>probabilities</em> of a particular interaction occuring. In general, these probabilities are extremely small. For instance, in the famous <a href="https://en.wikipedia.org/wiki/Photoelectric_effect">photoelectric effect</a>, photons fired at a metal target have a small chance of colliding with one of the valence electrons in the target's atoms, but the probability of this occuring is around  $10^{-6}$ to $10^{-5}$, meaning that on average, for close to every <em>million</em> photons, only <em>one</em> interacts with an atom and causes the release of an electron<sup class="footnote-reference"><a href="#1">1</a></sup> What is important, however, is that these probabilities can be <em>precisely</em> measured with modern equipment, and they provide important tests of quantum field theory.</p>
+<p>To understand the concept of a cross-section, imagine an archer shooting arrows at a target while blindfolded. The archer cannot see their target while blindfolded, so the archer shoots an enormous number of arrows in the hopes that at least some of their arrows will manage to hit the target. But - alas! - the archer is then told (by some overenthusiastic sports announcer) that the arrows they shot have <em>bounced off</em> the target, so they don't actually know how many arrows hit before bouncing off! However, by asking the sports announcer about the places the arrows landed, the archer can roughly estimate the size of the target, and therefore approximately how many arrows hit on-target. That estimated target size is what we would call the <strong>cross-section</strong> $\sigma$, and the archer's estimate of the percentage of the arrows that hit on-target across the total time they were shooting is what we would call the <strong>transition rate</strong> (the probability of a transition, or in this case a successful hit, per unit time). </p>
+<p>The archer may also want to be more specific, and examine their hit-rate at different shooting angles. If the target is not a perfectly-symmetric shape, the archer may find that shooting at different angles to the target leads to a different hit-rate. Thus, the target size <em>appears</em> to change as a function of angle, and the target size per unit angle is what we would call the <strong>differential cross-section</strong>, denoted $\frac{d\sigma}{d\Omega}$. Of course, all this happens without the blindfolded archer being <em>actually aware</em> of how the target looks like or what the target's shape is. The archer can only shoot lots of arrows in many different directions and ask the sports announcer where their arrows ended up, so as to reconstruct a mental image of their target.</p>
+<p>If all of this is too much imagination, blame us physicists! However, the point this analogy was trying to get across is that the <em>physical</em> idea of a cross-section is the <em>effective area</em> of a hypothetical object scattering the incident particles. That is, in any particular scattering process described in quantum field theory, where particles interact with each other, the cross-section is the size of an imaginary object that would scatter the particles in the same way as the actual quantum process. Cross-sections are often extremely tiny, and are usually measured in units of $\pu{fm^2}$ ($\pu{1 fm} = \pu{10^{-15}m}$) or barns ($\pu{b}$), where $\pu{1b} = \pu{100 fm^2}$ (just to be clear, <em>barns</em>, despite their name, are not used to measure the enclosures of livestock; rather, they are a unit predominantly used in particle physics). Borrowing our previous example of the photoelectric effect, we can replicate the 1-million-to-1 chance of a photon managing to eject an electron with classical particles scattering off an <em>imaginary</em> sphere whose cross-sectional area is roughly $\pu{0.38 nm^2}$<sup class="footnote-reference"><a href="#2">2</a></sup>. Such a tiny sphere would barely be much of a collision target, so most of the incident particles wouldn't even collide with it, leaving only a few particles (1 in a million) to actually scatter off the sphere, which reproduces the transition rates we observe in the photoelectric effect. Using the same analogy, the <em>differential</em> cross-section would be the cross-sectional area of a tiny angular slice of that same hypothetical scattering object - which is hugely important for particle processes whose cross-section is dependent on angle. With powerful particle detectors all over the world specifically dedicated to measuring cross-sections, and equally impressive mathematical tools (as well as decades of theoretical research) into cross-sections, it is no wonder that so much of quantum field theory is <em>all about</em> cross-sections.</p>
+<blockquote>
+<p><strong>Note:</strong> <a href="https://cms.cern/news/what-do-we-mean-cross-section-particle-physics">This article from CERN</a> and <a href="https://physics.stackexchange.com/a/777460/497517">this Physics Stack Exchange answer</a> are also good resources for gaining more intuition on cross-sections.</p>
+</blockquote>
+<h3 id="scattering-cross-sections">Scattering cross-sections</h3>
+<p>While we will wait until the next chapter to actually <em>compute</em> cross-sections, now is a good time to understand how cross-sections can be found from the S-matrix. Recall that the probability amplitude is given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{A} &amp;= \langle f|\hat S|i\rangle \\ &amp;= \langle f|i\rangle 
+-i \left\langle f\left|\int d^4x \,\mathcal{T}\left\{{\mathcal {H}}(x)\right\} \right|i\right \rangle \\
+&amp;\qquad\qquad+ \dfrac{(-i)^2}{2!} \left\langle f\left| \int d^4x\,d^4y\,\mathcal{T}\left\{ \mathcal{H}(x)\mathcal{H}(y)\right\}\right|i\right \rangle + \dots 
+\end{align*}
+$$
+</p>
+<p>The probability amplitude is essential in quantum field theory, but it itself is not a physically-measurable quantity: it is usually complex-valued and often contains delta functions that become infinite when their argument is zero. Instead, we define an <strong>invariant amplitude</strong> $\mathcal{M}$, which is related to the probability amplitude $\mathcal{A}$ by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{A} &amp;= \langle f|i\rangle + i\mathcal{M}(2\pi)^4\delta^4\left(\sum_j p_j - \sum_j q_j\right) \\
+&amp;= \langle f|i\rangle + i\mathcal{M}(2\pi)^4\delta^4(p_1 +p_2 + \dots + p_n- q_1 - q_2 - \dots -q_n)
+\end{align*}
+$$
+</p>
+<p>Where $p_1, p_2, \dots$ are the momenta of each of the <strong>incident</strong> particles, and $q_1, q_2, \dots$ are the momenta of each of the <strong>outgoing</strong> particles. The above equation may also be written in a more elegant manner if we define $P = \sum_j p_j$ as the <strong>total momentum</strong> of all incident particles, and $Q = \sum_j q_j$ as the <strong>total momentum</strong> of all outgoing (scattered) particles. This greatly simplifies the formula to:</p>
+<p class="mathcell">
+$$
+\mathcal{A} = \langle f|i\rangle + i\mathcal{M}(2\pi)^4 \delta^4(P - Q)
+$$
+</p>
+<blockquote>
+<p><strong>Note for the advanced reader:</strong> The invariant amplitude $\mathcal{M}$ is chosen so that it reproduces the transition matrix element $M_{if}$, which appears in <a href="https://hyperphysics.phy-astr.gsu.edu/hbase/quantum/fermi.html">Fermi's Golden Rule</a> from <strong>non-relativistic quantum mechanics</strong>.</p>
+</blockquote>
+<p>Unlike the probability amplitude $\mathcal{A}$, the invariant amplitude $\mathcal{M}$ does <em>not</em> include any delta functions and therefore avoids the issue of singularities associated with delta functions. This means that quantities depending on $|\mathcal{M}|^2$, which is real-valued, <em>can</em> actually be measured. For instance, the differential cross-section of any two-particle scattering process is given by:</p>
+<p class="mathcell">
+$$
+\dfrac{d\sigma}{d\Omega} = \dfrac{1}{64\pi^2 E_\mathrm{cm}^2} \dfrac{|\mathbf{p}_f|}{|\mathbf{p}_i|} |\mathcal{M}|^2
+$$
+</p>
+<p>Where $E_\mathrm{cm}$ is the total energy in the center-of-momentum frame, and $\mathbf{p}_i, \mathbf{p}_f$ are the initial and final (3-)momenta of the particles (again in the center-of-momentum frame).</p>
+<blockquote>
+<p><strong>Note:</strong> This expression is in natural units: to convert to SI units simply multiply the differential cross-section formula given above by a factor of $\hbar^2 c^2$.</p>
+</blockquote>
+<p>In the case that the two particles have identical masses (which is always true for massless particles like photons), the differential cross-section simplifies to:</p>
+<p class="mathcell">
+$$
+\dfrac{d\sigma}{d\Omega} = \dfrac{1}{64\pi^2 E_\mathrm{cm}^2}  |\mathcal{M}|^2
+$$
+</p>
+<p>To find the <em>total cross-section</em> $\sigma$, we integrate the differential cross-section across all angles $\phi$ and $\theta$, which gives us:</p>
+<p class="mathcell">
+$$
+\sigma = \int_0^{2\pi} d\phi \int_0^\pi d\theta\sin \theta \left(\dfrac{d\sigma}{d\Omega}\right)
+$$
+</p>
+<p>In an actual experimental setting, cross-sections are not measured directly - after all, they are an abstract quantity in the first place! Instead, a particle beam is fired at some target with a known particle density; some particles in the original beam will not interact with the target's particles at all, whereas others do interact and are scattered. By counting the number of scattered particles versus the number of particles in the original beam, we can deduce the approximate probability that an incident particle will end up getting scattered. For instance, let $n_i$ be the number of incident particles, and $n_s$ be the number of particles scattered. Then, the probability $\mathscr{p}$ that an incident particle gets scattered would be given by:</p>
+<p class="mathcell">
+$$
+\mathscr{p} = \dfrac{n_s}{n_i}
+$$
+</p>
+<p>Now, let $N$ be the number of particles per unit area of the target. The cross-section $\sigma$ can then be found by the formula:</p>
+<p class="mathcell">
+$$
+\sigma = \dfrac{\mathscr{p}}{N} = \dfrac{n_s}{n_i N}
+$$
+</p>
+<p>For instance, let us consider an imaginary particle collider (similar to the <a href="https://en.wikipedia.org/wiki/Large_Hadron_Collider">Large Hadron Collider</a>) that produces two particle beams, each with $N = \pu{5E17 m^{-2}}$ particles per unit area, and aims them at each other<sup class="footnote-reference"><a href="#3">3</a></sup>. The cross-sectional area of the beam is about $\pu{3 mm^2}$, meaning that the number of incident particles on the target is $\pu{3mm^2} \times \pu{5E30 m^{-2}}$, which evaluates to $1.5\times 10^{12}$ incident particles. Now, assume that the detector measured $850$ scattered particles. The cross-section of the process is then given by:</p>
+<p class="mathcell">
+$$
+\sigma = \dfrac{850}{1.5\times 10^{12}} \dfrac{1}{\pu{5E17 m^{-2}}} \approx \pu{1.1E-21 mm^2} = \pu{11.3b}
+$$
+</p>
+<p>As another example, in the case of <strong>Thomson scattering</strong>, where an incident photon scatters off a non-relativistic electron, the cross-section is given by:</p>
+<p class="mathcell">
+$$
+\sigma = \dfrac{8\pi}{3} \left(\dfrac{\alpha \lambda_c}{2\pi}\right)^2
+$$
+</p>
+<p>Where $\alpha \approx 1/137$ is the fine-structure constant, and $\lambda_c$ is the Compton wavelength of the electron (which we saw at the start of the book). This leads to a numerical value of about $\pu{0.65 b}$, which has been <a href="https://physics.nist.gov/cgi-bin/cuu/Value?sigmae">closely-measured experimentally</a> and has shown excellent agreement with theory.</p>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup><p style="font-size: small">This assumes 10 nm X-rays incident on sodium atoms. The numerical value was computed via the formula $\sigma = \frac{16\pi\sqrt{2}}{3}\alpha^8 Z^5 a_0^2 (m_e c^2/E_\gamma)^{7/2}$, taken from <a href="https://bohr.physics.berkeley.edu/classes/221/9697/photelec.pdf">the Physics 221 Lecture Notes</a> from the University of Berkeley.</p>
+[^2]: <p style="font-size: small">This figure is from <a href="https://physics.stackexchange.com/questions/193622/quantum-efficiency-of-photoelectric-effect">this Physics SE answer</a> on the photoelectric effect.</p>
+[^3]: <p style="font-size: small">These figures are fictitious but partially based on <a href="https://lhc-machine-outreach.web.cern.ch/beam.htm">this source from CERN</a> that provides specifications of the Large Hadron Collider's particle beams.</p></div>
+
+        <div class="page-switch-buttons">
+        
+            <!-- If it's the preface just add a
+                "begin" button -->
+            
+            <!-- Otherwise add prev/next buttons -->
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                        <!-- previous page button -->
+                        
+                        
+                        
+                            <div class="page-down">
+                        <a href="/quantum-field-theory/chapter-3">
+                            Previous: Chapter 3
+                        </a>
+                                <strong>Quantization of the electromagnetic field</strong>
+                            </div>
+                        </a>
+                        
+                        <!-- next page button -->
+                        
+                        
+                        
+                        <div class="page-up">
+                            <a href="/quantum-field-theory/chapter-5">
+                                Next: Chapter 5
+                            </a>
+                            <strong>Introduction to Feynman diagrams</strong>
+                        </div>
+                        
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+            
+        
+        </div>
+    </article>
+    </div>
+    <!-- This should be also an accordion for smaller screen sizes -->
+    <div class="page-navigation">
+        <h2>In this chapter</h2>
+        <ul>
+        
+            <li>
+                <a class="pagelink" href="#interacting-scalar-fields-and-nuclear-physics">Interacting scalar fields and nuclear physics</a>
+                
+            </li>
+        
+            <li>
+                <a class="pagelink" href="#schrodinger-field-theory">Schrödinger field theory</a>
+                
+                    <ul>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#the-free-and-interacting-schrodinger-fields">The free and interacting Schrödinger fields</a>
+                            </li>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#the-limitations-of-the-schrodinger-field-theory">The limitations of the Schrödinger field theory</a>
+                            </li>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#recovering-the-single-particle-wavefunction">Recovering the single-particle wavefunction</a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li>
+                <a class="pagelink" href="#quartic-field-theory">Quartic field theory</a>
+                
+                    <ul>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#the-field-hamiltonian-of-interacting-scalar-fields">The field Hamiltonian of interacting scalar fields</a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li>
+                <a class="pagelink" href="#scattering-processes">Scattering processes</a>
+                
+                    <ul>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#computing-the-s-matrix">Computing the S-matrix</a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li>
+                <a class="pagelink" href="#cross-sections-and-transition-rates">Cross sections and transition rates</a>
+                
+                    <ul>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#scattering-cross-sections">Scattering cross-sections</a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+        </ul>
+    </div>
+    </section>
+</main>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://learntheoreticalphysics.com/katex/katex.min.js"></script>
+    <script defer src="https://learntheoreticalphysics.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://learntheoreticalphysics.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://learntheoreticalphysics.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // custom macros for KaTeX-MathJax consistency
+          macros: {
+            "\\overbracket": "\\overgroup"
+          },
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+        var article = document.querySelector(".post");
+        if (article) {
+            renderMath(article);
+        }
+    })
+    </script>
+    
+    <script defer>
+    var toc = document.getElementById("toc");
+    var tocPos = toc.offsetTop + toc.offsetHeight;
+    var tocBtn = document.getElementById("jump-toc-btn");
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+    function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        window.onscroll = function(){
+            showTocBtnOnScroll();
+        };
+    </script>
+    
+
+
+</body>
+
+</html>

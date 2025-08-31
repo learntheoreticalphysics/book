@@ -1,0 +1,20 @@
+% Single-vertex Feynman diagram
+% for two-pion scattering
+\documentclass{article}
+\usepackage{feynmp-auto}
+\begin{document}
+\begin{fmffile}{diagram}
+\begin{fmfgraph*}(200,150)
+    \fmfleft{i1,i2}
+    \fmfright{f1,f2}
+    \fmf{fermion}{i1,v,f1}
+    \fmf{fermion}{i2,v,f2}
+    \fmfdot{v}
+    % labels
+    \fmflabel{$p_1$}{i1}
+    \fmflabel{$p_2$}{i2}
+    \fmflabel{$q_1$}{f1}
+    \fmflabel{$q_2$}{f2}
+\end{fmfgraph*}
+\end{fmffile}
+\end{document}

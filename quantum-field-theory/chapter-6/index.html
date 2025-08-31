@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Yukawa theory of nuclear interactions</title>
+  <meta name="description" content="A Learner's Guide to Advanced Theoretical Physics">
+
+  <!-- Uncomment once we actually have a favicon
+  
+      <link rel="icon" type="image/svg+xml" href="https://learntheoreticalphysics.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://learntheoreticalphysics.com/favicon.ico">
+  
+  -->
+
+  
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://learntheoreticalphysics.com/katex/katex.min.css">
+
+      <link rel="stylesheet" href="https://learntheoreticalphysics.com/site.css">
+  
+
+</head>
+
+<body>
+  
+<main class="chapter">
+    <!-- book navigation -->
+    <!-- should convert to accordion on mobile and have a expand/shrink icon -->
+    <nav>
+        <!-- We get the parent folder of the book chapters -->
+        
+        
+        
+        
+        <h1>
+            <a href="/quantum-field-theory">Quantum Field Theory</a>
+        </h1>
+        <h2>Table of contents</h2>
+        
+        
+            
+                <a href="/quantum-field-theory/chapter-1">1. Getting started with quantum field theory</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-2">2. Quantization of a free scalar field</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-3">3. Quantization of the electromagnetic field</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-4">4. Non-trivial scalar field theories</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-5">5. Introduction to Feynman diagrams</a>
+            
+        
+            
+                <!-- highlight the chapter we're currently on -->
+                <a class="current-page" href="/quantum-field-theory/chapter-6">6. The Yukawa theory of nuclear interactions</a>
+            
+        
+        
+
+        <a class="nav-bottom-link" alt="Link to go back to homepage" href="/">Back to homepage &rarr;</a>
+    </nav>
+
+    <div class="article-container disable-scrollbars">
+    <article class="post">
+        
+            <h1>The Yukawa theory of nuclear interactions</h2>
+        
+        
+        <p style="font-size: small;">Reading time: around 32 minutes</p>
+        
+        <!--
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        -->
+        
+        <!-- page content -->
+        <p>Up to this point, we have seen only one example of an interacting quantum field theory: $\phi^4$ theory, which we said was a basic, low-energy model of pions. We also derived the <strong>Feynman rules</strong> for $\phi^4$ theory, which allowed us to compute cross-sections with (relative) ease. &quot;This all sounds nice and cool&quot;, you might say, &quot;but so far we haven't seen any quantum field theories that actually describe realistic physics!&quot; Indeed you would be right - $\phi^4$ theory is ultimately just a toy model, and the predictions from $\phi^4$ theory are rather lackluster in describing <em>real pions</em>. But the tools we developed in $\phi^4$ theory carry over to our first <em>physically-meaningful</em> quantum field theory: <strong>Yukawa's theory of the strong interaction</strong>.</p>
+<h2 id="the-yukawa-lagrangian">The Yukawa Lagrangian</h2>
+<p>From the perspective of modern theoretical physics, the Yukawa theory is regarded as a primitive model for quantum electrodynamics, since it is relativistic but does not include the effects of spin. However, its first success came in describing the <strong>strong nuclear force</strong> between <strong>nucleons</strong> (protons and neutrons), for which it was extraordinarily successful. The Lagrangian of Yukawa theory can be written as:</p>
+<p class="mathcell">
+$$
+\mathscr{L} = \mathscr{L}_\text{real} + \mathscr{L}_\text{complex} + \mathscr{L}_\text{int}
+$$
+</p>
+<p>Where $\mathscr{L}_\text{real}$ is the Lagrangian for a free scalar field, $\mathscr{L}$ is the Lagrangian for a complex scalar field, and $\mathscr{L}_\text{int}$ is the interaction Lagrangian, also called the <strong>Yukawa interaction</strong> term. They are respectively given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathscr{L}_\text{real} &amp;= \dfrac{1}{2} \partial_\mu \phi \, \partial^\mu \phi - \dfrac{1}{2} m^2 \phi^2 \\
+\mathscr{L}_\text{complex} &amp;= \partial^\mu \psi \partial_\mu \overline\psi - M^2 \psi \overline \psi \\
+\mathscr{L}_\text{int} &amp;= - g \overline \psi \phi \psi
+\end{align*}
+$$
+</p>
+<p>The complete Lagrangian thus reads:</p>
+<p class="mathcell">
+$$
+\mathscr{L} = \dfrac{1}{2} \partial_\mu \phi \, \partial^\mu \phi +  \partial^\mu \psi \partial_\mu \overline\psi - \dfrac{1}{2} m^2 \phi^2 - M^2 \psi \overline \psi - g \overline \psi \phi \psi
+$$
+</p>
+<p>This is the first example we've seen of a Lagrangian with <em>two</em> different fields ($\psi$ and $\phi$) as well as the first with a complex-valued field ($\psi$). The equations of motion are therefore more complicated, and there are two of them: one for $\psi$ and one for $\phi$. It is helpful to first start with the equations of motion for $\phi$, since they are similar to those of the free scalar field, which we have seen before. The Euler Lagrange equation for $\phi$ is given by:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \mathscr{L}}{\partial \phi} - \partial_\mu \left(\dfrac{\partial \mathscr{L}}{\partial (\partial_\mu \phi)}\right) = 0
+$$
+</p>
+<p>By substituting $\mathscr{L} = \mathscr{L}_\text{real} + \mathscr{L}_\text{complex} + \mathscr{L}_\text{int}$, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathscr{L}}{\partial \phi} &amp;= \dfrac{\partial}{\partial \phi}(\mathscr{L}_\text{real} + \mathscr{L}_\text{complex} + \mathscr{L}_\text{int}) \\
+&amp;= \dfrac{\partial \mathscr{L}_\text{real}}{\partial \phi} + \cancel{\dfrac{\partial \mathscr{L}_\text{complex}}{\partial \phi}}^0 + \dfrac{\partial \mathscr{L}_\text{int}}{\partial \phi} \\
+\dfrac{\partial \mathscr{L}}{\partial (\partial_\mu \phi)} &amp;= \dfrac{\partial}{\partial (\partial_\mu \phi)}(\mathscr{L}_\text{real} + \mathscr{L}_\text{complex} + \mathscr{L}_\text{int}) \\
+&amp;= \dfrac{\partial \mathscr{L}_\text{real}}{\partial (\partial_\mu \phi)} + \cancel{\dfrac{\partial \mathscr{L}_\text{complex}}{\partial (\partial_\mu \phi)}}^0 + \cancel{\dfrac{\partial \mathscr{L}_\text{int}}{\partial (\partial_\mu \phi)}}^0
+\end{align*}
+$$
+</p>
+<p>Where the partial derivative of $\mathscr{L}_\text{complex}$ with respect to $\phi$ and $\partial_\mu \phi$ is zero since $\mathscr{L}_\text{complex}$ does not depend on $\phi$ or $\partial_\mu \phi$; similarly, $\mathscr{L}_\text{int}$ does not depend on derivatives of $\phi$, so the derivative of $\mathscr{L}_\text{int}$ with respect to $\partial_\mu \phi$ is also zero. Now, $\mathscr{L}_\text{real}$ is just the free scalar field Lagrangian that we saw in chapter 2, where we calculated that:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \mathscr{L}_\text{real}}{\partial (\partial_\mu \phi)} = \partial^\mu \phi, \quad \dfrac{\partial \mathscr{L}_\text{real}}{\partial \phi} = -m^2 \phi
+$$
+</p>
+<p>The interaction term $\mathscr{L}_\text{int}$ is also straightforward to differentiate, giving us:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \mathscr{L}_\text{int}}{\partial \phi} = \dfrac{\partial}{\partial \phi}\left(- g \overline \psi \phi \psi\right) = -g \overline \psi \psi
+$$
+</p>
+<p>Thus the derivatives of the Lagrangian with respect to $\phi$ and $\partial_\mu \phi$ are respectively given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathscr{L}}{\partial \phi} &amp;= -m^2 \phi - g \overline \psi \psi \\
+\dfrac{\partial \mathscr{L}}{\partial (\partial_\mu\phi)} &amp;= \partial^\mu \phi
+\end{align*}
+$$
+</p>
+<p>Thus, substituting our partial derivatives into the Euler-Lagrange equations, we get:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathscr{L}}{\partial \phi} - \partial_\mu \left(\dfrac{\partial \mathscr{L}}{\partial (\partial_\mu \phi)}\right) &amp;= -m^2 \phi - g\overline \psi \psi  -  \partial_\mu \partial^\mu \phi \\
+&amp;= 0
+\end{align*}
+$$
+</p>
+<p>We can algebraically clean this up a bit to recover the standard form of the equation of motion for $\phi$:</p>
+<p class="mathcell">
+$$
+(\partial_\mu \partial^\mu + m^2)\phi = -g |\psi|^2 \quad \Rightarrow \quad \square \phi = -g|\psi|^2
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> Here, remember that $|\psi|^2 = \overline \psi \psi$ and $\square \phi = \partial_\mu \partial^\mu \phi$. We will frequently use these simplifications when analyzing complex-valued fields.</p>
+</blockquote>
+<p>The Euler Lagrange equation for the complex scalar field $\psi$ are unfortunately more complicated. A complex field still obeys the Euler-Lagrange equation, but it is important to remember that a complex field $\psi$ is technically just a convenient way of packaging two <em>real-valued fields</em> $\psi_1, \psi_2$ together. That is:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\psi &amp;= \dfrac{1}{2}(\psi_1 + i \psi_2) \\
+\overline \psi &amp;= \frac{1}{2}(\psi_1 - i \psi_2)
+\end{align*}
+$$
+</p>
+<p>Thus, we actually have <em>two</em> Euler-Lagrange equations, one for each real-valued field:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathscr{L}}{\partial \psi_1} - \partial_\mu \left(\dfrac{\partial \mathscr{L}}{\partial (\partial_\mu\psi_1)}\right) = 0 \\
+\dfrac{\partial \mathscr{L}}{\partial \psi_2} - \partial_\mu \left(\dfrac{\partial \mathscr{L}}{\partial (\partial_\mu\psi_2)}\right) = 0
+\end{align*}
+$$
+</p>
+<p>This is not just a mathematical abstraction: we will see once we discuss <em>quantum electrodynamics</em> that it takes <em>two</em> real-valued fields $\psi_1, \psi_2$ to describe both <em>particles</em> and <em>anti-particles</em>. However, it is mathematically convenient to package the two real-valued fields into a single complex-valued field $\psi = \frac{1}{2}(\psi_1 + i\psi_2)$. In that case, we can use a result from complex analysis (the <a href="https://en.wikipedia.org/wiki/Cauchy%E2%80%93Riemann_equations">Cauchy-Riemann equations</a>) that says that for any function $f(z)$, where $z = x + i y$, we have:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial f}{\partial \overline z} = \dfrac{1}{2} \left(\dfrac{\partial f}{\partial x} + i \dfrac{\partial f}{\partial y}\right)
+$$
+</p>
+<p>Thus, if we make the substitutions $z \to \psi$, $f(z) \to \mathscr{L}(\psi)$, and $(x, y) \to \frac{1}{2}(\psi_1, \psi_2)$, the Cauchy-Riemann equations tell us that:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \mathscr{L}}{\partial \overline \psi} = \dfrac{\partial \mathscr{L}}{\partial \psi_1} + i \dfrac{\partial \mathscr{L}}{\partial \psi_2}
+$$
+</p>
+<p>And similarly, if we make the substitutions $(x, y) \to \frac{1}{2}(\partial_\mu \psi_1, \partial_\mu \psi_2)$, we find that:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \mathscr{L}}{\partial (\partial_\mu \overline \psi)} = \dfrac{\partial \mathscr{L}}{\partial (\partial_\mu\psi_1)} + i\dfrac{\partial \mathscr{L}}{\partial (\partial_\mu\psi_2)}
+$$
+</p>
+<p>Combining the results together, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+% line 1
+\dfrac{\partial \mathscr{L}}{\partial \overline \psi} - \partial_\mu \left(\dfrac{\partial \mathscr{L}}{\partial (\partial_\mu \overline \psi)}\right) &amp;= \left(\dfrac{\partial \mathscr{L}}{\partial \psi_1} + i \dfrac{\partial \mathscr{L}}{\partial \psi_2}\right) + \partial_\mu \left(\dfrac{\partial \mathscr{L}}{\partial (\partial_\mu\psi_1)} + i\dfrac{\partial \mathscr{L}}{\partial (\partial_\mu\psi_2)}\right) \\
+% line 2
+&amp;= \left[\dfrac{\partial \mathscr{L}}{\partial \psi_1} - \partial_\mu \left(\dfrac{\partial \mathscr{L}}{\partial (\partial_\mu\psi_1)}\right)\right] + i\left[\dfrac{\partial \mathscr{L}}{\partial \psi_2} - \partial_\mu \left(\dfrac{\partial \mathscr{L}}{\partial (\partial_\mu\psi_2)}\right)\right] \\
+&amp;= 0
+\end{align*}
+$$
+</p>
+<p>Notice how this is just the (complex-valued) sum of the two separate Euler-Lagrange equations for $\psi_1$ and $\psi_2$! Thus, a convenient trick to quickly get the equations of motion for a complex-valued field $\psi$ rather than needing to first write it as a sum of two real-valued fields is to simply use the <em>modified</em> Euler-Lagrange equation, which treats $\psi$ and $\overline \psi$ as <em>independent</em> fields:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \mathscr{L}}{\partial \overline \psi} - \partial_\mu \left(\dfrac{\partial \mathscr{L}}{\partial (\partial_\mu \overline \psi)}\right) = 0
+$$
+</p>
+<p>Remember that this is a <em>mathematical shortcut</em> as opposed to any new physics; it tells us the <em>same information</em> as the standard Euler-Lagrange equations for the individual fields $\psi_1$ and $\psi_2$. Upon taking the derivatives with respect to $\overline \psi$, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathscr{L}}{\partial \overline \psi} &amp;= \cancel{\dfrac{\partial \mathscr{L}_\text{real}}{\partial \overline \psi}}^0 + \dfrac{\partial \mathscr{L}_\text{complex}}{\partial \overline \psi} + \dfrac{\partial \mathscr{L}_\text{int}}{\partial \overline \psi} \\
+&amp;= \dfrac{\partial}{\partial \overline \psi}(\partial^\mu \psi \partial_\mu \overline\psi - M^2 \psi \overline \psi - g \overline \psi \phi \psi) \\
+&amp;= -M^2 \psi - g \phi \psi
+\end{align*}
+$$
+</p>
+<p>Where the derivatives simplify upon recognizing that $\mathscr{L}_\text{real}$ has no dependence on $\overline \psi$. Meanwhile, taking the derivatives with respect to $\partial_\mu \overline \psi$ gives us:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathscr{L}}{\partial (\partial_\mu \overline \psi)} &amp;= \cancel{\dfrac{\partial \mathscr{L}_\text{real}}{\partial (\partial_\mu \overline \psi)}}^0 + \dfrac{\partial \mathscr{L}_\text{complex}}{\partial (\partial_\mu \overline \psi)} + \cancel{\dfrac{\partial \mathscr{L}_\text{int}}{\partial (\partial_\mu \overline \psi)}}^0 \\
+&amp;= \dfrac{\partial}{\partial (\partial_\mu \overline \psi)} \bigg(\partial^\mu \psi \partial_\mu \overline \psi\bigg) = \partial^\mu \psi
+\end{align*}
+$$
+</p>
+<p>Where we find that $\mathscr{L}_\text{real}$ and $\mathscr{L}_\text{int}$ have no dependence on $\partial_\mu \overline \psi$, so their derivatives with respect to $\partial_\mu \overline \psi$ are also zero. Combining things together, we get the equation of motion for $\psi$:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\dfrac{\partial \mathscr{L}}{\partial \phi} - \partial_\mu \left(\dfrac{\partial \mathscr{L}}{\partial (\partial_\mu \phi)}\right) &amp;= -M^2 \psi - g \phi \psi - \partial_\mu (\partial^\mu \psi)\\
+&amp;= 0
+\end{align*}
+$$
+</p>
+<p>Simplifying gives us the standard form of the equation of motion for the $\psi$ field:</p>
+<p class="mathcell">
+$$
+(\partial_\mu \partial^\mu + M^2)\psi = -g\phi \psi
+$$
+</p>
+<p>We have thus found the equations of motion of both of our fields.</p>
+<h2 id="quantization-and-the-feynman-rules">Quantization and the Feynman rules</h2>
+<p>The quantization of the Yukawa theory is the same idea as other quantum field theories: we want to find the <strong>field operators</strong> $\hat \phi, \hat \psi$ that satisfy the <em>operator-valued</em> versions of our equations of motion:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+(\partial_\mu \partial^\mu + m^2)\hat \phi &amp;= -g |\hat \psi|^2 \\
+(\partial_\mu \partial^\mu + M^2)\hat\psi &amp;= -g \hat \phi \hat \psi 
+\end{align*}
+$$
+</p>
+<p>Therefore, we expand our fields in terms of creation and annihilation operators, where $\hat a, \hat a^\dagger$ are the creation and annihilation operators of the $\phi$ field, and $\hat b, \hat b^\dagger$ are the creation and annihilation operators of the $\psi$ field. We can write these as follows:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\hat \phi(x) &amp;= \int \dfrac{d^3 p}{(2\pi)^3} \dfrac{1}{\sqrt{2E_p}} \left[\hat a_p e^{ipx} + \hat a^\dagger_p e^{-ipx}\right] \\
+\hat \psi(x) &amp;= \int \dfrac{d^3 p}{(2\pi)^3} \dfrac{1}{\sqrt{2E_p}} \left[\hat b_p e^{ipx} + \hat c^\dagger_p e^{-ipx}\right] 
+\end{align*}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> As with the last chapter, $x$ is shorthand for $x^\mu$ and $px$ is shorthand for $p_\mu x^\mu$.</p>
+</blockquote>
+<p>When we quantize the fields, we promote $\psi$ and $\phi$ to the field operators $\hat \psi$ and $\hat \phi$, meaning that the conjugate field $\overline \psi$ now becomes operator-valued as well, so we write it as $\hat \psi^\dagger$. It is given by:</p>
+<p class="mathcell">
+$$
+\hat \psi^\dagger(x) = \int \dfrac{d^3 p}{(2\pi)^3} \dfrac{1}{\sqrt{2E_p}} \left[\hat b_p^\dagger e^{ipx} + \hat c_p e^{-ipx}\right]
+$$
+</p>
+<p>Here is where we must take a more careful interpretation of our field operators. $\hat \phi$ is the same field operator as we have already seen for the real scalar field, and contains a single creation ($\hat a_p^\dagger$) and annihilation ($\hat a_p$) operator to create (or destroy) particles from the $\phi$ field. However, $\hat \psi$ and $\hat \psi^\dagger$ are both <em>complex-valued</em>, so we interpret them differently. Here, $(\hat b_p^\dagger, \hat b_p)$ are the creation and annihilation operators for <strong>nucleons</strong>, but $(\hat c_p^\dagger, \hat c_p)$ are the creation and annihilation operators for <strong>anti-nucleons</strong>. We have now taken our first glimpse of <em>antiparticles</em> in quantum field theory! This gives us our following interpretation:</p>
+<ul>
+<li>$\hat \psi$ can create an anti-nucleon through $\hat c_p^\dagger$ or annihilate a nucleon through $\hat b_p$</li>
+<li>$\hat \psi^\dagger$ can create a nucleon through $\hat b_p^\dagger$ or annihilate an anti-nucleon through $\hat c_p$</li>
+</ul>
+<p>It also allows us to figure out that when normal-ordered, the field products satisfy:</p>
+<p class="mathcell">
+$$
+:\hat \psi(x) \hat \psi(y): \quad = \quad :\hat \psi^\dagger(x) \hat \psi^\dagger(y): \quad = 0
+$$
+</p>
+<p>To derive the Feynman rules for Yukawa theory, we use the same procedure as $\phi^4$ theory: we expand the S-matrix $\hat S$ as a series, giving us a probability amplitude:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{A} &amp;= \langle f |\hat S|i\rangle \\
+&amp;= \bigg \langle i\bigg| \bigg\{1 - i \int d^4 x \mathcal{T}\{\mathcal{H}(x)\} \\
+&amp;\qquad \qquad + \dfrac{(-i)^2}{2} \int d^4 x\, d^4y \mathcal{T}\{\mathcal{H}(x) \mathcal{H}(y)\} + \dots\bigg\}\bigg|f\bigg\rangle
+\end{align*}
+$$
+</p>
+<p>The <em>interaction part</em> of the field Hamiltonian is the part that interests us. We recall that (as long as the interaction Lagrangian contains no derivatives of fields) we have $\mathcal{H}_\text{int} = -\mathscr{L}_\text{int}$. Thus we have:</p>
+<p class="mathcell">
+$$
+\mathscr{L}_\text{int} = -g\overline \psi \phi \psi \quad \Rightarrow \quad \mathcal{H}_\text{int} = g\overline \psi \phi \psi
+$$
+</p>
+<p>Thus we have:</p>
+<p class="mathcell">
+$$
+\hat H_\text{int} = \int d^3x\, \mathcal{H}_\text{int} = g\int d^3x\, \hat \psi^\dagger \hat \phi \hat \psi
+$$
+</p>
+<p>In the case of the Yukawa theory, let us consider the scattering of two nucleons. We denote our initial state as $|p_1,p_2\rangle$ and our scattered state as $|q_1,q_2\rangle$ just as before, and we know that nucleons come from the $\psi$ field. We'll first examine the <em>second-order term</em> in the probability amplitude, which is given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{A}_{(1)} &amp;= \dfrac{(-i)^2}{2} \int d^4x\,d^4y\, \mathcal{T}\{\mathcal{H}(x)\mathcal{H}(y)\} \\ &amp;= \dfrac{(-ig)^2}{2} \int d^4x\,d^4y\, \mathcal{T}\{\hat \psi^\dagger(x) \hat \phi(x) \hat \psi(x)\hat \psi^\dagger(y) \hat \phi(y) \hat \psi(y)\}
+\end{align*}
+$$
+</p>
+<p>To evaluate the time-ordered product of the field operators, we use a Wick expansion. Here, it is rather inconvenient that we need to deal with the time-ordered product of six field operators, but we can use the tricks we demonstrated in the last chapter to help us simplify things. Recall how Wick's theorem tells us that a time-ordered product of field operators can be written in the following form:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\mathcal{T}(\hat \phi_1 \hat \phi_2 \hat \phi_3 \dots \hat \phi_n) &amp;= ~:\hat \phi_1 \hat \phi_2 \hat \phi_3 \dots \hat \phi_n: + \text{Normal-ordered part} \\
+&amp;\qquad \quad+ \text{Pure contractions part}
+\end{align*}
+$$
+</p>
+<p>In addition, since we are considering six field operators, but a contraction can only involve two fields (that is, it must be the form $\overbracket{\hat \phi_a \hat \phi_b}$ or $\overbracket{\hat \psi_a \hat \psi_b}$), then the normal-ordered terms must involve $6 - 2 = 4$ normal-ordered field operators (as well as a contraction of the two remaining field operators). Thus we would get terms with normal-ordered products like $:\hat \phi(x) \hat \phi(y) \hat \psi(x) \hat \psi(y) : \overbracket{\hat \psi(x)^\dagger \psi(y)^\dagger}$ and $:\hat \psi(x) \hat \phi(x) \hat \psi^\dagger(y) \hat \phi(y) : \overbracket{\hat \psi^\dagger(x) \hat \psi(y)}$ in the normal-ordered part of the Wick expansion. However, the nucleons come from the $\psi$ field, not the $\phi$ field, so acting the $\hat \phi$ operator on the two-nucleon state $|p_1, p_2\rangle$ has no effect. This means that we can narrow our attention to only those terms that are made entirely of normal-ordered products of $\hat \psi$ and $\hat \psi^\dagger$ operators. More precisely, the terms we get to &quot;play around&quot; with are $\hat \psi(x)$, $\hat \psi^\dagger(x)$, $\hat \psi(y)$, and $\hat \psi^\dagger(y)$.</p>
+<p>We can try arranging these in a variety of different ways, but remember that $\hat \psi$ annihilates a nucleon and creates an anti-nucleon, whereas $\hat \psi^\dagger$ creates a nucleon and annihilates an anti-nucleon. Thus, if we have two $\hat \psi^\dagger$'s on the right (that is, $\hat \psi^\dagger \hat \psi^\dagger$) we would create two anti-nucleons that would then be annihilated by the two $\hat \psi$'s on the left. The same goes if we have two $\hat \psi$'s on the right and two $\hat \psi^\dagger$'s on the left; the two $\hat \psi$'s would annihilate two nucleons, leaving our poor two-nucleon state with zero nucleons left! This rules out the possibility of the $\hat \psi (x) \hat \psi(x) \hat \psi^\dagger(y) \hat \psi^\dagger(y)$ and $\hat \psi^\dagger(x) \hat \psi^\dagger(x)\hat \psi (y) \hat \psi(y)$ terms. This gives us one option left: $\hat \psi^\dagger \hat \psi$ on the right <em>and</em> the left. This combination makes sure that we end up with the same number of nucleons at the end (two of them), which we would expect for our final state $|q_1, q_2\rangle$. Expanding the term out in full gives:</p>
+<p class="mathcell">
+$$
+\text{Normal-ordered part} = \text{Copies of}~ : \hat \psi^\dagger(x) \hat \psi(x) \hat \psi^\dagger(y) \hat \psi(y) : \overbracket{\hat \phi(x) \hat \phi(y)}
+$$
+</p>
+<p>Again, these results proceed from the fact that Wick's theorem lets us expand out a time-ordered product of field operators in terms of normal-ordered products and contractions, and normal-ordered products allow us to literally &quot;read off&quot; the number of particles created and annihilated. So we have Wick's theorem to thank for these simplifications! What's more, if we expand our our normal-ordered terms, we find that:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\langle q_1, q_2, \dots q_n|: \hat \psi^\dagger(x) \hat \psi(x) \hat \psi^\dagger(y) \hat \psi(y) :|p_1, p_2, \dots p_n\rangle \\
+\qquad \qquad \to \int d^4 x\,e^{i(p_1 + p_2 + \dots)x}e^{-i(q_1 + q_2 + \dots)x}
+\end{align*}
+$$
+</p>
+<p>We can infer this by noting that since the normal-ordered product $: \hat \psi^\dagger(x) \hat \psi(x) \hat \psi^\dagger(y) \hat \psi(y) :$ creates two particles (which we can represent by $e^{i(p_1 + p_2)x}$, since particles in QFT are represented by plane waves) and then annihilates two particles (which we can represent by $e^{-i(q_1 + q_2)x}$), the result is just a product of these plane waves for ingoing and outgoing particles. We have seen integrals of this form before - they just evaluate to Dirac deltas of the form:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\langle q_1, q_2, \dots q_n|: &amp;\hat \psi^\dagger(x) \hat \psi(x) \hat \psi^\dagger(y) \hat \psi(y) :|p_1, p_2, \dots p_n\rangle \\
+&amp;\to (2\pi)^4 \delta^4(p_1 + p_2 + \dots + p_n \\
+&amp;\qquad \qquad \qquad \quad - q_1 - q_2 - \dots - q_n)
+\end{align*}
+$$
+</p>
+<p>Last, of course, we don't want to forget about the pure contractions part. Remember that contractions can only happen with the <em>same field</em> evaluated at different spacetime positions. Thus, there are only two possibilities: the contraction $\overbracket{\hat \phi(x) \hat \phi(y)}$ and the contraction $\overbracket{\hat \psi(x) \hat \psi^\dagger(y)}$. It may not immediately be obvious why the $\overbracket{\hat \psi \hat \psi}$ and $\overbracket{\hat \psi^\dagger \hat \psi^\dagger}$ contractions are zero. An intuitive way to understand this is to remember that a contraction is equivalent to a <em>Feynman propagator</em>, which measures the probability for a particle created at $x$ to later be annihilated at $y$. However, $\overbracket{\hat \psi \hat \psi}$ and $\overbracket{\hat \psi^\dagger \hat \psi^\dagger}$ would essentially be measuring the probability for a particle (nucleon or anti-nucleon) to be twice-created or twice-annihilated, which does not match the creation-to-annihilation process that the Feynman propagator describes! Thus, we only have two contractions left, which are (as we mentioned) $\overbracket{\hat \phi(x) \hat \phi(y)}$ and $\overbracket{\hat \psi(x) \hat \psi^\dagger(y)}$. Since these are equivalently Feynman propagators, we will call them $D_{F}^{(\phi)}$ and $D_{F}^{(\psi)}$ to distinguish between them; they are given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+D_{F}^{(\phi)}(x-y) &amp;= \overbracket{\hat \phi(x) \hat \phi(y)} = \int \dfrac{d^4 p}{(2\pi)^4} \dfrac{e^{-ip(x-y)}}{p^2 - m^2 + i \epsilon} \\
+D_{F}^{(\psi)}(x-y) &amp;= \overbracket{\hat \psi(x) \hat \psi^\dagger(y)} = \int \dfrac{d^4 p}{(2\pi)^4} \dfrac{e^{-ip(x-y)}}{p^2 - M^2 + i \epsilon}
+\end{align*}
+$$
+</p>
+<p>It is frequently more convenient to use the Fourier-transformed versions of the propagators (since they appear in the momentum-space Feynman rules, which are simpler but equivalent to the position-space Feynman rules). The momentum-space versions are respectively given by:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\tilde D_{F}^{(\phi)}(x-y) &amp;= \dfrac{i}{p^2 - m^2 + i \epsilon} \\
+\tilde D_{F}^{(\psi)}(x-y) &amp;= \dfrac{i}{p^2 - M^2 + i \epsilon}
+\end{align*}
+$$
+</p>
+<p>We now have all the ingredients we need to infer the Feynman rules for Yukawa theory!</p>
+<h3 id="the-feynman-rules-of-yukawa-theory">The Feynman rules of Yukawa theory</h3>
+<p>The momentum-space Feynman rules are remarkably similar to $\phi^4$ theory, though this is not necessarily surprising since both are theories of scalar fields. We state them below:</p>
+<blockquote>
+<p><strong>Feynman rules for Yukawa theory (momentum-space):</strong></p>
+<ol>
+<li>For each <strong>incoming</strong> particle with momentum $p$, draw an external line coming <em>into</em> the diagram, and multiply by a factor of $1$.</li>
+<li>For each <strong>outgoing</strong> particle with momentum $q$, draw an external line coming <em>out of</em> the diagram, and multiply by a factor of $1$.</li>
+<li>Whenever two or more lines meet, multiply by a factor of $-ig$. This corresponds to a <strong>vertex</strong>, represented by a dot on the Feynman diagram.</li>
+<li>For each <strong>virtual $\psi$ particle</strong>, draw an internal line (either between two vertices, or a loop around a single vertex), and multiply by the propagator $\dfrac{i}{p^2 - M^2 + i\epsilon}$</li>
+<li>For each <strong>virtual $\phi$ particle</strong>, draw an internal line (either between two vertices, or a loop around a single vertex), and multiply by the propagator $\dfrac{i}{p^2 - m^2 + i\epsilon}$</li>
+<li>After combining all the multiplicative factors, integrate over $d^4 p$ <strong>for each loop</strong>. For instance, for a single loop, this would be $\displaystyle \int \dfrac{d^4 p}{(2\pi)^4}$, while for two loops, this would be $\displaystyle \int \dfrac{d^4 p_1}{(2\pi)^4} \dfrac{d^4 p_2}{(2\pi)^4}$.</li>
+<li>Multiply by a Dirac delta $(2\pi)^4 \delta^4(\sum p_i - \sum q_i)$ to ensure conservation of momentum, where $\sum p_i$ is the sum of all momenta of all incident (real) particles and similarly $\sum q_i$ is the sum of all momenta of all outgoing (real) particles.</li>
+<li>Divide by a symmetry factor $S$ dependent on the type of process.</li>
+</ol>
+</blockquote>
+<h2 id="the-yukawa-potential">The Yukawa potential</h2>
+<p>Armed with the Feynman rules for Yukawa theory, we can now consider one of the most classical Feynman diagrams in quantum field theory: the diagram describing the interaction between two nucleons. We will consider the second-order process where two nucleons of momenta $p_1, p_2$ interact by the emission and absorption (often called an <em>exchange</em>) of a virtual pion. In this scenario, a nucleon with momentum $p_1$ emits a virtual pion with momentum $k$, and then scatters off with momentum $q_1$. Another nucleon with momentum $p_2$ then <em>absorbs</em> the virtual pion and scatters off with momentum $q_1$. This process can be represented by the following Feynman diagram:</p>
+<!-- note: partially based on
+ https://gitlab.com/crepererum/blog/-/blob/master/templates/shortcodes/image.html?ref_type=heads -->
+<img class="diagram" src="/quantum-field-theory/chapter-6/../diagrams/yukawa-nuclear-potential.svg"  alt="Feynman diagram describing two-nucleon interaction by the exchange of a virtual pion" />
+<blockquote>
+<p><strong>Note:</strong> Be aware that this diagram, unlike the previous diagrams we've seen, reads from bottom to up. The incident particles $\psi(p_1), \psi(p_2)$ are at the <strong>bottom</strong> of the diagram, and the time axis is upwards, not rightwards! It is <strong>very important</strong> to follow the directions of the arrows to make sure you've read the diagram correctly.</p>
+</blockquote>
+<p>We can now write down the S-matrix term corresponding to this diagram. Since we have two vertices, we need one factor of $(-ig)$ for each vertex. We'll also need Dirac deltas for all external lines (corresponding to incident and outgoing particles), which becomes $(2\pi)^4 \delta^4(p_1 + p_2 - q_1 - q_2)$. For our internal line (corresponding to the virtual pion $\phi$), we need the propagator for the $\phi$ field, which is given by $D_F^{(\phi)}$. In addition, to ensure momentum conservation, the momentum $k$ of the virtual pion must be equal to $q_1 - p_1$. This is because the virtual pion (despite being a <em>virtual particle</em>) carries real momentum and energy from the first nucleon and transfers it to the second. Thus, the momentum <em>lost</em> by the first nucleon after <em>emitting</em> the virtual pion must be the momentum <em>gained</em> by the second nucleon after <em>absorbing</em> the virtual pion. We thus have:</p>
+<p class="mathcell">
+$$
+k = q_1 - p_1 = q_2 - p_2
+$$
+</p>
+<p>Combining our terms, we have:</p>
+<p class="mathcell">
+$$
+(-ig)^2(2\pi)^4 \times \delta^4(p_1 + p_2 - q_1 - q_2) \times \left[\dfrac{i}{k^2 - m^2 + i\epsilon}\right]
+$$
+</p>
+<p>This result is the transition (probability) amplitude for our diagram! This time, however, we will not write a direct equality between $\mathcal{A}_{(2)}$ and our Feynman diagram-derived terms, since we know that this is just <em>one way</em> that two-nucleon scattering can happen. Instead, we will write the amplitude as follows:</p>
+<p class="mathcell">
+$$
+\mathcal{A}_{(2)} \sim (-ig)^2(2\pi)^4 \delta^4(p_1 + p_2 - q_1 - q_2)  \left[\dfrac{i}{(q_1 - p_1)^2 - m^2 + i\epsilon}\right]
+$$
+</p>
+<p>Using our convenient definition of $\tilde A_{(2)}$ which absorbs the factors of the Dirac delta, we have $i\mathcal{M} = \tilde{\mathcal{A}}_{(2)}$, where $\mathcal{A}_{(2)} = (2\pi)^4 \delta^4(\dots )\tilde{\mathcal{A}}_{(2)}$. This allows us to write down the <strong>invariant amplitude</strong> for the process:</p>
+<p class="mathcell">
+$$
+\begin{gather*}
+i\mathcal{M} = (-ig)^2 \left[\dfrac{i}{(q_1 - p_1)^2 - m^2 + i\epsilon}\right] = \dfrac{-ig^2}{(q_1 - p_1)^2 - m^2 + i\epsilon} \\
+\Rightarrow \mathcal{M} = \dfrac{-g^2}{(q_1 - p_1)^2 - m^2}
+\end{gather*}
+$$
+</p>
+<p>Where in the last line, we took the limit of $\epsilon \to 0$ (again, we always need to do so to recover a physical result). Interestingly enough, this calculation can also be done using non-relativistic quantum mechanics using the <strong>Born approximation</strong>. The Born approximation tells us that the invariant amplitude of a process in which a quantum particle scatters off a potential $V(r)$ (whether deflected or attracted), to lowest-order, is given by:</p>
+<p class="mathcell">
+$$
+i\mathcal{M} \sim -i\int d^3x\, V(\mathbf{r})e^{-i(\mathbf{p}_i-\mathbf{p}_f) \cdot \mathbf{r}}
+$$
+</p>
+<p>Where we use natural units and $\mathbf{p}_i, \mathbf{p}_f$ are the initial and final (three-)momenta of the particle, respectively. (Technically, this is off by a few constants, but we can absorb this into $V(\mathbf{r})$ later, so it won't affect our calculations.) Of course, we know that non-relativistic quantum mechanics is only an <em>approximation</em> to quantum field theory, but the Born approximation offers a link between a fundamentally QFT process (nucleon-nucleon scattering via virtual particle exchange) with a non-relativistic QM process (a particle scattering off a potential). By equating the QFT amplitude and the non-relativistic QM amplitude, we have, up to some constants:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+i\mathcal{M} &amp;= -i\int d^3x\, V(\mathbf{r})e^{-i(\mathbf{p}_i-\mathbf{p}_f) \cdot \mathbf{r}} = \dfrac{-ig^2}{(q_1 - p_1)^2 - m^2}
+\end{align*}
+$$
+</p>
+<p>Up to this point, our QFT amplitude is fully relativistic, but since the Born approximation is non-relativistic, we want to take the non-relativistic limit of our QFT amplitude for the two to match. Remember that $q_1$ and $p_1$ (despite our &quot;sloppy&quot; notation) are actually <strong>four-vectors</strong>, given (in SI units) by:</p>
+<p class="mathcell">
+$$
+p_1 = \begin{pmatrix} E_1&#x2F;c \\ p_{1x} \\ p_{1y} \\ p_{1z} \end{pmatrix} = \begin{pmatrix} E_1&#x2F;c \\ \mathbf{p}_1 \end{pmatrix}, \quad
+q_1 = \begin{pmatrix} E_1&#x27;&#x2F;c \\ q_{1x} \\ q_{1y} \\ q_{1z} \end{pmatrix} = \begin{pmatrix} E_1&#x27;&#x2F;c \\ \mathbf{q}_1 \end{pmatrix}
+$$
+</p>
+<p>(The factor of $1/c$ in the zeroeth-component of $q_1$ and $p_1$ becomes evident only in SI units.) The dot product of two four-vectors always has a negative sign for the spatial components. Thus, if we expand $(q_1 - p_1)^2$, we have:</p>
+<p class="mathcell">
+$$
+(q_1 - p_1)^2 = \begin{pmatrix} (E_1&#x27;-E_1) &#x2F;c \\ \mathbf{q}_1 - \mathbf{p}_1 \end{pmatrix}^2 = \dfrac{1}{c^2} (E_1&#x27; - E_1)^2 - (\mathbf{q}_1 - \mathbf{p}_1)^2
+$$
+</p>
+<p>But if the particles are non-relativistic, then $(E_1' - E_1) / c^2 \approx 0$, since $c^2$ is such a large number compared to the energies of the non-relativistic particles. Thus, in the non-relativistic regime, we have:</p>
+<p class="mathcell">
+$$
+(q_1 - p_1)^2 \approx -(\mathbf{q}_1 - \mathbf{p}_1)^2
+$$
+</p>
+<p>Thus, by substituting the above result into our QFT amplitude, as well as $(\mathbf{p}_i - \mathbf{p}_f) = (\mathbf{q}_1 - \mathbf{p}_1)$ into the Born approximation amplitude, we have:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+i\mathcal{M} =-i\int d^3x\, V(\mathbf{r})e^{-i(\mathbf{q}_1-\mathbf{p}_1) \cdot \mathbf{r}} &amp;= \dfrac{-ig^2}{(q_1 - p_1)^2 - m^2} \\
+&amp;\approx \dfrac{-ig^2}{-(\mathbf{q}_1 - \mathbf{p}_1)^2 - m^2} \\
+&amp;= \dfrac{ig^2}{(\mathbf{q}_1 - \mathbf{p}_1)^2 + m^2}
+\end{align*}
+$$
+</p>
+<p>Finally, if we define $k^2 = (\mathbf{q}_1 - \mathbf{p}_1)^2$ and $\mathbf{k} = \mathbf{q}_1 - \mathbf{p}_1$ as the (three-)momentum transferred via the virtual pion, we get:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+-i\int d^3x\, V(\mathbf{r}) e^{-i\mathbf{k} \cdot \mathbf{r}} &amp;= \dfrac{ig^2}{k^2 + m^2} \\
+\Rightarrow \int d^3x\, V(\mathbf{r}) e^{-i\mathbf{k} \cdot \mathbf{r}} &amp;= -\dfrac{g^2}{k^2 + m^2}
+\end{align*}
+$$
+</p>
+<p>We aim to solve for $V(\mathbf{r})$ to recover the approximate <em>classical potential</em> that can model the same process in non-relativistic QM. By inverting this (more precisely, taking the inverse Fourier transform of both sides) and taking the limit $\epsilon \to 0$, we get:</p>
+<p class="mathcell">
+$$
+V(\mathbf{r}) = -g^2\int \dfrac{d^3 k}{(2\pi)^3} \dfrac{1}{k^2 + m^2}e^{i\mathbf{k} \cdot \mathbf{r}}
+$$
+</p>
+<p>We will not solve this integral (although we'll learn how to solve integrals like this in the next chapter); instead, we'll only state that the solution is given by:</p>
+<p class="mathcell">
+$$
+V(\mathbf{r}) = -g^2 \dfrac{e^{-m|\mathbf{r}|}}{4\pi |\mathbf{r}|}
+$$
+</p>
+<p>Rewriting this in a slightly sloppier notation, where $r = |\mathbf{r}|$, we have:</p>
+<p class="mathcell">
+$$
+V(r) = -g^2\dfrac{e^{-m r}}{4\pi r}
+$$
+</p>
+<p>This is the <strong>Yukawa potential</strong>, and it is the <em>classical approximation</em> to nucleon-nucleon scattering in quantum field theory. It tells us that quantum particles interacting in a classical potential is actually just an <em>approximation</em> for the more fundamental description of quantum field theory, where particles actually interact by virtual particle exchange and scattering. It is truly a remarkable result.</p>
+<p>Furthermore, despite being an approximation, the Yukawa potential tells us a lot about how nucleons interact with each other. First, as long as $g^2 &gt; 0$, the negative sign in front means that it is <em>always</em> an attractive potential, unlike the Coulomb potential for charged particles, which can be attractive <em>or</em> repulsive. This tells us that it results in an attractive force that binds nucleons (protons and neutrons) to each other, successfully answering the question of how the positively-charged protons in the nucleus stay together. Second, we can use it to predict the <em>mass</em> of the pion, and this was the result that arguably made Yukawa famous.</p>
+<h3 id="calculating-the-pion-mass">Calculating the pion mass</h3>
+<p>The fact that we can calculate the pion's mass comes from the fact that the strong force rapidly decays with distance. In fact, if we compute the Yukawa potential at a distance $R = 1/m$, it evaluates to:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+V(R) &amp;= -\dfrac{g^2}{4\pi} me^{-1} \\
+&amp;= -\dfrac{mg^2}{4\pi e} \\
+&amp;\approx 0
+\end{align*}
+$$
+</p>
+<p>The last step comes from the fact that $\frac{1}{4\pi e} \approx \frac{1}{34} \ll 1$ and we expect the pion's mass $m$ to be a very small number, so the expression reduces to effectively zero. Thus, we often say that $R = 1/m$ is the <em>range</em> of the strong force: beyond this range, the strong force is far too weak to influence interactions between particles, and the electromagnetic force dominates.</p>
+<p>In addition, we can rearrange this result for the mass of the pion, which becomes $m = 1/R$. If we restore appropriate factors of $c$ and $\hbar$ to convert to SI units, this becomes $m = \dfrac{\hbar}{Rc}$. In particle physics, where it is common to give mass in units of energy (since $m = E_0/c^2$; particle physicists just omit the $c^2$ factor and often say &quot;particle $X$ has a mass of $Y$ MeV&quot;, where MeV = mega-electronvolts). So, we can use $E_0 = mc^2$ to get our result of:</p>
+<p class="mathcell">
+$$
+E_0 = mc^2 = \dfrac{\hbar c}{R}
+$$
+</p>
+<p>Yukawa knew from previously-conducted experimental measurements that the strong force has a range of around $\pu{10^{-15} m}$, from which he was able to obtain a result of $E_0 \approx \pu{197 MeV}$. More modern measurements place the range of the strong force at closer to $\pu{1.5E-15 m}$, for which we get $E_0 \approx \pu{131.55 MeV}$, which agrees closely with the experimental value of $E_0 = \pu{139.57 MeV}$.</p>
+<p>We should note that while we consider just a single scattering process (2 nucleons interacting through the exchange of a pion), in reality, this interaction happens over and over, with nucleons continuously exchanging pions, which is what we perceive as the effect of a potential that binds the nucleons together. Thus, the nucleons stay bound over time, rather than just an instant. Technically speaking, we're being a bit sloppy here: bound states (bound configurations of particles) are <em>non-perturbative</em> in nature, given that the interaction no longer happens over short enough timescales to approximate it as a &quot;small&quot; perturbation from the free field. Thus our calculation, which was based on a pertubative approach, is not <em>technically</em> justified, although it is &quot;good enough&quot; to predict reasonably accurate results (as we saw from our calculation of the pion's mass).</p>
+<blockquote>
+<p><strong>Note:</strong> The same techniques for calculating effective potentials are used in plasma physics and condensed-matter physics. It could be said that a potential is the physicist's way of abstracting any number of complicated interactions into a &quot;simple&quot; potential!</p>
+</blockquote>
+<h3 id="recovering-the-coulomb-potential">Recovering the Coulomb potential</h3>
+<p>Before we conclude this section, there is one last insight the Yukawa potential can give us, but it is one very much worth discussing. If take the limit $m \to 0$ and substitute $g$ with the elementary charge constant $e$, we find that we recover the <strong>Coulomb potential</strong> from electromagnetic theory! Thus, we find that a force mediated by the exchange of massless particles (photons) rather than massive particles (pions) thus obeys <strong>Coulomb's law</strong>:</p>
+<p class="mathcell">
+$$
+\lim_{m \to 0} V_\text{Yukawa}(r) = -\frac{e^2}{4\pi r} = V_\text{Coulomb}(r)
+$$
+</p>
+<p>It is remarkable that this result can be found from Yukawa theory without any mention of quantum electrodynamics. One could say that it vindicates Yukawa theory as describing the correct physics of nature and reproduces quantum electrodynamics in the low-energy limit. Indeed, if we assume that <strong>gravity</strong> is <em>also</em> mediated by massless particles (the hypothetical <em>graviton</em>) and has a coupling constant $g \propto \sqrt{GMm}$, then we recover the <strong>gravitational potential</strong>:</p>
+<p class="mathcell">
+$$
+V_\text{gravity} \sim -\dfrac{GMm}{r}
+$$
+</p>
+<p>Before closing, we should note that Yukawa's theory, while groundbreaking for its time, is now understood to be the low-energy limit to the more fundamental theory of <strong>quantum chromodynamics</strong> in describing strong nuclear interactions between nucleons. However, that doesn't mean it's irrelevant in modern physics! This is because the type of coupling present in Yukawa's theory (in the form $\mathscr{L}_\text{int} \sim g\overline \psi \psi \phi$) appears over and over in numerous quantum field theories, including in the Standard Model. In fact, most of the interaction terms in the Standard Model Lagrangian use a Yukawa or Yukawa-like coupling! A knowledge of Yukawa theory will prepare us well for the much more complex quantum field theories to come.</p>
+
+        <div class="page-switch-buttons">
+        
+            <!-- If it's the preface just add a
+                "begin" button -->
+            
+            <!-- Otherwise add prev/next buttons -->
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                        <!-- previous page button -->
+                        
+                        
+                        
+                            <div class="page-down">
+                        <a href="/quantum-field-theory/chapter-5">
+                            Previous: Chapter 5
+                        </a>
+                                <strong>Introduction to Feynman diagrams</strong>
+                            </div>
+                        </a>
+                        
+                        <!-- next page button -->
+                        
+                        
+                    
+                
+            
+        
+        </div>
+    </article>
+    </div>
+    <!-- This should be also an accordion for smaller screen sizes -->
+    <div class="page-navigation">
+        <h2>In this chapter</h2>
+        <ul>
+        
+            <li>
+                <a class="pagelink" href="#the-yukawa-lagrangian">The Yukawa Lagrangian</a>
+                
+            </li>
+        
+            <li>
+                <a class="pagelink" href="#quantization-and-the-feynman-rules">Quantization and the Feynman rules</a>
+                
+                    <ul>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#the-feynman-rules-of-yukawa-theory">The Feynman rules of Yukawa theory</a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li>
+                <a class="pagelink" href="#the-yukawa-potential">The Yukawa potential</a>
+                
+                    <ul>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#calculating-the-pion-mass">Calculating the pion mass</a>
+                            </li>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#recovering-the-coulomb-potential">Recovering the Coulomb potential</a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+        </ul>
+    </div>
+    </section>
+</main>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://learntheoreticalphysics.com/katex/katex.min.js"></script>
+    <script defer src="https://learntheoreticalphysics.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://learntheoreticalphysics.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://learntheoreticalphysics.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // custom macros for KaTeX-MathJax consistency
+          macros: {
+            "\\overbracket": "\\overgroup"
+          },
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+        var article = document.querySelector(".post");
+        if (article) {
+            renderMath(article);
+        }
+    })
+    </script>
+    
+    <script defer>
+    var toc = document.getElementById("toc");
+    var tocPos = toc.offsetTop + toc.offsetHeight;
+    var tocBtn = document.getElementById("jump-toc-btn");
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+    function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        window.onscroll = function(){
+            showTocBtnOnScroll();
+        };
+    </script>
+    
+
+
+</body>
+
+</html>
