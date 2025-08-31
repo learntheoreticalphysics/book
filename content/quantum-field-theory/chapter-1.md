@@ -19,6 +19,8 @@ As far as we know, all matter and radiation in the Universe is quantum in nature
 i\hbar \dfrac{\partial}{\partial t} \Psi(\mathbf{r}, t) = \left(-\dfrac{\hbar^2}{2m} \nabla^2 + V(\mathbf{r})\right) \Psi(\mathbf{r}, t)
 {% end %}
 
+> **Note:** It's okay if you don't know that this equation says or means! We'll go through all of the prerequisite quantum mechanics shortly.
+
 The advantage of this simpler approach is that it makes reasonably-accurate predictions for simple quantum systems. However, it is not compatible with special relativity (which is important for quantum particles, since they often travel at close to or _exactly_ the speed of light), and moreover, describing quantum systems with many particles becomes extremely tedious. Quantum field theory, or more precisely _relativistic_ quantum field theory, is a far more accurate theory of quantum mechanics than the Schrödinger equation. In fact, while we may use approximations like (semi-)classical theory and nonrelativistic or single-particle quantum mechanics, quantum field theory, and specifically the Standard Model, offers the best and most accurate results. 
 
 That is to say, any quantum system may be solved for by the Schrödinger equation, but doing the same calculations with quantum field theory offers results with unparalleled precision. Predictions of the [magnetic moment of electrons](https://en.wikipedia.org/wiki/Magnetic_moment), [energy levels of the hydrogen atom](https://en.wikipedia.org/wiki/Lamb_shift), a variety of [previously-unknown elementary particles](https://physics.info/standard/), and the [Rydberg constant](https://en.wikipedia.org/wiki/Rydberg_constant) made through quantum field theory have been experimentally tested and confirmed very well.
@@ -27,10 +29,10 @@ These are not meaningless predictions either; our understanding of the emission 
 
 ### Things to know
 
-We'll be working with natural units where we set two natural constants (the speed of light $c$ and the reduced Planck constant $\hbar$) to have a value of 1: this simplifies a lot of equations and makes the mathematics a lot easier. For instance, as we'll see, Einstein's energy-momentum relation, which is normally given by:
+We'll be working with natural units where we set two natural constants (the [speed of light](https://en.wikipedia.org/wiki/Speed_of_light) $c$ and the [reduced Planck constant](https://en.wikipedia.org/wiki/Planck_constant) $\hbar = h/2\pi$) to have a value of 1: this simplifies a lot of equations and makes the mathematics a lot easier. For instance, as we'll see, Einstein's energy-momentum relation, which is normally given by:
 
 {% math() %}
-E^2 = p^2 + (mc^2)^2
+E^2 = (pc)^2 + (mc^2)^2
 {% end %}
 
 becomes the much simpler and prettier-looking expression:
@@ -81,7 +83,7 @@ In natural units, where we set $\hbar = c = 1$, it instead takes the form:
 This equation has dimensions of _inverse mass_ in natural units. To convert back to SI units, we use a two-step process.
 
 - First, we convert our expression in natural units to equivalent units of energy by replacing $m$ with $mc^2$ (according to $E = Qc^2$ in the second table). Thus, our expression becomes $\lambda_c = \dfrac{2\pi}{mc^2}$ and has dimensions of inverse energy.
-- Then, we convert energy to wavelength (which has units of length) by multiplying by $\hbar c$ (according to $L = \hbar c/E$ in the second table, which we can rearrange to $L = \hbar c E^{-1}$). This gives us $\lambda_c = \dfrac{2\pi}{mc^2} \hbar c = \dfrac{2\pi \hbar}{mc}$, which is indeed our expected result in SI units.
+- Then, we convert energy to wavelength (which has units of length) by multiplying by $\hbar c$ (according to $L = \hbar c/E$ in the second table, which we can rearrange to $L = \hbar c E^{-1}$). This gives us $\lambda_c = \dfrac{2\pi}{mc^2} \hbar c = \dfrac{2\pi \hbar}{mc} = \dfrac{h}{mc}$, which is indeed our expected result in SI units.
 
 > **Note for the advanced reader:** Also, instead of standard vectors, almost everything will use _tensors_. We will be working in the formalism of Lagrangian and Hamiltonian field theory, as is standard in theoretical physics. Don't worry if some of these topics are unfamiliar; we will review all of these topics before we begin, and consult the other free books on this site for more information.
 
@@ -664,6 +666,8 @@ By comparison with $ds^2 = g_{\mu \nu} dx^\mu dx^\nu$, we find that the matrix i
 
 While the Minkowski metric may _look_ deceptively simple and appear to be a simple four-dimensional extension of the Euclidean metric with a few sign changes, it is actually _radically different_, and the signs make all the difference.
 
+## Useful math
+
 ### The Fourier transform
 
 In physics, it is very useful to decompose a complicated function as a sum of sines and cosines - which, remember, can be written as complex exponentials. Sines and cosines are well-studied functions with very nice properties, which cannot be said of all functions (especially the Dirac delta "function")! The Fourier transform gives us a way to convert between these two representations. The basic idea is this: by _adding_ lots of little sinusoidal waves that have slightly different spatial periods (wavelengths) and different amplitudes, we can approximate the shape of some complicated function $f(x)$. Each of these waves has amplitude (magnitude)
@@ -689,7 +693,13 @@ f(k) = \int \dfrac{dk}{2\pi} f(x) e^{-ikx}
 We can also define the Fourier transform in more than one dimension. Of particular interest to us is the _three-dimensional_ Fourier transform, given by:
 
 {% math() %}
-f(k) = \int \dfrac{d^3k}{(2\pi)^3} f(x) e^{-ikx}
+f(k) = \int \dfrac{d^3k}{(2\pi)^3} f(\vec x) e^{-i \vec k \cdot \vec x}
+{% end %}
+
+Where $\vec k, \vec x$ are three-vectors. In $n$ dimensions, the $n$-th dimensional Fourier transform is given by:
+
+{% math() %}
+f(k) = \int \dfrac{d^nk}{(2\pi)^n} f(x^\mu) e^{-ik_\mu x^\mu}
 {% end %}
 
 Among the _many_ uses of Fourier transforms are that they can be used to solve a variety of partial differential equations (PDEs), and in particular, a certain class of PDEs known as **wave equations** that pop up everywhere in quantum mechanics and quantum fiedl theory. We will soon see this in the next chapter!
