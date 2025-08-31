@@ -219,10 +219,10 @@ A tensor is a general name for a class of coordinate-independent objects. A scal
 
 > The universe just doesn't care what coordinates we use to measure it. Coordinates are human constructs, not a fundamental fact of nature.
 
-However, when we impose a coordinate system to write out the equations of physics, we fix the values of the components. So a vector might be the same physical thing regardless of coordinate system, but its _components_ are different in different coordinates. This can be an annoying issue: equations that might look simple in cartesian coordinates can grow monstrously annoying to read in, for instance, spherical coordinates. For example, this is Laplace's equation, often used for modelling gravity in a vacuum, in cartesian coordinates:
+However, when we impose a coordinate system to write out the equations of physics, we fix the values of the components. So a vector might be the same physical thing regardless of coordinate system, but its _components_ are different in different coordinates. This can be an annoying issue: equations that might look simple in cartesian coordinates can grow monstrously annoying to read in, for instance, spherical coordinates. For example, this is Laplace's equation, which pops up everywhere in physics, written in Cartesian coordinates:
 
 {% math() %}
-\nabla^2 f = 0
+\dfrac{\partial^2 f}{\partial x^2} + \dfrac{\partial^2 f}{\partial y^2} + \dfrac{\partial^2 f}{\partial z^2} = 0
 {% end %}
 
 And this is its equivalent in spherical coordinates:
@@ -235,16 +235,14 @@ And this is its equivalent in spherical coordinates:
 With a change of coordinates, equations that looked elegant and easy to work with become clunky and untractable. What if there were a way to formulate physics in a way that doesn't depend on coordinates, and where we could use whichever coordinates we wished? This is where tensors come in. The tensor formulation of the same equation is given by:
 
 {% math() %}
-\dfrac{1}{\sqrt{g}} \partial_i(\sqrt{g} g^{ij} \partial_j) f = 0, \quad g=\det(g_{ij})
+\partial^j \partial_j f = 0
 {% end %}
 
 How amazingly simple and graceful! _This_ is why we use tensors.
 
 ### Tensor algebra and calculus
 
-To use tensors, it's helpful to start from our familiar vector and matrix formulas and build up from there.
-
-For instance, consider a vector in Euclidean 3D space. Written in terms of a Cartesian basis, it is given by:
+To gain a feel for using tensors, it's helpful to start from our familiar vector and matrix formulas and build up from there. For instance, consider a vector in Euclidean 3D space. Written in terms of a Cartesian basis, it is given by:
 
 {% math() %}
 \vec V = V_x \hat e_x + V_y \hat e_y + V_z \hat e_z
@@ -316,11 +314,7 @@ This gives us the ability to write out the dot product formula (which we just sa
 \sum_i x_i x^i = x^2 + y^2 + z^2 = R^2
 {% end %}
 
-Where here, $R^2$ is the **squared magnitude** of the position vector, and is thus a **scalar**. Note that the expression $x_i x^j$ is _not_ a valid expression for the dot product, because it would evaluate to:
-
-{% math() %}
-\sum_i x_i x^i = xx' + y y' + zz' \neq x_i x^i
-{% end %}
+Where here, $R^2$ is the **squared magnitude** of the position vector, and is thus a **scalar**. Note that the expression $x_i x^j$ is _not_ a valid expression for the dot product! It has to be $x_i x^i$ for the formula to make sense.
 
 So it is important that we specify a tensor's index carefully so that **tensors with different components have different indices**, even if they are the same type of tensor. As we saw, a position vector $\vec x = x^i$ and a position vector with different components $\vec x' = x^j$ are both position vectors, but since they have **different components**, they must use **different tensor indices**.
 
