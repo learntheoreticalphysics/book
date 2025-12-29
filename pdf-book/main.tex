@@ -1,0 +1,114 @@
+\documentclass[letterpaper,11pt,twoside,headsepline,bibliography=totoc,index=totoc]{scrbook}
+\usepackage{graphicx} % Required for inserting images
+\graphicspath{ {./images/} }
+% math typesetting packages
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{libertine} % for better paper legibility, easier on the eyes too
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} % for ensuring TeX file(s) are read properly
+\usepackage{empheq} % for boxes around equations
+\usepackage{framed} % for boxes around text
+\usepackage[intoc]{nomencl}
+\usepackage{makeidx} % for creating indexes
+\usepackage{siunitx} % for typsetting units
+\usepackage{xcolor}
+\usepackage[bookmarks=true,colorlinks=true, linkcolor=black, urlcolor=violet]{hyperref} % for URLs
+\urlstyle{sf} % use sans-serif rather than monospace font for URLs
+\usepackage{xpatch}
+\usepackage{booktabs} % for tables
+\usepackage{microtype} % for nice typography
+
+% ----- CUSTOM COMMANDS ----
+% define a new command that adds the URL of a web link at the same time for better experience on print media
+\newcommand{\weburl}[1]{\url{#1} \footnote{See website: #1}}
+% note: to be used as \webtextlink{link text}{https://somewebsite.com/}. This may lead to errors about "missing
+% $ tag inserted", ignore those errors.
+\newcommand{\webtextlink}[2]{\href{#2}{#1} \footnote{See website: \url{#2}}}
+
+% Patch page to have underlined chapter titles
+% see https://sourceforge.net/p/koma-script/wiki-en/HowTo_ChapterWithLines/
+\xapptocmd{\chapterheadstartvskip}{%
+  {%
+    \setlength{\parskip}{0pt}%
+    \setlength{\parfillskip}{0pt plus 1fil}%
+    \noindent\rule[.3\baselineskip]{\linewidth}{1pt}\par
+  }\nobreak
+}{%
+  \typeout{Horizontal line before chapter heading added.}%
+}{%
+  \errmessage{Failed to patch \string\chapterheadstartvskip}%
+}%
+\xpretocmd{\chapterheadendvskip}{%
+  {%
+    \setlength{\parskip}{0pt}%
+    \setlength{\parfillskip}{0pt plus 1fil}%
+    \noindent\rule[-.3\baselineskip]{\linewidth}{1pt}\par
+  }\nobreak
+}{%
+  \typeout{Horizontal line after chapter heading added.}%
+}{%
+  \errmessage{Failed to patch \string\chapterheadendvskip}%
+}%
+% end patch
+
+\usepackage[font=small,labelfont=bf]{caption} % for figures/image captions
+\usepackage[labelfont=bf]{caption} % figure names/numbers bolded
+\usepackage{cinzel}
+
+\makeindex
+\makenomenclature
+
+\begin{document}
+
+\title{\normalfont \uppercase{\cinzel{A Learner's Guide to Advanced Theoretical Physics}}}
+\subtitle{\small A rigorous self-paced guide to Special and General Relativity, Particle Physics, String Theory, and Quantum Gravity}
+\author{\small \sc{Jacky Song and Alex Weiss}}
+\date{\normalfont \small{February, 2025}}
+% \pagestyle{empty}
+
+\lowertitleback{We dedicate this work to the public domain. We make this dedication for the benefit of the public at large and to the detriment of our heirs and successors. We intend this
+dedication to be an overt act of relinquishment in perpetuity of all present and future rights to this work under copyright law.\\\\Jacky Song, Alex Weiss, 2025}
+
+\maketitle
+
+
+
+\chapter{Preface}
+
+Welcome! This is a self-learning guide for all readers that want to venture beyond an introductory physics course. In this book, we delve into advanced quantum mechanics and relativity, and don't shy away from the details; we cover the Standard Model \index{Standard Model}, Special Relativity and General Relativity, and the most exciting developments in making a unified theory that bridges General Relativity and the Standard Model. Additionally, we will also spend some time looking into \textit{non-relativistic} quantum field theories, which are very similar to relativistic quantum field theories that form the basis of the Standard Model, except applied to condensed-matter physics and photonics. This guide is mostly targeted for advanced physics undergraduates students, but is written to be accessible enough to be readable by anyone who is curious and wants a challenge.
+
+But, the skeptical reader may ask, why care about theoretical physics? The answer is that basic science, such as research into theoretical physics, is \emph{crucial} to furthering our understanding of science, because it is the bedrock on which all other physics is built upon. The current "Big 2" theories of theoretical physics, General Relativity (GR) \index{General Relativity} and the Standard Model \index{Standard Model}, are both hugely-successful theories, but as of the present moment, attempts to unify the two theories have failed. Thus, working on the problems within each of the theories, as well as their (hopeful) unification, is also (well, subjectively) an interesting intellectual challenge.
+
+We attempt to keep the mathematical prerequisites for this book to the minimum: only some multivariable calculus and some knowledge of vectors and matrices. If these topics are unfamiliar, we highly recommend reading \webtextlink{the free online lecture notes by Professor Paul Dawkins}{https://tutorial.math.lamar.edu/} at Lamar University. We will explain any other mathematics as necessary while we progress through the book.
+
+Our greatest satisfaction is to make the concepts of theoretical physics as clear and accessible as we can. We hope you enjoy this book as much as we have enjoyed writing it.
+
+\tableofcontents
+\mainmatter
+
+% respective chapters are in separate files
+
+\include{intro-field-theory}
+\include{intro-GR}
+\include{intro-qft}
+\include{nonrelativistic-qft}
+
+\backmatter
+\clearpage
+
+\nomenclature{$c$}{Speed of light in a vacuum, \qty{299792458}{\m\per\s}}
+\nomenclature{$h$}{Planck constant}
+\nomenclature{$\hbar$}{Reduced Planck constant}
+\nomenclature{$e$}{Elementary charge constant}
+\nomenclature{\partial_\mu}{Equal to $\dfrac{\partial}{\partial x^\mu}$, partial derivative with respect to the $\mu$-th coordinate}
+\nomenclature{\partial^\mu}{Equal to $g^{\mu \nu}\partial_\nu$, where $g^{\mu \nu}$ is the inverse metric; typically speaking, the inverse metric is the Minkowski metric $\eta^{\mu \nu}$}
+\nomenclature{\displaystyle \int d^4 x}{Integral over all spacetime; $d^4x$ is shorthand for $dx\,dy\,dz\,dt$}
+\nomenclature{\displaystyle \int d^3 x}{Integral over all space; $d^3x$ is shorthand for $dx\,dy\,dz$}
+\printnomenclature
+
+\printindex
+
+\end{document}
