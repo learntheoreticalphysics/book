@@ -10,3 +10,5 @@ notoc = true
 ## Introduction
 
 The two theories of relativity - Special Relativity and General Relativity - are doubtlessly some of the most beautiful theories of physics ever devised. They are, sadly, also quite complicated. We hope this attempt to explain them, going step-by-step through all the little details, will hopefully clear up some of the confusion for first-time learners, while still doing the subject justice.
+
+> **Important info:** Currently, development of this book is on pause. In the meantime, readers are encouraged to consult [this custom GR guide](https://jackysci.com/general-relativity/).
