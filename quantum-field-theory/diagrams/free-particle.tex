@@ -1,0 +1,16 @@
+% this is a Feynman diagram for a single
+% free particle in quartic theory
+\documentclass{article}
+\usepackage{feynmp-auto}
+\begin{document}
+\begin{fmffile}{diagram}
+\begin{fmfgraph*}(200,150)
+    \fmfleft{i1}
+    \fmfright{f1}
+    \fmf{fermion}{i1,f1}
+    % labels
+    \fmflabel{$p$}{i1}
+    \fmflabel{$q$}{f1}
+\end{fmfgraph*}
+\end{fmffile}
+\end{document}

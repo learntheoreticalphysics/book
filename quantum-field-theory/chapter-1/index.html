@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting started with quantum field theory</title>
+  <meta name="description" content="A Learner's Guide to Advanced Theoretical Physics">
+
+  <!-- Uncomment once we actually have a favicon
+  
+      <link rel="icon" type="image/svg+xml" href="https://learntheoreticalphysics.com/favicon.svg">
+      <link rel="icon" type="image/png" href="https://learntheoreticalphysics.com/favicon.ico">
+  
+  -->
+
+  
+      <!--KaTeX-->
+      <link rel="stylesheet" href="https://learntheoreticalphysics.com/katex/katex.min.css">
+
+      <link rel="stylesheet" href="https://learntheoreticalphysics.com/site.css">
+  
+
+</head>
+
+<body>
+  
+<main class="chapter">
+    <!-- book navigation -->
+    <!-- should convert to accordion on mobile and have a expand/shrink icon -->
+    <nav>
+        <!-- We get the parent folder of the book chapters -->
+        
+        
+        
+        
+        <h1>
+            <a href="/quantum-field-theory">Quantum Field Theory</a>
+        </h1>
+        <h2>Table of contents</h2>
+        
+        
+            
+                <!-- highlight the chapter we're currently on -->
+                <a class="current-page" href="/quantum-field-theory/chapter-1">1. Getting started with quantum field theory</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-2">2. Quantization of a free scalar field</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-3">3. Quantization of the electromagnetic field</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-4">4. Non-trivial scalar field theories</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-5">5. Introduction to Feynman diagrams</a>
+            
+        
+            
+                <a href="/quantum-field-theory/chapter-6">6. The Yukawa theory of nuclear interactions</a>
+            
+        
+        
+
+        <a class="nav-bottom-link" alt="Link to go back to homepage" href="/">Back to homepage &rarr;</a>
+    </nav>
+
+    <div class="article-container disable-scrollbars">
+    <article class="post">
+        
+            <h1>Getting started with quantum field theory</h2>
+        
+        
+        <p style="font-size: small;">Reading time: around 40 minutes</p>
+        
+        <!--
+        
+        <p id="print-notice">This page is print-friendly. Simply press Ctrl + P (or Command + P if you use a Mac) to print the page and download it as a PDF.</p>
+        
+        -->
+        
+        <!-- page content -->
+        <h2 id="the-very-basics-of-quantum-field-theory">The very basics of quantum field theory</h2>
+<p>Quantum field theory resolves a fundamental question at the heart of physics: the problem of <strong>wave-particle duality</strong>. This is the phenomenon where electrons, photons, and other quantum particles can behave like classical waves in some scenarios, while behaving like classical particles in some scenarios. For instance, light was classically-understood as an <strong>electromagnetic wave</strong>, and the prevelance of modern radio antennas, Wi-Fi, and telecommunications, all technologies founded on the wave theory of light, would suggest that this is a pretty successful theory! However, precision experiments at the turn of the 20th century also found that light could behave like a particle. Shining light on a metal plate, for instance, could &quot;knock out&quot; electrons in the plate (the <a href="https://en.wikipedia.org/wiki/Photoelectric_effect">photoelectric effect</a>), and X-rays aimed at a graphite sample would become deflected as they passed out of the sample (<a href="https://en.wikipedia.org/wiki/Compton_scattering">Compton scattering</a>). The wave theory of light predicted some aspects of the behavior of light fantastically, yet failed to predict all of these particle-like phenomena, while the particle theory of light (as developed by physicists such as Einstein and Planck) could explain the particle-like phenomena, but <em>not</em> the wave-like phenomena. The mystery remained even more elusive for other quantum particles like electrons and protons, which <em>also</em> exhibited these perplexing properties.</p>
+<p>Quantum field theory resolves this mystery with a surprising conclusion: the fundamental entities of the Universe are <em>not</em> waves or particles, but <strong>quantum fields</strong>. A quantum field is the quantum extension of a <em>classical field</em> such as the electromagnetic and gravitational fields. Just like classical fields, quantum fields describe quantities that are spread throughout all space and carry interactions (&quot;forces&quot; in classical physics) between particles. There is, however, one very big difference: quantum fields can only come in certain <strong>states</strong>. Each state corresponds to a specific oscillation of the quantum field, and those oscillations (also called <em>modes</em>) are what we call particles! Furthermore, quantum field theory predicts that all particle-particle interactions are actually just interacting quantum fields, which transfer energy and momentum with each other, leading to the <em>creation</em> and <em>annihilation</em> of particles!</p>
+<p>The consequencies of quantum field theory are profound. Quantum field theory introduces a Universe that is fundamentally not static, where particles can be created from pure energy in quantum fields, and where even a perfect vacuum still has a nonzero energy! In fact, this is just the beginning: we'll eventually find out that <em>most</em> of the energy in the Universe is actually contained in quantum fields, as opposed to the rest mass of actual particles: <a href="https://en.wikipedia.org/wiki/Conformal_anomaly#Quantum_chromodynamics">more than 99%</a> of the mass of all matter in the Universe comes from the quantum fields inside and around it! Even what we regard as &quot;forces&quot; <em>actually</em> come from quantum fields exchanging particles, so it is safe to say that at a fundamental level, at least as far as we understand, quantum fields make up everything in the Universe, and are responsible for <strong>all</strong> matter interactions. Without further ado, let's begin on this exciting learning journey!</p>
+<h3 id="the-motivation-for-quantum-field-theory">The motivation for quantum field theory</h3>
+<p>As far as we know, all matter and radiation in the Universe is quantum in nature. Quantum mechanics governs the behavior of all matter, and has been a <em>massively</em> successful theory that has made countless successful predictions. Quantum field theory is our most <em>accurate</em> formulation of quantum mechanics, but is not typically taught when introducing the subject. (This is not without reason, as experience has shown that starting with quantum field theory, with its integrals requiring pages-long contour integration, typically leads to long-term physics paranoia). Instead, at an introductory and intermediate level, the dynamics of quantum systems is typically analyzed with the Schrödinger equation:</p>
+<p class="mathcell">
+$$
+i\hbar \dfrac{\partial}{\partial t} \Psi(\mathbf{r}, t) = \left(-\dfrac{\hbar^2}{2m} \nabla^2 + V(\mathbf{r})\right) \Psi(\mathbf{r}, t)
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> It's okay if you don't know that this equation says or means! We'll go through all of the prerequisite quantum mechanics shortly.</p>
+</blockquote>
+<p>The advantage of this simpler approach is that it makes reasonably-accurate predictions for simple quantum systems. However, it is not compatible with special relativity (which is important for quantum particles, since they often travel at close to or <em>exactly</em> the speed of light), and moreover, describing quantum systems with many particles becomes extremely tedious. Quantum field theory, or more precisely <em>relativistic</em> quantum field theory, is a far more accurate theory of quantum mechanics than the Schrödinger equation. In fact, while we may use approximations like (semi-)classical theory and nonrelativistic or single-particle quantum mechanics, quantum field theory, and specifically the Standard Model, offers the best and most accurate results. </p>
+<p>That is to say, any quantum system may be solved for by the Schrödinger equation, but doing the same calculations with quantum field theory offers results with unparalleled precision. Predictions of the <a href="https://en.wikipedia.org/wiki/Magnetic_moment">magnetic moment of electrons</a>, <a href="https://en.wikipedia.org/wiki/Lamb_shift">energy levels of the hydrogen atom</a>, a variety of <a href="https://physics.info/standard/">previously-unknown elementary particles</a>, and the <a href="https://en.wikipedia.org/wiki/Rydberg_constant">Rydberg constant</a> made through quantum field theory have been experimentally tested and confirmed very well.</p>
+<p>These are not meaningless predictions either; our understanding of the emission and absorption of light, of the subatomic origins of magnetism, and even our standard of time in the <a href="https://en.wikipedia.org/wiki/Second">definition of a second</a> are based on these predictions. In turn, numerous scientific experiments, material science, laser technology, and electronics depend on applying these predictions, without which they would likely not progress to how they are today.</p>
+<h3 id="things-to-know">Things to know</h3>
+<p>We'll be working with natural units where we set two natural constants (the <a href="https://en.wikipedia.org/wiki/Speed_of_light">speed of light</a> $c$ and the <a href="https://en.wikipedia.org/wiki/Planck_constant">reduced Planck constant</a> $\hbar = h/2\pi$) to have a value of 1: this simplifies a lot of equations and makes the mathematics a lot easier. For instance, as we'll see, Einstein's energy-momentum relation, which is normally given by:</p>
+<p class="mathcell">
+$$
+E^2 = (pc)^2 + (mc^2)^2
+$$
+</p>
+<p>becomes the much simpler and prettier-looking expression:</p>
+<p class="mathcell">
+$$
+E^2 = p^2 + m^2
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> You can think of this as <em>redefining</em> time and length to use the same unit, as well as redefining momentum, energy, and mass to use the same unit. As we'll soon see, at a fundamental level, time and length <em>are</em> actually the same thing (likewise, mass and energy are the same thing), although we assign different names and units to them. By removing this artificial restriction, we end up with <em>natural units</em>, since these are the units that are only based off <em>physical quantities</em> in the Universe.</p>
+</blockquote>
+<p>However, since we have now made both $c$ and $\hbar$ hidden, we have to adjust <em>all</em> of the rest of our units as a result. This means that after we finish our calculations, we must convert back to the SI unit system (which is standard in the rest of physics) by multiplying by appropriate factors of $\hbar$ and $c$. This is a bit of a convoluted process, so it is helpful to refer to tables that give the appropriate multiplicative factors, such as <a href="https://www.seas.upenn.edu/%7Eamyers/NaturalUnits.pdf">this PDF of tables</a> (which is where the below table comes from). The idea is that if you have an expression in <strong>natural units</strong> that has units of <strong>energy</strong> ($E$), the appropriate conversions are as follows:</p>
+<table><thead><tr><th>If our expression should have SI units of...</th><th>Convert with...</th></tr></thead><tbody>
+<tr><td>Length ($L$)</td><td>$L = \hbar c/E$</td></tr>
+<tr><td>Area ($A$)</td><td>$A = (\hbar c/E)^2$</td></tr>
+<tr><td>Mass ($m$)</td><td>$m = E/c^2$</td></tr>
+<tr><td>Time ($t$)</td><td>$t = \hbar/E$</td></tr>
+<tr><td>Energy ($E$)</td><td>$E = E$</td></tr>
+<tr><td>Momentum ($p$)</td><td>$p = E/c$</td></tr>
+<tr><td>Acceleration ($a$)</td><td>$a = Ec/\hbar$</td></tr>
+<tr><td>Frequency ($\omega$)</td><td>$\omega = E/\hbar$</td></tr>
+</tbody></table>
+<p>What if our expression (let's call it $Q$) doesn't have units of energy in natural units? Well, we can <em>convert</em> an expression in natural units to units of energy by multiplying by the following factors:</p>
+<table><thead><tr><th>Expression ($Q$) has natural units of...</th><th>Convert to units of energy with a factor of...</th></tr></thead><tbody>
+<tr><td>Mass</td><td>$E = Qc^2$</td></tr>
+<tr><td>Energy</td><td>$E = Q$</td></tr>
+<tr><td>Momentum</td><td>$E = Qc$</td></tr>
+<tr><td>Length</td><td>$E = \hbar c/Q$</td></tr>
+<tr><td>Time</td><td>$E = \hbar/Q$</td></tr>
+</tbody></table>
+<blockquote>
+<p><strong>Note:</strong> Dimensionless expressions in natural units can be converted to SI by multiplying by $c$ (for velocity) or $\hbar$ (for action/angular momentum).</p>
+</blockquote>
+<p>Afterwards, we can just use the first table to convert dimensions of energy into our desired SI unit. We can then compose other units by multiplying these together - for instance, velocity is simply length over time, so we divide the corresponding conversion factors of length by time. This may all sound super confusing, so let's practice with an example. Consider the formula for the <strong>Compton wavelength</strong> $\lambda_c$, which is very important in quantum field theory. In standard SI units, it takes the form:</p>
+<p class="mathcell">
+$$
+\lambda_c = \dfrac{2\pi \hbar}{mc}
+$$
+</p>
+<p>In natural units, where we set $\hbar = c = 1$, it instead takes the form:</p>
+<p class="mathcell">
+$$
+\lambda_c = \dfrac{2\pi}{m}
+$$
+</p>
+<p>This equation has dimensions of <em>inverse mass</em> in natural units. To convert back to SI units, we use a two-step process.</p>
+<ul>
+<li>First, we convert our expression in natural units to equivalent units of energy by replacing $m$ with $mc^2$ (according to $E = Qc^2$ in the second table). Thus, our expression becomes $\lambda_c = \dfrac{2\pi}{mc^2}$ and has dimensions of inverse energy.</li>
+<li>Then, we convert energy to wavelength (which has units of length) by multiplying by $\hbar c$ (according to $L = \hbar c/E$ in the second table, which we can rearrange to $L = \hbar c E^{-1}$). This gives us $\lambda_c = \dfrac{2\pi}{mc^2} \hbar c = \dfrac{2\pi \hbar}{mc} = \dfrac{h}{mc}$, which is indeed our expected result in SI units.</li>
+</ul>
+<blockquote>
+<p><strong>Note for the advanced reader:</strong> Also, instead of standard vectors, almost everything will use <em>tensors</em>. We will be working in the formalism of Lagrangian and Hamiltonian field theory, as is standard in theoretical physics. Don't worry if some of these topics are unfamiliar; we will review all of these topics before we begin, and consult the other free books on this site for more information.</p>
+</blockquote>
+<h2 id="an-overview-of-classical-field-theory">An overview of classical field theory</h2>
+<p>Before we get started with the complex quantum
+field theories of the Standard Model, we must look at their shared
+fundamental structure in <em>classical field theory</em>. A classical field
+theory describes a <em>field</em>, which can be thought of as a physical
+quantity that fills all of space and allows interactions between
+particles to propagate between each other, leading to what we perceive
+as &quot;force&quot;.</p>
+<p>The nebulous idea of a field can be more easily quantified by
+considering the following example: you stand in a room that has varying
+temperature. The temperature changes depending on where you are in the
+room (a physicist would call that <em>position dependence</em>), and the
+temperature also changes over time (in the language of physics, <em>time
+dependence</em>). Thus, if we let $\vec x = \langle x, y, z\rangle$ denote
+the position in the room and $t$ denote the time, we can write the
+temperature field, represented as $\phi$, with:</p>
+<p class="mathcell">
+$$
+\phi(\vec x, t)
+$$
+</p>
+<p>Our modern formulation of classical field theory is that of the
+<strong>Lagrangian and Hamiltonian formulation</strong> of classical fields. Such a
+formulation begins by describing a field in terms of a specific function
+of the field, called a <strong>Lagrangian</strong> , and written as
+$\mathscr{L}(\phi, \vec x, t)$, where, again, $\phi$ is a function of
+$\vec x$ and $t$, that is, position and time. (Technically speaking, the
+more accurate term for fields is to use the term <em>Lagrangian density</em>,
+but we will use an abuse of terminology and simply call the Lagrangian
+density &quot;the Lagrangian&quot;.)</p>
+<p>The precise form of the Lagrangian depends highly on which exact field
+we are studying. But if we want our theories to &quot;make sense&quot; in the
+physical world, it must satisfy the following constraints:</p>
+<ol>
+<li>
+<p>Any derivatives of the field that appear in the Lagrangian can be at
+most <em>first derivatives</em>. That is, we can have
+$\dfrac{\partial \phi}{\partial x}$ or $(\nabla \phi)^2$ as terms in
+the Lagrangian, but <strong>not</strong> $\nabla^2 \phi$ as that would be
+second-order. This is because we do not observe physical fields
+satisfying partial differential equations (PDEs) that include
+anything above a second-order derivative, and the process we will
+soon see to determine the PDEs of the fields always raises the order
+of the derivatives by one.</p>
+</li>
+<li>
+<p>It must be a function of <em>individual positions</em> in space. Thus, the
+Lagrangian cannot have a term that depends on two positions
+$\vec x_1, \vec x_2$. This ensures that the field does not violate
+<em>locality</em> (the fact that information propagates at a finite speed
+and, therefore, information transfer cannot be instantaneous).</p>
+</li>
+<li>
+<p>It must be scalar-valued and have units of <em>energy</em>, and we will see
+why soon.</p>
+</li>
+</ol>
+<p>There are further restrictions on the specific form of the Lagrangian of
+a field based on the specific <strong>symmetries</strong> that we want the Lagrangian
+(and thus our theory) to obey. For instance, if we want our theory to
+have <em>translational symmetry</em> (symmetric in position), then the
+Lagrangian <strong>cannot</strong> contain any terms that would lead to
+$\mathscr{L}(\phi(\vec x + \vec \epsilon), \vec x + \vec \epsilon, t) \neq \mathscr{L}(\phi(\vec x, \vec t))$,
+where $\vec \epsilon$ is some shift in position. We may impose further
+restrictions by requiring, for instance, that the Lagrangian respects
+<strong>rotational symmetry</strong> or symmetry upon &quot;flipping&quot; the field (which
+is the transformation $\phi(\vec x, t) \to \phi(-\vec x, t)$). These
+symmetries are desirable because a famous theorem known as <strong>Noether's
+theorem</strong> says that certain symmetries lead to <em>conservation laws</em>, such
+as the conservation of energy, momentum, and charge, which are
+fundamental laws of nature. We will also encounter a specific type of
+symmetry later on called <strong>Lorentz symmetry</strong> that imposes even stricter
+conditions on the form the Lagrangian can take. In practice, the
+combination of symmetries may often be so restrictive that there are
+only a few possibilities for a field's Lagrangian that can satisfy all
+the symmetries. But there is no absolute rule for finding the right
+Lagrangian; even though we can often narrow down the Lagrangian into a
+much simpler form, the specific Lagrangian that &quot;wins out&quot; in the end
+is the one that leads to a theory that makes successful predictions,
+verified by experiments. Physics, is ultimately an <em>empirical science</em>,
+and the source of truth within theoretical physics, just like all other
+branches of physics, is <em>consistency with observation</em>.</p>
+<h3 id="the-principle-of-stationary-action">The Principle of Stationary Action</h3>
+<p>Upon defining a Lagrangian, we can then write out a quantity known as
+the <strong>action</strong>. The action $S$ is defined as:</p>
+<p class="mathcell">
+$$
+S = \int \limits_\text{space+time} \mathscr{L}(\phi(\vec x, t), \vec x, t)\, d^4 x
+$$
+</p>
+<p>Where $d^4 x = dx\, dy\, dz\, dt$, and the integral is conducted over
+all space and all times. Why define this quantity? Because it turns out
+that the correct partial differential equation to describe the field
+$\phi(\vec x, t)$ is the one that makes the action <em>stationary</em>.
+Stationary is a concept that comes from calculus; for the action, it
+means that rate of change of the action with respect to change in $\phi$
+must be zero, which we write as:</p>
+<p class="mathcell">
+$$
+\delta S = 0
+$$
+</p>
+<p>This requirement for the action being stationary is (unsurprisingly)
+called the <strong>Principle of Stationary Action</strong>. It is also sometimes
+called the Principle of <em>Least</em> Action, although the action may not
+always be a minimum, so that alternate term can be misleading. It turns
+out (we will not show here as it is a rather involved derivation) that
+this means that the Lagrangian must satisfy the following tensor partial
+differential equation:</p>
+<p class="mathcell">
+$$
+\frac{\partial \mathscr{L}}{\partial \phi} - \partial_\mu \left(\frac{\partial \mathscr{L}}{\partial (\partial_\mu \phi)}\right) = 0
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> It's okay to not understand what this equation means yet. We'll cover tensors in more detail shortly.</p>
+</blockquote>
+<p>This partial differential equation (PDE) is called the <strong>Euler-Lagrange
+Equation</strong> for fields and always gives the correct PDE for the field. We
+refer to this PDE as the <strong>equation of motion</strong> of the field, as it
+describes how the field evolves through time and changes in space.
+Solving the PDE (with suitable boundary conditions) allows us to find
+the field as a function of position and time.</p>
+<p>Rather incredibly, the basic mathematics and structure of classical
+theories of fields carry over even to domains where classical mechanics
+no longer holds - including the relativistic and quantum domains. This
+is why it remains an important area of study over 200 years since its
+inception.</p>
+<h2 id="an-overview-of-tensors">An overview of tensors</h2>
+<p>Tensors are some of the most elegant ways to write the laws of physics, used extensively in relativistic mechanics and relativistic quantum theory. However, they can be quite complicated to read and understand, so we will go over them here.</p>
+<h3 id="what-is-a-tensor">What is a tensor?</h3>
+<p>A tensor is a general name for a class of coordinate-independent objects. A scalar is a tensor, so is a vector, a matrix, and anything made of a combination of these. Whether we use spherical or cylindrical or cartesian coordinates, after all, the air temperature (a scalar field) doesn't change, the wind current velocity (a vector field) doesn't change, and the rotation of baseball hurtling towards me (a transformation matrix) also doesn't change. These are all examples of a general principle:</p>
+<blockquote>
+<p>The universe just doesn't care what coordinates we use to measure it. Coordinates are human constructs, not a fundamental fact of nature.</p>
+</blockquote>
+<p>However, when we impose a coordinate system to write out the equations of physics, we fix the values of the components. So a vector might be the same physical thing regardless of coordinate system, but its <em>components</em> are different in different coordinates. This can be an annoying issue: equations that might look simple in cartesian coordinates can grow monstrously annoying to read in, for instance, spherical coordinates. For example, this is Laplace's equation, which pops up everywhere in physics, written in Cartesian coordinates:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial^2 f}{\partial x^2} + \dfrac{\partial^2 f}{\partial y^2} + \dfrac{\partial^2 f}{\partial z^2} = 0
+$$
+</p>
+<p>And this is its equivalent in spherical coordinates:</p>
+<p class="mathcell">
+$$
+{\frac {1}{r^{2}}}{\frac {\partial }{\partial r}}\left(r^{2}{\frac {\partial f}{\partial r}}\right)+{\frac {1}{r^{2}\sin \theta }}{\frac {\partial }{\partial \theta }}\left(\sin \theta {\frac {\partial f}{\partial \theta }}\right)+{\frac {1}{r^{2}\sin ^{2}\theta }}{\frac {\partial ^{2}f}{\partial \varphi ^{2}}} = 0
+$$
+</p>
+<p>With a change of coordinates, equations that looked elegant and easy to work with become clunky and untractable. What if there were a way to formulate physics in a way that doesn't depend on coordinates, and where we could use whichever coordinates we wished? This is where tensors come in. The tensor formulation of the same equation is given by:</p>
+<p class="mathcell">
+$$
+\partial^j \partial_j f = 0
+$$
+</p>
+<p>How amazingly simple and graceful! <em>This</em> is why we use tensors.</p>
+<h3 id="tensor-algebra-and-calculus">Tensor algebra and calculus</h3>
+<p>To gain a feel for using tensors, it's helpful to start from our familiar vector and matrix formulas and build up from there. For instance, consider a vector in Euclidean 3D space. Written in terms of a Cartesian basis, it is given by:</p>
+<p class="mathcell">
+$$
+\vec V = V_x \hat e_x + V_y \hat e_y + V_z \hat e_z
+$$
+</p>
+<p>It is common convention when writing tensors to write the components of vectors with superscript (upstairs) indices and their basis vectors with subscript (downstairs) indices. The reason will become apparent later, consider this just a convention for now. So we can rewrite as:</p>
+<p class="mathcell">
+$$
+\vec V = V^x \hat e_x + V^y \hat e_y + V^z \hat e_z
+$$
+</p>
+<p>If we set $x = 1, y = 2, z = 3$ we can equivalently write using <em>index</em> notation:</p>
+<p class="mathcell">
+$$
+\vec V = V^1 \hat e_1 + V^2 \hat e_2 + V^3 \hat e_3 = \sum_{i = 1}^3 V^i \hat e_i
+$$
+</p>
+<p>So a vector can be written in tensor form with:</p>
+<p class="mathcell">
+$$
+\hat V = \sum_{i = 1}^3 V^i \hat e_i
+$$
+</p>
+<p>When writing tensors, it is common practice to omit the summation sign; as long as the reader is aware that you are using tensors and that the summation is there even if it's not written out, the conveyed meaning remains the same, but the notation becomes much more compact:</p>
+<p class="mathcell">
+$$
+\hat V = V^i \hat e_i
+$$
+</p>
+<p>In a similar fashion, the dot product formula expressed using tensors can be written as:</p>
+<p class="mathcell">
+$$
+S = A^i B_i
+$$
+</p><h3 id="upper-and-lower-indices">Upper and lower indices</h3>
+<p>To be able to discuss tensors further, however, we must introduce two concepts: that of a <strong>co-vector</strong>, and of the <strong>metric</strong>. A co-vector is like a row vector in Cartesian coordinates. Remember that a row vector and a column vector create a scalar through their dot product:</p>
+<p class="mathcell">
+$$
+\begin{bmatrix} a_1 &amp; b_1 &amp; c_1 \end{bmatrix}
+\begin{bmatrix} a_2 \\ b_2 \\ c_2 \end{bmatrix} 
+= a_1 a_2 + b_1 b_2 + c_1 c_2
+$$
+</p>
+<p>A <strong>co-vector</strong> is the generalization of the idea of a row vector. We denote co-vectors with a subscript, such as $\vec V^T = V_i$ ($T$ here means &quot;transpose&quot; since a row vector is the transpose of a column vector). By contrast, we denote <strong>vectors</strong> with a superscript, such as $\vec W = W^j$.</p>
+<p>For instance, consider the position vector $\vec x = x^i$, where the index $i$ indexes over the 3 coordinates of the position $(x^1, x^2, x^3) = (x, y, z)$. Because the position vector is a vector, and vectors are tensors, the position vector is <em>also</em> a tensor.</p>
+<p>Now, the index of a tensor represents its <em>components</em>. This is important because two tensors with the same index have <em>different</em> components. For instance, we may have two tensors $\vec x = x^i$ and $\vec x' = x^j$, where the prime mark ($'$) indicates different coordinates. That is:</p>
+<p class="mathcell">
+$$
+x^i = \begin{bmatrix} x \\ y \\ z \end{bmatrix}, \quad
+x^j = \begin{bmatrix} x&#x27; \\ y&#x27; \\ z&#x27; \end{bmatrix}
+$$
+</p>
+<p>This is important in tensor calculus, as it allows us to write tensors that have different components without needing to write a bunch of primed marks.</p>
+<p>Just as we can for any vector, we can write the position <em>co-vector</em> $\vec x^T$ in tensor notation as $x_i$, and $\vec x^T$ as $x_j$. Therefore, we have:</p>
+<p class="mathcell">
+$$
+x_i = \begin{bmatrix} x &amp; y &amp; z \end{bmatrix}, \quad
+x_j = \begin{bmatrix} x&#x27; &amp; y&#x27; &amp; z&#x27; \end{bmatrix}
+$$
+</p>
+<p>This gives us the ability to write out the dot product formula (which we just saw earlier) in tensor notation as:</p>
+<p class="mathcell">
+$$
+\sum_i x_i x^i = x^2 + y^2 + z^2 = R^2
+$$
+</p>
+<p>Where here, $R^2$ is the <strong>squared magnitude</strong> of the position vector, and is thus a <strong>scalar</strong>. Note that the expression $x_i x^j$ is <em>not</em> a valid expression for the dot product! It has to be $x_i x^i$ for the formula to make sense.</p>
+<p>So it is important that we specify a tensor's index carefully so that <strong>tensors with different components have different indices</strong>, even if they are the same type of tensor. As we saw, a position vector $\vec x = x^i$ and a position vector with different components $\vec x' = x^j$ are both position vectors, but since they have <strong>different components</strong>, they must use <strong>different tensor indices</strong>.</p>
+<h3 id="free-indices-dummy-indices-and-the-einstein-summation-convention">Free indices, dummy indices, and the Einstein summation convention</h3>
+<p>After working with tensors for a while, it often becomes increasingly annoying to write out summation signs. For instance, recall our expression for the dot product:</p>
+<p class="mathcell">
+$$
+\mathbf{A} \cdot \mathbf{B} = \sum_i A_i B^i
+$$
+</p>
+<p>While this may not look so bad, consider taking the product of like-index components of two matrices. Then we would have:</p>
+<p class="mathcell">
+$$
+AB = \sum_i \sum_j A_{ij} B^{ij}
+$$
+</p>
+<p>But there are even higher-dimensional tensors, which means that we may encounter expressions in the form:</p>
+<p class="mathcell">
+$$
+\sum_i \sum_j \sum_k A_{ijk} B^{ijk}
+$$
+</p>
+<p>At this point, writing any more summation signs becomes a hassle. So instead, we often <em>drop</em> the summation signs, with the understanding that the summation signs are there, just not explicitly written-out. For instance, the dot product formula would just read $A_i B^i$, where we implicitly sum over $i$. This is called the <strong>Einstein summation convention</strong>.</p>
+<p>The <em>Einstein summation convention</em> says that whenever an index appears once as a lower index and once as an upper index in a particular tensor expression, then the index is <strong>summed over</strong>. When this happens, we say that the twice-appearing index is a <strong>dummy index</strong> (also called a <strong>summation index</strong>), and we can choose to <em>freely change</em> the index's letter to any other letter. For instance, since the dot product in tensor notation has $i$ appearing twice - once as an upper index, and once as a lower index - we can change the index letter $i$ to any other letter, so the following are <strong>all equivalent</strong>:</p>
+<p class="mathcell">
+$$
+x_i x^i = x_k x^k = x_r x^r = x_\delta x^\delta
+$$
+</p>
+<p>A difference, however, is if we had an expression in the form $x_i x^j$. Since these are <strong>not</strong> a set of indentical upper and lower indices, they are <strong>not implicitly summed over</strong>. Thus, we say that they are <strong>free indices</strong>.</p>
+<p>The key part of tensor algebra is that we must <em>keep track of our indices</em> such that all our equations have <em>balanced indices</em>. This means that the <strong>total number of free indices</strong> on both sides of an equation must be the <strong>same</strong>. Consider, for instance, the following expression:</p>
+<p class="mathcell">
+$$
+R_{ij} = C_i B_j
+$$
+</p>
+<p>Is this expression valid? Let's check the number of free indices. On the left, both $i, j$ are free indices, since neither appears twice (in an upper and lower index) in the expression. On the right, we also have two free indices, and they are the <em>same</em> free indices. So indeed, this tensor expression is valid. Note that if we changed this expression to:</p>
+<p class="mathcell">
+$$
+R^i{}_j = C_i B^i
+$$
+</p>
+<p>Then this expression would no longer be correct! On the left, we have the same two <em>free</em> indices $i, j$, but on the right, the index $i$ appears both as a lower and an upper index, so it is a <em>dummy index</em>, not a free index.</p>
+<p>Let's examine a third case:</p>
+<p class="mathcell">
+$$
+V_{ij} = q_i q^j e^k e_k
+$$
+</p>
+<p>Would <em>this</em> expression be valid? If we check the left and right-hand sides, we find that both sides have two free indices - since $k$ appears as an upper and lower index in $e^k e_k$, it is a dummy index and doesn't count. But we now have a new problem: the index $j$ is a lower index on the left, and an <em>upper index</em> on the right! So this expression is <em>invalid</em>. But we could correct it by rewriting the expression with $j$ as a <em>lower index</em>:</p>
+<p class="mathcell">
+$$
+V_{ij} = q_i q_j e^k e_k
+$$
+</p>
+<p>Note that because $k$ is a dummy index, by the Einstein summation convention, we could change $k$ to any letter we want. Thus, it would be equally valid to write:</p>
+<p class="mathcell">
+$$
+V_{ij} = q_i q_j e^\beta e_\beta
+$$
+</p>
+<p>As a summary, tensors have two types of indices: <strong>free indices</strong> and <strong>dummy (summation) indices</strong>. Free indices <em>must</em> be balanced on the left- and right-hand sides of an equation, but dummy indices can be changed at will. This delicate balancing act - of making sure that all tensor equations have the same number of free indices - is the basis of tensor algebra, and as we'll see, tensor calculus. It makes sure that all our operations are mathematically valid, and lets us just concentrate on the physics without ever needing to think about the complex linear algebra that underlies all our operations.</p>
+<h3 id="relabeling-indices-with-the-kronecker-delta">Relabeling indices with the Kronecker delta</h3>
+<p>Previously, we've learned that indices are <em>fundamental</em> to tensors, and they are what distinguish tensors with different components. For instance, $x^i \neq x^j$, even though they are both position vectors, and the difference in index tells us that they have <em>different components</em>. Furthermore, since $i$ appears only one time in $x^i$, it is a <strong>free index</strong> - the same is true for $j$ in $x^j$. Thus, the tensor equation $x^i = x^j$ would automatically be invalid, since we'd have different free indices on the left-hand side and right-hand side.</p>
+<p>However, it is sometimes convenient to <em>change</em> an index. Suppose that we wanted to turn $x^i$ <em>into</em> $x^j$. Think about it for a moment - how would we do that, using standard vectors and matrices? Well, a matrix maps one vector to another, so we would want some sort of &quot;conversion matrix&quot;, which (for reasons we'll see soon) we'll call $\delta_{ij}$:</p>
+<p class="mathcell">
+$$
+x^i = \delta_{ij} x^j
+$$
+</p>
+<p>Ah, but now our indices are unbalanced - both sides have $i$ as their free index ($j$ is a dummy index), but $i$ is a <em>lower index</em> on the right and an <em>upper index</em> on the left of the equation. So let's fix that by turning $i$ into an upper index on the right-hand side, too:</p>
+<p class="mathcell">
+$$
+x^i = \delta^i {}_j x^j
+$$
+</p>
+<p>And <em>there</em>, we've got it! This particular matrix $\delta^i{}_j$ is called the <strong>Kronecker delta</strong>, and it is also a tensor. It is defined as:</p>
+<p class="mathcell">
+$$
+\delta_{ij} = \delta^{ij} = \delta^i{}_j = \delta_i{}^j = \begin{cases}
+1, &amp; i = j \\
+0, &amp; i \neq j
+\end{cases}
+$$
+</p>
+<p>Which also means that we can represent it as a sort of identity matrix:</p>
+<p class="mathcell">
+$$
+\delta_{ij} = \begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; \dots &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; \dots &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; \dots &amp; 1
+\end{pmatrix}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> Our preferred notation is to write the Kronecker delta with its upper and lower indices as $\delta^i{}_j$. But it is also common to just write $\delta^i_j$. <strong>Both forms are equivalent</strong>, it is only a difference of convention.</p>
+</blockquote>
+<p>The Kronecker delta's power to allow us to relabel indices is incredibly powerful. It means that we can turn a tensor with one set of indices, such as $A_{sl}$, into a tensor $A_{jk}$ with a completely different set of indices:</p>
+<p class="mathcell">
+$$
+A_{jk} = \delta^s{}_j \delta^l{}_k A_{sl}
+$$
+</p>
+<p>This expression, however, might be rather hard to read. A visual way of understaning it is to remember that we need to <em>balance</em> our  indices. When we apply the Kronecker delta, identical upper and the lower indices &quot;cancel&quot; out, so we can cross them out, like this:</p>
+<p class="mathcell">
+$$
+A_{jk} = \delta^{\cancel{s}}{}_j \delta^{\cancel{l}}{}_k A_{\cancel{s}\cancel{l}}
+$$
+</p>
+<p>Note how by &quot;crossing out&quot; the repeated $s$ and $l$ indices that both occur as an upper and lower index, we just get the indices $j, k$ left on the right-hand side, which then balances the left-hand side!</p>
+<p>This is a powerful trick that we can use, for instance, to generalize the dot product by relabeling indices:</p>
+<p class="mathcell">
+$$
+A^i B_j = A^i \delta^j{}_i B_j = A^i \delta^{\cancel{j}}{}_i B_{\cancel{j}} = A^i B_i
+$$
+</p>
+<p>Here, by using the Kronecker delta, we could effectively &quot;cross out&quot; the index $j$, giving us just $A^i B_i$ left, which is just the dot product!</p>
+<h3 id="raising-and-lowering-indices">Raising and lowering indices</h3>
+<p>We saw how useful the Kronecker delta can be, when we wanted to relabel a tensor's index. But the Kronecker delta has a limitation: while it can <em>relabel</em> an index - for instance, changing $x^i$ to $x^j$ - it <em>can't</em> convert an upper index to a lower index.</p>
+<p>To actually convert between lower and upper indices, we need to use the <strong>metric tensor</strong>. The metric tensor $g_{ij}$ is perhaps the <em>most</em> important tensor. It allows taking a tensor with a lower index, such as $x_j$, and converting it to a tensor with an upper index, like $x^i$:</p>
+<p class="mathcell">
+$$
+x^i = g^{ij} x_j
+$$
+</p>
+<p>This is called <strong>lowering an index</strong>. Likewise, the metric tensor also allows us to take a tensor with an upper index and converting it to a tensor with a lower index:</p>
+<p class="mathcell">
+$$
+x_i = g_{ij} x^j
+$$
+</p>
+<p>This is called <strong>raising an index</strong>. Furthermore, if we combine the Kronecker delta and the metric tensor, we can convert a tensor to its upper-index or lower-index equivalent with the <em>same</em> index:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+x_i = \delta^j{}_i g_{ij} x^i = \delta^j{}_i x_j \\
+x^i = \delta^i{}_j g^{ij} x_i =  \delta^i{}_j x^j
+\end{align*}
+$$
+</p>
+<p>Aside from just being useful, the metric tensor also has a very important place in physics. We will shortly discuss what the metric tensor $g_{ij}$ <em>physically represents</em>, but first, we need to cover a little bit more tensor algebra.</p>
+<h3 id="tensor-contraction">Tensor contraction</h3>
+<p>We saw previously that by the Einstein summation convention, identical upper and lower indices are summed over:</p>
+<p class="mathcell">
+$$
+A_i B^i = A_1 B^1 + A_2 B^2 + A_3 B^3 + \dots + A_n B^n
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> Remember that $A^1$ represents the <em>first component</em> of the vector $A_i$, and $A^2$ represents its <em>second component</em>. For instance, if we were working with Cartesian coordinates, $A^1 = A^x$ and $A^2 = A^y$. The indices $1, 2, 3,\dots$ are <em>tensor indices</em>, <strong>not exponents</strong>.</p>
+</blockquote>
+<p>But we can also do this for single tensors. For instance, suppose we have a tensor $T^i{}_j$. If we make the two indices identical, we would have $T^i{}_i$, which again is implicitly summed over $i$:</p>
+<p class="mathcell">
+$$
+T^i{}_i = T^1{}_1 + T^2{}_2 + \dots + T^n{}_n
+$$
+</p>
+<p>This is called a <strong>tensor contraction</strong> (also called the <strong>trace</strong>), and it's significant because it turns the tensor into a <em>scalar</em>. For instance, if our tensor $T_{ij}$ (we write it in the lower index for convenience) is given by:</p>
+<p class="mathcell">
+$$
+T_{ij} = \begin{pmatrix}
+T_{11} &amp; T_{12} &amp; T_{13} \\
+T_{21} &amp; T_{22} &amp; T_{23} \\
+T_{31} &amp; T_{32} &amp; T_{33}
+\end{pmatrix}
+$$
+</p>
+<p>Then the tensor contraction $T^i{}_i$ becomes:</p>
+<p class="mathcell">
+$$
+T^i{}_i = T^1{}_1 + T^2{}_2 + T^3{}_3
+$$
+</p>
+<p>Which is just the sum of the diagonals of $T_{ij}$ (with one raised index). We can also do this with tensors of three indices like $R^i{}_{jk}$, in which we have:</p>
+<p class="mathcell">
+$$
+R^i{}_{ik} = R^1{}_{1k} + R^2{}_{2k} + R^3{}_{3k} + \dots + R^n{}_{nk}
+$$
+</p>
+<p>The importance of the tensor contraction is that it takes a higher-dimensional tensor and returns a lower-dimensional tensor - often, returning a scalar. It is in many ways the <em>generalization</em> of the dot product (which takes two vectors and outputs a scalar) but for tensors of arbitrary dimensions. Being able to form a scalar from tensors is physically important because <em>scalars are invariant</em> - scalars are just numbers, and a number is a number is a number, no matter the coordinates we use. This makes it very important for <strong>relativistic theories</strong> - we're getting a bit ahead of ourselves here, but we'll get there soon!</p>
+<h3 id="practicing-contractions">Practicing contractions</h3>
+<p>Tensor contraction can be a bit unfamiliar, so let's do a practice problem: let's evaluate the expression $\delta^\mu {}_\mu \delta^\nu {}_\nu$, where $\mu, \nu = 0, 1, 2, 3$.</p>
+<blockquote>
+<p><strong>Note:</strong> Don't be scared by the weird choice of letters $\mu, \nu$ for indices! We can just as well use $i, j$, because dummy indices can use any letter we want.</p>
+</blockquote>
+<p>To solve, we expand the tensors with the implicit summations written out explicitly, This gives us:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+\delta^\mu {}_\mu \delta^\nu {}_\nu &amp;= \underbrace{\sum_{\mu = 0}^3 \sum_{\nu = 0}^3 \delta^\mu {}_\mu \delta^\nu {}_\nu}_\text{write sums explicitly} \\
+&amp;= \underbrace{\delta^0{}_0 \delta^0{}_0 + \delta^1{}_1 \delta^1{}_1 + \delta^2{}_2 \delta^2{}_2 + \delta^3{}_3 \delta^3{}_3}_\text{only nonzero terms in the sum are left} \\
+&amp;= 1 + 1 + 1 + 1 \\
+&amp;= 4
+\end{align*}
+$$
+</p>
+<p><strong>Why is this correct?</strong> This is due to the fact that <em>by definition</em> $\delta^i{}_i \delta^j{}_j$ is <em>only nonzero</em> if $i = j$. If we have $i = j$ then $\delta^i{}_i \delta^j{}_j = \delta^i{}_i \delta^i{}_i = 1$, but if we have $i \neq j$ we have $\delta_i^i \delta_j^j = 0$. Thus the summation (which would've usually been over 16 terms!) collapses only to four terms!</p>
+<h3 id="tensor-calculus">Tensor calculus</h3>
+<p>Just as we could do algebra with tensors, we can also do calculus with tensors. For instance, we could take the derivative of the position vector $x^i$ to get the velocity vector $v^i$:</p>
+<p class="mathcell">
+$$
+v^i = \dfrac{dx^i}{dt}
+$$
+</p>
+<p>We can also take <em>partial derivatives</em>. Suppose we had a scalar function $\phi(x^i) = \phi(x, y, z)$. Then, the partial derivative with respect to the potential can be written as:</p>
+<p class="mathcell">
+$$
+\dfrac{\partial \phi}{\partial x^i} = \nabla \phi
+$$
+</p>
+<p>In tensor notation, it is common to use the shorthand $\partial_i = \dfrac{\partial}{\partial x^i}$, meaning the above can also be written as:</p>
+<p class="mathcell">
+$$
+\partial_i \phi = \nabla \phi
+$$
+</p>
+<p>Remember that just like $\nabla \phi$ is a vector, $\partial_i \phi$ is also a vector! This means that $\partial_1 \phi = \partial_x \phi = \frac{\partial \phi}{\partial x}$, $\partial_2 \phi = \partial_y \phi = \frac{\partial \phi}{\partial y}$, and so on. The power of tensor calculus really starts, however, when we start differentiating <em>tensors</em> other than scalars. For instance, we can write the <strong>divergence</strong> as:</p>
+<p class="mathcell">
+$$
+\partial_i F^i = \nabla \cdot \vec F
+$$
+</p>
+<p>You may notice that since $i$ as both an upper and lower index, it is a dummy index: so this is a <em>tensor contraction</em>, which creates a scalar! Indeed, if we expand it, we have:</p>
+<p class="mathcell">
+$$
+\partial_i F^i = \partial_x F^x + \partial_y F^y + \partial_z F^z
+$$
+</p>
+<p>Which is just the standard vector calculus formula for the divergence. Additionally, just like any other tensor, we can raise and lower the index of the partial derivative $\partial_i$ using the metric. Thus, we have:</p>
+<p class="mathcell">
+$$
+\partial^i = g^{ij} \partial_i
+$$
+</p>
+<p>Treating the partial derivative as a tensor may be a bit uncomfortable, but it is mathematically made possible by the formalism of tensor calculus. It allows us to take otherwise very complicated derivatives, such as derivatives of a matrix:</p>
+<p class="mathcell">
+$$
+\partial_i F^{ij} = J^j
+$$
+</p>
+<p>To summarize, tensor calculus allows us to take derivatives of a variety of mathematical objects that go beyond just vectors and scalars. Crucially, it allows us to take complicated deriatives of tensors in ways that cannot be done with just vector calculus.</p>
+<h3 id="relativity-and-spacetime">Relativity and spacetime</h3>
+<p>We've covered a lot about tensors, but let's now return to a topic we discussed earlier: the <strong>metric tensor</strong>.</p>
+<p>To begin, we have to discuss first the <em>geometric</em> origins of tensors. Tensors are not just arbitrary combinations of indices; they represent something with a particular set of <em>components</em>. These components are dependent upon the underlying space. For instance, a 2D vector $V^i$ represents a directional quantity, with two components $V^x, V^y$ in 2D Cartesian space. But that same vector could have <em>different</em> components if we use another coordinate system. Taking our example, if we switch to polar coordinates, the vector's components would switch to $V^r, V^\theta$. Thus, while tensors themselves are coordinate-independent - after all, the Universe doesn't care whether you use Cartesian or polar coordinates - the <em>components</em> of tensors are definitely dependent on the coordinate system we use, and the underlying geometry of space.</p>
+<p>The <strong>metric tensor</strong> $g_{ij}$ lets us characterize a system of coordinates in a geometric space by defining what a <em>distance</em> represents. You might think - why do we need to formalize what a distance means? Isn't that <em>obvious</em>? But in fact, the notion of a distance is not a simple as it may seem. For instance, in Euclidean 3D space, the infinitesimal distance between two points is given by:</p>
+<p class="mathcell">
+$$
+ds^2 = dx^2 + dy^2 + dz^2
+$$
+</p>
+<p>&quot;I knew that!&quot;, you might say, &quot;that's just Pythagoras's theorem written with infinitesimals $dx, dy, dz$ rather than $x, y, z$!&quot; And indeed you would be correct. For hundreds of years, we have no reason to think that the Universe was anything other than 3D space with Euclidean geometry.</p>
+<p>But at the dawn of the 20th century, the very famous Albert Einstein discovered that our Universe was not three-dimensional, as had been throught; rather, it was four-dimensional, containing one dimension of time and three of space - what we call <strong>spacetime</strong>. So in fact, the <em>correct</em> expression for the infinitesimal distance between two points is given by Pythagoras' formula:</p>
+<p class="mathcell">
+$$
+ds^2 = dt^2 - (dx^2 + dy^2 + dz^2)
+$$
+</p>
+<p>(For those readers already familiar with the Minkowski metric, be aware that we use units where $c$, the speed of light, is equal to one). Except this distance formula isn't completely correct either: Einstein found that this was a <em>special case</em> of a more general tensor expression for the distance between two points in spacetime:</p>
+<p class="mathcell">
+$$
+\begin{align*}
+ds^2 &amp;= g_{\mu \nu} dx^\mu dx^\nu \\
+&amp;= g_{00} dt^2 + g_{01} dt\,dx + g_{02} dt\,dy + \dots \\
+&amp;\qquad + g_{10} dx dt + g_{11} dx^2 + g_{12} dx\, dy + \dots \\
+&amp;\qquad + g_{30} dz\,dt + g_{31} dz\,dx + g_{32} dz\,dy + g_{33}\,dz^2
+\end{align*}
+$$
+</p>
+<p>Where $g_{\mu \nu}$ is the four-dimensional <strong>metric tensor</strong>, given by: </p>
+<p class="mathcell">
+$$
+g_{\mu \nu} = \begin{pmatrix}
+g_{00} &amp; g_{01} &amp; g_{02} &amp; g_{03} \\
+g_{10} &amp; g_{11} &amp; g_{12} &amp; g_{13} \\
+g_{20} &amp; g_{21} &amp; g_{22} &amp; g_{23} \\
+g_{30} &amp; g_{31} &amp; g_{32} &amp; g_{33}
+\end{pmatrix}
+$$
+</p>
+<p>Why is this significant? Because it means that distance is dependent on the <em>geometry</em> of spacetime, and that implies that time and space are interdependent, and that spacetime can be <strong>curved</strong>! In fact, the metric tensor is the foundation of Einstein's theories of <strong>special and general relativity</strong>.</p>
+<blockquote>
+<p><strong>Note on notation:</strong> It is customary to use latin indices like $i, j, k, \dots$ when we are only talking about three-dimensional tensors, such as position $x^i$. However, when we are talking about <em>four-dimensional</em> tensors in spacetime, such as the metric tensor, we use greek indices like $\mu, \nu, \gamma$.</p>
+</blockquote>
+<h2 id="special-relativity">Special relativity</h2>
+<p>With our newfound knowledge of tensors and spacetime, we're ready to tackle the <strong>special theory of relativity</strong> in full. We've discussed earlier that special relativity postulates that our Universe is four-dimensional, and its geometric structure is a four-dimensional geometry called <strong>spacetime</strong>. </p>
+<p>In most of quantum field theory, we work in <strong>Minkowski spacetime</strong>, the <em>special case</em> of the four-dimensional spacetime that we discussed earlier. The correct expression for the infinitesimal distance in Minkowski space, as we saw, is given by:</p>
+<p class="mathcell">
+$$
+ds^2 = dt^2 - (dx^2 + dy^2 + dz^2)
+$$
+</p>
+<p>Note that we can also write this expression in matrix-vector form, as:</p>
+<p class="mathcell">
+$$
+ds^2 = 
+\begin{bmatrix} dt \\ dx \\ dy \\ dz \end{bmatrix}^T
+\underbrace{\begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; -1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; -1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; -1 \\
+\end{pmatrix}}_{\eta_{\mu \nu}}
+\begin{bmatrix} dt \\ dx \\ dy \\ dz \end{bmatrix}
+$$
+</p>
+<p>By comparison with $ds^2 = g_{\mu \nu} dx^\mu dx^\nu$, we find that the matrix in the middle of the above expression is the <strong>metric tensor</strong> for Minkowski spacetime, which characterizes the geometry of spacetime in special relativity. We usually call this tensor the <em>Minkowski metric</em>, and denote it as $\eta_{\mu \nu}$:</p>
+<p class="mathcell">
+$$
+\eta_{\mu \nu} = \begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; -1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; -1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; -1 \\
+\end{pmatrix}
+$$
+</p>
+<blockquote>
+<p><strong>Note:</strong> Quantum field theory is (mostly) based off Minkowski spacetime, so the Minkowski metric will be the metric tensor we use for raising and lowering indices. We'll wait to look into <em>general relativity</em> with its much more complicated curved spacetimes, but we'll get to that in time.</p>
+</blockquote>
+<p>While the Minkowski metric may <em>look</em> deceptively simple and appear to be a simple four-dimensional extension of the Euclidean metric with a few sign changes, it is actually <em>radically different</em>, and the signs make all the difference.</p>
+<h2 id="useful-math">Useful math</h2>
+<h3 id="the-fourier-transform">The Fourier transform</h3>
+<p>In physics, it is very useful to decompose a complicated function as a sum of sines and cosines - which, remember, can be written as complex exponentials. Sines and cosines are well-studied functions with very nice properties, which cannot be said of all functions (especially the Dirac delta &quot;function&quot;)! The Fourier transform gives us a way to convert between these two representations. The basic idea is this: by <em>adding</em> lots of little sinusoidal waves that have slightly different spatial periods (wavelengths) and different amplitudes, we can approximate the shape of some complicated function $f(x)$. Each of these waves has amplitude (magnitude)</p>
+<p>Since a sum over continous functions is just an integral, we can write this as:</p>
+<p class="mathcell">
+$$
+f(x) = \int_{-\infty}^\infty \dfrac{dk}{2\pi} \tilde f(k) e^{-ikx} dk
+$$
+</p>
+<p>Where the function $\tilde f(k)$ gives the <em>amplitude</em> of each one of those infinitely-many little sinusoidal waves of wavenumber $k = 2\pi/\lambda$. But how do we get the function $\tilde f(k)$ that gives the amplitudes? The answer is the <strong>Fourier transform</strong>:</p>
+<p class="mathcell">
+$$
+\tilde f(k) = \int_{-\infty}^\infty dk f(x) e^{ikx}
+$$
+</p>
+<p>It is a common (but confusing) convention in quantum physics to use the same symbol for a function and its Fourier transform in physics, as well as omitting the bounds of integration. So, in the standard quantum physics notation, the Fourier transform can also be written as:</p>
+<p class="mathcell">
+$$
+f(k) = \int \dfrac{dk}{2\pi} f(x) e^{-ikx}
+$$
+</p>
+<p>We can also define the Fourier transform in more than one dimension. Of particular interest to us is the <em>three-dimensional</em> Fourier transform, given by:</p>
+<p class="mathcell">
+$$
+f(k) = \int \dfrac{d^3k}{(2\pi)^3} f(\vec x) e^{-i \vec k \cdot \vec x}
+$$
+</p>
+<p>Where $\vec k, \vec x$ are three-vectors. In $n$ dimensions, the $n$-th dimensional Fourier transform is given by:</p>
+<p class="mathcell">
+$$
+f(k) = \int \dfrac{d^nk}{(2\pi)^n} f(x^\mu) e^{-ik_\mu x^\mu}
+$$
+</p>
+<p>Among the <em>many</em> uses of Fourier transforms are that they can be used to solve a variety of partial differential equations (PDEs), and in particular, a certain class of PDEs known as <strong>wave equations</strong> that pop up everywhere in quantum mechanics and quantum fiedl theory. We will soon see this in the next chapter!</p>
+
+        <div class="page-switch-buttons">
+        
+            <!-- If it's the preface just add a
+                "begin" button -->
+            
+            <!-- Otherwise add prev/next buttons -->
+                
+                    
+                    
+                        <!-- previous page button -->
+                        
+                        
+                        <!-- next page button -->
+                        
+                        
+                        
+                        <div class="page-up">
+                            <a href="/quantum-field-theory/chapter-2">
+                                Next: Chapter 2
+                            </a>
+                            <strong>Quantization of a free scalar field</strong>
+                        </div>
+                        
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+            
+        
+        </div>
+    </article>
+    </div>
+    <!-- This should be also an accordion for smaller screen sizes -->
+    <div class="page-navigation">
+        <h2>In this chapter</h2>
+        <ul>
+        
+            <li>
+                <a class="pagelink" href="#the-very-basics-of-quantum-field-theory">The very basics of quantum field theory</a>
+                
+                    <ul>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#the-motivation-for-quantum-field-theory">The motivation for quantum field theory</a>
+                            </li>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#things-to-know">Things to know</a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li>
+                <a class="pagelink" href="#an-overview-of-classical-field-theory">An overview of classical field theory</a>
+                
+                    <ul>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#the-principle-of-stationary-action">The Principle of Stationary Action</a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li>
+                <a class="pagelink" href="#an-overview-of-tensors">An overview of tensors</a>
+                
+                    <ul>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#what-is-a-tensor">What is a tensor?</a>
+                            </li>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#tensor-algebra-and-calculus">Tensor algebra and calculus</a>
+                            </li>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#upper-and-lower-indices">Upper and lower indices</a>
+                            </li>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#free-indices-dummy-indices-and-the-einstein-summation-convention">Free indices, dummy indices, and the Einstein summation convention</a>
+                            </li>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#relabeling-indices-with-the-kronecker-delta">Relabeling indices with the Kronecker delta</a>
+                            </li>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#raising-and-lowering-indices">Raising and lowering indices</a>
+                            </li>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#tensor-contraction">Tensor contraction</a>
+                            </li>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#practicing-contractions">Practicing contractions</a>
+                            </li>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#tensor-calculus">Tensor calculus</a>
+                            </li>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#relativity-and-spacetime">Relativity and spacetime</a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li>
+                <a class="pagelink" href="#special-relativity">Special relativity</a>
+                
+            </li>
+        
+            <li>
+                <a class="pagelink" href="#useful-math">Useful math</a>
+                
+                    <ul>
+                        
+                            <li class="indent">
+                                <a class="pagelink" href="#the-fourier-transform">The Fourier transform</a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+        </ul>
+    </div>
+    </section>
+</main>
+
+    <!-- We load KaTeX last for performance reasons -->
+    <script defer src="https://learntheoreticalphysics.com/katex/katex.min.js"></script>
+    <script defer src="https://learntheoreticalphysics.com/katex/contrib/auto-render.min.js"></script>
+    <script defer src="https://learntheoreticalphysics.com/katex/contrib/mhchem.min.js"></script>
+    <script defer src="https://learntheoreticalphysics.com/katex/contrib/copy-tex.min.js"></script>
+    <script defer>
+    function renderMath(element) {
+        // renders math using KaTeX in a particular element
+        renderMathInElement(element, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+          ],
+          // custom macros for KaTeX-MathJax consistency
+          macros: {
+            "\\overbracket": "\\overgroup"
+          },
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+        var article = document.querySelector(".post");
+        if (article) {
+            renderMath(article);
+        }
+    })
+    </script>
+    
+    <script defer>
+    var toc = document.getElementById("toc");
+    var tocPos = toc.offsetTop + toc.offsetHeight;
+    var tocBtn = document.getElementById("jump-toc-btn");
+        // return the top and bottom coordinates of the
+        // user's position on the page
+        function getViewport() {
+            var scrollPosTop = document.documentElement.scrollTop;
+            var scrollPosBottom = scrollPosTop + window.innerHeight;
+            return scrollPosTop, scrollPosBottom
+        }
+
+    function showTocBtnOnScroll() {
+            // don't show toc button on print media
+            if (window.matchMedia('print').matches){ return; }
+            var _, scrollBottom = getViewport();
+            // get bottom of viewport scroll position
+            if (scrollBottom > tocPos) {
+                tocBtn.style.display = "block";
+            } else {
+                tocBtn.style.display = "none";
+            }
+        }
+
+        window.onscroll = function(){
+            showTocBtnOnScroll();
+        };
+    </script>
+    
+
+
+</body>
+
+</html>

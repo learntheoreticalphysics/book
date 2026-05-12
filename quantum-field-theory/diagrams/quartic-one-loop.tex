@@ -1,0 +1,20 @@
+% Feynman diagram for the one-loop
+% self-energy correction for quartic theory
+\documentclass{article}
+\usepackage{feynmp-auto}
+\begin{document}
+\begin{fmffile}{diagram}
+\begin{fmfgraph*}(200,150)
+    \fmftop{t1}
+    \fmfleft{i1}
+    \fmfright{f1}
+    \fmf{fermion}{i1,m1}
+    \fmf{fermion}{m1,f1}
+    \fmfdot{m1}
+    \fmf{plain, tension=1, top}{m1,m1}
+    % labels
+    \fmflabel{$p$}{i1}
+    \fmflabel{$q$}{f1}
+\end{fmfgraph*}
+\end{fmffile}
+\end{document}
