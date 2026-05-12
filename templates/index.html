@@ -26,11 +26,15 @@ Our greatest satisfaction is to make the concepts of theoretical physics as clea
 <section class="book-cards">
     <h2>Our books</h2>
     {% for page in section.pages %}
+    <!-- Temporarily hide relativity book 
+    	 since progress on that is paused at the moment. -->
+    {% if 'Relativity' not in page.title %}
    <article>
      <h3>{{ page.title }}</h3>
      <p class="summary">{{ page.extra.description | safe }}</p>
      <a href="{{ page.permalink | safe }}">Read more...</a>
    </article>
+ {% endif %}
  {% endfor %}
 </section>
 <section class="preface">
