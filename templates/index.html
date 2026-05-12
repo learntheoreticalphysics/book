@@ -25,7 +25,7 @@ Our greatest satisfaction is to make the concepts of theoretical physics as clea
 
 <section class="book-cards">
     <h2>Our books</h2>
-    {% for page in section.pages | reverse %}
+    {% for page in section.pages %}
    <article>
      <h3>{{ page.title }}</h3>
      <p class="summary">{{ page.extra.description | safe }}</p>
